@@ -1,0 +1,548 @@
+---
+title: "How to Demonstrate Confidence In Status Estimates Given Temporal Variability"
+author: "Emma Jones"
+date: "July 17, 2019"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+
+This document walks you through the steps of calculating design weights, running analyses, and understanding collapsing confidence intervals with increased datasets, despite temporal variability for the purpose of writing the Integrated Report chapter for the Probabilistic Monitoring Program due to EPA every two years. This document overviews the process taken each year up until the 2018 IR, illustrating the confidence in estimates with increasing n. The document uses the James River Basin and Big Sandy to juxstapose two disparate areas on the Virginia landscape to explain: why it took so long to report on smaller basins and what happens to confidence in estimates in big and small watersheds over time.
+
+### Data Organization
+
+Starting at the same point of 'HowToWrite2018IRProbMonChapter.Rmd,' we are going to begin with the raw data and subset data from program inception (2001) to different IR cycle cut offs before running estimates on VSCI/VCPMI for the James and Big Sandy Basins. All trend weight adjustments will be run on these data subsets to maintain comparability of estimates.
+
+
+```{r startup, include = FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+
+# R version 3.6.0 "Planting of a Tree"
+suppressPackageStartupMessages(library(tidyverse))#1.2.1
+suppressPackageStartupMessages(library(sf))#0.7-6
+suppressPackageStartupMessages(library(spsurvey))#4.0.0
+suppressPackageStartupMessages(library(DT))#0.7
+suppressPackageStartupMessages(library(purrr))#0.3.2
+suppressPackageStartupMessages(library(plotly))#4.9.0
+suppressPackageStartupMessages(library(mapview))#2.7.0
+```
+
+
+Bring in appropriate datasets. Always start with VSCI (VSCI/VCPMI) first because this parameter will have the best information on whether or not to include the station for design weight calculations. 
+
+```{r bringInTSData}
+
+#### Read in master field data sampled at all sites
+# Select the parameters we want to run
+# rename a few parameters to work better in R
+surveyData <- readxl::read_excel('originalData/Wadeable_ProbMon_2001-2016_JRH.xlsx',
+                                    sheet='ProbMonData2001-2016_EVJ') %>%
+  dplyr::select(DataSource,StationID,Year,StationID_Trend,LongitudeDD,LatitudeDD,stratum,designweight,
+         weightcategory,station,state,status,comment,set,Basin,SubBasin,BayShed,BayPanel,
+         EcoRegion,BioRegion,Panel,BioPanel,Order,BasinSize,StreamSizeCat,StreamSizeCatPhase,
+         AREA_SQ_MILES,IR2008,IR2010,IR2012,IR2014,IR2016,IR2018,designweighttrend,
+         designweightoriginal,filwgt_trend,filwgt_orgil,VSCIVCPMI) %>%
+  dplyr::rename(siteID=StationID_Trend)
+```
+
+
+### CDF analyses
+
+
+And now bring in design status data (for VSCI/VCPMI). It is best to use this as the default design status dataset (and adjust TS to OT if not sampled) because it is the most complete version of the data.
+
+We are going to recode the IR window fields such that each field will indicate whether a sample would have been able to be reported on in that cycle from 2001-cycle chosen. e.g. a site sampled in 2006 would be available for all IR windows but a site sampled in 2015 would only be available for 2018 IR. 
+
+```{r bringInDesignStatusData}
+designStatus <- readxl::read_excel('originalData/biology.xlsx',sheet='biology2018') %>%
+  mutate(
+    # recode for special purposes of this analysis, not actual IR window years
+    IR2008 = ifelse(Year <= 2006, 1, NA),
+    IR2010 = ifelse(Year <= 2008, 1, NA),
+    IR2012 = ifelse(Year <= 2010, 1, NA),
+    IR2014 = ifelse(Year <= 2012, 1, NA),
+    IR2016 = ifelse(Year <= 2014, 1, NA),
+    IR2018 = ifelse(Year <= 2016, 1, NA),
+    
+    # resume other changes to get functions to work without too much recoding
+    Panel1 = ifelse(Panel == "Phase1", 1, NA),
+    Panel2 = ifelse(Panel == "Phase2", 1, NA),
+    BioPanel1 = ifelse(BioPanel == "Phase1", 1, NA),
+    BioPanel2 = ifelse(BioPanel == "Phase2", 1, NA),
+    BioPanel3 = ifelse(BioPanel == "Phase3", 1, NA),
+    BioPanel4 = ifelse(BioPanel == "Phase4", 1, NA)) %>% # housekeeping: recode biophase and change 1's to NA's to indicate it wasnt sampled in that window, break up Panel and BioPanel windows to separate columns for weight adjustment purposes
+  dplyr::rename(siteID=sampleID ) # start playing nicely with spsurvey)
+```
+
+
+
+These are the data windows we are looking at for this analysis:
+
+* Full sample window (2001-2016)
+* 2018 IR (2001-2016)
+* 2016 IR (2001-2014)
+* 2014 IR (2001-2012)
+* 2012 IR (2001-2010)
+* 2010 IR (2001-2008)
+* 2008 IR (2001-2006)
+
+#### Functions for Weight Adjustments and run CDF data by chosen subpopulations
+
+The following functions run the CDF analyses for VSCI/VCPMI from the surveyData dataframe. The subpopEstimate() function runs each subpopulation and nests inside the listOfResults(), which outputs a list of all subpopulation results. The allCDFresults() adjusts all weights according to sample window and then calls the listOfResults() to run all the CDF, percentile, and population estimates for each subpopulation. See below for how to run each of these functions and how to view outputs. *These functions are reduced version of their counterparts in 'HowToWrite2018IRProbMonChapter.Rmd' to speed analyses to just the question at hand.
+
+```{r special lookup function to return +1 variable}
+# Edited 7/17/2019 to output column name to make extracting data from map process easier with purrr
+vlookupEVJ2 <- function(table, #the table where you want to look for it; will look in first column
+                       ref, #the value or values that you want to look for
+                       column, #the column that you want the return data to come from,
+                       range=FALSE, #if there is not an exact match, return the closest?
+                       larger=FALSE) #if doing a range lookup, should the smaller or larger key be used?)
+{
+  if(!is.numeric(column) & !column %in% colnames(table)) {
+    stop(paste("can't find column",column,"in table"))
+  }
+  if(range) {
+    if(!is.numeric(table[,1])) {
+      stop(paste("The first column of table must be numeric when using range lookup"))
+    }
+    table <- table[order(table[,1]),] 
+    index <- findInterval(ref,table[,1])
+    if(larger) {
+      index <- ifelse(ref %in% table[,1],index,index+1)
+    }
+    output <- table[index,column]
+    output[!index <= dim(table)[1]] <- NA
+    names(output) <- names(table[column])
+    
+  } else {
+    output <- table[match(ref,table[,1]),column]
+    output[!ref %in% table[,1]] <- NA #not needed?
+    names(output) <- names(table[column])
+  }
+  #dim(output) <- dim(ref)
+  output
+}
+```
+
+
+```{r all CDF Functions, eval=FALSE}
+## Subpopulation estimates by parameter
+subpopEstimate <- function(finalData,parameter, subpopulationCategory, subpopulation, altName, specialWeight){
+  # Build in catch in case whole population needed
+  if(is.na(subpopulationCategory) & subpopulation == "Virginia"){
+    subpopData <- finalData
+    sites.ext <- select(subpopData, siteID) %>% mutate(Use = TRUE)
+    subpop.ext <- select(subpopData,siteID) %>% mutate(Region = 'Virginia')
+  }else{
+    subpopData <- finalData[ finalData[[subpopulationCategory]] == subpopulation, ] 
+    if(nrow(subpopData) == nrow(finalData)){ # special catch for IR windows not filtering correctly
+      subpopData <- finalData[ !is.na(finalData[[subpopulationCategory]] ), ] 
+    }}
+  
+  # If no data in subpopulation, keep moving
+  if(nrow(subpopData) !=0){
+    sites.ext <- select(subpopData, siteID) %>% mutate(Use = TRUE)
+    # Special Cases to match existing terminology for each Subpopulation
+    if(is.na(altName)){
+      subpop.ext <- select(subpopData,siteID) %>% mutate(Region = subpopulation)
+    }else{
+      subpop.ext <- select(subpopData,siteID) %>% mutate(Region = altName)
+    }
+    
+   
+    
+  # Choose correct final weight and filter to stratum = 1
+    if(specialWeight==FALSE){
+      finalweight <- subpopData$finalweight_all
+    }else{
+      finalweight <- as.numeric(as.matrix(subpopData[,specialWeight]))
+    }
+
+  
+  design.ext <- mutate(subpopData,siteID = siteID, stratum = "1", wgt = finalweight, xcoord = xmarinus, ycoord = ymarinus) %>%
+    select(siteID, stratum, wgt, xcoord, ycoord)
+  
+  data.cont.ext <- select(finalData, siteID, parameter)
+  
+  subpopStatus <- cont.analysis(sites = data.frame(sites.ext), subpop = data.frame(subpop.ext), design = data.frame(design.ext), 
+                                data.cont = data.frame(data.cont.ext),
+                                pctval=c(1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 99), 
+                                conf=95, vartype="Local")
+  return(subpopStatus)}else{return(list())}
+}
+
+# Now build it all into a single function that returns a list of lists (one list object per estimate, 
+# each estimate is a list of of 4 dataframes where the important ones ($CDF and $Pct) can easily be 
+# reached with list calls noted at bottom of page)
+listOfResults <- function(popstatus.est, finalData, parameterName, specialWeight){
+  list(
+    popstatus.est = popstatus.est,
+    dataAnalyzed = finalData,
+    # By Basin
+    estimateJames = subpopEstimate(finalData,parameterName, 'Basin', 'James','James Basin', specialWeight=specialWeight) ,
+    estimateBigSandy = subpopEstimate(finalData,parameterName, 'SubBasin', 'Big Sandy',NA, specialWeight=specialWeight) 
+  )
+}
+
+allCDFresults <- function(designStatus, surveyData, parameter, specialWeight){
+  
+  # Organize new parameter data
+  parameterData <- data.frame(select(surveyData,siteID,parameter))
+  parameterData[,2] <- as.numeric(as.character(parameterData[,2])) # change to numeric in case it was saved as anything else
+  
+  
+  # Change status if it wasnt sampled
+  initialWeightData <- left_join(designStatus,parameterData,by='siteID') %>%
+    mutate(parameter_status=ifelse(status == "TS" & is.na(!!as.name(parameter)),"OT", # if TS but not sampled, change to OT
+                                   ifelse(status == "OT" & is.na(!!as.name(parameter)),"OT", # if OT but not sampled, keep OT
+                                          ifelse(status == "PD", "PD", # if PD, keep it
+                                                 ifelse(status == 'NT','NT', # if NT, keep it
+                                                        ifelse(status == "TS",'TS', NA))))), # if TS AND sampled, keep as TS
+           designweightoriginal = as.factor(`strahler order`), # easier to change as factor
+           designweightoriginal = dplyr::recode(designweightoriginal,`1`="3790.5165999999999",
+                                                `2`="947.62919999999997",
+                                                `3`="541.50239999999997",
+                                                `4`="315.87639999999999", 
+                                                `5`="140.3895", 
+                                                `6`="140.3895")) # overwrite all design weights back to original
+  
+  # Adjust initial weights for trend stations across various data windows
+  # First calculate number of times sampled in each window
+  
+  trendWeightAdjustments <- mutate(initialWeightData,
+                                   designweightoriginal = as.numeric(as.character(designweightoriginal)), #factor to numeric
+                                   siteIDoriginal=gsub("_.*$", "", siteID)) %>% # get rid of concatenated year for trends to make calculations easier
+    # Full window
+    group_by(siteIDoriginal) %>% 
+    mutate(nYearsSampled = ifelse(is.na(siteIDoriginal),NA,n())) %>%
+    ungroup()%>%
+    # 2018 IR
+    group_by(siteIDoriginal, IR2018) %>%
+    mutate(nYearsSampled_IR2018 = ifelse(is.na(IR2018),NA,n())) %>%
+    ungroup() %>%
+    # 2016 IR
+    group_by(siteIDoriginal, IR2016) %>%
+    mutate(nYearsSampled_IR2016 = ifelse(is.na(IR2016),NA,n())) %>%
+    ungroup()%>%
+    # 2014 IR
+    group_by(siteIDoriginal, IR2014) %>%
+    mutate(nYearsSampled_IR2014 = ifelse(is.na(IR2014),NA,n()))%>%
+    ungroup()%>%
+    # 2012 IR
+    group_by(siteIDoriginal, IR2012) %>%
+    mutate(nYearsSampled_IR2012 = ifelse(is.na(IR2012),NA,n())) %>%
+    ungroup()%>%
+    # 2010 IR
+    group_by(siteIDoriginal, IR2010) %>%
+    mutate(nYearsSampled_IR2010 = ifelse(is.na(IR2010),NA,n())) %>%
+    ungroup()%>%
+    # 2008 IR
+    group_by(siteIDoriginal, IR2008) %>%
+    mutate(nYearsSampled_IR2008 = ifelse(is.na(IR2008),NA,n())) %>%
+    ungroup() %>% 
+    # Divide out weight by years sampled in each window
+    # if the site wasnt sampled in a window, give it the original weight but it will be adjusted according to an OT status later
+    mutate(designweight_all= designweightoriginal/nYearsSampled,
+           designweight_IR2018= ifelse(is.na(nYearsSampled_IR2018),designweightoriginal,designweightoriginal/nYearsSampled_IR2018),
+           designweight_IR2016= ifelse(is.na(nYearsSampled_IR2016),designweightoriginal,designweightoriginal/nYearsSampled_IR2016),
+           designweight_IR2014= ifelse(is.na(nYearsSampled_IR2014),designweightoriginal,designweightoriginal/nYearsSampled_IR2014),
+           designweight_IR2012= ifelse(is.na(nYearsSampled_IR2012),designweightoriginal,designweightoriginal/nYearsSampled_IR2012),
+           designweight_IR2010= ifelse(is.na(nYearsSampled_IR2010),designweightoriginal,designweightoriginal/nYearsSampled_IR2010),
+           designweight_IR2008= ifelse(is.na(nYearsSampled_IR2008),designweightoriginal,designweightoriginal/nYearsSampled_IR2008))
+  
+  
+  ## Adjust design weights to get final weights
+  
+  # Initial sample frame inputs
+  # List stream order by kilometer it represents
+  sframe <- c('1st'=51210, '2nd'=13680, '3rd'=7781.08, '4th'=4448.257, 
+              '5th'=1731.302, '6th'=163.901, '7th'=14.7099 )
+  
+  # recode to factor to make sframe match up to stream order
+  trendWeightAdjustments$`strahler order` <- as.factor(trendWeightAdjustments$`strahler order`)
+  levels(trendWeightAdjustments$`strahler order`) <- c('1st','2nd','3rd','4th','5th','6th','7th')
+  
+  finalWeights <- select(trendWeightAdjustments,siteID:IR2018,siteIDoriginal,designweightoriginal,designweight_all:designweight_IR2008,
+                         parameter_status,!!as.name(parameter))
+  finalWeights$finalweight_Year <- adjwgt(rep(TRUE,length(finalWeights$designweightoriginal)),finalWeights$designweightoriginal,
+                                          finalWeights$`strahler order`, sframe)
+  finalWeights$finalweight_all <- adjwgt(rep(TRUE,length(finalWeights$designweight_all)),finalWeights$designweight_all,
+                                         finalWeights$`strahler order`, sframe)
+  finalWeights$finalweight_IR2018 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2018)),finalWeights$designweight_IR2018,
+                                            finalWeights$`strahler order`, sframe)
+  finalWeights$finalweight_IR2016 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2016)),finalWeights$designweight_IR2016,
+                                            finalWeights$`strahler order`, sframe)
+  finalWeights$finalweight_IR2014 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2014)),finalWeights$designweight_IR2014,
+                                            finalWeights$`strahler order`, sframe)
+  finalWeights$finalweight_IR2012 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2012)),finalWeights$designweight_IR2012,
+                                            finalWeights$`strahler order`, sframe)
+  finalWeights$finalweight_IR2010 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2010)),finalWeights$designweight_IR2010,
+                                            finalWeights$`strahler order`, sframe)
+  finalWeights$finalweight_IR2008 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2008)),finalWeights$designweight_IR2008,
+                                            finalWeights$`strahler order`, sframe)
+ 
+  
+  
+  
+  # Change decimal degree coordinates to marinus for equal area projection (needed for spsurvey::cat.analysis())
+  marinus <- spsurvey::marinus(finalWeights$`Latitude-DD`,finalWeights$`Longitude-DD`)
+  finalWeights <- cbind(finalWeights,data.frame(xmarinus=marinus$x,ymarinus=marinus$y))
+  rm(marinus)
+  
+  ####Stream Extent and Status Estimate
+  
+  siteExtent <- data.frame(siteID=finalWeights$siteID, Use=rep(TRUE,nrow(finalWeights)) )
+  subpopExtent <- data.frame(siteID=finalWeights$siteID,Region=rep('Virginia',nrow(finalWeights)) )
+  designExtent <- data.frame(siteID=finalWeights$siteID,stratum=rep(1,nrow(finalWeights)),
+                             wgt=finalWeights$finalweight_all, xcoord=finalWeights$xmarinus,ycoord=finalWeights$ymarinus)
+  
+  StatusTNT <- finalWeights$status
+  levels(StatusTNT) <- list(T=c('TS','PD','OT'), NT=c('NT') )
+  
+  data.cat.ext <- data.frame(finalWeights[,c('siteID','status')],StatusTNT)
+  
+  popstatus.est <- cat.analysis(sites = siteExtent, subpop = subpopExtent, design = designExtent,
+                                data.cat = data.cat.ext, conf=95, vartype="Local")
+  
+  dataAnalyzed <- filter(finalWeights, parameter_status=='TS') %>%
+    select(siteID,!!as.name(parameter),parameter_status,everything())
+  
+  output <- listOfResults(popstatus.est, dataAnalyzed, parameter, specialWeight)
+  
+  return(output)
+}
+
+
+```
+
+
+
+Now we subset the original surveydata to reproduce what would happen if we went back in time and ran CDF curves on smaller datasets for each IR cycle. You will see the number of sites in the Big Sandy creep up slowly in comparison to the James River Basin.
+
+```{r just James and Big Sandy}
+surveyDataJBS <- filter(surveyData, SubBasin %in% c("Big Sandy", "James")) # 30 Big Sandy
+surveyDataJBS_2008 <- filter(surveyDataJBS, Year <= 2006) # 10 Big Sandy
+surveyDataJBS_2010 <- filter(surveyDataJBS, Year <= 2008)# 12 Big Sandy
+surveyDataJBS_2012 <- filter(surveyDataJBS, Year <= 2010)# 17 Big Sandy
+surveyDataJBS_2014 <- filter(surveyDataJBS, Year <= 2012)# 22 Big Sandy
+surveyDataJBS_2016 <- filter(surveyDataJBS, Year <= 2014)# 27 Big Sandy
+
+yearBasin <- tibble(Year= c(2008, 2010, 2012, 2014, 2016, 2018), 
+           `n Big Sandy` = c(nrow(filter(surveyDataJBS_2008, SubBasin == 'Big Sandy')),
+                            nrow(filter(surveyDataJBS_2010, SubBasin == 'Big Sandy')),
+                            nrow(filter(surveyDataJBS_2012, SubBasin == 'Big Sandy')),
+                            nrow(filter(surveyDataJBS_2014, SubBasin == 'Big Sandy')),
+                            nrow(filter(surveyDataJBS_2016, SubBasin == 'Big Sandy')),
+                            nrow(filter(surveyDataJBS, SubBasin == 'Big Sandy'))), 
+           `n James` = c(nrow(filter(surveyDataJBS_2008, SubBasin == 'James')),
+                            nrow(filter(surveyDataJBS_2010, SubBasin == 'James')),
+                            nrow(filter(surveyDataJBS_2012, SubBasin == 'James')),
+                            nrow(filter(surveyDataJBS_2014, SubBasin == 'James')),
+                            nrow(filter(surveyDataJBS_2016, SubBasin == 'James')),
+                            nrow(filter(surveyDataJBS, SubBasin == 'James'))))
+datatable(yearBasin, rownames = FALSE, options = list(dom='t'))
+```
+
+
+The next chunk runs the population estimates for each subset of our full dataset. Note that the weights are adjusted according to the input data window.
+
+
+```{r run estimates}
+#VSCIJBS_2008 <- allCDFresults(designStatus, surveyDataJBS_2008,'VSCIVCPMI','finalweight_IR2008')
+#VSCIJBS_2010 <- allCDFresults(designStatus, surveyDataJBS_2010,'VSCIVCPMI','finalweight_IR2010')
+#VSCIJBS_2012 <- allCDFresults(designStatus, surveyDataJBS_2012,'VSCIVCPMI','finalweight_IR2012')
+#VSCIJBS_2014 <- allCDFresults(designStatus, surveyDataJBS_2014,'VSCIVCPMI','finalweight_IR2014')
+#VSCIJBS_2016 <- allCDFresults(designStatus, surveyDataJBS_2016,'VSCIVCPMI','finalweight_IR2016')
+#VSCIJBS_2018 <- allCDFresults(designStatus, surveyDataJBS,'VSCIVCPMI','finalweight_IR2018')
+## save everything for faster rendering of .Rmd later
+#saveRDS(VSCIJBS_2008, 'processedData/VSCIJBS_2008.RDS')
+#saveRDS(VSCIJBS_2010, 'processedData/VSCIJBS_2010.RDS')
+#saveRDS(VSCIJBS_2012, 'processedData/VSCIJBS_2012.RDS')
+#saveRDS(VSCIJBS_2014, 'processedData/VSCIJBS_2014.RDS')
+#saveRDS(VSCIJBS_2016, 'processedData/VSCIJBS_2016.RDS')
+#saveRDS(VSCIJBS_2018, 'processedData/VSCIJBS_2018.RDS')
+
+# bring it back in
+VSCIJBS_2008 <- readRDS('processedData/VSCIJBS_2008.RDS')
+VSCIJBS_2010 <- readRDS('processedData/VSCIJBS_2010.RDS')
+VSCIJBS_2012 <- readRDS('processedData/VSCIJBS_2012.RDS')
+VSCIJBS_2014 <- readRDS('processedData/VSCIJBS_2014.RDS')
+VSCIJBS_2016 <- readRDS('processedData/VSCIJBS_2016.RDS')
+VSCIJBS_2018 <- readRDS('processedData/VSCIJBS_2018.RDS')
+```
+
+### Results {#buttons .tabset .tabset-fade .tabset-pills}
+
+Reorganizing the lists allows us to easily manipulate the data for plots and tables. The output of this chunk demonstrates the change in estimates of stream miles below 60 (not meeting biological expectations) for the James and Big Sandy basins. Note the increase in confidence around estimates as the margin of error collapses with increased data.
+
+
+```{r split out CDF and estimate at 60}
+VSCI60JBS_2008_CDF <- VSCIJBS_2008[c("estimateJames","estimateBigSandy")] %>% # start with our big 'ol list of lists
+  map('CDF') %>% #extract just the 'CDF' list from each list item (subpopulation)
+  map(`[`, c('Value','Estimate.P','StdError.P'))  # kinda like dplyr::select here, extract the Value and Estimate.P columns from each list item (CDF)
+VSCI60JBS_2008 <- suppressWarnings(map(VSCI60JBS_2008_CDF, vlookupEVJ2, 60, 2:3, TRUE) %>% # use the vlookup function on each of the tables to find the Estimate.P where value = 60
+                                     tibble(
+                                       Subpopulation = names(.), 
+                                       IRwindow = 2008,
+                                       Estimate.P = map_dbl(., 'Estimate.P'), 
+                                       StdError.P =  map_dbl(., 'StdError.P')) %>%
+                                     select(-.))
+
+VSCI60JBS_2010_CDF <- VSCIJBS_2010[c("estimateJames","estimateBigSandy")] %>% # start with our big 'ol list of lists
+  map('CDF') %>% #extract just the 'CDF' list from each list item (subpopulation)
+  map(`[`, c('Value','Estimate.P','StdError.P')) # kinda like dplyr::select here, extract the Value and Estimate.P columns from each list item (CDF)
+VSCI60JBS_2010 <- suppressWarnings(map(VSCI60JBS_2010_CDF, vlookupEVJ2, 60, 2:3, TRUE) %>% # use the vlookup function on each of the tables to find the Estimate.P where value = 60
+                                     tibble(
+    Subpopulation = names(.), 
+    IRwindow = 2010,
+    Estimate.P = map_dbl(., 'Estimate.P'), 
+    StdError.P =  map_dbl(., 'StdError.P')) %>%
+  select(-.))
+
+VSCI60JBS_2012_CDF <- VSCIJBS_2012[c("estimateJames","estimateBigSandy")] %>% # start with our big 'ol list of lists
+  map('CDF') %>% #extract just the 'CDF' list from each list item (subpopulation)
+  map(`[`, c('Value','Estimate.P','StdError.P'))  # kinda like dplyr::select here, extract the Value and Estimate.P columns from each list item (CDF)
+VSCI60JBS_2012 <- suppressWarnings(map(VSCI60JBS_2012_CDF, vlookupEVJ2, 60, 2:3, TRUE) %>% # use the vlookup function on each of the tables to find the Estimate.P where value = 60
+                                     tibble(
+                                       Subpopulation = names(.), 
+                                       IRwindow = 2012,
+                                       Estimate.P = map_dbl(., 'Estimate.P'), 
+                                       StdError.P =  map_dbl(., 'StdError.P')) %>%
+                                     select(-.))
+
+VSCI60JBS_2014_CDF <- VSCIJBS_2014[c("estimateJames","estimateBigSandy")] %>% # start with our big 'ol list of lists
+  map('CDF') %>% #extract just the 'CDF' list from each list item (subpopulation)
+  map(`[`, c('Value','Estimate.P','StdError.P'))  # kinda like dplyr::select here, extract the Value and Estimate.P columns from each list item (CDF)
+VSCI60JBS_2014 <- suppressWarnings(map(VSCI60JBS_2014_CDF, vlookupEVJ2, 60, 2:3, TRUE) %>% # use the vlookup function on each of the tables to find the Estimate.P where value = 60
+                                     tibble(
+                                       Subpopulation = names(.), 
+                                       IRwindow = 2014,
+                                       Estimate.P = map_dbl(., 'Estimate.P'), 
+                                       StdError.P =  map_dbl(., 'StdError.P')) %>%
+                                     select(-.))
+
+
+VSCI60JBS_2016_CDF <- VSCIJBS_2016[c("estimateJames","estimateBigSandy")] %>% # start with our big 'ol list of lists
+  map('CDF') %>% #extract just the 'CDF' list from each list item (subpopulation)
+  map(`[`, c('Value','Estimate.P','StdError.P')) # kinda like dplyr::select here, extract the Value and Estimate.P columns from each list item (CDF)
+VSCI60JBS_2016 <- suppressWarnings(map(VSCI60JBS_2016_CDF, vlookupEVJ2, 60, 2:3, TRUE) %>% # use the vlookup function on each of the tables to find the Estimate.P where value = 60
+                                     tibble(
+                                       Subpopulation = names(.), 
+                                       IRwindow = 2016,
+                                       Estimate.P = map_dbl(., 'Estimate.P'), 
+                                       StdError.P =  map_dbl(., 'StdError.P')) %>%
+                                     select(-.))
+
+VSCI60JBS_2018_CDF <- VSCIJBS_2018[c("estimateJames","estimateBigSandy")] %>% # start with our big 'ol list of lists
+  map('CDF') %>% #extract just the 'CDF' list from each list item (subpopulation)
+  map(`[`, c('Value','Estimate.P','StdError.P'))  # kinda like dplyr::select here, extract the Value and Estimate.P columns from each list item (CDF)
+VSCI60JBS_2018 <- suppressWarnings(map(VSCI60JBS_2018_CDF, vlookupEVJ2, 60, 2:3, TRUE) %>% # use the vlookup function on each of the tables to find the Estimate.P where value = 60
+                                     tibble(
+                                       Subpopulation = names(.), 
+                                       IRwindow = 2018,
+                                       Estimate.P = map_dbl(., 'Estimate.P'), 
+                                       StdError.P =  map_dbl(., 'StdError.P')) %>%
+                                     select(-.))
+
+VSCIoverWindows <- bind_rows(VSCI60JBS_2008,VSCI60JBS_2010,VSCI60JBS_2012,VSCI60JBS_2014,VSCI60JBS_2016,VSCI60JBS_2018) %>%
+  mutate(`Margin of Error` = 1.96 * StdError.P) %>%
+  select(-StdError.P) %>%
+  arrange(Subpopulation) 
+
+datatable(VSCIoverWindows, rownames=FALSE, options= list(pageLength = nrow(VSCIoverWindows), dom='t'))%>%
+    formatRound(columns=c('Estimate.P', 'Margin of Error'), digits=1)
+
+```
+
+Be sure to open both tabs below to see results in barplot and map formats.
+
+
+***
+
+#### Basin Estimates Over Time (Barplot)
+
+Now time to plot the estimates at 60 (not meeting biological threshold) for each subpopulation to visually see the changes in basin estimates over time. To note are how consistent the estimates are for each subpopulation despite the differences in n for each subpopulation. Additionally, there is minimal variance over time of the estimates with increasing n, indicating that the temporal variability of the dataset is not imparting an additional signal confounding the estimates.
+
+```{r plotly time}
+# reorganize for plotly
+yearBasin <- gather(yearBasin, "Basin", "n", -Year) %>%
+  mutate(Var = as.factor(recode(Basin, 'n Big Sandy' = "Big Sandy",
+                                'n James' = 'James')),
+         joinVar = paste(Var,Year,sep='_'))
+                                
+VSCIoverWindows_p <- mutate(VSCIoverWindows, Subpopulation = as.factor(recode(Subpopulation, 
+                                                                              'estimateBigSandy' ="Big Sandy",
+                                                                              "estimateJames" = 'James')),
+                            joinVar= paste(Subpopulation, IRwindow, sep = "_")) %>%
+  left_join(select(yearBasin, joinVar, n), by = 'joinVar') %>%
+  select(-joinVar)
+
+#saveRDS(VSCIoverWindows_p, 'processedData/VSCIoverWindows_p.RDS') # save for IR report
+
+plot_ly(VSCIoverWindows_p, x = ~IRwindow, y = ~Estimate.P, type = 'bar', 
+        width = .10, color = ~Subpopulation, 
+        error_y = ~list(array = `Margin of Error`,color = '#000000'),
+        hoverinfo="text", text=~paste(sep="<br>",
+                                      paste("Subpopulation: ", Subpopulation),
+                                      paste("Percentile: ", format(Estimate.P, digits = 3), 
+                                            ' +/- ', format(`Margin of Error`, digits = 3)),
+                                      paste('n Samples in Estimate: ', n))) %>%
+        layout(#showlegend=FALSE,
+          yaxis=list(title="Percent of Streams <br>Below VSCI/VCPMI Threshold"),
+          xaxis=list(title="Data from 2001 through Year"))
+```
+
+
+
+
+
+***
+
+#### Sites Per Basin Over Time (Map)
+
+Below is a map of Virginia with the Big Sandy and James River basins. All ProbMon sites used within each above mentioned window are plotted according to window. Note the differences in sites gained with each two years of data added comparing a large basin to a small basin by toggling the layers on and off.
+
+```{r}
+basins <- read_sf('originalData/VAbasins_smoothNoChesPeeDee.shp') %>%
+  filter(BASIN %in% c('James','Big Sandy'))
+
+surveyDataJBS_2008_sf <- surveyDataJBS_2008 %>%
+  st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
+           remove = F, # don't remove these lat/lon cols from df
+           crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
+surveyDataJBS_2010_sf <- surveyDataJBS_2010 %>%
+  st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
+           remove = F, # don't remove these lat/lon cols from df
+           crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
+surveyDataJBS_2012_sf <- surveyDataJBS_2012 %>%
+  st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
+           remove = F, # don't remove these lat/lon cols from df
+           crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
+surveyDataJBS_2014_sf <- surveyDataJBS_2014 %>%
+  st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
+           remove = F, # don't remove these lat/lon cols from df
+           crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
+surveyDataJBS_2016_sf <- surveyDataJBS_2016 %>%
+  st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
+           remove = F, # don't remove these lat/lon cols from df
+           crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
+surveyDataJBS_2018_sf <- surveyDataJBS %>%
+  st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
+           remove = F, # don't remove these lat/lon cols from df
+           crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
+
+
+mapview(surveyDataJBS_2008_sf, zcol = 'SubBasin',label= surveyDataJBS_2008_sf$StationID, layer.name = c('2001 - 2008'), legend = FALSE) +
+  mapview(surveyDataJBS_2010_sf, zcol = 'SubBasin',label= surveyDataJBS_2010_sf$StationID, layer.name = c('2001 - 2010'), legend = FALSE) +
+  mapview(surveyDataJBS_2012_sf, zcol = 'SubBasin',label= surveyDataJBS_2012_sf$StationID, layer.name = c('2001 - 2012'), legend = FALSE) +  
+  mapview(surveyDataJBS_2014_sf, zcol = 'SubBasin',label= surveyDataJBS_2014_sf$StationID, layer.name = c('2001 - 2014'), legend = FALSE) +
+  mapview(surveyDataJBS_2016_sf, zcol = 'SubBasin',label= surveyDataJBS_2016_sf$StationID, layer.name = c('2001 - 2016'), legend = FALSE) +
+  mapview(surveyDataJBS_2018_sf, zcol = 'SubBasin',label= surveyDataJBS_2018_sf$StationID, layer.name = c('2001 - 2018'), legend = FALSE) +
+  mapview(basins, label= basins$BASIN, layer.name = c('Basins'), legend = FALSE)
+
+
+
+```
+

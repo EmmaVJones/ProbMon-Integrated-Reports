@@ -1,0 +1,153 @@
+---
+title: "Why we should recalculate design weights based on specific temporal windows"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r startup, echo=FALSE, warning=FALSE}
+# R version 3.4.4 "Someone to Lean On"
+suppressPackageStartupMessages(library(tidyverse))#1.2.1
+suppressPackageStartupMessages(library(spsurvey))#3.3
+suppressPackageStartupMessages(library(DT))#0.4
+```
+
+
+### Background
+
+Jason and I decided to compare design weights calculated by hand (Old Method: where trend stations weights were divided out by the n times sampled in the database) vs calculating the design weights for each time interval we analyze (Different Method: trend sites divided out by n times they occur in sample window). We thought the numbers would be different but it really wouldn't be a big deal. Prior to the 2018 Integrated Report, we used the Old Method to make sure that trend sites were not overly represented in the analyses. The Old Method did not pick up major differences because the number of times a trend station was sampled in a given time range was not very high (2-3). We embarked on this arithmetic adventure to make sure that as we continued to bolster our trend station sample count we were not under representing those stations across the entire dataset and especially in certain subpopulation lenses.
+
+### Working Theory
+
+We think it is time to break from our Old Method and utilize the Different Method because the trend stations, especially in first and second order streams, are being misrepresented in the CDF estimates. Example describing our working theory below.
+
+### Explanation
+
+This is our design status dataset with all sites evaluated through 2016. 
+```{r bringInData}
+designStatus <- readxl::read_excel('originalData/biology.xlsx',sheet='biology2018') %>%
+  mutate(BioPanel= dplyr::recode(BioPanel,'Phase1'='BioPhase1','Phase2'='BioPhase2',
+                                 'Phase3'='BioPhase3','Phase4'='BioPhase4'),
+         IR2008 = replace(IR2008, IR2008==1, NA),
+         IR2010 = replace(IR2010, IR2010==1, NA),
+         IR2012 = replace(IR2012, IR2012==1, NA),
+         IR2014 = replace(IR2014, IR2014==1, NA),
+         IR2016 = replace(IR2016, IR2016==1, NA),
+         IR2018 = replace(IR2018, IR2018==1, NA)) %>% # housekeeping: recode biophase and change 1's to NA's to indicate it wasnt sampled in that window
+  dplyr::rename(siteID=sampleID) # start playing nicely with spsurvey
+
+datatable(designStatus, options=list( scrollY = "400px",scrollX = TRUE))
+```
+
+
+Note: the designstatus field is the hand calculated design weight (Old Method)
+
+
+#### Old vs different method comparison
+
+Now start from the beginning and assign original sample frame weights according to weight category (strahler order).
+
+```{r assignInitialWeights}
+trendWeightAdjustments <- mutate(designStatus,designweightoriginal = as.factor(`strahler order`), # easier to change as factor
+                                 designweightoriginal = dplyr::recode(designweightoriginal,`1`="3790.5165999999999",
+                                                                      `2`="947.62919999999997",
+                                                                      `3`="541.50239999999997",
+                                                                      `4`="315.87639999999999", 
+                                                                      `5`="140.3895", 
+                                                                      `6`="140.3895")) # overwrite all design weights back to original
+datatable(trendWeightAdjustments, options=list( scrollY = "400px",scrollX = TRUE))
+```
+
+<br><br>
+
+Now count number of years a given site was sampled within a time window. We are using:
+
+* Full sample window (2001-2016)
+* 2018 IR (2011-2016)
+* 2016 IR (2009-2014)
+* 2014 IR (2007-2012)
+* 2012 IR (2005-2010)
+* 2010 IR (2003-2008)
+* 2008 IR (2001-2007)
+* Phases (Phase 1= 2001-2008; Phase 2= 2009-2016)
+* BioPhases (BioPhase 1 = 2001-2004; BioPhase 1 = 2005-2008; BioPhase 1 = 2009-2012; BioPhase 1 = 2013-2016;)
+
+Scroll right in table to see sample year breakdown.
+
+
+```{r nYearsSampled}
+trendWeightAdjustments <- mutate(trendWeightAdjustments,
+                                 designweightoriginal = as.numeric(as.character(designweightoriginal)), #factor to numeric
+                                 siteID=gsub("_.*$", "", siteID)) %>% # get rid of concatenated year for trends to make calculations easier
+  # Full window
+  group_by(siteID) %>% 
+  mutate(nYearsSampled = ifelse(is.na(siteID),NA,n())) %>%
+  ungroup()%>%
+  # 2018 IR
+  group_by(siteID, IR2018) %>%
+  mutate(nYearsSampled_IR2018 = ifelse(is.na(IR2018),NA,n())) %>%
+  ungroup() %>%
+  # 2016 IR
+  group_by(siteID, IR2016) %>%
+  mutate(nYearsSampled_IR2016 = ifelse(is.na(IR2016),NA,n())) %>%
+  ungroup()%>%
+  # 2014 IR
+  group_by(siteID, IR2014) %>%
+  mutate(nYearsSampled_IR2014 = ifelse(is.na(IR2014),NA,n()))%>%
+  ungroup()%>%
+  # 2012 IR
+  group_by(siteID, IR2012) %>%
+  mutate(nYearsSampled_IR2012 = ifelse(is.na(IR2012),NA,n())) %>%
+  ungroup()%>%
+  # 2010 IR
+  group_by(siteID, IR2010) %>%
+  mutate(nYearsSampled_IR2010 = ifelse(is.na(IR2010),NA,n())) %>%
+  ungroup()%>%
+  # 2008 IR
+  group_by(siteID, IR2008) %>%
+  mutate(nYearsSampled_IR2008 = ifelse(is.na(IR2008),NA,n())) %>%
+  # Panels
+  group_by(siteID, Panel) %>%
+  mutate(nYearsSampled_Panel = ifelse(is.na(Panel),NA,n())) %>%
+  ungroup()%>%
+  # Biopanels
+  group_by(siteID, BioPanel) %>%
+  mutate(nYearsSampled_BioPanel = ifelse(is.na(BioPanel),NA,n())) %>%
+  ungroup() %>% 
+  # Divide out weight by years sampled in each window
+  mutate(designweight_all= designweightoriginal/nYearsSampled,
+         designweight_IR2018= designweightoriginal/nYearsSampled_IR2018,
+         designweight_IR2016= designweightoriginal/nYearsSampled_IR2016,
+         designweight_IR2014= designweightoriginal/nYearsSampled_IR2014,
+         designweight_IR2012= designweightoriginal/nYearsSampled_IR2012,
+         designweight_IR2010= designweightoriginal/nYearsSampled_IR2010,
+         designweight_IR2008= designweightoriginal/nYearsSampled_IR2008,
+         designweight_Panel= designweightoriginal/nYearsSampled_Panel,
+         designweight_BioPanel= designweightoriginal/nYearsSampled_BioPanel)
+                                      
+  
+datatable(trendWeightAdjustments, options=list(dom = 't', scrollY = "400px",scrollX = TRUE))
+
+```
+
+<br><br>
+
+Test case: pick a first and second order stream that has been sampled many times (Dick's Creek and Daddy Run).
+
+```{r seeWhatHappens}
+example <- filter(trendWeightAdjustments, siteID %in% c('2-DDY000.75','2-DCK003.94')) %>%
+                    select(siteID,`strahler order`,`design weight`,Year,IR2008:designweight_BioPanel)
+
+datatable(example, extensions = 'FixedColumns',
+          options=list(dom = 't', pageLength=nrow(example), scrollY = "200px",scrollX = TRUE,
+                       fixedColumns = list(leftColumns = 5)))
+
+```
+
+<br><br>
+
+The design weight column frozen on left side of the table is the Old Method design weight. Note the differences in design weights based on the different sample windows. These differences are lower with increasing stream order, but the gist is that first and second order streams can be significantly under represented within a sample window depending on how you slice the data. 
+
+It is our intention to run each CDF analysis with these updated design weights for the appropriate data windows to come to a more accurate answer. The reality is that these probably don't have a huge effect on the final results right now, but they will become increasingly more important as the trend sites are sampled through the years and we want to get a jump on programming the most accurate method.
+
+<br><br>

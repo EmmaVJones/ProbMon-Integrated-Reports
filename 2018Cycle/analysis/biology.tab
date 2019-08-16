@@ -1,0 +1,949 @@
+sampleID	strahler order	Longitude-DD	Latitude-DD	stratum	design weight	weight category	station	state	status	comment	set	Basin	SubBasin	BayShed	BayPanel	EcoRegion	BioRegion	Year	Panel	BioPanel	Order	BasinSize	StreamSizeCat	StreamSizeCatPhase	IR2008	IR2010	IR2012	IR2014	IR2016
+1AAUA017.60	3	-77.466395	38.490355	1	541.5024	3	1	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+1ABED009.37	2	-77.5014	38.5503	1	947.6292	2	2	VA	TS	Y-TS	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+1ABUL009.61	5	-77.440307	38.799244	1	140.3895	5	3	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2005	Phase1	Phase2	5	3	Large	Phase1Large	2008	2010	2012	1	1
+1ACAA000.83	2	-77.594242	38.826639	1	947.6292	2	4	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+1ACAH001.82	2	-77.293457	38.987548	1	947.6292	2	5	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+1ACAX003.69	4	-77.5691624	39.2605543	1	315.8764	4	6	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+1ACAX003.81	4	-77.5685	39.2577	1	315.8764	4	7	VA	TS	Target Wadeable	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2012	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+1ACER005.02	5	-77.51019552	38.65621954	1	140.3895	5	8	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2008	Phase2	Phase3	5	3	Large	Phase2Large	1	2010	2012	2014	1
+1ACER012.66	4	-77.5851	38.6402	1	315.8764	4	9	VA	TS	Y-TS (fall only - high in spring)	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2014	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	1	2016
+1ACHO003.47	3	-77.35954461	38.51829608	1	541.5024	3	10	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+1ACRM009.86	2	-77.83834621	38.8877519	1	947.6292	2	11	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+1ACUB004.63	4	-77.46378691	38.84146533	1	315.8764	4	12	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2009	Phase2	Phase3	4	3	Medium	Phase2Medium	1	1	2012	2014	2016
+1ADIF010.57	3	-77.317491	38.902843	1	541.5024	3	13	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+1AELK005.38	2	-77.67158	38.570636	1	947.6292	2	14	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+1AFLL000.62	2	-77.467681	38.86551	1	947.6292	2	15	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+1AGAN000.32	2	-78.277074	39.220106	1	947.6292	2	16	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+1AGOO018.17	4	-77.666	39.0299	1	315.8764	4	17	VA	TS	Target Wadeable	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2012	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+1AGOO021.28	4	-77.68313386	39.01264402	1	315.8764	4	18	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+1AGOO036.47	4	-77.86691869	38.93869439	1	315.8764	4	19	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2006	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+1AGOO039.63	4	-77.8737	38.9294	1	315.8764	4	20	VA	TS	Y-TS	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2013	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	1	2016
+1AKET011.03	2	-77.651553	38.721743	1	947.6292	2	21	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+1AKET012.22	2	-77.6661	38.7251	1	947.6292	2	22	VA	TS	Y -TS	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+1ALIV004.79	3	-77.6395	38.9752	1	541.5024	3	23	VA	TS	Y-TS	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+1ALOE001.99	2	-77.25797373	38.82031556	1	947.6292	2	24	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+1ALUC000.95	2	-77.523436	38.611379	1	947.6292	2	25	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+1ANOF004.80	2	-77.65473785	38.81286103	1	947.6292	2	26	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2007	Phase1	Phase3	2	2	Small	Phase1Small	1	2010	2012	2014	1
+1ANOG000.91	5	-77.659837	39.04457	1	140.3895	5	27	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2004	Phase1	Phase2	5	3	Large	Phase1Large	2008	2010	1	1	1
+1AOPE028.72	4	-78.06457734	39.21034857	1	315.8764	4	28	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+1APIA003.51	2	-77.7343	39.2962	1	947.6292	2	29	VA	TS	Target Wadeable	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2011	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	2014	2016
+1APOH008.54	3	-77.2198	38.7318	1	541.5024	3	30	VA	TS	Target Wadeable	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+1AWAC003.31	2	-77.726833	38.972062	1	947.6292	2	31	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+1AXGU000.18	1	-77.79316403	39.01434325	1	3790.5166	1	32	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2006	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	2012	1	1
+1AXJS001.20	1	-78.265696	39.324308	1	3790.5166	1	33	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	1	1	1
+1AXKR000.77	1	-77.590456	39.257841	1	3790.5166	1	34	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase1	Northern Piedmont	Piedmont	2005	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+1AXLB000.05	1	-77.5038	38.4278	1	3790.5166	1	35	VA	TS	Y -TS	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+1AXLK000.04	2	-76.70307886	38.01463369	1	947.6292	2	36	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Southeastern Plains	Coast	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+1AXLR000.44	1	-77.60817644	38.5621068	1	3790.5166	1	37	VA	TS	Target	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2010	Phase2	Phase3	1	1	Small	Phase2Small	1	1	2012	2014	2016
+1AXMJ000.42_2012	2	-77.5055	38.6375	1	473.8146	2	38	VA	TS	Target Wadeable	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+1AXMJ000.42_2014	2	-77.5055	38.6375	1	473.8146	2	39	VA	TS	Y -TS	1	Potomac-Shenandoah	Potomac	Bay	BayPhase2	Northern Piedmont	Piedmont	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+1BBGR004.08	2	-78.6994	38.2914	1	947.6292	2	40	VA	TS	Target Wadeable	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+1BBRY001.78	2	-79.03613329	38.41346631	1	947.6292	2	41	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	2	3	Medium	Phase2Medium	1	2010	2012	2014	1
+1BBRY005.09	2	-79.10191761	38.44217789	1	947.6292	2	42	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	2	3	Medium	Phase2Medium	1	1	2012	2014	2016
+1BBVR000.84	2	-79.038416	38.420286	1	947.6292	2	43	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	2	3	Medium	Phase1Medium	2008	1	1	1	1
+1BCDR010.21	4	-78.345959	39.061279	1	315.8764	4	44	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+1BCDR027.54	3	-78.459793	39.021724	1	541.5024	3	45	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+1BCPL002.83	2	-78.008437	39.102092	1	947.6292	2	46	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+1BDRI000.21	1	-78.451691	38.686111	1	3790.5166	1	47	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	1	3	Medium	Phase1Medium	2008	1	1	1	1
+1BGSR000.58	2	-78.4385	39.0741	1	947.6292	2	48	VA	TS	Y -TS	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+1BHPY002.67	2	-78.18595413	38.90968564	1	947.6292	2	49	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	2	3	Medium	Phase2Medium	1	2010	2012	2014	1
+1BMDL025.92	3	-78.9776764	38.19904213	1	541.5024	3	50	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	3	4	Large	Phase2Large	1	1	2012	2014	2016
+1BMDL026.58	3	-78.971832	38.192703	1	541.5024	3	51	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	3	4	Large	Phase1Large	2008	1	1	1	1
+1BMIC001.99	2	-78.814542	38.329123	1	947.6292	2	52	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	2	3	Medium	Phase1Medium	2008	2010	2012	1	1
+1BMIL006.68	2	-78.7295	38.7678	1	947.6292	2	53	VA	TS	Target Wadeable	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2012	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	2014	2016
+1BMSS001.35	2	-79.0172	38.3749	1	947.6292	2	54	VA	TS	Y-TS	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2013	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	1	2016
+1BNFS020.11	4	-78.38914729	38.94936602	1	315.8764	4	55	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	4	4	Large	Phase1Large	1	2010	2012	2014	1
+1BNFS048.74	4	-78.483557	38.856791	1	315.8764	4	56	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	4	4	Large	Phase1Large	2008	2010	1	1	1
+1BNFS093.80	4	-78.8566	38.6353	1	315.8764	4	57	VA	TS	Y -TS	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	4	4	Large	Phase2Large	1	1	1	1	2016
+1BNFS102.55	4	-78.920557	38.703167	1	315.8764	4	58	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+1BNKW001.97	2	-78.516144	38.48316	1	947.6292	2	59	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Blue Ridge Mountains	Mountain	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+1BNTH046.56	2	-79.23751331	38.33238264	1	947.6292	2	60	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	2	3	Medium	Phase1Medium	1	2010	2012	2014	1
+1BPGH000.29	1	-78.48450377	38.90262017	1	3790.5166	1	61	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	1	3	Medium	Phase2Medium	1	1	2012	2014	2016
+1BSMT001.53	3	-78.63865546	38.71154259	1	541.5024	3	62	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	3	3	Large	Phase2Large	1	2010	2012	2014	1
+1BSMT009.08	3	-78.65511242	38.6608366	1	541.5024	3	63	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	3	3	Large	Phase1Large	1	2010	2012	2014	1
+1BSTH005.36	4	-78.83627663	38.2443349	1	315.8764	4	64	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	4	4	Large	Phase2Large	1	1	2012	2014	2016
+1BSTH013.58	4	-78.859945	38.163763	1	315.8764	4	65	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+1BSTH029.45	4	-78.92006	38.047813	1	315.8764	4	66	VA	TS	Target	1	Potomac-Shenandoah	Shenandoah	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	4	3	Large	Phase1Large	2008	2010	1	1	1
+2ABLD014.73	3	-79.5598	37.7488	1	541.5024	3	67	VA	TS	Y-TS	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+2AMLC000.84	2	-79.2008	37.9217	1	947.6292	2	68	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+2-APP037.08	6	-77.728634	37.28548	1	140.3895	5	69	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	6	4	Large	Phase1Large	2008	2010	2012	1	1
+2-APP080.58	5	-78.09343289	37.45096379	1	140.3895	5	70	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	2012	1	1
+2-APP082.00	5	-78.10155	37.445619	1	140.3895	5	71	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+2-APP095.21	5	-78.23963362	37.37696825	1	140.3895	5	72	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	2012	1	1
+2-APP114.05	4	-78.420305	37.323341	1	315.8764	4	73	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+2AXQS001.07	2	-79.7736135	37.71675207	1	947.6292	2	74	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2BBAA003.06	1	-78.30703533	37.57103354	1	3790.5166	1	75	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	1	2	Small	Phase2Small	1	1	2012	2014	2016
+2BBYR000.08	4	-78.0938	37.7231	1	315.8764	4	76	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+2BCBL002.86	1	-79.0001	37.8778	1	3790.5166	1	77	VA	TS	Y-TS	1	James	James	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2013	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+2-BCC001.90	2	-79.9057917	38.04965682	1	947.6292	2	78	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	2	3	Large	Phase1Large	2008	2010	2012	1	1
+2-BCR007.68	3	-79.1005	37.3231	1	541.5024	3	79	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+2-BFL011.64	4	-78.48549221	37.24985144	1	315.8764	4	80	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+2-BFL016.79	3	-78.539223	37.204166	1	541.5024	3	81	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+2BGOW001.00	2	-78.8438	37.9838	1	947.6292	2	82	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-BGU005.95	3	-78.274432	37.420829	1	541.5024	3	83	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+2-BLB002.04	2	-77.013145	37.181987	1	947.6292	2	84	VA	TS	Target	1	James	James	Bay	BayPhase1	Southeastern Plains	Coast	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+2-BLD012.09	4	-79.49132755	37.73281761	1	315.8764	4	85	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+2BLIR007.16	1	-79.1644	37.7645	1	3790.5166	1	86	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2012	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+2BMCM014.13	4	-78.6722	38.0289	1	315.8764	4	87	VA	TS	Y-TS	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2013	Phase2	Phase4	4	3	Medium	Phase2Medium	1	1	1	1	2016
+2-BNF003.52	2	-79.20181	37.718773	1	947.6292	2	88	VA	TS	Target	1	James	James	Bay	BayPhase1	Blue Ridge Mountains	Mountain	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+2BPRS001.90	2	-79.1456	37.7908	1	947.6292	2	89	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-BRI007.80	3	-78.424088	37.222551	1	541.5024	3	90	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+2BRKR012.86	2	-78.9088	37.7253	1	947.6292	2	91	VA	TS	Y-TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-BSR012.33	3	-78.3943	37.1725	1	541.5024	3	92	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+2-BSR018.10	2	-78.43578	37.10997	1	947.6292	2	93	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2BTYS000.85	3	-79.05848	37.856135	1	541.5024	3	94	VA	TS	Target	1	James	James	Bay	BayPhase1	Blue Ridge Mountains	Mountain	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+2-BVC003.09	3	-78.72229743	37.73593646	1	541.5024	3	95	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2007	Phase1	Phase3	3	3	Medium	Phase1Medium	1	2010	2012	2014	1
+2BWTN007.39	2	-78.62882482	37.62009229	1	947.6292	2	96	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+2BXAC000.38	1	-78.75306811	37.5889749	1	3790.5166	1	97	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	1	1	Small	Phase2Small	1	1	2012	2014	2016
+2BXAD000.07	1	-78.4909	37.7458	1	3790.5166	1	98	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+2BXAP001.46	1	-78.0485	37.7375	1	3790.5166	1	99	VA	TS	Y-TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+2BXRK001.64_2012	1	-78.7299	37.8114	1	1895.2583	1	100	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2012	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+2BXRK001.64_2014	1	-78.7299	37.8114	1	1895.2583	1	101	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2014	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+2-BYN001.90	2	-78.5307	37.5415	1	947.6292	2	102	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-CAT007.31	4	-79.83690356	37.54386233	1	315.8764	4	103	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+2-CAT026.55	3	-80.016356	37.439488	1	541.5024	3	104	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+2-CAT028.98	3	-80.03232708	37.41429253	1	541.5024	3	105	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+2-CEL001.00	3	-77.40824	37.437651	1	541.5024	3	106	VA	TS	Target	1	James	James	Bay	BayPhase1	Southeastern Plains	Coast	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+2-CHK070.14	4	-77.4379072	37.67636604	1	315.8764	4	107	VA	TS	Target	1	James	James	Bay	BayPhase1	Southeastern Plains	Coast	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+2-CLL003.21	3	-79.58305986	37.78170985	1	541.5024	3	108	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	3	3	Medium	Phase1Medium	1	2010	2012	2014	1
+2-COO002.35	1	-78.523373	37.519466	1	3790.5166	1	109	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+2-CRG015.50	4	-79.9297	37.6487	1	315.8764	4	110	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	4	4	Large	Phase2Large	1	1	1	1	2016
+2-CRG047.95	4	-80.0876	37.5112	1	315.8764	4	111	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	4	4	Large	Phase2Large	1	1	1	2014	2016
+2-CRG074.32	2	-80.32893742	37.33534518	1	947.6292	2	112	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	2	3	Medium	Phase2Medium	1	1	2012	2014	2016
+2-CSR003.94	1	-80.105198	37.727993	1	3790.5166	1	113	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	2012	1	1
+2-CWP006.87	4	-79.739098	37.809565	1	315.8764	4	114	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	4	4	Large	Phase1Large	2008	2010	2012	1	1
+2-CWP023.28	4	-79.721093	37.938284	1	315.8764	4	115	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	4	4	Large	Phase1Large	2008	1	1	1	1
+2-CWP042.31	3	-79.63621499	38.01377921	1	541.5024	3	116	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	3	4	Large	Phase2Large	1	2010	2012	2014	1
+2-CWP053.78	3	-79.649772	38.099808	1	541.5024	3	117	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	3	4	Large	Phase1Large	2008	1	1	1	1
+2DAPP050.84	4	-77.85718062	37.35898205	1	315.8764	4	118	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	4	4	Large	Phase2Large	1	1	2012	2014	2016
+2DAPP112.19	4	-78.4018	37.3126	1	315.8764	4	119	VA	TS	"Y-Fall only, spring highwater"	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	1	2016
+2-DCK003.94_2004	2	-80.348271	37.463344	1	315.8764	2	120	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+2-DCK003.94_2011	2	-80.34804838	37.46347082	1	315.8764	2	121	VA	TS	Target Wadeable - WSA_Revisit	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+2-DCK003.94_2013	2	-80.348	37.4635	1	315.8764	2	122	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-DDY000.75_2004	1	-79.37635	38.177194	1	1263.505533	1	123	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	1	1	1
+2-DDY000.75_2011	1	-79.37611138	38.17732121	1	1263.505533	1	124	VA	TS	Target Wadeable - WSA_Revisit	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+2-DDY000.75_2013	1	-79.3761	38.1773	1	1263.505533	1	125	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2013	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+2DFSP000.30	3	-78.64152301	37.36980779	1	541.5024	3	126	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+2DNBX002.33	5	-77.4107	36.9511	1	140.3895	5	127	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Southeastern Plains	Coast	2011	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	2014	2016
+2DWDY005.35	2	-78.04037838	37.15532928	1	947.6292	2	128	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+2DXAH000.79	2	-78.2824	37.4332	1	947.6292	2	129	VA	TS	Y-TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-EFK001.55	1	-78.15773793	37.89767128	1	3790.5166	1	130	VA	TS	Target	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2008	Phase2	Phase3	1	2	Small	Phase2Small	1	2010	2012	2014	1
+2-FLA012.22	3	-78.047644	37.391419	1	541.5024	3	131	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	3	3	Large	Phase1Large	2008	2010	1	1	1
+2-GIM002.52	2	-79.49834702	37.87223983	1	947.6292	2	132	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+2-HAK004.34	3	-78.588165	37.909706	1	541.5024	3	133	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+2-HAM000.37_2012	2	-80.021	37.4128	1	473.8146	2	134	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+2-HAM000.37_2014	2	-80.021	37.4128	1	473.8146	2	135	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-HAZ006.34	3	-79.17121	37.47984	1	541.5024	3	136	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+2-HKY001.26	1	-80.03744209	37.92417541	1	3790.5166	1	137	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	1	1	Small	Phase2Small	1	1	2012	2014	2016
+2-HRD002.06	4	-78.41946815	37.75466266	1	315.8764	4	138	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+2-HUS001.88	2	-78.345295	37.689468	1	947.6292	2	139	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	2	3	Medium	Phase1Medium	2008	2010	1	1	1
+2-HYS005.45	3	-79.36546351	37.93132441	1	541.5024	3	140	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	3	3	Medium	Phase1Medium	1	2010	2012	2014	1
+2-JED008.07	2	-80.1939	37.7974	1	947.6292	2	141	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+2-JKS020.41	5	-80.00897974	37.76145762	1	140.3895	5	142	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	5	4	Large	Phase1Large	1	2010	2012	2014	1
+2-JKS028.69_2004	5	-79.989366	37.822691	1	140.3895	5	143	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	1	1	1
+2-JKS070.97	3	-79.845244	38.07009	1	541.5024	3	144	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	3	3	Large	Phase1Large	2008	2010	1	1	1
+2-JKS076.16	3	-79.73117371	38.18453463	1	541.5024	3	145	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	3	3	Large	Phase2Large	1	1	2012	2014	2016
+2-JOB001.02	4	-80.115046	37.502998	1	315.8764	4	146	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+2-JOB013.77	4	-80.2604	37.4811	1	315.8764	4	147	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+2-JOH004.23	3	-77.833575	37.577717	1	541.5024	3	148	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	3	2	Small	Phase1Small	2008	2010	2012	1	1
+2-KSL003.95	3	-77.4565	37.4098	1	541.5024	3	149	VA	TS	Y-TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	3	2	Small	Phase2Small	1	1	1	1	2016
+2-LIJ003.06_2004	1	-79.158912	37.884949	1	1263.505533	1	150	VA	TS	Target	1	James	James	Bay	BayPhase1	Blue Ridge Mountains	Mountain	2004	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	1	1	1
+2-LIJ003.06_2011	1	-79.15866411	37.88508397	1	1263.505533	1	151	VA	TS	Target Wadeable - WSA_Revisit	1	James	James	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2011	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+2-LIJ003.06_2013	1	-79.1587	37.8851	1	1263.505533	1	152	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2013	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+2-LIT004.77	2	-78.3158	37.1737	1	947.6292	2	153	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+2-LMC001.15	5	-79.715629	37.510354	1	140.3895	5	154	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	5	3	Large	Phase1Large	2008	1	1	1	1
+2-LOB000.37	1	-79.175713	37.658059	1	3790.5166	1	155	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+2-LTP002.69	3	-78.080059	37.769078	1	541.5024	3	156	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+2-MCM003.32	4	-78.57235829	38.11760348	1	315.8764	4	157	VA	TS	Target	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2009	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+2-MFK002.21	3	-78.174263	37.920141	1	541.5024	3	158	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2003	Phase1	Phase1	3	2	Small	Phase1Small	2008	2010	1	1	1
+2-MIW003.45	3	-79.711857	37.996557	1	541.5024	3	159	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+2-MRY000.32	5	-79.443329	37.629606	1	140.3895	5	160	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	2012	1	1
+2-MRY043.42	4	-79.457363	37.945116	1	315.8764	4	161	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	4	4	Large	Phase1Large	2008	2010	2012	1	1
+2-NBS001.56	2	-78.66682657	37.23021655	1	947.6292	2	162	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2-NUT000.62	2	-77.62443837	37.42093568	1	947.6292	2	163	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+2-NWD004.15	3	-77.751299	37.576421	1	541.5024	3	164	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+2-OGL005.53	2	-80.122457	37.839865	1	947.6292	2	165	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	2	3	Medium	Phase1Medium	2008	1	1	1	1
+2-PLP002.24	2	-78.86268296	37.38757735	1	947.6292	2	166	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2-PMC000.59	2	-79.96358545	37.78017874	1	947.6292	2	167	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+2-POL010.11	3	-79.252935	37.61	1	541.5024	3	168	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	3	3	Large	Phase1Large	2008	1	1	1	1
+2-POS002.62	2	-77.15770263	37.44754429	1	947.6292	2	169	VA	TS	Target	1	James	James	Bay	BayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2-POT031.78	4	-80.22836828	37.59099289	1	315.8764	4	170	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+2-PRD004.42	2	-78.35497815	38.1696001	1	947.6292	2	171	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2006	Phase1	Phase2	2	3	Medium	Phase1Medium	2008	2010	2012	1	1
+2-PRS003.23	1	-79.16347484	37.7818475	1	3790.5166	1	172	VA	TS	Target	1	James	James	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2008	Phase2	Phase3	1	2	Small	Phase2Small	1	2010	2012	2014	1
+2-PTR005.13	2	-79.890103	37.622641	1	947.6292	2	173	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+2-PWH001.70	2	-77.301521	37.581197	1	947.6292	2	174	VA	TS	Target	1	James	James	Bay	BayPhase1	Southeastern Plains	Coast	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2-PWT001.97	2	-77.52699649	37.52419167	1	947.6292	2	175	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2-RED003.65_2011	4	-79.38326837	37.50907932	1	105.2921333	4	176	VA	TS	Target Wadeable - WSA_Revisit	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	4	3	Medium	Phase2Medium	1	1	1	2014	2016
+2-RED003.65_2013	4	-79.3833	37.5091	1	105.2921333	4	177	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	4	3	Medium	Phase2Medium	1	1	1	1	2016
+2-RED003.65_2004	4	-79.383514	37.508941	1	105.2921333	4	178	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	4	3	Medium	Phase1Medium	2008	2010	1	1	1
+2-RGR001.11	2	-79.892596	37.70515	1	947.6292	2	179	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2-RKF015.42	4	-78.758801	37.812651	1	315.8764	4	180	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2005	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+2-RKF023.33	3	-78.81606843	37.84353828	1	541.5024	3	181	VA	TS	Target	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2008	Phase2	Phase3	3	3	Large	Phase2Large	1	2010	2012	2014	1
+2-RKF026.13	4	-78.822007	37.866973	1	315.8764	4	182	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2004	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	1	1	1
+2-RND003.57	2	-78.26779	37.631023	1	947.6292	2	183	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	2	3	Medium	Phase1Medium	2008	1	1	1	1
+2-RSM001.88	1	-78.07876	37.816143	1	3790.5166	1	184	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+2-RVN001.55	5	-78.184723	37.762728	1	140.3895	5	185	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	1	1	1
+2-RVN012.05	5	-78.241611	37.823911	1	140.3895	5	186	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+2-RVN012.84	5	-78.24565525	37.82561023	1	140.3895	5	187	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	5	4	Large	Phase1Large	1	2010	2012	2014	1
+2-RVN035.67	5	-78.4155	38.008844	1	140.3895	5	188	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2002	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+2-SDV001.02	1	-78.4369	38.2883	1	3790.5166	1	189	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Northern Piedmont	Piedmont	2012	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+2-SFT019.02	4	-77.5125234	37.35980609	1	315.8764	4	190	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+2-SKM001.04	2	-78.67313052	38.04161038	1	947.6292	2	191	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2007	Phase1	Phase3	2	3	Medium	Phase1Medium	1	2010	2012	2014	1
+2-SLT003.00	4	-78.36879356	37.70809425	1	315.8764	4	192	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	4	4	Large	Phase1Large	1	2010	2012	2014	1
+2-SMR004.80	2	-79.08797	37.934915	1	947.6292	2	193	VA	TS	Target	1	James	James	Bay	BayPhase1	Blue Ridge Mountains	Mountain	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+2-STH000.50	4	-79.378135	37.773018	1	315.8764	4	194	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+2-STV000.48	3	-80.186796	37.620492	1	541.5024	3	195	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	3	2	Small	Phase1Small	2008	2010	1	1	1
+2-STW004.84	3	-78.9741	37.4257	1	541.5024	3	196	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	3	2	Small	Phase2Small	1	1	1	2014	2016
+2-SUA001.55	3	-78.676553	37.329562	1	541.5024	3	197	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	3	2	Small	Phase1Small	2008	1	1	1	1
+2-SWS000.90	1	-79.89365621	37.71362927	1	3790.5166	1	198	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	1	1	Small	Phase2Small	1	2010	2012	2014	1
+2-TLR000.52	2	-78.81463869	37.93242491	1	947.6292	2	199	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+2-TYE008.44	5	-78.90344737	37.62930255	1	140.3895	5	200	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	5	3	Large	Phase1Large	2008	2010	2012	1	1
+2-TYE008.77_2004	5	-78.903283	37.633197	1	46.7965	5	201	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	5	3	Large	Phase1Large	2008	2010	1	1	1
+2-TYE008.77_2011	5	-78.90302594	37.63333906	1	46.7965	5	202	VA	TS	Target Wadeable - WSA_Revisit	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	5	3	Large	Phase2Large	1	1	1	2014	2016
+2-TYE008.77_2013	5	-78.903	37.6333	1	46.7965	5	203	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	5	3	Large	Phase2Large	1	1	1	1	2016
+2-TYE028.94	4	-79.00654174	37.79978863	1	315.8764	4	204	VA	TS	Target	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+2-VNS002.45	3	-78.58031	37.355768	1	541.5024	3	205	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+2-WDC002.90	2	-78.5873	38.150285	1	947.6292	2	206	VA	TS	Target	1	James	James	Bay	BayPhase1	Northern Piedmont	Piedmont	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+2-WDY003.12	2	-78.009835	37.17165	1	947.6292	2	207	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	2	3	Medium	Phase1Medium	2008	1	1	1	1
+2-WIC004.64	4	-78.882214	37.477765	1	315.8764	4	208	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	1	1	1
+2-WLL001.83	1	-79.08256485	37.57082071	1	3790.5166	1	209	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	1	2	Small	Phase1Small	1	2010	2012	2014	1
+2-WLM000.69	2	-79.0980086	37.40897342	1	947.6292	2	210	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	2	2	Small	Phase1Small	1	2010	2012	2014	1
+2-WLN006.90	3	-79.80374	37.897411	1	541.5024	3	211	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+2-WLS023.10	5	-78.2681	37.5731	1	140.3895	5	212	VA	TS	Target Wadeable	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	5	3	Large	Phase2Large	1	1	1	2014	2016
+2-WLS024.61	5	-78.28018	37.557229	1	140.3895	5	213	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	5	3	Large	Phase1Large	2008	1	1	1	1
+2-XSB000.88	1	-79.561246	37.725871	1	3790.5166	1	214	VA	TS	Target	1	James	James	Bay	BayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	1	1	Small	Phase1Small	2008	2010	1	1	1
+2-XUD000.15	2	-77.177178	37.384822	1	947.6292	2	215	VA	TS	Target	1	James	James	Bay	BayPhase1	Southeastern Plains	Coast	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+2-XUE000.31	1	-77.882395	37.366027	1	3790.5166	1	216	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	1	2	Small	Phase1Small	2008	2010	1	1	1
+2-XUL001.67	2	-79.84575236	37.45754417	1	947.6292	2	217	VA	TS	Target	1	James	James	Bay	BayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+2-XUM001.89	1	-78.798096	37.582373	1	3790.5166	1	218	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+2-XVX000.62_2004	1	-77.989567	37.707717	1	1263.505533	1	219	VA	TS	Target	1	James	James	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	1	1	1
+2-XVX000.62_2011	1	-77.98928727	37.70786314	1	1263.505533	1	220	VA	TS	Target Wadeable - WSA_Revisit	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+2-XVX000.62_2013	1	-77.9893	37.7079	1	1263.505533	1	221	VA	TS	Y -TS	1	James	James	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+3-BLK001.92	3	-77.064188	38.028861	1	541.5024	3	222	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Southeastern Plains	Coast	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+3-BLU000.54	3	-78.197281	38.24067	1	541.5024	3	223	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2005	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+3-BRK001.97	3	-77.87212	38.395431	1	541.5024	3	224	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2002	Phase1	Phase1	3	2	Small	Phase1Small	2008	1	1	1	1
+3-BUC003.26	1	-78.00429574	38.80673908	1	3790.5166	1	225	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Northern Piedmont	Piedmont	2008	Phase2	Phase3	1	2	Small	Phase2Small	1	2010	2012	2014	1
+3-CAE001.45	4	-77.909652	38.709471	1	315.8764	4	226	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2005	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+3-CAE012.67	3	-77.873	38.812	1	541.5024	3	227	VA	TS	Target Wadeable	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Northern Piedmont	Piedmont	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+3-CRC001.38	2	-76.899989	37.899715	1	947.6292	2	228	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Southeastern Plains	Coast	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+3-FIK001.03	2	-78.304888	38.449487	1	947.6292	2	229	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+3-HAL002.72	2	-77.48891838	38.28768822	1	947.6292	2	230	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+3-HAZ035.32	2	-78.1917	38.5546	1	947.6292	2	231	VA	TS	Y -TS	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Northern Piedmont	Piedmont	2014	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	1	2016
+3-HUH001.19	1	-77.23541354	38.25647487	1	3790.5166	1	232	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Southeastern Plains	Coast	2007	Phase1	Phase3	1	1	Small	Phase1Small	1	2010	2012	2014	1
+3-JOA002.68	2	-77.905972	38.494275	1	947.6292	2	233	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+3-LIA003.14	1	-77.4163	38.3015	1	3790.5166	1	234	VA	TS	Y-TS	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+3-MIC008.55	2	-77.259293	38.132818	1	947.6292	2	235	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Southeastern Plains	Coast	2004	Phase1	Phase2	2	3	Medium	Phase1Medium	2008	2010	1	1	1
+3-MTN003.31	3	-77.796595	38.455726	1	541.5024	3	236	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2003	Phase1	Phase1	3	3	Large	Phase1Large	2008	2010	1	1	1
+3-MTN018.83	3	-77.95552428	38.45563365	1	541.5024	3	237	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2006	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+3-PBC005.12	2	-77.1443	38.1205	1	947.6292	2	238	VA	TS	Target Wadeable	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Southeastern Plains	Coast	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+3-RAP008.71	5	-77.724252	38.371597	1	140.3895	5	239	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2001	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+3-RAP015.25	5	-77.7808	38.3714	1	140.3895	5	240	VA	TS	Spring Bugs Riffle Only	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Northern Piedmont	Piedmont	2014	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	1	2016
+3-RAP028.98	5	-77.955713	38.356171	1	140.3895	5	241	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2004	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	1	1	1
+3-RAP053.02	4	-78.2003338	38.24451607	1	315.8764	4	242	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2006	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+3-ROB004.98	4	-78.10828172	38.34870503	1	315.8764	4	243	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+3-ROB005.42	4	-78.114299	38.350805	1	315.8764	4	244	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2001	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+3-RPP148.18	5	-77.82813902	38.53581181	1	140.3895	5	245	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2007	Phase1	Phase3	5	4	Large	Phase1Large	1	2010	2012	2014	1
+3-RPP150.20	5	-77.874959	38.582061	1	140.3895	5	246	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2005	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	2012	1	1
+3-SUM003.88	2	-77.952396	38.387757	1	947.6292	2	247	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+3-THU006.90	3	-77.970492	38.784367	1	541.5024	3	248	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Northern Piedmont	Piedmont	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+3-WAE005.95	1	-77.366818	38.191074	1	3790.5166	1	249	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Southeastern Plains	Coast	2002	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+3-WAF000.03	1	-77.95848483	38.58889711	1	3790.5166	1	250	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Northern Piedmont	Piedmont	2008	Phase2	Phase3	1	2	Small	Phase2Small	1	2010	2012	2014	1
+3-XFB001.00	1	-77.41335375	38.2199161	1	3790.5166	1	251	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	2012	1	1
+3-XGR000.95	1	-78.46590615	38.39058961	1	3790.5166	1	252	VA	TS	Target	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Blue Ridge Mountains	Mountain	2009	Phase2	Phase3	1	1	Small	Phase2Small	1	1	2012	2014	2016
+3-XHU000.04	1	-77.9945	38.8492	1	3790.5166	1	253	VA	TS	Target Wadeable	1	Rappahannock-York	Rappahannock	Bay	BayPhase2	Northern Piedmont	Piedmont	2011	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+4AACC001.75	2	-78.576319	37.035376	1	947.6292	2	254	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+4AATD003.36	2	-78.907494	36.920772	1	947.6292	2	255	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+4ABAN002.67	5	-78.811808	36.724082	1	140.3895	5	256	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+4ABAN022.24	5	-79.023762	36.826507	1	140.3895	5	257	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+4ABAN026.65	5	-79.056392	36.869432	1	140.3895	5	258	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	5	4	Large	Phase1Large	2008	2010	1	1	1
+4ABAR001.74	1	-79.216665	36.748189	1	3790.5166	1	259	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	1	1	1
+4ABAU011.17_2004	2	-79.834546	36.781529	1	315.8764	2	260	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+4ABAU011.17_2011	2	-79.83430458	36.78166654	1	315.8764	2	261	VA	TS	Target Wadeable - WSA_Revisit	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4ABAU011.17_2013	2	-79.8343	36.7817	1	315.8764	2	262	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+4ABCE000.87	2	-79.94722919	37.04986196	1	947.6292	2	263	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+4ABDA011.79	2	-79.754462	37.292521	1	947.6292	2	264	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+4ABDB004.35	2	-79.0461	36.9056	1	947.6292	2	265	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4ABEE001.20	2	-78.632288	36.543423	1	947.6292	2	266	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+4ABLG001.95	2	-80.176	37.1527	1	947.6292	2	267	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+4ABNN002.17_2012	2	-78.6383	36.7999	1	473.8146	2	268	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4ABNN002.17_2014	2	-78.6383	36.7999	1	473.8146	2	269	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+4ABOE005.27	3	-79.7215	37.3111	1	541.5024	3	270	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+4ABOR019.84	5	-79.401959	37.271899	1	140.3895	5	271	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	1	1	1
+4ABOR033.22	4	-79.463131	37.385079	1	315.8764	4	272	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	4	3	Large	Phase1Large	2008	2010	1	1	1
+4ABOS000.13	2	-78.926921	36.557967	1	947.6292	2	273	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+4ABST009.45	4	-78.617	36.7319	1	315.8764	4	274	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	4	3	Medium	Phase2Medium	1	1	1	1	2016
+4ABST014.94	4	-78.58417317	36.7848552	1	315.8764	4	275	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	4	3	Medium	Phase1Medium	1	2010	2012	2014	1
+4ABTF003.11	2	-79.03767474	37.25749686	1	947.6292	2	276	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+4ABVE002.18	3	-79.77109075	37.25851835	1	541.5024	3	277	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	3	2	Small	Phase1Small	1	2010	2012	2014	1
+4ABWA008.53	3	-79.27304	37.28941	1	541.5024	3	278	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+4ABWB000.32	2	-78.62800654	37.0190731	1	947.6292	2	279	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+4ABWR029.51	4	-79.829901	37.049217	1	315.8764	4	280	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	1	1	1
+4ABWR045.01	4	-79.916902	37.044097	1	315.8764	4	281	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+4ACEC000.82	3	-79.53321299	36.99434588	1	541.5024	3	282	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	3	2	Small	Phase1Small	1	2010	2012	2014	1
+4ACEC001.24	3	-79.55127137	36.98819348	1	541.5024	3	283	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	3	2	Small	Phase2Small	1	1	2012	2014	2016
+4ACLB001.90	3	-78.91039492	36.58867065	1	541.5024	3	284	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+4ACNT003.84	4	-79.77299963	36.92069552	1	315.8764	4	285	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+4ACNT022.05	3	-79.8873	36.859	1	541.5024	3	286	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+4ACOX007.73	2	-78.251901	36.720172	1	947.6292	2	287	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+4ACTO001.01	1	-79.918632	36.879616	1	3790.5166	1	288	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+4ADAN183.06	3	-80.447372	36.650152	1	541.5024	3	289	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+4ADAN199.71	2	-80.3995	36.7024	1	947.6292	2	290	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2014	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	1	2016
+4ADBC000.13	3	-79.16144817	36.60897152	1	541.5024	3	291	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+4ADEV000.64	2	-78.537	36.849	1	947.6292	2	292	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4AEIS002.07	2	-78.85312	36.962866	1	947.6292	2	293	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+4AEKH003.18	3	-79.1402	36.866224	1	541.5024	3	294	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+4AFAL006.61	3	-79.3799	36.6512	1	541.5024	3	295	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+4AFRV017.85	4	-78.9505	37.1957	1	315.8764	4	296	VA	TS	Y-TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	1	2016
+4AFRY006.08	2	-79.447365	36.94797	1	947.6292	2	297	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+4AFSF004.02	3	-78.985179	37.220428	1	541.5024	3	298	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+4AGEO006.26	3	-79.3096	36.9328	1	541.5024	3	299	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	3	2	Small	Phase2Small	1	1	1	2014	2016
+4AGIL008.56	3	-79.73284	37.103056	1	541.5024	3	300	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+4AGSE015.07	4	-79.53623863	37.1690941	1	315.8764	4	301	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+4AGSH001.28	1	-80.0485	37.3081	1	3790.5166	1	302	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2012	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+4AHEN004.74	3	-78.633997	36.931163	1	541.5024	3	303	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+4AHLL000.45	1	-79.7098	36.5575	1	3790.5166	1	304	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+4AHRN007.65	2	-80.01521	36.660962	1	947.6292	2	305	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+4AIVV002.00	2	-80.36999018	36.68264102	1	947.6292	2	306	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+4ALBT003.07	2	-80.165264	36.792348	1	947.6292	2	307	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+4ALNT001.00	3	-79.838127	36.901063	1	541.5024	3	308	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+4ALOR007.20	3	-79.45187203	37.29420285	1	541.5024	3	309	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	3	3	Medium	Phase1Medium	1	2010	2012	2014	1
+4ALOR008.93	3	-79.453	37.3019	1	541.5024	3	310	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+4ALPP004.52	2	-77.9771	36.6142	1	947.6292	2	311	VA	TS	Y-TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+4ALWF007.13	1	-79.77860363	36.75796864	1	3790.5166	1	312	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	1	2	Small	Phase1Small	1	2010	2012	2014	1
+4AMBY001.33	2	-79.83899889	36.6565352	1	947.6292	2	313	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+4AMCG000.56	3	-79.573459	36.561666	1	541.5024	3	314	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	3	2	Small	Phase1Small	2008	2010	1	1	1
+4AMEE017.24	3	-79.9609	37.1256	1	541.5024	3	315	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+4AMEY006.72	3	-79.0349	37.1835	1	541.5024	3	316	VA	TS	Y-TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+4AMFK000.52	2	-79.865031	36.853165	1	947.6292	2	317	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+4AMSP000.96	2	-80.35865924	37.26455731	1	947.6292	2	318	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	2	2	Small	Phase1Small	1	2010	2012	2014	1
+4AORR002.63	2	-79.356143	37.228074	1	947.6292	2	319	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	2	3	Medium	Phase1Medium	2008	2010	1	1	1
+4AOWC004.37	3	-79.386393	37.022288	1	541.5024	3	320	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	3	2	Small	Phase1Small	2008	1	1	1	1
+4APAA000.24	2	-79.632893	36.917814	1	947.6292	2	321	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+4APGG011.14	5	-79.5383	36.9326	1	140.3895	5	322	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	2014	2016
+4APGG025.20	5	-79.68231932	36.94744277	1	140.3895	5	323	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	5	3	Large	Phase1Large	2008	2010	2012	1	1
+4APGG042.21	4	-79.77894481	36.98137258	1	315.8764	4	324	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+4APGG063.32	3	-79.9136	36.9697	1	541.5024	3	325	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+4APGG076.93	2	-80.04858188	36.97689566	1	947.6292	2	326	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+4APOP000.10	2	-78.5219	36.6902	1	947.6292	2	327	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4ARAB003.64	2	-79.2684	37.057	1	947.6292	2	328	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4ARKN003.68	1	-80.01221275	36.73001751	1	3790.5166	1	329	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	1	1	Small	Phase2Small	1	2010	2012	2014	1
+4ARNF009.01	4	-80.284648	37.209822	1	315.8764	4	330	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+4ARNF015.22	3	-80.35211607	37.18762961	1	541.5024	3	331	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	3	3	Large	Phase2Large	1	1	2012	2014	2016
+4ARNF015.50	3	-80.351878	37.189863	1	541.5024	3	332	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	3	3	Large	Phase1Large	2008	1	1	1	1
+4AROA202.20	5	-79.915147	37.263158	1	140.3895	5	333	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	1	1	1
+4AROA210.56	5	-80.01849211	37.27147169	1	140.3895	5	334	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	5	4	Large	Phase2Large	1	1	2012	2014	2016
+4AROA221.95	5	-80.150498	37.24507	1	140.3895	5	335	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+4AROC006.55	3	-78.6615563	36.94395408	1	541.5024	3	336	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	3	3	Large	Phase1Large	2008	2010	2012	1	1
+4AROC010.68	3	-78.56410796	37.1086978	1	541.5024	3	337	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	3	2	Small	Phase1Small	1	2010	2012	2014	1
+4ARSF007.07	5	-80.23609826	37.17281531	1	140.3895	5	338	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	5	3	Large	Phase2Large	1	2010	2012	2014	1
+4ARSF007.29	5	-80.236373	37.16972	1	140.3895	5	339	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	5	3	Large	Phase1Large	2008	2010	2012	1	1
+4ASCB005.38	2	-79.55048819	37.45301043	1	947.6292	2	340	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+4ASCE007.71	2	-79.3236	37.0582	1	947.6292	2	341	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	2014	2016
+4ASCR003.33	4	-79.42602908	36.61730085	1	315.8764	4	342	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	4	3	Medium	Phase2Medium	1	2010	2012	2014	1
+4ASDA004.94	3	-79.9484	36.9313	1	541.5024	3	343	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+4ASDE002.18	2	-79.2961	36.7652	1	947.6292	2	344	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4ASDE002.65	2	-79.30136109	36.7633435	1	947.6292	2	345	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+4ASMR002.77	4	-80.025842	36.545066	1	315.8764	4	346	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+4ASMR017.72	4	-80.14860006	36.56821947	1	315.8764	4	347	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+4ASMR023.52	4	-80.19670361	36.59630324	1	315.8764	4	348	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+4ASNA002.84	4	-79.05760805	36.81821853	1	315.8764	4	349	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+4ASNF007.64	1	-80.294064	36.711401	1	3790.5166	1	350	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2001	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+4ASRE020.75	5	-79.821656	36.627969	1	140.3895	5	351	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	5	4	Large	Phase1Large	2008	2010	1	1	1
+4ASRE063.69_2012	3	-80.1617	36.8436	1	270.7512	3	352	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	3	3	Large	Phase2Large	1	1	1	2014	2016
+4ASRE063.69_2014	3	-80.1617	36.8436	1	270.7512	3	353	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	3	3	Large	Phase2Large	1	1	1	1	2016
+4ASRV012.19	5	-79.551613	36.648009	1	140.3895	5	354	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	5	3	Large	Phase1Large	2008	1	1	1	1
+4ASSP000.64	4	-79.6023	36.6724	1	315.8764	4	355	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	4	3	Medium	Phase2Medium	1	1	1	2014	2016
+4ASSP004.06	4	-79.62398265	36.66458252	1	315.8764	4	356	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	4	3	Medium	Phase2Medium	1	1	2012	2014	2016
+4ATKR010.54	4	-79.91355458	37.36127973	1	315.8764	4	357	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	4	3	Medium	Phase1Medium	1	2010	2012	2014	1
+4ATKR015.40	4	-79.9316073	37.41241035	1	315.8764	4	358	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	4	3	Medium	Phase1Medium	1	2010	2012	2014	1
+4ATRB000.97	3	-79.2515	37.192	1	541.5024	3	359	VA	TS	Y-TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	3	2	Small	Phase2Small	1	1	1	1	2016
+4ATRD000.35	3	-79.645909	36.676994	1	541.5024	3	360	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+4AWEL000.59	2	-79.505656	37.256679	1	947.6292	2	361	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+4AWFE001.57	2	-79.21561878	36.59077526	1	947.6292	2	362	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	1	Small	Phase1Small	2008	2010	2012	1	1
+4AWLF001.20	3	-79.58224042	37.27454139	1	541.5024	3	363	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+4AWNN000.10	3	-78.88452181	36.76943253	1	541.5024	3	364	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	3	4	Large	Phase2Large	1	1	2012	2014	2016
+4AXMF001.46	1	-78.824279	36.654581	1	3790.5166	1	365	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+4AXML000.56	1	-79.882747	37.160625	1	3790.5166	1	366	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	1	1	Small	Phase1Small	2008	2010	1	1	1
+4AXMU001.98	2	-79.730803	36.672187	1	947.6292	2	367	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+4AXMV000.63	1	-80.38732865	37.09812371	1	3790.5166	1	368	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	1	1	Small	Phase1Small	1	2010	2012	2014	1
+4AXMW001.48	1	-79.97126098	36.60565274	1	3790.5166	1	369	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	1	1	Small	Phase1Small	1	2010	2012	2014	1
+4AXMX003.62	2	-79.92108364	36.78495227	1	947.6292	2	370	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+4AXMY000.22	1	-79.63871634	36.83334274	1	3790.5166	1	371	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+4AXNA001.18	2	-79.7672006	37.16824936	1	947.6292	2	372	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+4AXNC000.10	2	-79.71763085	37.40206931	1	947.6292	2	373	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+4AXOD000.38	1	-79.4763	37.3454	1	3790.5166	1	374	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+4AXOE001.26	1	-80.3812	36.648	1	3790.5166	1	375	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2012	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+4AXOF001.26	1	-79.7009	36.802	1	3790.5166	1	376	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+4AXOH000.06	2	-79.7426	37.3653	1	947.6292	2	377	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2014	Phase2	Phase4	2	1	Small	Phase2Small	1	1	1	1	2016
+4AXOL000.94_2012	1	-79.6358	37.3432	1	1895.2583	1	378	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+4AXOL000.94_2014	1	-79.6358	37.3432	1	1895.2583	1	379	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+4AXSP001.93	1	-80.1882	36.6272	1	3790.5166	1	380	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+4AXUO000.49	1	-79.605376	37.111161	1	3790.5166	1	381	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	1	1	1
+4AXUP000.06	1	-79.096493	37.17479	1	3790.5166	1	382	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	1	1	1
+4AXUS000.65	1	-79.100542	36.788677	1	3790.5166	1	383	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+4AXUY000.58	1	-78.8769987	36.64839836	1	3790.5166	1	384	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+4AXVK001.44	1	-78.8613894	37.15405463	1	3790.5166	1	385	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	1	1	Small	Phase2Small	1	1	2012	2014	2016
+4AXVL000.82	1	-78.58130442	36.58159987	1	3790.5166	1	386	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	1	1	Small	Phase2Small	1	1	2012	2014	2016
+4AXVN001.55	1	-78.84780413	36.87890289	1	3790.5166	1	387	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	1	2	Small	Phase2Small	1	1	2012	2014	2016
+4AXVO000.50	1	-78.5273	37.075	1	3790.5166	1	388	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+4AXVP000.20	1	-79.3518	36.6194	1	3790.5166	1	389	VA	TS	Y-TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+4AXVQ000.77	1	-79.2937	36.6268	1	3790.5166	1	390	VA	TS	Y-TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+4AXVV000.54	1	-78.8444	36.837	1	3790.5166	1	391	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	1	2016
+4BBIR002.57	1	-80.5466	36.6331	1	3790.5166	1	392	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2011	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+4BELK000.96	2	-80.6471	36.6445	1	947.6292	2	393	VA	TS	Target Wadeable	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+4BLOV008.45	3	-80.631298	36.572011	1	541.5024	3	394	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+4BLOV017.16	1	-80.620156	36.667799	1	3790.5166	1	395	VA	TS	Target	1	Roanoke	Roanoke	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2002	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+5AALN001.50	3	-77.8339	36.7074	1	541.5024	3	396	VA	TS	Y -TS	1	Roanoke	Roanoke	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+5AAPW001.04	2	-77.353027	36.728809	1	947.6292	2	397	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+5ABKH005.16	2	-77.17435892	36.71344746	1	947.6292	2	398	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+5ABLC000.88	3	-76.901773	36.769463	1	541.5024	3	399	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+5ABLW038.69	5	-76.840302	36.856711	1	140.3895	5	400	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2004	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	1	1	1
+5ABLW052.91	5	-76.855923	36.966134	1	140.3895	5	401	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2002	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+5ABLW055.26	5	-76.86363	37.020918	1	140.3895	5	402	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2001	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+5ABTR000.76	3	-77.67635078	37.0863802	1	541.5024	3	403	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	3	3	Medium	Phase2Medium	1	2010	2012	2014	1
+5ABVC003.15	3	-77.600802	36.545168	1	541.5024	3	404	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+5AFNY004.78	1	-78.497382	36.842449	1	3790.5166	1	405	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+5AFON016.90	4	-77.56390292	36.55529232	1	315.8764	4	406	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+5AFON024.32	4	-77.57576	36.620099	1	315.8764	4	407	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	4	3	Large	Phase1Large	2008	2010	1	1	1
+5AFRC011.93	3	-78.1324	36.9284	1	541.5024	3	408	VA	TS	Target Wadeable	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+5AHRA005.94	3	-77.5003	37.1379	1	541.5024	3	409	VA	TS	Y-TS	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+5AKIT002.65_2004	1	-78.357878	36.929902	1	1263.505533	1	410	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	1	1	1
+5AKIT002.65_2011	1	-78.35759661	36.93005048	1	1263.505533	1	411	VA	TS	Target Wadeable - WSA_Revisit	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+5AKIT002.65_2013	1	-78.3576	36.9301	1	1263.505533	1	412	VA	TS	Y -TS	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+5ALTG001.50	2	-77.97309827	36.70451781	1	947.6292	2	413	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	2	3	Medium	Phase2Medium	1	2010	2012	2014	1
+5ALTL001.38	1	-77.74100818	36.59803455	1	3790.5166	1	414	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	1	1	Small	Phase2Small	1	1	2012	2014	2016
+5AMHN082.76	5	-77.932168	36.720089	1	140.3895	5	415	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+5AMHN097.83	5	-78.063078	36.780546	1	140.3895	5	416	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	5	4	Large	Phase1Large	2008	2010	1	1	1
+5AMHN104.12	5	-78.14342051	36.79479788	1	140.3895	5	417	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	5	4	Large	Phase2Large	1	1	2012	2014	2016
+5AMHN105.36	5	-78.163359	36.79956	1	140.3895	5	418	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+5AMLL000.03	2	-78.1492	37.142	1	947.6292	2	419	VA	TS	Target Wadeable	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+5AMRS002.93	2	-77.5985	36.8356	1	947.6292	2	420	VA	TS	Y-TS	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+5AMSA001.80	2	-76.7909	36.5549	1	947.6292	2	421	VA	TS	Target Wadeable	1	Chowan	Chowan	NonBay	NonBayPhase2	Middle Atlantic Coastal Plain	Coast	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+5ANMR007.11	4	-78.29833	36.870194	1	315.8764	4	422	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+5ANMR029.33	2	-78.41026499	37.04883975	1	947.6292	2	423	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	2	3	Medium	Phase2Medium	1	1	2012	2014	2016
+5ANTW016.37	6	-77.007485	36.654922	1	140.3895	5	424	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2002	Phase1	Phase1	6	4	Large	Phase1Large	2008	1	1	1	1
+5ANTW020.23	6	-77.043146	36.673286	1	140.3895	5	425	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2004	Phase1	Phase2	6	4	Large	Phase1Large	2008	2010	1	1	1
+5ANTW045.12	6	-77.190038	36.866562	1	140.3895	5	426	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2001	Phase1	Phase1	6	4	Large	Phase1Large	2008	1	1	1	1
+5ANTW051.60	5	-77.20152656	36.91664082	1	140.3895	5	427	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2007	Phase1	Phase3	5	4	Large	Phase1Large	1	2010	2012	2014	1
+5ANTW054.10	5	-77.208	36.94	1	140.3895	5	428	VA	TS	Spring Bugs Only	1	Chowan	Chowan	NonBay	NonBayPhase2	Southeastern Plains	Coast	2014	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	1	2016
+5ANTW058.88	6	-77.237588	36.975123	1	140.3895	5	429	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2004	Phase1	Phase2	6	4	Large	Phase1Large	2008	2010	1	1	1
+5ANTW059.89	6	-77.24915073	36.97103923	1	140.3895	5	430	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	6	4	Large	Phase1Large	2008	2010	2012	1	1
+5ANTW066.95_2014	5	-77.323	36.9882	1	140.3895	5	431	VA	TS	Spring Bugs Only	1	Chowan	Chowan	NonBay	NonBayPhase2	Southeastern Plains	Coast	2014	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	1	2016
+5ANTW077.95	5	-77.396958	36.900144	1	140.3895	5	432	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2002	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+5ANTW093.62	4	-77.587092	36.859388	1	315.8764	4	433	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	4	4	Large	Phase1Large	2008	2010	1	1	1
+5ANTW097.27	4	-77.627776	36.882313	1	315.8764	4	434	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	4	4	Large	Phase1Large	2008	2010	1	1	1
+5ANTW098.82	4	-77.63249154	36.87843519	1	315.8764	4	435	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	4	4	Large	Phase2Large	1	1	2012	2014	2016
+5ANTW103.18	4	-77.672222	36.90055	1	315.8764	4	436	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	4	4	Large	Phase1Large	2008	2010	2012	1	1
+5ANTW134.52	4	-78.05049781	37.01601896	1	315.8764	4	437	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+5ANTW153.04	3	-78.22984927	37.10014137	1	541.5024	3	438	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+5AOTR004.21_2014	3	-77.072	37.1135	1	541.5024	3	439	VA	TS	Y -TS	1	Chowan	Chowan	NonBay	NonBayPhase2	Southeastern Plains	Coast	2014	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+5AROW007.62	4	-77.42326092	37.03616717	1	315.8764	4	440	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+5ARSK003.66	3	-77.772776	36.59609	1	541.5024	3	441	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+5ARYC003.04	2	-77.7524	37.0041	1	947.6292	2	442	VA	TS	Y -TS	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+5ARYR001.23	3	-77.83328712	36.77540344	1	541.5024	3	443	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	3	2	Small	Phase1Small	2008	2010	2012	1	1
+5ASAP004.00	4	-77.484285	36.927286	1	315.8764	4	444	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	4	3	Large	Phase1Large	2008	2010	1	1	1
+5ASTO002.58	5	-77.1193	37.8071	1	140.3895	5	445	VA	TS	Target Wadeable	1	Chowan	Chowan	NonBay	NonBayPhase2	Southeastern Plains	Coast	2011	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	2014	2016
+5ATLR006.84	2	-78.08045746	36.74041191	1	947.6292	2	446	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+5AXEB000.75	2	-77.09726	36.835369	1	947.6292	2	447	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+5AXEC000.76	2	-77.0959	36.648	1	947.6292	2	448	VA	TS	Target Wadeable	1	Chowan	Chowan	NonBay	NonBayPhase2	Middle Atlantic Coastal Plain	Coast	2012	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+5AXED000.75	1	-76.8915	36.8219	1	3790.5166	1	449	VA	TS	Target Wadeable	1	Chowan	Chowan	NonBay	NonBayPhase2	Middle Atlantic Coastal Plain	Coast	2012	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+5AXEH001.35	1	-77.818363	36.752794	1	3790.5166	1	450	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+5AXEI000.27	1	-78.428103	36.872945	1	3790.5166	1	451	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+5AXEJ001.73	1	-77.526187	36.834681	1	3790.5166	1	452	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2001	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+5AXET000.28	1	-78.261003	36.936925	1	3790.5166	1	453	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2003	Phase1	Phase1	1	2	Small	Phase1Small	2008	2010	1	1	1
+5AXEY000.38	2	-77.435315	37.139549	1	947.6292	2	454	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+5AXGI001.79	1	-76.94108213	36.66553902	1	3790.5166	1	455	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	2012	1	1
+5AXHR000.32	1	-78.3111952	36.81237737	1	3790.5166	1	456	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	1	1	Small	Phase2Small	1	2010	2012	2014	1
+5AXIA000.48	2	-78.2007	37.0387	1	947.6292	2	457	VA	TS	Target Wadeable	1	Chowan	Chowan	NonBay	NonBayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+5BPCT002.16	3	-76.10252	36.669939	1	541.5024	3	458	VA	TS	Target	1	Chowan	Chowan	NonBay	NonBayPhase1	Middle Atlantic Coastal Plain	Coast	2003	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+6ACNR018.89	4	-82.48335258	37.08717389	1	315.8764	4	459	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+6ACNW000.07	2	-82.2091	37.3507	1	947.6292	2	460	VA	TS	Y -TS	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+6ADIS013.73	3	-81.914439	37.240618	1	541.5024	3	461	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2003	Phase1	Phase1	3	3	Large	Phase1Large	2008	2010	1	1	1
+6ADIS022.34	1	-81.8015	37.239	1	3790.5166	1	462	VA	TS	Y-TS	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2013	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+6ADOT000.46	3	-82.54651291	37.05180134	1	541.5024	3	463	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2010	Phase2	Phase3	3	2	Small	Phase2Small	1	1	2012	2014	2016
+6AFOX001.69_2011	1	-82.16605093	37.15926553	1	315.8764	2	464	VA	TS	Target Wadeable - WSA_Revisit	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2011	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+6AFOX001.69_2013	1	-82.16605093	37.15926553	1	315.8764	2	465	VA	TS	Y-TS	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2013	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+6AFOX001.69_2004	2	-82.166192	37.159156	1	315.8764	2	466	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+6AFRY006.70	3	-82.23299938	37.09320028	1	541.5024	3	467	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6AGRF002.36	3	-82.0172	37.1627	1	541.5024	3	468	VA	TS	Target Wadeable	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+6AHME002.16	3	-82.144649	37.351709	1	541.5024	3	469	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2002	Phase1	Phase1	3	2	Small	Phase1Small	2008	1	1	1	1
+6ALBJ000.07	2	-81.946267	37.513674	1	947.6292	2	470	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+6ALEV138.19	4	-82.15742766	37.30723143	1	315.8764	4	471	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2007	Phase1	Phase3	4	4	Large	Phase1Large	1	2010	2012	2014	1
+6ALEV158.93	4	-81.96278468	37.19699926	1	315.8764	4	472	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2010	Phase2	Phase3	4	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6ALLF002.19	1	-82.270788	37.119896	1	3790.5166	1	473	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2003	Phase1	Phase1	1	2	Small	Phase1Small	2008	2010	1	1	1
+6AMCR005.94	4	-82.3514	37.174	1	315.8764	4	474	VA	TS	Target Wadeable	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2012	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+6AMCR007.85	4	-82.3606	37.1621	1	315.8764	4	475	VA	TS	Target Wadeable	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2011	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+6APAW001.22	2	-82.19606982	37.17311451	1	947.6292	2	476	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+6APNR034.58	4	-82.597022	37.118619	1	315.8764	4	477	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2005	Phase1	Phase2	4	3	Medium	Phase1Medium	2008	2010	2012	1	1
+6APNS003.94	3	-82.638392	37.091786	1	541.5024	3	478	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+6ARLF000.06_2012	1	-82.4412	37.115	1	1895.2583	1	479	VA	TS	Target Wadeable (fall dry)	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2012	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+6ARLF000.06_2014	1	-82.4412	37.115	1	1895.2583	1	480	VA	TS	Y -TS	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2014	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+6ARPC002.45	3	-82.265776	37.207757	1	541.5024	3	481	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2005	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+6ASAT003.60	3	-82.06321393	37.29132799	1	541.5024	3	482	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2010	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6ASAT011.43	2	-81.9537	37.3086	1	947.6292	2	483	VA	TS	Y-TS	1	Tennessee	Big Sandy	NonBay	NonBayPhase2	Central Appalachians	Mountain	2013	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	1	2016
+6ASLV000.85	1	-82.17211931	37.09016245	1	3790.5166	1	484	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2006	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+6AXBF000.40	1	-82.243635	37.266634	1	3790.5166	1	485	VA	TS	Target	1	Tennessee	Big Sandy	NonBay	NonBayPhase1	Central Appalachians	Mountain	2001	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+6BBLC002.21	1	-81.90169583	37.10488198	1	3790.5166	1	486	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2007	Phase1	Phase3	1	1	Small	Phase1Small	1	2010	2012	2014	1
+6BCLN320.68	4	-81.7853	37.0923	1	315.8764	4	487	VA	TS	Y -TS	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	1	2016
+6BCOL001.93	2	-81.868881	37.108384	1	947.6292	2	488	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+6BDRA001.07	2	-82.781837	36.731276	1	947.6292	2	489	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+6BDUM000.23	3	-82.194017	36.937047	1	541.5024	3	490	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+6BGUE016.54	4	-82.559639	36.935992	1	315.8764	4	491	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2002	Phase1	Phase1	4	3	Medium	Phase1Medium	2008	1	1	1	1
+6BHAR002.41	2	-83.2583	36.6656	1	947.6292	2	492	VA	TS	Y -TS	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	2	3	Medium	Phase2Medium	1	1	1	1	2016
+6BIDI009.04	3	-81.70769539	37.15972959	1	541.5024	3	493	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachians	Mountain	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6BJNN001.35	1	-81.543741	37.172375	1	3790.5166	1	494	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2002	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+6BLSR004.78	2	-82.473416	36.872093	1	947.6292	2	495	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+6BLTL003.31	3	-82.0791	36.8975	1	541.5024	3	496	VA	TS	Target Wadeable	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2012	Phase2	Phase4	3	2	Small	Phase2Small	1	1	1	2014	2016
+6BLTR019.45	3	-81.77872795	37.02711211	1	541.5024	3	497	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	3	3	Large	Phase2Large	1	2010	2012	2014	1
+6BLTR022.98	3	-81.7541	37.0263	1	541.5024	3	498	VA	TS	Target Wadeable	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2012	Phase2	Phase4	3	3	Large	Phase2Large	1	1	1	2014	2016
+6BLTR025.03	3	-81.739359	37.022731	1	541.5024	3	499	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	3	3	Large	Phase1Large	2008	2010	2012	1	1
+6BLUR000.60	2	-81.99738133	37.04818723	1	947.6292	2	500	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+6BLWS003.88	3	-81.964572	37.02273	1	541.5024	3	501	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+6BMOL001.75	2	-82.3226	36.7853	1	947.6292	2	502	VA	TS	Target Wadeable	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+6BMTN003.94	3	-83.35519662	36.62297946	1	541.5024	3	503	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6BPLL001.61_2008	3	-82.77178556	36.86556086	1	541.5024	3	504	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachians	Mountain	2008	Phase2	Phase3	3	3	Medium	Phase2Medium	1	2010	2012	2014	1
+6BPLL001.61_2013	3	-82.7716	36.8654	1	541.5024	3	505	VA	TS	Y-TS	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachians	Mountain	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+6BPOW156.57	5	-83.007301	36.730419	1	140.3895	5	506	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+6BPOW162.89	4	-82.95218732	36.76078725	1	315.8764	4	507	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+6BPOW184.19	4	-82.76237563	36.91498057	1	315.8764	4	508	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachians	Mountain	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+6BPWL000.06	5	-82.999537	36.737191	1	140.3895	5	509	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	5	3	Large	Phase1Large	2008	1	1	1	1
+6BPWL020.93	3	-82.8947	36.8435	1	541.5024	3	510	VA	TS	Y-TS	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachians	Mountain	2013	Phase2	Phase4	3	2	Small	Phase2Small	1	1	1	1	2016
+6BSTC000.04	3	-83.05704536	36.77651469	1	541.5024	3	511	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachians	Mountain	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6BTMS006.51	2	-82.40399046	36.98094928	1	947.6292	2	512	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachians	Mountain	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+6BVAL002.86	2	-82.48328623	36.73685181	1	947.6292	2	513	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	2	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6BWAL005.97	3	-83.13197539	36.62408414	1	541.5024	3	514	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	3	3	Medium	Phase1Medium	1	2010	2012	2014	1
+6BXDJ000.15	1	-82.444894	36.806187	1	3790.5166	1	515	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+6BXGD000.01	2	-82.64269402	36.66936458	1	947.6292	2	516	VA	TS	Target	1	Tennessee	Clinch-Powell	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+6CBMC006.40	3	-82.5411329	36.6593489	1	541.5024	3	517	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	3	3	Large	Phase1Large	2008	2010	2012	1	1
+6CCOV002.54	3	-82.3631	36.6527	1	541.5024	3	518	VA	TS	Target Wadeable	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+6CGAS000.45	2	-82.1576	36.742	1	947.6292	2	519	VA	TS	Y -TS	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+6CGRN003.29	2	-82.04002542	36.73839324	1	947.6292	2	520	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	2	2	Small	Phase1Small	1	2010	2012	2014	1
+6CHUT000.07	2	-81.4702017	36.8568735	1	947.6292	2	521	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	2	2	Small	Phase1Small	1	2010	2012	2014	1
+6CLAL000.19	4	-81.8294	36.6494	1	315.8764	4	522	VA	TS	Target Wadeable	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+6CLAL001.79	4	-81.80495104	36.6423631	1	315.8764	4	523	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	4	3	Large	Phase1Large	1	2010	2012	2014	1
+6CLIB001.06	3	-81.47481297	36.95873218	1	541.5024	3	524	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+6CMFH023.41	4	-81.731588	36.769244	1	315.8764	4	525	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+6CNFH014.72	4	-82.50320063	36.62199954	1	315.8764	4	526	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	4	4	Large	Phase1Large	2008	2010	2012	1	1
+6CNFH067.13	4	-81.95956048	36.80998471	1	315.8764	4	527	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	4	4	Large	Phase1Large	2008	2010	2012	1	1
+6CNFH073.03	4	-81.88080029	36.83973014	1	315.8764	4	528	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	4	4	Large	Phase2Large	1	1	2012	2014	2016
+6CNFH108.76	4	-81.53647	36.950689	1	315.8764	4	529	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+6CPSM017.73	3	-82.738622	36.606807	1	541.5024	3	530	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+6CSFH082.78	5	-81.78999904	36.67808167	1	140.3895	5	531	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	5	3	Large	Phase2Large	1	1	2012	2014	2016
+6CSFH084.73	4	-81.771829	36.691607	1	315.8764	4	532	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	4	3	Large	Phase1Large	2008	1	1	1	1
+6CSFH098.10	4	-81.621302	36.765333	1	315.8764	4	533	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	1	1	1
+6CSFH099.18	4	-81.60880073	36.77459675	1	315.8764	4	534	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	4	3	Large	Phase2Large	1	1	2012	2014	2016
+6CSFH104.35	3	-81.537467	36.760727	1	541.5024	3	535	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2005	Phase1	Phase2	3	3	Large	Phase1Large	2008	2010	2012	1	1
+6CSLM002.11	1	-81.407864	36.809949	1	3790.5166	1	536	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2001	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+6CSPO001.45	2	-82.0047	36.647	1	947.6292	2	537	VA	TS	Y -TS	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+6CSTC000.20	2	-81.6495	36.7521	1	947.6292	2	538	VA	TS	Y -TS	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+6CSTC000.87	2	-81.646055	36.744917	1	947.6292	2	539	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	1	1	1
+6CSTU000.15	1	-81.65308472	36.65838897	1	3790.5166	1	540	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2008	Phase2	Phase3	1	2	Small	Phase2Small	1	2010	2012	2014	1
+6CXEE000.72	1	-81.51085778	36.71369862	1	3790.5166	1	541	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2006	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+6CXEO000.25	2	-82.26026315	36.63867024	1	947.6292	2	542	VA	TS	Target	1	Tennessee	Holston	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	2	3	Medium	Phase2Medium	1	1	2012	2014	2016
+7-BBR001.31	1	-75.774664	37.668002	1	3790.5166	1	543	VA	TS	Target	1	Rappahannock-York	Cheasapeake Bay	Bay	BayPhase1	Middle Atlantic Coastal Plain	Coast	2003	Phase1	Phase1	1	2	Small	Phase1Small	2008	2010	1	1	1
+7-DGN004.80	1	-76.90512199	37.8246815	1	3790.5166	1	544	VA	TS	Target	1	Rappahannock-York	Cheasapeake Bay	Bay	BayPhase1	Southeastern Plains	Coast	2007	Phase1	Phase3	1	2	Small	Phase1Small	1	2010	2012	2014	1
+7-GLF003.77	1	-75.643902	37.819928	1	3790.5166	1	545	VA	TS	Target	1	Rappahannock-York	Cheasapeake Bay	Bay	BayPhase1	Middle Atlantic Coastal Plain	Coast	2005	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	2012	1	1
+7-XDM000.50	1	-76.59531	37.594372	1	3790.5166	1	546	VA	TS	Target	1	Rappahannock-York	Cheasapeake Bay	Bay	BayPhase1	Southeastern Plains	Coast	2004	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	1	1	1
+7-XEQ000.85	1	-76.8058	37.7766	1	3790.5166	1	547	VA	TS	Target	1	Rappahannock-York	Cheasapeake Bay	Bay	BayPhase2	Southeastern Plains	Coast	2011	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+8-BLC002.88	3	-77.0956	37.5714	1	541.5024	3	548	VA	TS	Target Wadeable	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2012	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	2014	2016
+8-BLC005.54	3	-77.12936214	37.55834625	1	541.5024	3	549	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2009	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+8-BRC002.70	1	-78.048833	38.166022	1	3790.5166	1	550	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Northern Piedmont	Piedmont	2001	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+8-BRD000.43	2	-76.80145586	37.42918266	1	947.6292	2	551	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+8-FRK005.53	1	-78.0209	37.9107	1	3790.5166	1	552	VA	TS	Y -TS	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+8-HER012.99	2	-77.295144	37.839766	1	947.6292	2	553	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2002	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+8-LOC002.00	3	-77.72204227	37.89543588	1	541.5024	3	554	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Piedmont	Piedmont	2007	Phase1	Phase3	3	2	Small	Phase1Small	1	2010	2012	2014	1
+8-LRK000.11	2	-77.68858473	38.00617034	1	947.6292	2	555	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+8-MAR007.63	4	-77.2190782	37.95227623	1	315.8764	4	556	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2008	Phase2	Phase3	4	3	Large	Phase2Large	1	2010	2012	2014	1
+8-MHX000.27	2	-77.25088586	37.73052956	1	947.6292	2	557	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+8-MPN043.76	2	-78.0099	37.3343	1	947.6292	2	558	VA	TS	Target Wadeable	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	2	4	Large	Phase2Large	1	1	1	2014	2016
+8-MPN046.13	5	-77.122143	37.837631	1	140.3895	5	559	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2003	Phase1	Phase1	5	4	Large	Phase1Large	2008	2010	1	1	1
+8-MTA012.09	4	-77.579799	38.108724	1	315.8764	4	560	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Piedmont	Piedmont	2002	Phase1	Phase1	4	3	Medium	Phase1Medium	2008	1	1	1	1
+8-NAR006.15	5	-77.426965	37.858806	1	140.3895	5	561	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2002	Phase1	Phase1	5	4	Large	Phase1Large	2008	1	1	1	1
+8-NAR025.28	5	-77.617104	37.949384	1	140.3895	5	562	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Piedmont	Piedmont	2005	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	2012	1	1
+8-PCT002.95	4	-77.37817216	37.95281134	1	315.8764	4	563	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2009	Phase2	Phase3	4	3	Medium	Phase2Medium	1	1	2012	2014	2016
+8-PCT007.71	4	-77.45173	37.972637	1	315.8764	4	564	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2004	Phase1	Phase2	4	3	Medium	Phase1Medium	2008	2010	1	1	1
+8-PGN002.42	2	-77.80894869	38.12339107	1	947.6292	2	565	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Piedmont	Piedmont	2006	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+8-PMK063.58	5	-77.241553	37.699993	1	140.3895	5	566	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2004	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	1	1	1
+8-PMK077.53	5	-77.3171883	37.74368181	1	140.3895	5	567	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	2012	1	1
+8-PMK088.14	5	-77.3704	37.7888	1	140.3895	5	568	VA	TS	Target Wadeable	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2012	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	2014	2016
+8-PMK092.12	5	-77.38882695	37.78482748	1	140.3895	5	569	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2010	Phase2	Phase3	5	4	Large	Phase2Large	1	1	2012	2014	2016
+8-POR015.70_2004	4	-77.639797	38.203262	1	105.2921333	4	570	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Piedmont	Piedmont	2004	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	1	1	1
+8-POR015.70_2011	4	-77.63950811	38.20339415	1	105.2921333	4	571	VA	TS	Target Wadeable - WSA_Revisit	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	2014	2016
+8-POR015.70_2013	4	-77.6395	38.2034	1	105.2921333	4	572	VA	TS	"Y-Fall only, spring highwater"	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	1	2016
+8-POR024.64	3	-77.73251226	38.22926075	1	541.5024	3	573	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	3	3	Medium	Phase2Medium	1	2010	2012	2014	1
+8-RDB003.36	3	-78.06421462	37.93412566	1	541.5024	3	574	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Northern Piedmont	Piedmont	2010	Phase2	Phase3	3	2	Small	Phase2Small	1	1	2012	2014	2016
+8-RIG003.01	3	-77.94059842	38.21874237	1	541.5024	3	575	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Northern Piedmont	Piedmont	2009	Phase2	Phase3	3	2	Small	Phase2Small	1	1	2012	2014	2016
+8-RIG004.13	3	-77.9388	38.2339	1	541.5024	3	576	VA	TS	Target Wadeable	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	3	2	Small	Phase2Small	1	1	1	2014	2016
+8-SAR028.79	4	-77.6899	37.7583	1	315.8764	4	577	VA	TS	Y-TS (fall only - high in spring)	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2014	Phase2	Phase4	4	4	Large	Phase2Large	1	1	1	1	2016
+8-SAR058.13	4	-77.90920898	37.87805237	1	315.8764	4	578	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2008	Phase2	Phase3	4	4	Large	Phase2Large	1	2010	2012	2014	1
+8-SAR094.59	3	-78.1475	38.0681	1	541.5024	3	579	VA	TS	Y-TS - fall only?	1	Rappahannock-York	York	Bay	BayPhase2	Northern Piedmont	Piedmont	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+8-SHC001.59	2	-77.61461188	37.74221132	1	947.6292	2	580	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+8-SOB000.15	3	-77.09087891	37.57151243	1	541.5024	3	581	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	3	2	Small	Phase1Small	2008	2010	2012	1	1
+8-STG000.73	2	-77.52846986	37.79976259	1	947.6292	2	582	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+8-STH006.43	4	-77.472289	38.057595	1	315.8764	4	583	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2005	Phase1	Phase2	4	3	Medium	Phase1Medium	2008	2010	2012	1	1
+8-TLR005.30	3	-77.6973	37.7835	1	541.5024	3	584	VA	TS	Y-TS	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+8-XEA000.12	1	-76.612148	37.422171	1	3790.5166	1	585	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2001	Phase1	Phase1	1	1	Small	Phase1Small	2008	1	1	1	1
+8-XID000.08	2	-76.97538838	37.76880926	1	947.6292	2	586	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase1	Southeastern Plains	Coast	2006	Phase1	Phase2	2	1	Small	Phase1Small	2008	2010	2012	1	1
+8-XIM000.53	2	-77.46105747	37.89547626	1	947.6292	2	587	VA	TS	Target	1	Rappahannock-York	York	Bay	BayPhase2	Southeastern Plains	Coast	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+8-XJE000.48	2	-77.7473	37.8848	1	947.6292	2	588	VA	TS	Target Wadeable	1	Rappahannock-York	York	Bay	BayPhase2	Piedmont	Piedmont	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+9-CPL009.78	4	-81.051064	36.832649	1	315.8764	4	589	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2005	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+9-CPL012.73	4	-81.08702885	36.83618083	1	315.8764	4	590	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+9-CST005.73	3	-80.91134369	36.72014427	1	541.5024	3	591	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2009	Phase2	Phase3	3	3	Large	Phase2Large	1	1	2012	2014	2016
+9-CST012.63	3	-80.9337	36.6704	1	541.5024	3	592	VA	TS	Y-TS	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+9-DDD006.61	2	-80.318703	36.885443	1	947.6292	2	593	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+9-DEN000.39	2	-80.9862	36.8622	1	947.6292	2	594	VA	TS	Y-TS	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+9-DPW002.31	1	-80.63062934	36.91659488	1	3790.5166	1	595	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2008	Phase2	Phase3	1	2	Small	Phase2Small	1	2010	2012	2014	1
+9-ECM001.01	2	-81.2707	36.7169	1	947.6292	2	596	VA	TS	Target Wadeable	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2011	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	2014	2016
+9-ELK013.81	4	-81.164599	36.710784	1	315.8764	4	597	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2005	Phase1	Phase2	4	3	Medium	Phase1Medium	2008	2010	2012	1	1
+9-FRS000.16	1	-81.23485111	36.67725774	1	3790.5166	1	598	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2008	Phase2	Phase3	1	1	Small	Phase2Small	1	2010	2012	2014	1
+9-GSC000.44	3	-80.65920214	36.88649023	1	541.5024	3	599	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2007	Phase1	Phase3	3	3	Large	Phase1Large	1	2010	2012	2014	1
+9-ISL003.05	2	-80.69816504	36.78924123	1	947.6292	2	600	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2010	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+9-KNB003.98	2	-81.07966261	36.73119276	1	947.6292	2	601	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+9-KNS002.44	2	-81.25100988	36.77291879	1	947.6292	2	602	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2009	Phase2	Phase3	2	1	Small	Phase2Small	1	1	2012	2014	2016
+9-LEF005.25	1	-80.71917861	36.69103316	1	3790.5166	1	603	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2006	Phase1	Phase2	1	2	Small	Phase1Small	2008	2010	2012	1	1
+9-LFK005.39	2	-81.171301	37.243087	1	947.6292	2	604	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	2	2	Small	Phase1Small	2008	2010	2012	1	1
+9-LIC004.73	1	-80.538003	36.938597	1	3790.5166	1	605	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2001	Phase1	Phase1	1	2	Small	Phase1Small	2008	1	1	1	1
+9-LRR012.30_2012	1	-81.4593	37.2569	1	1895.2583	1	606	VA	TS	Target Wadeable	1	New	New	NonBay	NonBayPhase2	Central Appalachians	Mountain	2012	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	2014	2016
+9-LRR012.30_2014	1	-81.4593	37.2569	1	1895.2583	1	607	VA	TS	Y -TS	1	New	New	NonBay	NonBayPhase2	Central Appalachians	Mountain	2014	Phase2	Phase4	1	2	Small	Phase2Small	1	1	1	1	2016
+9-LRV004.89	5	-80.544056	37.049322	1	140.3895	5	608	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2005	Phase1	Phase2	5	4	Large	Phase1Large	2008	2010	2012	1	1
+9-LRV012.98	5	-80.533	37.0191	1	140.3895	5	609	VA	TS	Y -TS	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2014	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	1	2016
+9-LRV035.03	5	-80.383104	36.998699	1	140.3895	5	610	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2004	Phase1	Phase2	5	3	Large	Phase1Large	2008	2010	1	1	1
+9-LTL001.22	1	-81.37724707	37.12694494	1	3790.5166	1	611	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	1	2	Small	Phase1Small	1	2010	2012	2014	1
+9-LVR007.16	4	-81.0294	36.5681	1	315.8764	4	612	VA	TS	Y -TS	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2014	Phase2	Phase4	4	3	Large	Phase2Large	1	1	1	1	2016
+9-LWK004.04	3	-80.76809547	37.17309013	1	541.5024	3	613	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	3	3	Large	Phase1Large	2008	2010	2012	1	1
+9-MDR003.60	2	-80.171561	37.043899	1	947.6292	2	614	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2001	Phase1	Phase1	2	2	Small	Phase1Small	2008	1	1	1	1
+9-MER002.99	2	-80.95602831	37.00666962	1	947.6292	2	615	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	2	2	Small	Phase2Small	1	2010	2012	2014	1
+9-MLL000.90	2	-80.80054607	37.32286466	1	947.6292	2	616	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+9-NBS006.58	2	-80.930012	37.239376	1	947.6292	2	617	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+9-PKC005.95	4	-80.727471	37.04755	1	315.8764	4	618	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	1	1	1
+9-PLK000.79	2	-80.8103	37.0515	1	947.6292	2	619	VA	TS	Y-TS	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2013	Phase2	Phase4	2	2	Small	Phase2Small	1	1	1	1	2016
+9-PLM000.35	2	-80.523953	37.131652	1	947.6292	2	620	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	2	2	Small	Phase1Small	2008	2010	1	1	1
+9-RDC013.79	4	-80.927979	36.955385	1	315.8764	4	621	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	4	4	Large	Phase1Large	2008	1	1	1	1
+9-RDC049.02	3	-81.2811	36.9813	1	541.5024	3	622	VA	TS	Y-TS	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2013	Phase2	Phase4	3	3	Medium	Phase2Medium	1	1	1	1	2016
+9-RDC051.21	2	-81.31079901	36.9680481	1	947.6292	2	623	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2007	Phase1	Phase3	2	2	Small	Phase1Small	1	2010	2012	2014	1
+9-RHC002.85	4	-80.807	37.4008	1	315.8764	4	624	VA	TS	Y -TS	1	New	New	NonBay	NonBayPhase2	Central Appalachians	Mountain	2014	Phase2	Phase4	4	3	Medium	Phase2Medium	1	1	1	1	2016
+9-RIC038.67	3	-80.58790972	36.72884701	1	541.5024	3	625	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2007	Phase1	Phase3	3	3	Medium	Phase1Medium	1	2010	2012	2014	1
+9-RIC051.80	3	-80.531314	36.688988	1	541.5024	3	626	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	1	1	1
+9-SFK001.10	3	-81.179709	36.963496	1	541.5024	3	627	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+9-SFK002.81	3	-81.187518	36.984827	1	541.5024	3	628	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2004	Phase1	Phase2	3	3	Medium	Phase1Medium	2008	2010	2012	1	1
+9-SFK003.38	3	-81.19331535	36.99069301	1	541.5024	3	629	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+9-SMN001.14	1	-80.36870571	36.95155106	1	3790.5166	1	630	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2006	Phase1	Phase2	1	1	Small	Phase1Small	2008	2010	2012	1	1
+9-SNC008.04	3	-80.6080767	37.41741494	1	541.5024	3	631	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2010	Phase2	Phase3	3	3	Medium	Phase2Medium	1	1	2012	2014	2016
+9-SNK019.59	4	-80.410891	37.341549	1	315.8764	4	632	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	4	3	Medium	Phase1Medium	2008	2010	1	1	1
+9-TOM006.92	2	-80.50673193	37.23269965	1	947.6292	2	633	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	2	3	Medium	Phase1Medium	2008	2010	2012	1	1
+9-WFC010.66	4	-80.925421	37.278881	1	315.8764	4	634	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	4	4	Large	Phase1Large	2008	1	1	1	1
+9-WFC044.15	3	-81.288497	37.147858	1	541.5024	3	635	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	3	3	Medium	Phase1Medium	2008	1	1	1	1
+9-WLK016.78	5	-80.7374	37.2093	1	140.3895	5	636	VA	TS	Target Wadeable	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2012	Phase2	Phase4	5	4	Large	Phase2Large	1	1	1	2014	2016
+9-WLK024.17	5	-80.785795	37.202453	1	140.3895	5	637	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2001	Phase1	Phase1	5	3	Large	Phase1Large	2008	1	1	1	1
+9-WLK026.82	5	-80.805756	37.198573	1	140.3895	5	638	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2003	Phase1	Phase1	5	3	Large	Phase1Large	2008	2010	1	1	1
+9-WLK033.29	5	-80.8549	37.1627	1	140.3895	5	639	VA	TS	Target Wadeable	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2011	Phase2	Phase4	5	3	Large	Phase2Large	1	1	1	2014	2016
+9-WLK035.52	5	-80.865252	37.161385	1	140.3895	5	640	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2002	Phase1	Phase1	5	3	Large	Phase1Large	2008	1	1	1	1
+9-WLK052.27	4	-81.02101109	37.10464121	1	315.8764	4	641	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Central Appalachian Ridges and Valleys	Mountain	2006	Phase1	Phase2	4	3	Large	Phase1Large	2008	2010	2012	1	1
+9-WNS001.03	2	-80.97496791	37.19210674	1	947.6292	2	642	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2009	Phase2	Phase3	2	2	Small	Phase2Small	1	1	2012	2014	2016
+9-XDP000.65	1	-81.133152	36.666522	1	3790.5166	1	643	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2003	Phase1	Phase1	1	1	Small	Phase1Small	2008	2010	1	1	1
+9-XEO000.57	1	-80.5419036	36.75187066	1	3790.5166	1	644	VA	TS	Target	1	New	New	NonBay	NonBayPhase1	Blue Ridge Mountains	Mountain	2007	Phase1	Phase3	1	1	Small	Phase1Small	1	2010	2012	2014	1
+9-XES000.94	1	-81.06277745	36.95003861	1	3790.5166	1	645	VA	TS	Target	1	New	New	NonBay	NonBayPhase2	Central Appalachian Ridges and Valleys	Mountain	2008	Phase2	Phase3	1	2	Small	Phase2Small	1	2010	2012	2014	1
+9-XFH000.92	1	-81.1506	36.6384	1	3790.5166	1	646	VA	TS	Target Wadeable	1	New	New	NonBay	NonBayPhase2	Blue Ridge Mountains	Mountain	2012	Phase2	Phase4	1	1	Small	Phase2Small	1	1	1	2014	2016
+VAEQ99-349	5	-78.168862	37.444525	1	140.3895	5	647	VA	PD	Permission Denied	2																		
+6AMAB003.40	1	-81.98704686	37.23389669	1	3790.5166	1	648	VA	PD	Permission Denied	2																		
+1BFHW001.51	1	-78.8962486	38.67169296	1	3790.5166	1	649	VA	PD	Permission Denied	2																		
+VAEQ99-332	4	-79.836369	37.539214	1	315.8764	4	650	VA	PD	Permission Denied	2																		
+2-HRD016.50	4	-78.484193	37.857905	1	315.8764	4	651	VA	PD	Permission Denied	2																		
+VAEQ99-346	2	-80.152362	37.36163	1	947.6292	2	652	VA	PD	Permission Denied	2																		
+VAEQ99-316	1	-79.692853	36.939596	1	3790.5166	1	653	VA	PD	Permission Denied	2																		
+VAEQ99-315	4	-77.161718	36.794874	1	315.8764	4	654	VA	PD	Permission Denied	2																		
+4ADFF018.05	2	-78.884493	36.880572	1	947.6292	2	655	VA	PD	Permission Denied	2																		
+9-XEW000.36	1	-80.99352513	37.22644465	1	3790.5166	1	656	VA	PD	Permission Denied	2																		
+VAEQ99-485	5	-77.231604	36.553022	1	140.3895	5	657	VA	PD	Permission Denied	2																		
+VAEQ99-161	1	-79.898439	37.377488	1	3790.5166	1	658	VA	OT	"Target, Storm Drain"	2																		
+VAEQ99-329	4	-79.045493	37.623175	1	315.8764	4	659	VA	PD	Permission Denied	2																		
+2DXAD000.08	1	-77.89115693	37.20308858	1	3790.5166	1	660	VA	PD	Permission Denied	2																		
+4AXMZ000.74	1	-79.49900807	37.05287847	1	3790.5166	1	661	VA	PD	Permission Denied	2																		
+1BMLB000.43	2	-78.34805008	39.05476609	1	947.6292	2	662	VA	PD	Permission Denied	2																		
+3-THO019.96	2	-78.18754435	38.64334073	1	947.6292	2	663	VA	PD	Permission Denied	2																		
+VAEQ99-318	4	-77.691356	37.91063	1	315.8764	4	664	VA	OT	Wrong Region	2																		
+VAEQ99-298	5	-77.329095	37.959718	1	140.3895	5	665	VA	OT	Wrong Region	2																		
+VAEQ99-344	5	-77.409984	37.821178	1	140.3895	5	666	VA	OT	Wrong Region	2																		
+VAEQ99-154	4	-77.805533	37.774802	1	315.8764	4	667	VA	OT	"Target, Wrong Region"	2																		
+VAEQ99-064	1	-77.600414	37.459933	1	3790.5166	1	668	VA	OT	"Target, Wrong Region"	2																		
+VAEQ99-028	5	-77.547964	37.929121	1	140.3895	5	669	VA	OT	"Target, Wrong Region"	2																		
+VAEQ99-069	2	-77.560959	37.793485	1	947.6292	2	670	VA	OT	"Target, Wrong Region"	2																		
+VAEQ99-024	5	-77.38238	37.77782	1	140.3895	5	671	VA	OT	"Target, Wrong Region"	2																		
+VAEQ99-294	1	-77.917653	37.024211	1	3790.5166	1	672	VA	PD	Firing Range	2																		
+1BBBL002.20	2	-79.018325	38.635961	1	947.6292	2	673	VA	PD	Permission Denied	2																		
+VAEQ99-330	3	-77.475848	37.279697	1	541.5024	3	674	VA	OT	Wrong Region	2																		
+4ADFF006.59	4	-78.75461455	36.78367281	1	315.8764	4	675	VA	PD	Permission Denied	2																		
+6CPOS004.17	1	-81.410266	36.980274	1	3790.5166	1	676	VA	PD	Permission Denied	2																		
+VAEQ99-179	2	-79.34391	37.385466	1	947.6292	2	677	VA	PD	Permission Denied	2																		
+2-SHR006.80	1	-78.50246294	37.6901714	1	3790.5166	1	678	VA	PD	Permission Denied	2																		
+1BSTO002.02	2	-79.07289288	38.00166514	1	947.6292	2	679	VA	PD	Permission Denied	2																		
+6BXFP000.40	1	-82.10919664	36.8538477	1	3790.5166	1	680	VA	PD	Permission Denied	2																		
+3-GIN003.70	2	-77.15158892	38.20308416	1	947.6292	2	681	VA	PD	Permission Denied	2																		
+2-HNF007.55	4	-78.61338442	37.96267846	1	315.8764	4	682	VA	PD	Permission Denied	2																		
+2-OWN001.98	2	-78.84681166	37.60289664	1	947.6292	2	683	VA	PD	Permission Denied	2																		
+4ACOX001.06	3	-78.28157199	36.63438318	1	541.5024	3	684	VA	PD	Permission Denied	2																		
+2-CWP012.83	4	-79.73003322	37.85922413	1	315.8764	4	685	VA	PD	Permission Denied	2																		
+5ANTW119.13	4	-77.85203787	36.9896628	1	315.8764	4	686	VA	PD	Permission Denied	2																		
+4AXVA000.12	1	-79.01713217	36.78517221	1	3790.5166	1	687	VA	PD	Permission Denied	2																		
+6BGUE017.93	4	-82.57648738	36.93950643	1	315.8764	4	688	VA	PD	Permission Denied	2																		
+4ACUB008.73	4	-78.74077392	37.06033859	1	315.8764	4	689	VA	PD	Permission Denied	2																		
+4AXUT001.13	1	-79.193829	37.118692	1	3790.5166	1	690	VA	PD	Permission Denied	2																		
+2-XWI000.45	1	-78.856281	37.380406	1	3790.5166	1	691	VA	PD	Permission Denied	2																		
+4AJHB001.34	2	-78.39942154	36.68394424	1	947.6292	2	692	VA	PD	Permission Denied	2																		
+VAEQ99-580	4	-77.362601	36.710335	1	315.8764	4	693	VA	PD	Permission Denied	2																		
+2-LCF006.64	2	-79.43109745	38.01459553	1	947.6292	2	694	VA	PD	Permission Denied	2																		
+5AMHN039.59	5	-77.419596	36.654352	1	140.3895	5	695	VA	PD	Permission Denied	2																		
+2-RND004.85	2	-78.309384	37.617173	1	947.6292	2	696	VA	PD	Permission Denied	2																		
+5AMDT004.34	3	-78.216241	37.042199	1	541.5024	3	697	VA	PD	Permission Denied	2																		
+9-RIC021.56	4	-80.668508	36.821767	1	315.8764	4	698	VA	PD	Permission Denied	2																		
+2-BON002.08	2	-80.088782	37.445123	1	947.6292	2	699	VA	PD	Permission Denied	2																		
+4ABAN041.58	5	-79.200697	36.900768	1	140.3895	5	700	VA	PD	Permission Denied	2																		
+5ARYK004.42	3	-78.26971755	36.92612095	1	541.5024	3	701	VA	PD	Permission Denied	2																		
+2-FLA027.44	3	-78.18093761	37.26834098	1	541.5024	3	702	VA	PD	Permission Denied	2																		
+2-SLT042.67	2	-78.67232276	37.47493148	1	947.6292	2	703	VA	PD	Permission Denied	2																		
+4ASNA013.31	4	-79.16717292	36.76898541	1	315.8764	4	704	VA	PD	Permission Denied	2																		
+VARS11-069	1	-76.7676	37.101	1	3790.5166	1	705	VA	PD	Permission Denied	2																		
+2-TMC002.32	2	-79.3346	37.5461	1	947.6292	2	706	VA	PD	Permission Denied	2																		
+4AECR017.29	2	-79.349	37.3896	1	947.6292	2	707	VA	PD	Permission Denied	2																		
+9-SPK003.27	1	-80.4437	36.9042	1	3790.5166	1	708	VA	PD	Permission Denied	2																		
+8-CON004.49	1	-77.8658	38.0636	1	3790.5166	1	709	VA	PD	Permission Denied	2																		
+VARS11-079	1	-76.7599	38.013	1	3790.5166	1	710	VA	PD	Permission Denied	2																		
+6BGUE033.26	1	-82.6728	37.0424	1	3790.5166	1	711	VA	PD	Permission Denied	2																		
+2BXSC001.35	2	-78.3636	37.8385	1	947.6292	2	712	VA	PD	Permission Denied	2																		
+VARS11-135	1	-76.4335	37.804	1	3790.5166	1	713	VA	PD	Permission Denied	2																		
+4AXVW000.07	1	-78.4432	36.7795	1	3790.5166	1	714	VA	PD	Permission Denied	2																		
+PRO2016A	1	-77.746	36.6593	1	3790.5166	1	715	VA	PD	Permission Denied	2																		
+4AMWW004.63	2	-79.5929	37.1815	1	947.6292	2	716	VA	PD	Permission Denied	2																		
+2BGLL000.63	2	-78.4515	37.4034	1	947.6292	2	717	VA	PD	Permission Denied	2																		
+2DDPC017.88	3	-77.9959	37.2024	1	541.5024	3	718	VA	PD	Permission Denied	2																		
+1BMDL022.09	3	-78.9793	38.211	1	541.5024	3	719	VA	OT	Boatable Bugs Only	2																		
+4ACNT016.58	3	-79.8561	36.879	1	541.5024	3	720	VA	OT	N-PD	2																		
+9-BMC001.94	3	-80.9215	36.9852	1	541.5024	3	721	VA	OT	N-PD	2																		
+4ABAN057.85	4	-79.3356	36.8046	1	315.8764	4	722	VA	OT	Boatable Bugs Only	2																		
+2-JKS028.69	5	-79.9527	37.9393	1	140.3895	5	723	VA	OT	Boatable Bugs Only	2																		
+2-JMS196.16	5	-78.5686	37.7588	1	140.3895	5	724	VA	NT	Boatable 2005	3																		
+4ADAN042.01	5	-79.212	36.552	1	140.3895	5	725	VA	NT	Boatable 2005	3																		
+6BCLN256.31	5	-82.2924	36.8971	1	140.3895	5	726	VA	NT	Boatable 2005	3																		
+9-NEW070.80	5	-80.517	37.1945	1	140.3895	5	727	VA	NT	Boatable 2005	3																		
+9-NEW107.50	5	-80.7462	36.9366	1	140.3895	5	728	VA	NT	Boatable 2005	3																		
+1BSSF034.55	5	-78.3884	38.7744	1	140.3895	5	729	VA	NT	Boatable 2005	3																		
+1BSSF081.36	5	-78.6334	38.4469	1	140.3895	5	730	VA	NT	Boatable 2005	3																		
+8-MPN045.51	5	-77.1222	37.8312	1	140.3895	5	731	VA	NT	Boatable 2005	3																		
+8-MPN075.84	5	-77.3073	37.9232	1	140.3895	5	732	VA	NT	Boatable 2005	3																		
+8-PMK070.45	5	-77.2637	37.7201	1	140.3895	5	733	VA	NT	Boatable 2005	3																		
+4ASRE006.91	5	-79.7582	36.5481	1	140.3895	5	734	VA	NT	Fall Boat Only	3																		
+6BCLN250.67	5	-82.3285	36.8909	1	140.3895	5	735	VA	NT	Boatable 2005 frame	3																		
+4AROA076.57	5	-78.7594	37.0034	1	140.3895	5	736	VA	NT	Boatable 2005 frame	3																		
+2-JMS346.34	5	-79.7759	37.7831	1	140.3895	5	737	VA	NT	Boatable 2005 frame	3																		
+2-JMS297.28	5	-79.5822	37.5791	1	140.3895	5	738	VA	NT	Boatable 2005 frame	3																		
+2BJMS136.77	5	-77.8491	37.6439	1	140.3895	5	739	VA	NT	Boatable 2005 frame	3																		
+1BNTH015.45	5	-78.9334	38.3453	1	140.3895	5	740	VA	NT	Boatable 2005 frame	3																		
+3-XEX000.81	1	-77.056295	38.086035	1	3790.5166	1	741	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4AXNE000.48	1	-79.37707528	37.39042531	1	3790.5166	1	742	VA	NT	Withheld Judgement (dry)	3																		
+8-XIU000.15	1	-77.16911393	38.01740193	1	3790.5166	1	743	VA	NT		3																		
+4AXME001.19	1	-79.226456	36.556897	1	3790.5166	1	744	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-RRS010.30	4	-78.532709	38.131962	1	315.8764	4	745	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2CXAF000.46	1	-76.96381395	37.35046177	1	3790.5166	1	746	VA	NT	Withheld Judgement (swamp)	3																		
+5AGHB002.52	1	-76.81634552	37.10364218	1	3790.5166	1	747	VA	NT	Withheld Judgement (swamp)	3																		
+2-HOI004.08	1	-77.818104	37.269011	1	3790.5166	1	748	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAW05547-286	1	-76.51994265	36.95814221	1	3790.5166	1	749	VA	NT		3																		
+VAW05547-250	1	-75.70896001	37.51018381	1	3790.5166	1	750	VA	NT		3																		
+6BBUY002.54	1	-82.94254833	36.86242187	1	3790.5166	1	751	VA	NT		3																		
+1AXLT000.22	1	-77.58351927	38.97671984	1	3790.5166	1	752	VA	NT		3																		
+3-XHI001.86	1	-77.81853833	38.63077005	1	3790.5166	1	753	VA	NT		3																		
+3-XHR001.15	1	-77.76219163	38.37269953	1	3790.5166	1	754	VA	NT		3																		
+6CXCH001.34	1	-82.191314	36.768578	1	3790.5166	1	755	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6CNFH047.64	4	-82.225835	36.73506	1	315.8764	4	756	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ABMS000.80	2	-76.81264208	36.84449202	1	947.6292	2	757	VA	NT	Withheld Judgement (swamp)	3																		
+3-XHQ000.35	1	-77.99362128	38.37890016	1	3790.5166	1	758	VA	NT	dry	3																		
+VAEQ99-195	1	-77.726316	37.02091	1	3790.5166	1	759	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+3-GMS000.12	1	-76.838419	38.050568	1	3790.5166	1	760	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4AROA134.35	6	-79.343757	37.126319	1	140.3895	5	761	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4ASRE009.53	6	-79.735739	36.577856	1	140.3895	5	762	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAW05547-302	4	-76.85602733	37.52483127	1	315.8764	4	763	VA	NT		3																		
+6CNFH083.94	4	-81.763989	36.894137	1	315.8764	4	764	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ACNY001.08	2	-77.46756254	36.57819397	1	947.6292	2	765	VA	NT	Withheld Judgement (swamp)	3																		
+VAEQ99-143	1	-76.784752	37.533684	1	3790.5166	1	766	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+9-XDM002.81	1	-80.253262	36.931442	1	3790.5166	1	767	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+1BNFS000.57	5	-78.19718	38.948484	1	140.3895	5	768	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+7-DRN027.96	3	-76.830475	37.795236	1	541.5024	3	769	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-196	1	-79.819318	37.482859	1	3790.5166	1	770	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-208	1	-78.545505	38.282586	1	3790.5166	1	771	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-155	3	-77.90156	36.782826	1	541.5024	3	772	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-NTR001.15	2	-77.496784	37.669293	1	947.6292	2	773	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-057	2	-81.023147	36.932974	1	947.6292	2	774	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-049	1	-77.047157	37.301284	1	3790.5166	1	775	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-010	1	-77.071696	36.624696	1	3790.5166	1	776	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-149	1	-78.689502	37.12408	1	3790.5166	1	777	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BPOW145.95	6	-83.06682185	36.67416589	1	140.3895	5	778	VA	NT	Large River	3																		
+1BSSF066.98	5	-78.5839309	38.54271087	1	140.3895	5	779	VA	NT	Large River	3																		
+2-MRY010.96	5	-79.37931759	37.74993566	1	140.3895	5	780	VA	NT	Large River	3																		
+4ABAN034.15	5	-79.13750149	36.9241158	1	140.3895	5	781	VA	NT	Large River	3																		
+4ASRE032.38	5	-79.92372542	36.69288727	1	140.3895	5	782	VA	NT	Large River	3																		
+5ANTW029.65	6	-77.09381403	36.7363442	1	140.3895	5	783	VA	NT	Large River	3																		
+VAW05547-310	6	-77.36486603	37.29058519	1	140.3895	5	784	VA	NT		3																		
+2-JMS299.59	6	-79.60863057	37.56981487	1	140.3895	5	785	VA	NT	Large River	3																		
+VAW05547-274	3	-76.68660675	37.92938238	1	541.5024	3	786	VA	NT		3																		
+6BCLN273.19	6	-82.13814319	36.95335839	1	140.3895	5	787	VA	NT	Large River	3																		
+2-RKF001.91	4	-78.67053661	37.72536748	1	315.8764	4	788	VA	NT		3																		
+9-NEW063.06	6	-80.60666775	37.20528105	1	140.3895	5	789	VA	NT	Large River	3																		
+2DAPP015.51	6	-77.46173521	37.2242191	1	140.3895	5	790	VA	NT	Large River	3																		
+3-RPP100.22	7	-77.34820834	38.25265694	1	140.3895	5	791	VA	NT	Large River/Tidal	3																		
+VAW05547-246	7	-77.06254342	38.16244348	1	140.3895	5	792	VA	NT	Large River	3																		
+2BJMS113.47	7	-77.48698468	37.5349886	1	140.3895	5	793	VA	NT	Large River	3																		
+2BJMS136.77	7	-77.84913549	37.64391632	1	140.3895	5	794	VA	NT	Large River	3																		
+2BJMS264.58	7	-79.17947922	37.4560551	1	140.3895	5	795	VA	NT	Large River	3																		
+6BCLN250.67	6	-82.32845909	36.89092052	1	140.3895	5	796	VA	NT	Large River	3																		
+4AXVM000.35	2	-78.53652207	36.88208519	1	947.6292	2	797	VA	NT		3																		
+5BXAT000.30	2	-76.09382806	36.5746108	1	947.6292	2	798	VA	NT	Withheld Judgement (swamp)	3																		
+8-BRS001.15	2	-76.92243615	37.67350079	1	947.6292	2	799	VA	NT	Withheld Judgement (swamp)	3																		
+8-XJB000.47	2	-77.13154212	37.83180912	1	947.6292	2	800	VA	NT	Withheld Judgement (beaver swamp)	3																		
+2DHAW000.81	2	-78.01654785	37.41390335	1	947.6292	2	801	VA	NT	Withheld Judgement (swamp)	3																		
+2DRCE001.21	2	-78.40262752	37.19074441	1	947.6292	2	802	VA	NT	Withheld Judgement (dam)	3																		
+4ASSC012.62	2	-79.22481157	36.97931583	1	947.6292	2	803	VA	NT	Withheld Judgement (beaver swamp)	3																		
+VAW05547-234	2	-76.43311925	37.45495157	1	947.6292	2	804	VA	NT		3																		
+5ABLW022.89	5	-76.91663368	36.73262069	1	140.3895	5	805	VA	NT	Large River	3																		
+VAW05547-258	2	-77.00861668	37.59714175	1	947.6292	2	806	VA	NT		3																		
+5ABLW004.09	5	-76.91501251	36.57649166	1	140.3895	5	807	VA	NT	Large River	3																		
+5ARDC001.51	3	-77.69107872	36.72600528	1	541.5024	3	808	VA	NT	Withheld Judgement (swamp)	3																		
+2-HEP001.27	2	-77.74202	37.426712	1	947.6292	2	809	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5AASM018.61	4	-77.14609721	36.96992942	1	315.8764	4	810	VA	NT	Withheld Judgement (swamp)	3																		
+6CNFH020.93	4	-82.458558	36.63848	1	315.8764	4	811	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAW05547-346	4	-76.84187984	37.98046331	1	315.8764	4	812	VA	NT		3																		
+2-JKS038.61	4	-79.98246584	37.89556505	1	315.8764	4	813	VA	NT	Large River	3																		
+6CNFH086.23	4	-81.73261092	36.90464236	1	315.8764	4	814	VA	NT	Large River	3																		
+VAW05547-241	2	-77.32290658	36.59650542	1	947.6292	2	815	VA	NT		3																		
+6CXED001.00	1	-82.21231624	36.81051707	1	3790.5166	1	816	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+3-XFK001.00	2	-77.012576	37.963895	1	947.6292	2	817	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-XZH002.69	4	-77.70294883	37.57887955	1	315.8764	4	818	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4APOB005.98	3	-78.0347338	36.60083783	1	541.5024	3	819	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-SFT004.80	4	-77.41106204	37.28225866	1	315.8764	4	820	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAW05547-058	1	-75.95799686	37.36127936	1	3790.5166	1	821	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-UNN003.77	1	-79.49409178	37.78725943	1	3790.5166	1	822	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+1AXLB001.49	1	-77.49889083	38.44479381	1	3790.5166	1	823	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+EPA4	5	-77.11728552	37.63558518	1	140.3895	5	824	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2AXQT000.66	1	-80.07296516	37.76676376	1	3790.5166	1	825	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+3-XHB000.65	1	-76.75612595	37.8208338	1	3790.5166	1	826	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-BNH003.00	2	-77.89994658	37.56358927	1	947.6292	2	827	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BXEV000.64	1	-83.63864724	36.61310629	1	3790.5166	1	828	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAW05547-042	1	-76.57967445	36.94638165	1	3790.5166	1	829	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ABLW030.84	5	-76.86559207	36.79036857	1	140.3895	5	830	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-XYC000.31	1	-77.54886449	37.68932503	1	3790.5166	1	831	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4AXNB000.60	1	-80.14343646	37.3282134	1	3790.5166	1	832	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-340	5	-77.536091	39.040208	1	140.3895	5	833	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5AXGH000.04	1	-77.40072941	36.82788208	1	3790.5166	1	834	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4APGG053.90	4	-79.85770462	36.98320612	1	315.8764	4	835	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4AROA124.02	7	-79.23889303	37.11190438	1	140.3895	5	836	VA	NT	Large River	3																		
+5ABTR007.93	3	-77.76572406	37.08172364	1	541.5024	3	837	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+EPA1	3	-77.09493536	37.27653424	1	541.5024	3	838	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+7-DRN021.13	3	-76.75602124	37.74275053	1	541.5024	3	839	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-XUJ003.18	1	-80.1809872	37.34784865	1	3790.5166	1	840	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-XZS000.38	1	-77.28189354	37.5056063	1	3790.5166	1	841	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ATRE028.49	4	-77.47552695	36.71925543	1	315.8764	4	842	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-XZF000.85	1	-78.51924633	37.52745702	1	3790.5166	1	843	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5AXHP000.88	1	-77.20810023	37.12119587	1	3790.5166	1	844	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-TAL003.16	1	-80.200817	37.534991	1	3790.5166	1	845	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4AROA136.70	6	-79.38254703	37.11953451	1	140.3895	5	846	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+EPA3	1	-78.10277974	39.0534498	1	3790.5166	1	847	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+EPA5	5	-76.86499799	37.02137519	1	140.3895	5	848	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ARAN002.62	1	-77.6866871	36.93947092	1	3790.5166	1	849	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ABKR004.83	3	-77.21890238	37.14482349	1	541.5024	3	850	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4AXUZ000.03	4	-79.36339591	36.78232442	1	315.8764	4	851	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+EPA2	1	-76.93945465	38.06986787	1	3790.5166	1	852	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+4AXVJ000.78	1	-79.34453244	36.90641291	1	3790.5166	1	853	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-APP061.07	5	-77.867681	37.456664	1	140.3895	5	854	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ARHS000.39	3	-76.922165	36.846515	1	541.5024	3	855	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+8-LOC001.31	3	-77.716412	37.903403	1	541.5024	3	856	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-MCR002.38	2	-76.870264	37.388454	1	947.6292	2	857	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6CNFH033.45	4	-82.357943	36.68682	1	315.8764	4	858	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-347	2	-82.115245	36.855502	1	947.6292	2	859	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-325	2	-78.56428	36.715642	1	947.6292	2	860	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-301	5	-78.890657	36.772422	1	140.3895	5	861	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+9-BST028.72	3	-81.279574	37.265093	1	541.5024	3	862	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BCLN290.74	5	-81.997051	36.971388	1	140.3895	5	863	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+1ACER002.20	5	-77.498197	38.68129	1	140.3895	5	864	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BPOW141.45	5	-83.107686	36.667289	1	140.3895	5	865	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BPOW133.00	5	-83.17163	36.634306	1	140.3895	5	866	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-JKS044.14	3	-79.950265	37.949006	1	541.5024	3	867	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-RVN022.61	5	-78.29453	37.913365	1	140.3895	5	868	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-SWE001.50	1	-77.274631	37.434733	1	3790.5166	1	869	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-RVN032.46	5	-78.395074	37.995025	1	140.3895	5	870	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-TOT000.08	4	-78.501098	37.783588	1	315.8764	4	871	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-297	1	-82.651708	36.849861	1	3790.5166	1	872	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5ABLW064.97	4	-76.963999	37.031676	1	315.8764	4	873	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-614	3	-77.188265	37.891471	1	541.5024	3	874	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+1APAR001.78	2	-78.211588	39.248274	1	947.6292	2	875	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5AXFN002.85	1	-77.194172	37.201837	1	3790.5166	1	876	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BPOW123.64	5	-83.25524	36.618933	1	140.3895	5	877	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+1BNFS024.21	4	-78.397573	38.927684	1	315.8764	4	878	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-589	5	-77.132173	37.662076	1	140.3895	5	879	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-587	3	-77.283184	38.609947	1	541.5024	3	880	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BCLN320.91	4	-81.785022	37.089163	1	315.8764	4	881	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-BLG011.41	3	-77.95911	37.802169	1	541.5024	3	882	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-XUF000.55	1	-79.848569	37.799824	1	3790.5166	1	883	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6BPOW170.76	4	-82.875262	36.811903	1	315.8764	4	884	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-578	1	-76.693741	37.932896	1	3790.5166	1	885	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-CHK057.85	5	-77.314003	37.566671	1	140.3895	5	886	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+6AMCR008.05	4	-82.363699	37.162708	1	315.8764	4	887	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-474	2	-76.96549	37.535083	1	947.6292	2	888	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+VAEQ99-488	1	-77.408051	38.336308	1	3790.5166	1	889	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+5AXEX001.12	1	-77.422164	37.078013	1	3790.5166	1	890	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+2-GRS000.75	1	-76.547745	36.905658	1	3790.5166	1	891	VA	NT	"No Tool,Large,Dry,Tidal, Lake"	3																		
+1AGOO000.50	5	-77.4863	39.1005	1	140.3895	5	892	VA	NT	Boatable	3																		
+2DAPP055.68	5	-77.8716	37.404	1	140.3895	5	893	VA	NT	Boatable	3																		
+1BSSF040.97	5	-78.4369	38.7406	1	140.3895	5	894	VA	NT	Boatable	3																		
+4AROC006.93	4	-78.6629	36.9497	1	315.8764	4	895	VA	NT	Boatable (low fish count)	3																		
+8-MPN103.42	5	-77.4326	38.112	1	140.3895	5	896	VA	NT	Boatable (no fish or chem)	3																		
+5ASNY003.19	3	-78.0479	36.8117	1	541.5024	3	897	VA	NT	Boatable (not many fish)	3																		
+5ABLW025.39	5	-76.8993	36.7534	1	140.3895	5	898	VA	NT	Boatable (some chem missing)	3																		
+2-JKS028.69b	5	-79.9894	37.8227	1	140.3895	5	899	VA	NT	Boatable Annual	3																		
+4ASRE006.91	5	-79.7582	36.5481	1	140.3895	5	900	VA	NT	Boatable Annual	3																		
+8-MPN075.84	5	-77.3073	37.9232	1	140.3895	5	901	VA	NT	Boatable Annual	3																		
+1BNTH015.66	5	-78.9334	38.3453	1	140.3895	5	902	VA	NT	Boatable Annual	3																		
+5ANTW066.95	5	-77.323	36.9882	1	140.3895	5	903	VA	NT	Boatable Annual	3																		
+2CCHK038.53 	4	-77.097	37.4416	1	315.8764	4	904	VA	NT	NT - Too Deep	3																		
+6CBAT002.14	1	-81.9454	36.8617	1	3790.5166	1	905	VA	NT	NT-Dry	3																		
+6BSEL001.81	1	-82.4549	36.897	1	3790.5166	1	906	VA	NT	NT-Dry	3																		
+VARS11-022	1	-77.7681	37.1687	1	3790.5166	1	907	VA	NT	NT-Dry	3																		
+VARS11-029	1	-77.0052	38.1406	1	3790.5166	1	908	VA	NT	NT-Dry	3																		
+VARS11-072	1	-77.4283	36.9372	1	3790.5166	1	909	VA	NT	NT-Dry	3																		
+6ASTL006.28	1	-82.5071	36.945	1	3790.5166	1	910	VA	NT	NT-Dry	3																		
+9-GRP001.29	1	-81.211	36.978	1	3790.5166	1	911	VA	NT	NT-Dry	3																		
+1BPNE001.60	3	-79.1292	37.9987	1	541.5024	3	912	VA	NT	NT-Dry	3																		
+VARS11-093	5	-76.857	37.6144	1	140.3895	5	913	VA	NT	NT-Dry	3																		
+3-HNT001.55	2	-77.6475	38.3459	1	947.6292	2	914	VA	NT	NT-Lake	3																		
+4AWOL000.76 	2	-78.8226	36.7221	1	947.6292	2	915	VA	NT	NT-Lake	3																		
+VARS11-245	2	-76.639	36.7142	1	947.6292	2	916	VA	NT	NT-Lake	3																		
+VARS11-086	4	-77.4823	37.4605	1	315.8764	4	917	VA	NT	NT-Lake	3																		
+4AROA195.60	5	-79.8316	37.2178	1	140.3895	5	918	VA	NT	NT-Lake	3																		
+4AFLT003.30	3	-78.1675	36.6403	1	541.5024	3	919	VA	NT	NT-Swamp	3																		
+VARS11-083	2	-76.5548	36.7598	1	947.6292	2	920	VA	NT	NT-Tidal	3																		
+VARS11-075	4	-76.9869	38.2042	1	315.8764	4	921	VA	NT	NT-Tidal	3																		
+VARS11-095	4	-76.0493	36.6187	1	315.8764	4	922	VA	NT	NT-Tidal	3																		
+VARS11-258	5	-77.1821	37.6743	1	140.3895	5	923	VA	NT	NT-Tidal	3																		
+6BSIM000.22	1	-83.2242	36.6475	1	3790.5166	1	924	VA	NT	Spring/Beaver Stream	3																		
+8-XJF000.27	1	-77.72	38.0688	1	3790.5166	1	925	VA	NT	Swamp	3																		
+2-XSP000.97	1	-79.6771	37.8307	1	3790.5166	1	926	VA	NT	Dry	3																		
+4ASIT001.46	1	-80.319	37.3071	1	3790.5166	1	927	VA	NT	Dry	3																		
+2-XRC000.48	1	-80.143	37.6305	1	3790.5166	1	928	VA	NT	N-Dry	3																		
+9-ISB001.03	1	-80.585	37.3995	1	3790.5166	1	929	VA	NT	N-Dry	3																		
+2BXAN000.79	1	-78.7561	37.4276	1	3790.5166	1	930	VA	NT	N-Dry	3																		
+1BSTL002.14	1	-78.844	38.0688	1	3790.5166	1	931	VA	NT	N-Dry	3																		
+VARS11-144	1	-77.0996	37.2894	1	3790.5166	1	932	VA	NT	N-Lake	3																		
+2BXAR000.75	1	-79.0467	37.4999	1	3790.5166	1	933	VA	NT	NT-Dry	3																		
+VARS11-261	2	-76.912	36.7104	1	947.6292	2	934	VA	NT	N-PD	3																		
+VARS11-121	2	-75.6932	37.6235	1	947.6292	2	935	VA	NT	N-Tidal	3																		
+TRO2016A	2	-75.5288	37.8851	1	947.6292	2	936	VA	NT	NT - Swamp	3																		
+TRO2016B	2	-77.0528	36.57	1	947.6292	2	937	VA	NT	NT - Swamp	3																		
+PRO2016E	2	-77.6453	37.6129	1	947.6292	2	938	VA	NT	NT - Tidal	3																		
+TRO2016C	2	-76.5585	37.2793	1	947.6292	2	939	VA	NT	NT - Tidal	3																		
+6CNFH124.34	3	-81.3999	36.9703	1	541.5024	3	940	VA	NT	N-PD	3																		
+VARS11-127	3	-76.7704	37.2265	1	541.5024	3	941	VA	NT	N-Tidal	3																		
+5AQRL000.21	3	-77.7047	36.613	1	541.5024	3	942	VA	NT	Swamp - beavers	3																		
+PRO2016D	3	-77.1617	37.288	1	541.5024	3	943	VA	NT	NT - Tidal	3																		
+8-BEV005.92	3	-77.1519	37.9798	1	541.5024	3	944	VA	NT	NT-Swamp	3																		
+5ABLW075.43	4	-77.0694	37.0679	1	315.8764	4	945	VA	NT	Swamp - no banks	3																		
+PRO2016B	4	-76.8376	37.9877	1	315.8764	4	946	VA	NT	NT - Tidal	3																		
+PRO2016C	4	-76.3986	37.532	1	315.8764	4	947	VA	NT	NT - Tidal	3																		
+VARS11-141	5	-76.4905	36.8864	1	140.3895	5	948	VA	NT	N-Tidal	3																		
