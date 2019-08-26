@@ -343,51 +343,10 @@ p2.4.5
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Probabilistic Monitoring program has generated a robust dataset comprised of `r format(nrow(surveyData), digits=1)` sites statewide since 2001, allowing the agency to estimate biological condition across the state at various spatial scales. The 2018 Integrated Report is the first time the program has had enough data to report condition estimates at river basin-specifc scales in addition to larger stream size classes and ecoregional scales. Estimates of biological condition may be calculated on datasets with more than 30 samples (Feller 1968). Previously, not all river basins had enough samples to extrapolate estimates of biological condition. Due to the random basis of the probabilistic sampling frame, it has taken sixteen years to produce enough data in certain basins to meet the analytical requirements of river basin-scale analyses. Ongoing data collection will continue to reduce the variability around estimates in addition to allowing condition estimates at even finer spatial scales. The below analyses were conducted using the probabilistic monitoring dataset from 2001 to `r IRyearWindowEnd` to illustrate the status of Virginia waterways across various environmental classification scales. Comparisons among the groupings (e.g. major river basins) represent the relative water quality condition among them as it has occurred over this time frame. 
 
-##### Temporal Variability
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temporal variability does not drive estimates (*cite Karen/Tony*). In fact, estimates of biological condition have remained nearly constant in both the large and small river basins in the Commonwealth since probabilistic monitoring began. To demonstrate temporal variability is not driving condition estimates, we selected the James River basin and Big Sandy River basins to analyze estimates of percent of streams not meeting the biological threshold. These river basins were chosen for their differences in size and number of samples since the beginning of the Probabilistic Monitoring program began. Since 2001, the James River basin has been sampled `r max(filter(dat,Subpopulation=='James Basin'&Indicator=='VSCIVCPMI')$NResp)` times while the Big Sandy has been sampled `r max(filter(dat,Subpopulation=='Big Sandy'&Indicator=='VSCIVCPMI')$NResp)` times, due to the random nature of the survey design. Figure 2.4-NEWFIG demonstrates that estimates of percent of streams not meeting the biological threshold in the James River and Big Sandy River basins have not drifted through time. Estimates on datasets with less than 30 samples are less reliable, but visualizing the lack of change in estimates and increase in confidence around estimates through time is a worthy exercise to demonstrate the stability in biological estimates in large and small datasets with increasing sample sizes.
-
-##### Figure 2.4-8 VSCI/VCPMI status in James River and Big Sandy River basins over time with increasing sample sizes. Percentile represents percent of stream miles below the biological assessment threshold, along with their 95% confidence limits. The number of samples collected from 2001 to each year listed on the x axis is identified as n.
-
-```{r Figure 2.4-NEWFIG, fig.width=7, fig.height=5}
-# sourced from HowToDemonstrateConfidenceInStatusEstimatesGivenTemporalVariability.Rmd
-VSCIoverWindows_p <- readRDS('processedData/VSCIoverWindows_p.RDS')
-
-
-ggplot(VSCIoverWindows_p,aes(IRwindow,Estimate.P, fill = Subpopulation)) +
-  geom_bar(stat='identity', position = 'dodge') +
-  labs(x="Data from 2001 through Year",
-       y = "Percent of Stream Miles Below \nBiologic Assessment Threshold")+
-  scale_fill_manual(values=c("steelblue","orange","steelblue","orange",
-                             "steelblue","orange","steelblue","orange",
-                             "steelblue","orange","steelblue","orange")) +
-  geom_text(data=subset(VSCIoverWindows_p, Subpopulation != 'James'),
-            aes(y=50, label=paste(format(Estimate.P,digits=1,nsmall=0),"%",sep="")),
-            color="black", size=3.5,family='Arial',  hjust=1.05) +
-  geom_text(data=subset(VSCIoverWindows_p, Subpopulation != 'James'),
-            aes(y=45, label=paste('n=',n, sep="")),
-            color="black", size=3.5,family='Arial',  hjust=1.09) +
-  
-  geom_text(data=subset(VSCIoverWindows_p, Subpopulation == 'James'),
-            aes(y=10, label=paste(format(Estimate.P,digits=1,nsmall=0),"%",sep="")),
-            color="black", size=3.5,family='Arial',  hjust=-0.20) +
-  geom_text(data=subset(VSCIoverWindows_p, Subpopulation == 'James'),
-            aes(y=5, label=paste('n=',n, sep="")),
-            color="black", size=3.5,family='Arial',  hjust=0.05) +
-  theme_minimal()+
-  theme(text=element_text(family="Arial"),
-    panel.grid.major.x = element_blank(),
-    # explicitly set the horizontal lines (or they will disappear too)
-    panel.grid.major.y = element_line( size=.1, color="black" ),
-    panel.grid.minor = element_blank(),panel.background = element_blank(),
-    axis.line = element_line(colour = "black"))+ # no background grid
-  geom_errorbar(aes(ymax=Estimate.P - `Margin of Error`,ymin=Estimate.P +`Margin of Error`), 
-                width=0.2,position=position_dodge(1.8))
-```
 
 ##### Biological Condition by Watershed Size
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Changes in biological community are evident by grouping streams based on their size. For this analysis, streams were categorized as small, medium, and large based on watershed area (Table 2.4-6). Figure 2.4-8 uses this stream size classification to compare percent of stream miles at or below the biological stream condition assessment threshold. Nearly half of all small and medium streams have moderately to severely stressed biological conditions. Large streams are significantly different relative to their smaller counterparts with just under a quarter of large wadeable stream miles falling below the biological assessment threshold. This may suggest that larger streams have benefited from point source pollution controls, which are more common in larger watersheds, while smaller streams are adversely impacted by nonpoint source pollution. Nonpoint source pollution is more difficult to control due to its dispersed nature and is prevalent in both small and large streams. **Alternative conclusion suggestion: This may suggest that, given a similar amount of stress, larger streams are more resilient to stress while smaller streams demonstrate a stronger response to stressors. OR: This may suggest that smaller streams are less resilient to stressors and more readily demonstrate a negative biological response when encountering stressors.**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Changes in biological community are evident by grouping streams based on their size. For this analysis, streams were categorized as small, medium, and large based on watershed area (Table 2.4-6). Figure 2.4-8 uses this watershed size classification to compare percent of stream miles at or below the biological stream condition assessment threshold. Nearly half of all small and medium streams have moderately to severely stressed biological conditions. Large streams are significantly different relative to their smaller counterparts with just under a quarter of large wadeable stream miles falling below the biological assessment threshold. This may suggest that larger streams have benefited from point source pollution controls, which are more common in larger watersheds, while smaller streams are adversely impacted by nonpoint source pollution. Nonpoint source pollution is more difficult to control due to its dispersed nature and is prevalent in both small and large streams. **Alternative conclusion suggestion: This may suggest that, given a similar amount of stress, larger streams are more resilient to stress while smaller streams demonstrate a stronger response to stressors. OR: This may suggest that smaller streams are less resilient to stressors and more readily demonstrate a negative biological response when encountering stressors.**
 
 ##### Table 2.4-6 Stream size categories.
 ```{r table2.4-6}
@@ -439,21 +398,12 @@ psize+geom_errorbar(aes(ymax=VSCIpct - MoE,ymin=VSCIpct + MoE), position="dodge"
 
 ##### Biological Condition by US Level III Ecoregion
 
-```{r ecoregion landuse sites assessed}
-surveyDataGIS <- readxl::read_excel('processedData/Wadeable_ProbMon_2001-2016_EVJ.xlsx',sheet='Wadeable_ProbMon_2001-2016_EVJ')
-bar <- filter(surveyDataGIS, EcoRegion %in% c("Central Appalachians" ,  "Blue Ridge Mountains")) %>%
-  select(StationID, EcoRegion, PFOR, PBAR) %>%
-  group_by(EcoRegion) %>%
-  summarise(avgFOR = median(PFOR), avgBAR = median(PBAR))
-bar
-```
-
-```{r echoregion landuse}
-readRDS('preliminaryLanduse.RDS')
+```{r landuse assessed for whole ecoregions,echo=FALSE}
+#readRDS('preliminaryLanduse.RDS') # run separately because landuse calculations lengthy process
 ```
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluating biological condition by US Level III Ecoregions offers a different perspective to analyze Virginia streams, grouping Virginia's diverse geography based on similarities among environmental resources (Omernik 1987). Ecoregions are based on many factors including land use, land surface form, potential natural vegetation, and soils. An ecoregion is useful at the state level to understand the attainable ranges of aquatic ecosystems. Figure 2.4-9 illustrates the estimated percent of stream miles below the biological assessment threshold by Virginia ecoregions. The Central Appalachians have the highest percentage of stream miles that are considered moderately to severely stressed biologically. The Blue Ridge Mountains maintain the highest quality biologically and are significantly different than all other ecoregions in terms of stream miles below the biologic threshold. The Blue Ridge Mountains are known for dense, protected forests while the Central Appalachians have experienced a high degree of resource extraction. The Mid Atlantic Coastal Plain ecoregion lacks sufficient data to complete estimates of biological status for the `r IRyear` Integrated Report. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluating biological condition by US Level III Ecoregions offers a different perspective to analyze Virginia streams, grouping Virginia's diverse geography based on similarities among environmental resources (Omernik 1987). Ecoregions are based on many factors including land use, land surface form, potential natural vegetation, and soils. An ecoregion is useful at the state level to understand the attainable ranges of aquatic ecosystems. Figure 2.4-9 illustrates the estimated percent of stream miles below the biological assessment threshold by Virginia ecoregions. The Central Appalachians have the highest percentage of stream miles that are considered moderately to severely stressed biologically. The Blue Ridge Mountains maintain the highest quality biologically and are significantly different than all other ecoregions in terms of stream miles below the biologic threshold. The Blue Ridge Mountains are known for dense, protected forests while the Central Appalachians have experienced a high degree of resource extraction with four times the amount of barren land in comparison to the Blue Ridge Mountains (Yang et al. 2018). The Mid Atlantic Coastal Plain ecoregion lacks sufficient data to complete estimates of biological status for the `r IRyear` Integrated Report. 
 
 
 ##### Figure 2.4-9 VSCI/VCPMI status by US Level III Ecoregions. The estimated percent of stream miles below the biologic assessment threshold is listed on the y axis along with the associated 95% confidence limits. The number of samples collected from 2001 - `r IRyearWindowEnd` in each ecoregion is identified as n. The Mid-Atlantic Coastal Plain Ecoregion was not included due to insufficient data.
@@ -577,7 +527,7 @@ pbasintrend + geom_errorbar(aes(ymax=VSCIpct + MoE,ymin=VSCIpct - MoE), position
 
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Micromaps are employed in this chapter to visualize this spatially distributed dataset. Micromaps illustrate statistics while highlighting the geographic regions from which they are derived. Figure 2.4-11 offers a simplistic micromap, identifying VSCI/VCPMI by basin for explanatory purposes. By using a micromap and plotting the median VSCI/VCPMI and interquartile range, we can visualize the range of biological condition in each major basin as well as compare these statistics among basins. VSCI and VCPMI scores were converted to a single biological scale for comparability in all analyses. As such, 60 is the biological threshold for the VSCI/VCPMI scale. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Micromaps are employed in this chapter to visualize this spatially distributed dataset. Micromaps illustrate statistics while highlighting the geographic regions from which they are derived. Figure 2.4-11 offers a simplistic micromap, identifying VSCI/VCPMI by basin for explanatory purposes. By using a micromap and plotting the median VSCI/VCPMI and interquartile range, we can visualize the range of biological condition in each major basin as well as compare these statistics among basins. VSCI and VCPMI scores were converted to a single biological scale for comparability in all analyses. Unconverted VCPMI scores are compared to a threshold score of 40; however, for the converted scores shown in 2.4-11 and subsequent micromaps, 60 is the biological threshold for both the VSCI and VCPMI scores. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To understand Figure 2.4-11, begin at the top panel where the James, Holston, New, and Clinch-Powell basins are highlighted. Moving from left to right, the n column specifies how many samples were collected in each basin. The number of samples per basin is consistent across all micromaps presented in this chapter. The dotplot identifies the median VSCI/VCPMI score in each basin  with a solitary dot and the interquartile range, a measure of variability in the dataset between the 25th and 75th percentile, illustrated by a horizontal line spanning these percentiles. The dashed vertical line at 60 highlights the threshold for biological impairment. On the far right, a map illustrates which basins are described statistically in that panel with colors corresponding to the dot left of the basin name. Basins are grayed out in lower maps to indicate they are highlighted in a map above. Because the basins are ordered by median VSCI/VCPMI scores, basins at the top of the micromap have the best biological condition and basins at the bottom have the worst. The micromap illustrates the Chowan, Big Sandy, and Rappahannock generally have the lowest median VSCI/VCPMI scores in the state. 
 
@@ -713,7 +663,7 @@ knitr::kable(stressparams,align='c')
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The biological information presented in the micromap beside each non regulated parameter does not seek to explain the biological impact any one parameter imparts on a particular river basin. Rather, it acts as a reminder of previously presented biological data to add context to the potential impact non regulated parameters may or may not have on a particular river basin and in comparision to other river basins throughout the Commonwealth. Micromaps aid in visualizing these relationships by plotting estimates of percent suboptimal stream miles for individual stressors alongside biological condition such that stressors that impart a stronger influence on aquatic life relative to others may be more readily identified. For instance, a basin with a low percentage of stream miles with suboptimal total phosphorus may not have a similarly low percentage of stream miles below the biological assessment threshold. The biological community, and thus the VSCI/VCPMI scores, record the impacts of a multitude of stressors to the community and can often confound direct correlation of individual stressors to biological condition. Micromaps aid in visualization of spatial patterns that these individual stressors may or may not express across basin-wide scale in the Commonwealth. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizing micromaps to visualize individual stressors alongside biological condition helps identify stressors that impart a stronger influence on aquatic life relative to other basins. To accentuate these storylines, a system of ranking basins based on the relative percent of stream miles that fall into the suboptimal category for each non regulated parameter is utilized. Accordingly, a basin with the highest rank (1) will have the most suboptimal stream miles for a particular stressor while a basin with the lowest rank (11) will have the least suboptimal stream miles for that respective parameter, relative to other basins statewide. Fewer suboptimal stream miles indicate a particular stressor does not have a widespread influence within a particular basin. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizing micromaps to visualize individual stressors alongside biological condition helps identify stressors that impart a stronger influence on aquatic life relative to other basins. To accentuate these storylines, a system of ranking basins based on the relative percent of stream miles that fall into the suboptimal category for each non regulated parameter is utilized. Accordingly, a basin with the highest rank (1) will have the most suboptimal stream miles for a particular stressor while a basin with the lowest rank (11) will have the least suboptimal stream miles for that respective parameter, relative to other basins statewide. Fewer suboptimal stream miles indicate a particular stressor does not have a widespread influence within a particular basin. Overlapping 95% confidence intervals decrease the certainty regarding the relative rankings of basins. For example, the exact rankings of basins 1-9, ranked based on habitat disturbance in Figure 2.4-13, are relatively uncertain  because the confidence intervals mostly overlap. Non-overlapping confidence intervals of the lowest ranking (11) and highest ranking (1) basins for the majority of the stressors reinforce the significant differences among basins at either end of the ranking scale.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At the end of the section, these results are summarized with a heatmap (Figure 2.4-24) that highlights the highest ranking basins for each stressor using darker colors. As the relative ranking decreases, indicating fewer suboptimal stream miles, the corresponding color shade lightens. Utilizing this schema, one can readily identify basins that are influenced by multiple stressors versus basins that have impacts from fewer stressors. The heatmap illustrates the prevalence of various unregulated stressors with respect to aquatic communities. By looking at the shading and relative rank assigned to each unregulated stressor in the basin column, one can visualize what stressors, or combinations of stressors may be negatively impacting aquatic communities.  
 
@@ -1329,54 +1279,6 @@ DT::datatable(rankBasins2,escape=F, rownames = T,
 # The only thing added manually is the dark line above VSCI/VCPMI row. this is added in Word by drawing a line of 5.64" and weight of 1.5 pt
 ```
 
-```{r basinRankQuartiles}
-brks2 <- 1:4
-#clrs <- c("#A50F15", "#CB181D", "#EF3B2C", "#FB6A4A", "#FC9272", "#FCBBA1", 
-#          "#FEE0D2" ,"#FFF5F0",'#FFF5F0' ,'#FFF5F0' ,'#FFF5F0' , '#FFF5F0')
-#pal <- colorspace::choose_palette() # sequential (single Hue), n=5, colorblindness, tritan
-#pal(8) # print colors
-# Blues
-clrs_3 <- c("#023FA5",# "#5465AB", "#7D87B9", 
-            "#A1A6C8", #"#BEC1D4", "#D6D7DD", 
-            "#E2E2E2",#"#F1F1F1",'#F1F1F1' ,'#F1F1F1' ,
-            '#F1F1F1','#F1F1F1' )
-# neutral scheme
-clrs_3 <- c("#474747",  "#808081", "#B4B4B4" , "#D9D9D9" , '#F1F1F1')#"#696969", "#8A8A8A", "#A8A8A8", "#C2C2C2", "#D7D7D7", "#E2E2E2")
-           # "#A1A6C8", #"#BEC1D4", "#D6D7DD", 
-          #  "#E2E2E2",#"#F1F1F1",'#F1F1F1' ,'#F1F1F1' ,
-          #  '#F1F1F1','#F1F1F1' )
-
-rankBasins1.42 <- as.data.frame(t(rankBasins1.4))
-colnames(rankBasins1.42) <- as.character(unlist(rankBasins1.42[1,]))
-rankBasins1.42 <- rankBasins1.42[2:nrow(rankBasins1.42),] %>%
-  tibble::rownames_to_column(var='rowname') %>%
-  mutate(rowname=dplyr::recode(rowname,"Habitat"='Habitat Disturbance',
-                               "LRBS"='Streambed Sedimentation',
-                               "TP"='Total Phosphorus',
-                               "TN"='Total Nitrogen',
-                               "TDS"='Ionic Strength',
-                               "MCCU"='Cumulative Dissolved Metals',
-                               'VSCIVCPMI' = 'VSCI/VCPMI'))
-rownames(rankBasins1.42) <- rankBasins1.42[,1]
-rankBasins1.42 <- select(rankBasins1.42,`Big Sandy`,`Chowan`,`Clinch-Powell`,
-                      `Holston`,`James`,`New`,`Potomac`,`Rappahannock`,
-                      `Roanoke`,`Shenandoah`,`York`)
-
-
-
-DT::datatable(rankBasins1.42,escape=F, rownames = T, 
-              options=list(
-                columnDefs=list(list(visible=FALSE,className = 'dt-center')),
-                pageLength=11,
-                dom='Bt',#'Bfrtip',
-                `font-family` = 'Arial')) %>% 
-  #formatStyle('column', textAlign = 'center')%>%
-  DT::formatStyle(names(rankBasins1.42), backgroundColor = DT::styleInterval(brks2, clrs_3) ,textAlign = 'center', `font-family` = 'Arial')%>%
-  DT::formatStyle(names(rankBasins1.42), fontWeight = DT::styleInterval(3, c('bold','normal')), textAlign = 'center', `font-family` = 'Arial')
-
-# The only thing added manually is the dark line above VSCI/VCPMI row. this is added in Word by drawing a line of 5.64" and weight of 1.5 pt
-```
-
 
 ### 2.4.6 Stressor Extent and Relative Risks 
 
@@ -1589,3 +1491,5 @@ Virginia Department of Environmental Quality. 2006b. Fecal Bacteria and General 
 Virginia Department of Environmental Quality. 2003. The Quality of Virginia Non-Tidal Streams: First Year Report. Richmond, Virginia. DEQ Technical Bulletin WQA/2002-001. http://www.deq.virginia.gov/probmon/pdf/report1.pdf.
 
 Virginia Water Control Board. 1990. Comprehensive Review of Selected Toxic Substances – Environmental	Samples in Virginia. Richmond, Virginia. Information Bulletin 583.
+
+Yang, L.,  Jin, S.,  Danielson, P., Homer, C., Gass, L., Case, A., Costello, C., Dewitz, J., Fry, J., Funk, M., Grannemann, B., Rigge, M. and G. Xian. 2018.  A New Generation of the United States National Land Cover Database: Requirements, Research Priorities, Design, and Implementation Strategies, p. 108–123.
