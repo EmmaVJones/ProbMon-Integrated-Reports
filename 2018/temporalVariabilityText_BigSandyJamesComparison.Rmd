@@ -1,0 +1,41 @@
+##### Temporal Variability
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temporal variability does not drive estimates (*cite Karen/Tony*). In fact, estimates of biological condition have remained nearly constant in both the large and small river basins in the Commonwealth since probabilistic monitoring began. To demonstrate temporal variability is not driving condition estimates, we selected the James River basin and Big Sandy River basins to analyze estimates of percent of streams not meeting the biological threshold. These river basins were chosen for their differences in size and number of samples since the beginning of the Probabilistic Monitoring program began. Since 2001, the James River basin has been sampled `r max(filter(dat,Subpopulation=='James Basin'&Indicator=='VSCIVCPMI')$NResp)` times while the Big Sandy has been sampled `r max(filter(dat,Subpopulation=='Big Sandy'&Indicator=='VSCIVCPMI')$NResp)` times, due to the random nature of the survey design. Figure 2.4-NEWFIG demonstrates that estimates of percent of streams not meeting the biological threshold in the James River and Big Sandy River basins have not drifted through time. Estimates on datasets with less than 30 samples are not publishable on their own, but visualizing the lack of change in estimates and increase in confidence around estimates through time is a worthy exercise to demonstrate the stability in biological estimates in large and small datasets with increasing sample sizes.
+
+##### Figure 2.4-8 VSCI/VCPMI status in James River and Big Sandy River basins over time with increasing sample sizes. Percentile represents percent of stream miles below the biological assessment threshold, along with their 95% confidence limits. The number of samples collected from 2001 to each year listed on the x axis is identified as n.
+
+```{r Figure 2.4-NEWFIG, fig.width=7, fig.height=5}
+# sourced from HowToDemonstrateConfidenceInStatusEstimatesGivenTemporalVariability.Rmd
+VSCIoverWindows_p <- readRDS('processedData/VSCIoverWindows_p.RDS')
+
+
+ggplot(VSCIoverWindows_p,aes(IRwindow,Estimate.P, fill = Subpopulation)) +
+  geom_bar(stat='identity', position = 'dodge') +
+  labs(x="Data from 2001 through Year",
+       y = "Percent of Stream Miles Below \nBiologic Assessment Threshold")+
+  scale_fill_manual(values=c("steelblue","orange","steelblue","orange",
+                             "steelblue","orange","steelblue","orange",
+                             "steelblue","orange","steelblue","orange")) +
+  geom_text(data=subset(VSCIoverWindows_p, Subpopulation != 'James'),
+            aes(y=50, label=paste(format(Estimate.P,digits=1,nsmall=0),"%",sep="")),
+            color="black", size=3.5,family='Arial',  hjust=1.05) +
+  geom_text(data=subset(VSCIoverWindows_p, Subpopulation != 'James'),
+            aes(y=45, label=paste('n=',n, sep="")),
+            color="black", size=3.5,family='Arial',  hjust=1.09) +
+  
+  geom_text(data=subset(VSCIoverWindows_p, Subpopulation == 'James'),
+            aes(y=10, label=paste(format(Estimate.P,digits=1,nsmall=0),"%",sep="")),
+            color="black", size=3.5,family='Arial',  hjust=-0.20) +
+  geom_text(data=subset(VSCIoverWindows_p, Subpopulation == 'James'),
+            aes(y=5, label=paste('n=',n, sep="")),
+            color="black", size=3.5,family='Arial',  hjust=0.05) +
+  theme_minimal()+
+  theme(text=element_text(family="Arial"),
+        panel.grid.major.x = element_blank(),
+        # explicitly set the horizontal lines (or they will disappear too)
+        panel.grid.major.y = element_line( size=.1, color="black" ),
+        panel.grid.minor = element_blank(),panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))+ # no background grid
+  geom_errorbar(aes(ymax=Estimate.P - `Margin of Error`,ymin=Estimate.P +`Margin of Error`), 
+                width=0.2,position=position_dodge(1.8))
+```
