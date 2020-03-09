@@ -456,7 +456,13 @@ datatable(VSCIoverWindows, rownames=FALSE, options= list(pageLength = nrow(VSCIo
 
 ```
 
-Be sure to open both tabs below to see results in barplot and map formats.
+
+
+
+
+
+
+##### **Be sure to open both tabs below to see results in barplot and map formats.**
 
 
 ***
@@ -464,6 +470,9 @@ Be sure to open both tabs below to see results in barplot and map formats.
 #### Basin Estimates Over Time (Barplot)
 
 Now time to plot the estimates at 60 (not meeting biological threshold) for each subpopulation to visually see the changes in basin estimates over time. To note are how consistent the estimates are for each subpopulation despite the differences in n for each subpopulation. Additionally, there is minimal variance over time of the estimates with increasing n, indicating that the temporal variability of the dataset is not imparting an additional signal confounding the estimates.
+
+**Pro Tip: This plot is interactive. Hover mouse over each bar to see additional information, including Subpopulation, percentile estimate, and number of samples used to produce estimate. **
+
 
 ```{r plotly time}
 # reorganize for plotly
@@ -503,6 +512,8 @@ plot_ly(VSCIoverWindows_p, x = ~IRwindow, y = ~Estimate.P, type = 'bar',
 #### Sites Per Basin Over Time (Map)
 
 Below is a map of Virginia with the Big Sandy and James River basins. All ProbMon sites used within each above mentioned window are plotted according to window. Note the differences in sites gained with each two years of data added comparing a large basin to a small basin by toggling the layers on and off.
+
+**Pro Tip: Toggle the spatial layers on and off (hover over the layer button in top left corner of the map) to visualize the stations sampled in each basin during the identified analysis window. **
 
 ```{r}
 basins <- read_sf('originalData/VAbasins_smoothNoChesPeeDee.shp') %>%
@@ -547,9 +558,18 @@ mapview(surveyDataJBS_2008_sf, zcol = 'SubBasin',label= surveyDataJBS_2008_sf$St
 ```
 
 
-##### Temporal Variability
+### Temporal Variability Conclusions {#buttons .tabset .tabset-fade .tabset-pills}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temporal variability does not drive estimates (*cite Karen/Tony*). In fact, estimates of biological condition have remained nearly constant in both the large and small river basins in the Commonwealth since probabilistic monitoring began. To demonstrate temporal variability is not driving condition estimates, we selected the James River basin and Big Sandy River basins to analyze estimates of percent of streams not meeting the biological threshold. These river basins were chosen for their differences in size and number of samples since the beginning of the Probabilistic Monitoring program began. Since 2001, the James River basin has been sampled `r max(filter(dat,Subpopulation=='James Basin'&Indicator=='VSCIVCPMI')$NResp)` times while the Big Sandy has been sampled `r max(filter(dat,Subpopulation=='Big Sandy'&Indicator=='VSCIVCPMI')$NResp)` times, due to the random nature of the survey design. Figure 2.4-NEWFIG demonstrates that estimates of percent of streams not meeting the biological threshold in the James River and Big Sandy River basins have not drifted through time. Estimates on datasets with less than 30 samples are less reliable, but visualizing the lack of change in estimates and increase in confidence around estimates through time is a worthy exercise to demonstrate the stability in biological estimates in large and small datasets with increasing sample sizes.
+
+##### This paragraph was a placeholder in the ProbMon IR chapter to summarize above analyses
+
+```{r, bring in dat for stats}
+dat <- read.csv('processedData/allCDF.csv')# CDF results from 2018 IR
+
+```
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temporal variability does not drive estimates (*cite Karen Blocksom/Tony Olsen*). In fact, estimates of biological condition have remained nearly constant in both the large and small river basins in the Commonwealth since probabilistic monitoring began. To demonstrate temporal variability is not driving condition estimates, we selected the James River basin and Big Sandy River basins to analyze estimates of percent of streams not meeting the biological threshold. These river basins were chosen for their differences in size and number of samples since the beginning of the Probabilistic Monitoring program began. Since 2001, the James River basin has been sampled `r max(filter(dat,Subpopulation=='James Basin'&Indicator=='VSCIVCPMI')$NResp)` times while the Big Sandy has been sampled `r max(filter(dat,Subpopulation=='Big Sandy'&Indicator=='VSCIVCPMI')$NResp)` times, due to the random nature of the survey design. Figure 2.4-NEWFIG demonstrates that estimates of percent of streams not meeting the biological threshold in the James River and Big Sandy River basins have not drifted through time. Estimates on datasets with less than 30 samples are less reliable, but visualizing the lack of change in estimates and increase in confidence around estimates through time is a worthy exercise to demonstrate the stability in biological estimates in large and small datasets with increasing sample sizes.
 
 ##### Figure 2.4-8 VSCI/VCPMI status in James River and Big Sandy River basins over time with increasing sample sizes. Percentile represents percent of stream miles below the biological assessment threshold, along with their 95% confidence limits. The number of samples collected from 2001 to each year listed on the x axis is identified as n.
 
