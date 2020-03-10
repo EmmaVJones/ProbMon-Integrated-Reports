@@ -664,143 +664,6 @@ knitr::kable(stressparams,align='c')
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At the end of the section, these results are summarized with a heatmap (Figure 2.4-24) that highlights the highest ranking basins for each potential stressor using darker colors. As the relative ranking decreases, indicating fewer suboptimal stream miles, the corresponding color shade lightens. Utilizing this schema, one can readily identify basins where multiple potential stressors exist, versus basins fewer potential stressors. The heatmap illustrates the prevalence of various potential stressors with respect to aquatic communities. By looking at the shading and relative rank assigned to each potential stressor in the basin column, one can visualize what potential stressors, or combinations of stressors, may have been negatively impacting aquatic communities over the `r as.numeric(IRyearWindowEnd)-2001 + 1`-year data window. As stated above, these maps do not present conclusions about the probable stressors in specific waterbodies with benthic impairments, i.e. waters not supporting the aquatic life use. 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #### Habitat Disturbance
 
 ```{r}
@@ -817,9 +680,9 @@ TotHabsummary <- TotHaball%>%
 ```
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Habitat is defined as the area or environment where an organism resides. It encompasses its surroundings, both living and non-living. Fish, aquatic insects, and plants require certain types of habitat to thrive, so in-stream and riparian (stream bank) habitat is evaluated when a biomonitoring sample is collected. Because different organisms have diverse habitat requirements, a variety of available habitat types in a stream or river will support a diverse aquatic community. Habitat is scored by a rapid qualitative evaluation of ten habitat parameters summed together (total scores range from 0 to 200). Habitat scores above 150 indicate habitat conditions favorable for supporting a healthy aquatic community and are considered optimal. Scores lower than 120 are considered suboptimal and scores between 120 and 150 are fair (EPA 1999). As indicated in Figure 2.4-12, DEQ estimates that slightly over `r format(100-vlookup(150,hab,2,TRUE),digits=2,nsmall=0)`% of stream and river miles have available habitat that is considered optimal.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Habitat is defined as the area or environment where an organism resides. It encompasses its surroundings, both living and non-living. Fish, aquatic insects, and plants require certain types of habitat to thrive, so in-stream and riparian (stream bank) habitat is evaluated when a biomonitoring sample is collected. Because different organisms have diverse habitat requirements, a variety of available habitat types in a stream or river will support a diverse aquatic community. Habitat is scored by a rapid qualitative evaluation of ten habitat parameters summed together (total scores range from 0 to 200). Habitat scores above 150 indicate habitat conditions favorable for supporting a healthy aquatic community and are considered optimal. Scores lower than 120 are considered suboptimal and scores between 120 and 150 are fair (EPA 1999). Habitat disturbance is frequently identified in benthic TMDL stressor analyses as a potential or probable stressor. As indicated in Figure 2.4-12, DEQ estimates that slightly over `r format(100-vlookup(150,hab,2,TRUE),digits=2,nsmall=0)`% of stream and river miles have available habitat that is considered optimal.
 
-##### Figure 2.4-12. Estimate of Habitat Condition in Virginia Streams and Rivers and associated 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2018'&Indicator=='TotHab')$NResp)`).
+##### Figure 2.4-12. Estimate of habitat condition in Virginia streams and rivers and associated 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2018'&Indicator=='TotHab')$NResp)`).
 ```{r fig2.4-12, fig.width=3, fig.height=2.25}
 p2.4.6 <- ggplot(totalshab,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
@@ -840,7 +703,7 @@ p2.4.6 <- ggplot(totalshab,aes(Condition,pct,fill=Condition))+
 p2.4.6
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-13 is amicromap to depicting the prevalence and scale of habitat disturbance across major basins statewide. The left barplot highlights the estimated percent of stream miles with suboptimal habitat scores, ordered from highest to lowest, with the corresponding statewide estimate of stream miles with suboptimal habitat scores (`r format(filter(TotHabstats,Subpopulation=='Virginia')$TotHabEstimate.P,digits=2,nsmall=1)`%) illustrated with a vertical dashed line. The right barplot shows the percent of stream miles below the biological impairment threshold for each basin, again with the Virginia estimate of stream miles below the biological impairment threshold represented by a dashed vertical line (`r format(filter(VSCIstats,Subpopulation=='Virginia')$VSCIVCPMIEstimate.P,digits=2,nsmall=1)`%). No distinct spatial clustering appears when analyzing habitat disturbance with micromaps, indicating habitat degradation is a widespread problem across Virginia and is not limited to particular river basins or areas in the state. Ranking major river basinss by decreasing estimates of habitat alteration, the Rappahannock, Chowan, New, Clinch-Powell, and Roanoke River basins have suboptimal habitat condition above the statewide estimate. These watersheds have more suboptimal stream miles for habitat disturbance than the statewide estimate. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-13 is a micromap depicting the prevalence and scale of habitat disturbance across major basins statewide. The left barplot highlights the estimated percent of stream miles with suboptimal habitat scores, ordered from highest to lowest, with the corresponding statewide estimate of stream miles with suboptimal habitat scores (`r format(filter(TotHabstats,Subpopulation=='Virginia')$TotHabEstimate.P,digits=2,nsmall=1)`%) illustrated with a vertical dashed line. The right barplot shows the percent of stream miles below the biological assessment threshold for each basin, again with the Virginia estimate of stream miles below the biological impairment threshold represented by a dashed vertical line (`r format(filter(VSCIstats,Subpopulation=='Virginia')$VSCIVCPMIEstimate.P,digits=2,nsmall=1)`%). No distinct spatial clustering appears when analyzing habitat disturbance with micromaps, indicating habitat degradation is a widespread problem across Virginia and is not limited to particular river basins or areas in the state. Ranking major river basins by decreasing estimates of habitat alteration, the Rappahannock, Chowan, New, Clinch-Powell, and Roanoke River basins have suboptimal habitat condition above the statewide estimate[^5].
 
 ##### Figure 2.4-13. Percent of stream miles with suboptimal habitat disturbance. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal habitat disturbance and biologic condition below the assessment threshold, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
 
@@ -887,6 +750,8 @@ suppressWarnings(
 
 ```
 
+[^5] The co-occurrence of stream miles below the biological impairment threshold and stream miles below the suboptimal screening value does not suggest in itself a causative relationship, and potential stressors must be evaluated for each identified benthic impairment during TMDL development.
+
 
 #### Streambed Sedimentation
 
@@ -903,9 +768,9 @@ LRBSsummary <- LRBSall%>%
 ```
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Excessive sedimentation is a component of habitat and is one of the most pronounced impacts to benthic communities. Excess sediment fills interstitial spaces in the stream substrates used by aquatic organisms, disturbs refuge areas, and can potentially smother the organisms. Until recently, tools for quantifying sedimentation impacts in streams have been inadequate. Methods existed for describing dominant instream particle size, but it was difficult to differentiate between natural conditions and man-made problems.  Virginia has a variety of stream types; many are naturally sand/silt bed streams, so simply measuring the size of the sediment particles cannot differentiate natural and human-influenced sediment load.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Excessive sedimentation is a component of habitat and is one of the most pronounced impacts to benthic communities. Excess sediment fills interstitial spaces in the stream substrates used by aquatic organisms, disturbs refuge areas, and can potentially smother the organisms. Until recently, tools for quantifying sedimentation impacts in streams have been inadequate. Methods existed for describing dominant instream particle size, but it was difficult to differentiate between natural conditions and man-made problems. Virginia has a variety of stream types; many are naturally sand/silt bed streams, so simply measuring the size of the sediment particles cannot differentiate natural and human-influenced sediment load.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ uses the relative bed stability (RBS) method for predicting the expected substrate size distribution for streams (Kaufmann 1999).  RBS incorporates stream channel shape, slope, flow, and sediment supply.  The method calculates a ‘stream power’ based on channel measurements to predict the expected sediment size distribution. The ratio of the observed sediment to the expected sediment is a measure of the RBS. A stream with a log RBS of less than -1 is carrying excess sediment (suboptimal), streams between -0.5 and 0.5 have a normal sediment load (optimal), and streams above 0.5 are excessively hardened (fair) (Kaufmann 1999 and USEPA 2000). Over `r format(vlookup(-1,LRBS,2,TRUE),digits=2,nsmall=0)`% of Virginia’s stream and river miles have suboptimal sedimentation values (Figure 2.4-14).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ uses the relative bed stability (RBS) method for predicting the expected substrate size distribution for streams (Kaufmann 1999). RBS incorporates stream channel shape, slope, flow, and sediment supply. The method calculates a ‘stream power’ based on channel measurements to predict the expected sediment size distribution. The ratio of the observed sediment to the expected sediment is a measure of the RBS. A stream with a log RBS of less than -1 is carrying excess sediment (suboptimal), streams between -0.5 and 0.5 have a normal sediment load (optimal), and streams above 0.5 are excessively hardened (fair) (Kaufmann 1999 and USEPA 2000). Relative bed stability is frequently identified in benthic TMDL stressor analyses as a potential or probable stressor. Over `r format(vlookup(-1,LRBS,2,TRUE),digits=2,nsmall=0)`% of Virginia’s stream and river miles have suboptimal sedimentation values (Figure 2.4-14).
 
 ##### Figure 2.4-14. Estimate of streambed sedimentation conditions in Virginia streams and rivers as defined by LRBS measures and 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2018'&Indicator=='LRBS')$NResp)`).
 ```{r fig2.4-14,fig.width=3, fig.height=2.25}
@@ -935,9 +800,9 @@ p2.4.7 <- ggplot(totalsLRBS,aes(Condition,pct,fill=Condition))+
 p2.4.7
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-15 illustrates the extent of stream miles affected by excess sedimentation is more prevalent in each of the major basins compared to overall habitat condition. All basins are estimated to have at least 8% of stream miles with suboptimal sedimentation levels. The Chowan, Roanoke, and New River basins are estimated to have more stream miles with suboptimal sedimentation levels than the overall estimate for stream miles in the Commonwealth (`r format(filter(LRBSstats,Subpopulation=='Virginia')$LRBSEstimate.P,digits=2,nsmall=0)`%). The basins with the highest percent of stream miles with suboptimal sedimentation are among the basins with the highest percent of stream miles below the VSCI/VCPMI assessment threshold. The micromap identifies the Big Sandy River and Shenandoah River basins are below the statewide average for suboptimal streambed sedimentation but above the statewide average for benthic impaired stream miles. These basins are likely affected by other stressors in addition to streambed sedimentation, resulting in the percentage of stream miles with poor biological condition above the statewide estimate. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-15 illustrates the extent of stream miles affected by excess sedimentation is more prevalent in each of the major basins compared to overall habitat condition. All basins are estimated to have at least 8% of stream miles with suboptimal sedimentation levels. The Chowan, Roanoke, and New River basins are estimated to have more stream miles with suboptimal sedimentation levels than the overall estimate for stream miles in the Commonwealth (`r format(filter(LRBSstats,Subpopulation=='Virginia')$LRBSEstimate.P,digits=2,nsmall=0)`%)%). The basins with the highest percent of stream miles with suboptimal sedimentation are among the basins with the highest percent of stream miles below the VSCI/VCPMI assessment threshold. The micromap identifies the Big Sandy River and Shenandoah River basins are below the statewide average for suboptimal streambed sedimentation but above the statewide average for benthic impaired stream miles. These basins are likely affected by other stressors in addition to streambed sedimentation, resulting in the percentage of stream miles with poor biological condition above the statewide estimate.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Though the Potomac River basin has the lowest percentage of suboptimal stream miles for sedimentation, the estimate may not be fully reflective of sedimentation status in the basin. The Potomac River basin has a high prevalence of samples with LRBS scores above 0.5, indicating hardened stream bottoms likely due to hydrologic alteration. As such, the Potomac River basin may appear artificially stable due to more samples falling into the fair category (LRBS > 0.5) in comparison to other basins in Virginia.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Though the Potomac River basin has the lowest percentage of suboptimal stream miles for sedimentation, the estimate may not be fully reflective of sedimentation status in the basin. The Potomac River basin has a high prevalence of samples with LRBS scores above 0.5, indicating hardened stream bottoms likely due to hydrologic alteration. As such, the Potomac River basin may appear artificially stable due to more samples falling into the fair category (LRBS > 0.5) in comparison to other basins in Virginia[^5].
 
 
 ##### Figure 2.4-15. Percent of stream miles with suboptimal streambed sedimentation. From left to right, the vertical dashed lines represent the statewide percent of stream miles across Virginia with suboptimal streambed sedimentation and biologic condition below the assessment threshold, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
@@ -990,11 +855,11 @@ suppressWarnings(
 
 #### Nutrients
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nutrients are substances assimilated by living organisms that promote growth. Nitrogen and  phosphorus are the two most important nutrients in Virginia streams and rivers. Excess nutrients can stimulate in-stream plant and algal growth. Characteristics of nutrient enriched streams may include low dissolved oxygen, frequent fish kills, shifts in aquatic communities, and blooms of nuisance algae. Nutrients may come from fertilized lawns and cropland, failing septic systems, municipal and industrial discharges, and/or livestock manure.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nutrients are substances assimilated by living organisms that promote growth. Nitrogen and phosphorus are the two most important nutrients in Virginia streams and rivers. Excess nutrients can stimulate in-stream plant and algal growth. Characteristics of nutrient enriched streams may include low dissolved oxygen, frequent fish kills, shifts in aquatic communities, and blooms of nuisance or harmful algae. Nutrients may come from fertilized lawns and cropland, failing septic systems, municipal and industrial discharges, and/or livestock manure.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total phosphorus above 0.05 mg/L and total nitrogen above 2 mg/L is considered suboptimal (Table 2.4-8) and can result in undesirable algae growth and shifts in aquatic communities (DEQ 2006a). DEQ estimates that only `r format(vlookup(0.02,TP,2,TRUE),digits=2,nsmall=0)`% of streams and river miles are classified as optimal for total phosphorus while over `r format(vlookup(1,TN,2,TRUE),digits=2,nsmall=0)`% of stream and river miles are considered optimal for total nitrogen (Figures 2.4-16 and 2.4-17). 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total phosphorus above 0.05 mg/L and total nitrogen above 2 mg/L is considered suboptimal (Table 2.4-8) and can result in undesirable algae growth and shifts in aquatic communities (DEQ 2006a). Nutrients are sometimes identified in benthic TMDL stressor analyses as a potential or probable stressor. DEQ estimates that `r format(vlookup(0.02,TP,2,TRUE),digits=2,nsmall=0)`% of streams and river miles are classified as optimal for total phosphorus while over `r format(vlookup(1,TN,2,TRUE),digits=2,nsmall=0)`% of stream and river miles are considered optimal for total nitrogen (Figures 2.4-16 and 2.4-17).
 
-##### Figure 2.4-16. Estimate of Total Phosphorus Conditions in Virginia Streams and Rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
+##### Figure 2.4-16. Estimate of total phosphorus condition in Virginia streams and rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
 ```{r fig2.4-16, fig.width=3, fig.height=2.25}
 p2.4.9 <- ggplot(totalsTP,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
@@ -1019,7 +884,7 @@ p2.4.9
 ```
 
 
-##### Figure 2.4-17. Estimate of Total Nitrogen Conditions in Virginia Streams and Rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
+##### Figure 2.4-17. Estimate of total nitrogen condition in Virginia streams and rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
 ```{r fig2.4-17,fig.width=3, fig.height=2.25}
 p2.4.8 <- ggplot(totalsTN,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
@@ -1056,7 +921,7 @@ TPsummary <- TPall%>%
 TPsummary[10:11,11] <- c(10,10)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using micromaps to analyze nutrients by basin highlights spatial relationships in the dataset. Figure 2.4-18 ranks basins by percent of stream miles that fall into the suboptimal total phosphorus category (> 0.05 mg/L). The associated percent of stream miles below the biologic assessment threshold follows in the rightmost plot. The vertical lines on each barplot indicate the percent of stream miles throughout Virginia that fall into the suboptimal category for total phosphorus and below the biological impairment threshold, `r format(filter(TPall,Subpopulation=='Virginia')$TPEstimate.P,digits=2,nsmall=0)`% and `r format(filter(TPall,Subpopulation=='Virginia')$VSCIVCPMIEstimate.P,digits=2,nsmall=0)`%, respectively). The micromap readily displays the percent of stream miles deemed suboptimal due to total phosphorus decreases from east to west across the state. Basins with higher percentages of suboptimal stream miles due to phosphorus are associated with higher percentages of stream miles below the biological assessment threshold. However, the percent of stream miles below the biological threshold cannot be attributed to one parameter, as evident by the very low number of suboptimal total phosphorus stream miles in the Big Sandy basin yet a high percent of suboptimal VSCI/VCPMI stream miles. Note that the percentage of suboptimal stream miles for total phosphorus are the same for both Big Sandy and Clinch-Powell, producing a tied rank of 10.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using micromaps to analyze nutrients by basin highlights spatial relationships in the dataset. Figure 2.4-18 ranks basins by percent of stream miles that fall into the suboptimal total phosphorus category (> 0.05 mg/L). The associated percent of stream miles below the biologic assessment threshold follows in the rightmost plot. The vertical lines on each barplot indicate the percent of stream miles throughout Virginia that fall into the suboptimal category for total phosphorus and below the biological impairment threshold, `r format(filter(TPall,Subpopulation=='Virginia')$TPEstimate.P,digits=2,nsmall=0)`% and `r format(filter(TPall,Subpopulation=='Virginia')$VSCIVCPMIEstimate.P,digits=2,nsmall=0)`%, respectively). The micromap displays the percent of stream miles deemed suboptimal due to total phosphorus, decreasing from east to west across the state. During the `r as.numeric(IRyearWindowEnd) - 2001 + 1`-year data window, basins with higher percentages of suboptimal stream miles due to phosphorus co-occur with higher percentages of stream miles below the biological assessment threshold. However, the percent of stream miles below the biological threshold cannot simply be attributed to one parameter, nor can it be assumed that the presence of potential stressors above a screening value results in an impaired aquatic life community[^5]. 
 
 ##### Figure 2.4-18. Percent of stream miles with suboptimal total phosphorus. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal total phosphorus and VSCI/VCPMI below the assessment threshold, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
 
@@ -1116,7 +981,7 @@ TNsummary <- TNall%>%
 
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-19 ranks the basins by the highest percentage of stream miles with total nitrogen > 2 mg/L. The Shenandoah, Rappahannock, Potomac, New, and Chowan River basins have the highest total nitrogen suboptimal stream miles and are above the statewide level (`r format(filter(TNall,Subpopulation=='Virginia')$TNEstimate.P,digits=2,nsmall=0)`%). These basins also display some of the highest percentages of stream miles below the VSCI/VCPMI assessment threshold. The Rappahannock, Potomac, and Chowan River basins each display percentages of suboptimal stream miles above the statewide level for total nitrogen, total phosphorus, and VSCI/VCPMI.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-19 ranks the basins by the highest percentage of stream miles with total nitrogen > 2 mg/L. The Shenandoah, Rappahannock, Potomac, New, and Chowan River basins have the highest total nitrogen suboptimal stream miles and are above the statewide level (`r format(filter(TNall,Subpopulation=='Virginia')$TNEstimate.P,digits=2,nsmall=0)`%)%). These basins also display some of the highest percentages of stream miles below the VSCI/VCPMI assessment threshold. The Rappahannock, Potomac, and Chowan River basins each display percentages of suboptimal stream miles above the statewide level for total nitrogen, total phosphorus, and VSCI/VCPMI[^5].  
 
 
 ##### Figure 2.4-19. Percent of stream miles with suboptimal total nitrogen. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal total nitrogen and biologic condition below the assessment threshold, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
@@ -1166,9 +1031,6 @@ suppressWarnings(
 ```
 
 
-
-
-
 #### Ionic Strength (Total Dissolved Solids)
 
 ```{r}
@@ -1186,11 +1048,9 @@ TDSsummary[7:11,11] <- c(7,7,7,7,7)
 ```
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ionic strength varies with natural geology, but increases significantly in response to anthropogenic activities such as surface mining, road salts, or other industrial discharges. DEQ uses total dissolved solids (TDS) to measure ionic strength. Ionic strength is a measure of dissolved ions, dissolved metals, minerals, and organic matter in the water column. Water quality studies have consistently demonstrated that high levels of TDS in the water column impact aquatic life (DEQ 2006b). TDS levels above 350 mg/L increase the likelihood of having a degraded aquatic community and are considered suboptimal (Table 2.4-8). Results are shown in Figure 2.4-20; DEQ estimates that about `r format(100-vlookup(350,TDS,2,TRUE),digits=1,nsmall=0)`% of Virginia streams have TDS levels in the suboptimal range. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ionic strength varies with natural geology, but increases significantly in response to anthropogenic activities such as surface mining, road salts, or other industrial discharges. DEQ uses total dissolved solids (TDS) to measure ionic strength. Ionic strength is a measure of dissolved ions, dissolved metals, minerals, and organic matter in the water column. Water quality studies have consistently demonstrated that high levels of TDS in the water column impact aquatic life (DEQ 2006b). TDS levels above 350 mg/L increase the likelihood of having a degraded aquatic community and are considered suboptimal (Table 2.4-8). TDS has been identified as a potential or probable stressor in TMDL development. Results are shown in Figure 2.4-20; DEQ estimates that about `r format(100-vlookup(350,TDS,2,TRUE),digits=1,nsmall=0)`% of Virginia streams have TDS levels in the suboptimal range.
 
-
-
-##### Figure 2.4-20. Estimate of Ionic Strength Conditions in Virginia Streams and Rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
+##### Figure 2.4-20. Estimate of ionic strength condition in Virginia streams and rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
 
 
 ```{r, fig.width=3, fig.height=2.25}
@@ -1220,7 +1080,7 @@ p2.4.10 <- ggplot(totalsTDS,aes(Condition,pct,fill=Condition))+
 p2.4.10
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A micromap offers a unique visualization tool to distinguish spatial trends in ionic strength across Virginia (Figure 2.4-21). The southwest corner of Virginia, where resource extraction has traditionally occurred, boasts the highest percentages of stream miles with suboptimal total dissolved solids. These basins include the Big Sandy, Clinch-Powell, and New. Additional basins above the Virginia estimate for stream miles with suboptimal total dissolved solids (`r format(filter(TDSall,Subpopulation=='Virginia')$TDSEstimate.P,digits=2)`%) are the Potomac and Shenandoah basins. These basins drain areas of the state with concentrated population centers where urban run-off and industrial processes could be contributing to higher instream ionic strength (Paul & Meyer 2001). Stream miles with suboptimal total dissolved solids are not widespread statewide and in the majority of basins total dissolved solids do not appear to be a major driver for the percentage of stream miles below the biological threshold.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A micromap offers a unique visualization tool to distinguish spatial trends in ionic strength across Virginia (Figure 2.4-21). The southwest corner of Virginia, where resource extraction has traditionally occurred, boasts the highest percentages of stream miles with suboptimal total dissolved solids. These basins include the Big Sandy, Clinch-Powell, and New. Additional basins above the Virginia estimate for stream miles with suboptimal total dissolved solids (`r format(filter(TDSall,Subpopulation=='Virginia')$TDSEstimate.P,digits=2)`%) are the Potomac and Shenandoah basins. These basins drain areas of the state with concentrated population centers where urban run-off and industrial processes could be contributing to higher instream ionic strength (Paul & Meyer 2001). Stream miles with suboptimal total dissolved solids are not widespread statewide and in the majority of basins total dissolved solids do not appear to be a major driver for the percentage of stream miles below the biological threshold[^5].
 
 ##### Figure 2.4-21. Percent of stream miles with suboptimal ionic strength. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal total dissolved solids and moderately to severely stressed biological communities, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
 
@@ -1267,6 +1127,8 @@ suppressWarnings(
 
 ```
 
+
+
 #### Cumulative Dissolved Metals (Cumulative Criterion Unit Metals Index)
 
 ```{r}
@@ -1284,11 +1146,11 @@ MCCUsummary[5:11,11] <- c(5,5,5,5,5,5,5)
 ```
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heavy metals such as mercury, chromium, cadmium, arsenic, and lead in streams and rivers can be harmful to aquatic insects at low concentrations. The metals tend to accumulate in the gills and muscles of aquatic organisms. Dissolved metals have been identified as important predictors of stream health. Toxicity of many metals is dependent on water hardness, making it necessary to calculate site specific water quality criteria from hardness values. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heavy metals such as mercury, chromium, cadmium, arsenic, and lead in streams and rivers can be harmful to aquatic insects at low concentrations. The metals tend to accumulate in the gills and muscles of aquatic organisms. Dissolved metals have been identified as important predictors of stream health. Toxicity of many metals is dependent on water hardness, making it necessary to calculate site specific water quality criteria from hardness values.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the context of water quality criteria, dissolved metals are typically treated independently (as discussed in Section 2.4.3); however, there is strong evidence that metals have a cumulative effect (Clements 2000).  Cumulative Criterion Units (CCU) account for this additive effect by standardizing each dissolved metal’s concentration. The metals are summed together and the result is the CCU Metals Index score. When the CCU Metals Index is above 2, the cumulative effect is considered likely to harm aquatic life (Clements 2000). DEQ estimates that nearly `r format(100-vlookup(2,mCCU,2,TRUE),digits=1)`% of river miles in Virginia have Cumulative Criterion Units that are considered suboptimal (Figure 2.4-22; Table 2.4-8).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the context of water quality criteria, dissolved metals are typically treated independently (as discussed in Section 2.4.3); however, there is strong evidence that metals have a cumulative effect (Clements 2000). Cumulative Criterion Units (CCU) account for this additive effect by standardizing each dissolved metal’s concentration. The metals are summed together and the result is the CCU Metals Index score. When the CCU Metals Index is above 2, the cumulative effect is considered likely to harm aquatic life (Clements 2000).  CCU Metals has been identified as a potential or probable stressor in TMDL development. DEQ estimates that nearly `r format(100-vlookup(2,mCCU,2,TRUE),digits=1)`% of river miles in Virginia have Cumulative Criterion Units that are considered suboptimal (Figure 2.4-22; Table 2.4-8).
 
-##### Figure 2.4-22. Estimate of Cumulative Criterion Unit Metals Index in Virginia Streams and Rivers and associated 95% confidence intervals.  Data presented is from `r IRrange`.
+##### Figure 2.4-22. Estimate of Cumulative Criterion Unit Metals Index in Virginia streams and rivers and associated 95% confidence intervals.  Data presented is from `r IRrange`.
 ```{r, fig.width=3, fig.height=2.25}
 p2.4.11 <- ggplot(totalsmCCU,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
@@ -1319,7 +1181,7 @@ p2.4.11 <- ggplot(totalsmCCU,aes(Condition,pct,fill=Condition))+
 p2.4.11
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dissolved metals are not a widespread issue affecting many major basins across Virginia (Figure 2.4-23). The Rappahannock, Chowan, and York River basins all demonstrate estimates of stream miles with suboptimal water column metals levels above the Virginia estimate (`r format(filter(MCCUall,Subpopulation=='Virginia')$MetalCCUEstimate.P,digits=1,nsmall=1)`%). The majority of basins in Virginia do not have any stream miles that fall into the suboptimal category for water column metals. Because the majority of stream miles in the Commonwealth do not have excess water column metal concentrations, those stream miles below the biological assessment threshold are due to negative impacts from other water quality parameters.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dissolved metals are not a widespread issue affecting many major basins across Virginia (Figure 2.4-23). The Rappahannock, Chowan, and York River basins all demonstrate estimates of stream miles with suboptimal water column metals levels above the Virginia estimate (`r format(filter(MCCUall,Subpopulation=='Virginia')$MetalCCUEstimate.P,digits=1,nsmall=1)`%). The majority of basins in Virginia do not have any stream miles that fall into the suboptimal category for water column metals[^5].
 
 ##### Figure 2.4-23  Percent of stream miles with suboptimal levels of cumulative dissolved metals. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal cumulative dissolved metals and moderately to severely stressed biological communities, respectively.  Data presented is from 2001 - `r IRyearWindowEnd`.
 
@@ -1367,9 +1229,11 @@ suppressWarnings(
 ```
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-24 combines the major river basin ranks from the previous micromaps to summarize the percent of stream miles that are suboptimal for each of the respective non-regulated parameters relative to the VSCI/VCPMI. Basins were ranked from one (1) to eleven (11) for each parameter, with a rank of 1 corresponding to the basin with the most stream miles in the suboptimal range and a rank of 11 where the fewest stream miles fall into the suboptimal range. The summary heatmap graphic is also color coded by rank, scaling from dark blue to white as the percentage of suboptimal stream miles decreases from the highest to the lowest rank. Basins with the darkest boxes have the highest percentage of suboptimal stream miles due to the parameters listed in the left column. As evident by the numeric and color ranks, the Rappahannock and Chowan River basins have the most stream miles impacted by multiple non-regulated parameters. These basins are heavily stressed by a number of water quality parameters that do not have Water Quality Standards. The James River basin contains the fewest stream miles (e.g. ranks the lowest) considered suboptimal for parameters without Water Quality Standards.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-24 combines the major river basin ranks from the previous micromaps to summarize the percent of stream miles that are suboptimal for each of the respective screening value parameters relative to the VSCI/VCPMI. Basins were ranked from one (1) to eleven (11) for each parameter, with a rank of 1 corresponding to the basin with the most stream miles in the suboptimal range and a rank of 11 where the fewest stream miles fall into the suboptimal range.  The condition estimate between ranks can be very close, resulting in minimal relative extent difference among basins, thus referencing the appropriate micromap is critical for understanding the stressor extent for each individual parameter.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By ranking basins from 1 to 11 according to the percent of stream miles that are below the biological assessment threshold (VSCI/VCPMI = 60), Figure 2.4-24 ranks the Big Sandy, Chowan, and Rappahannock River basins highest (rank 1, 2, and 3,  respectively) and the Holston, James, and Clinch-Powell River basins lowest (rank 11 and 10, and 9, respectively). The Rappahannock and Chowan River basins hold the top three ranks for four of the six parameters without water quality standards detailed in this report. Interestingly, the Big Sandy River basin is ranked in the top three for one parameter, ionic strength, while the Shenandoah (4th ranking for suboptimal stream miles below the VSCI/VCPMI threshold) is ranked 1 for total nitrogen. These differences in the number and type of parameters that may be driving the negative impacts on streams in each basin are worth noting. Multiple parameters without water quality standards may be driving the higher percentage of stream miles falling below the biological assessment threshold in the Chowan and Rappahannock River basins. This complex situation may present management challenges with efforts to improve aquatic health. However, basins with fewer high ranking parameters without applicable criteria, like ionic strength in the Big Sandy River basin and total nitrogen in the Shenandoah River basin, present opportunities where management efforts focused on single parameters may generate improvements to aquatic health on a basin-wide scale. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The summary heatmap graphic is also color coded by rank, scaling from dark blue to white as the percentage of suboptimal stream miles decreases from the highest to the lowest rank. Basins with the darkest boxes have the highest percentage of suboptimal stream miles due to the parameters listed in the left column. As evident by the numeric and color ranks, the Rappahannock and Chowan River basins have the most stream miles impacted by multiple parameters. Water bodies in these basins are potentially stressed by a combination of water quality parameters. The James River basin contains the fewest stream miles (e.g. ranks the lowest) considered suboptimal for the parameters analyzed in this section.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By ranking basins from 1 to 11 according to the percent of stream miles that are below the biological assessment threshold (VSCI/VCPMI = 60), Figure 2.4-24 ranks the Big Sandy, Chowan, and Rappahannock River basins highest (rank 1, 2, and 3, respectively) and the Holston, James, and Clinch-Powell River basins lowest (rank 11 and 10, and 9, respectively). The Rappahannock and Chowan River basins hold the top three ranks for four of the six parameters detailed in this report. Multiple parameters may be driving the higher percentage of stream miles falling below the biological assessment threshold in the Chowan and Rappahannock River basins. This complex situation may present management challenges with efforts to improve aquatic health, for example in the identification of stressors during TMDL development. 
 
 ##### Figure 2.4-24  Basin rank by parameters without water quality standards and VSCI/VCPMI. Basins with the most suboptimal stream miles for a particular parameter are ranked with highest (1). The color scales from dark blue to white as rank and level of disturbance decreases.
 
@@ -1416,11 +1280,11 @@ DT::datatable(rankBasins2,escape=F, rownames = T,
 
 ### 2.4.6 Stressor Extent and Relative Risks 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two of the advantages of probabilistic datasets are the ability to calculate the stressor extent (Figure 2.4-25, Figure 2.4-27) and relative risks (Figure 2.4-26) that different environmental stressors have on the ecological health of rivers and streams across large regions. Since the stations are selected at random, DEQ can estimate water quality parameter values over the entire state with known confidence. EPA and other states have employed stressor extent and relative risk concepts extensively in their reports (ODEQ 2007; USEPA 2006; Van Sickle 2006; Van Sickle 2008).  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two of the advantages of Virginia’s probabilistic datasets are the ability to calculate the stressor extent (Figure 2.4-25, Figure 2.4-27) and relative risks (Figure 2.4-26) that different environmental stressors have on the ecological health of rivers and streams across large regions. Since the stations are selected at random, DEQ can estimate water quality parameter values over the entire state with known confidence. EPA and other states have employed stressor extent and relative risk concepts extensively in their reports (ODEQ 2007; USEPA 2006; Van Sickle 2006; Van Sickle 2008).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relative risk is a term borrowed from the medical field and applied here to communicate the potential impact a stressor has on the aquatic environment. For example, it has been shown that an individual with total cholesterol above 240 mg/dl is at greater risk for heart disease than an individual whose cholesterol is below 200 mg/dl.  When an individual has a cholesterol level above 240, their relative risk of having heart disease is higher than an individual with cholesterol level below 200. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relative risk is a term borrowed from the medical field and applied here to communicate the potential impact a stressor has on the aquatic environment. For example, it has been shown that an individual with total cholesterol above 240 mg/dl is at greater risk for heart disease than an individual whose cholesterol is below 200 mg/dl. When an individual has a cholesterol level above 240, their relative risk of having heart disease is higher than an individual with cholesterol level below 200.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While stressor extent shows how prevalent or widespread a stressor is in Virginia streams (Figure 2.4-25), relative risk estimates the likelyhood of a degraded biological community given a stressor measured in a system at a certain value (Figure 2.4-26). Calculation of relative risk requires classification of water quality responses (e.g. the benthic macroinvertebrate indices – Table 2.4-7) and the water quality stressors (Table 2.4-8) into optimal and suboptimal categories.  DEQ classified biological response parameters based on the aquatic life use standard.  The stressor indicators in Table 2.4-8 were classified using screening values from peer reviewed literature studies. It is important to remember that the stressor screening values are not equivalent to water quality standards in the Commonwealth of Virginia. Like the river basin-scale analyses, relative risk and stressor extent are data-intensive statistical techniques requiring the entire probabilistic monitoring dataset (2001 - `r IRyearWindowEnd`).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While stressor extent shows how prevalent or widespread a potential stressor is in Virginia streams (Figure 2.4-25), relative risk estimates the statistical likelihood of a degraded biological community given a stressor measured in a system at a certain value (Figure 2.4-26). Calculation of relative risk requires classification of water quality responses (e.g. the benthic macroinvertebrate indices – Table 2.4-5) and the water quality stressors (Table 2.4-8) into optimal and suboptimal categories. DEQ classified biological response parameters based on the biological assessment threshold used in the water quality assessment process. The stressor indicators in Table 2.4-8 were classified using screening values from peer reviewed literature studies. It is important to remember that the stressor screening values are not equivalent to numeric water quality criteria in the Commonwealth of Virginia. Like the river basin-scale analyses, relative risk and stressor extent are data-intensive statistical techniques requiring the entire probabilistic monitoring dataset (2001 - `r IRyearWindowEnd`) and do not suggest any water quality condition or specific potential or probable stressor at a specific location for a specific water body.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The relative risks for aquatic stressors can be interpreted in a similar manner to the heart disease example. Figure 2.4-26 illustrates that the relative risk to the biological community due to habitat disturbance is `r format(filter(rr,Stressor=='Habitat Disturbance')$Estimate,digits=1,nsmall=1)`; thus, the biological community is `r format(filter(rr,Stressor=='Habitat Disturbance')$Estimate,digits=1,nsmall=1)` times more likely to be considered suboptimal when habitat disturbance scores are below 120 (USEPA 1999). Relative risk values larger than 1 indicate an elevated risk to the biological community; consequently, only water quality stressors with a relative risk greater than 1 are reported in this chapter. pH was also evaluated for increased risk to the biological community but did not show significant relative risk to the biological community.
 
@@ -1470,9 +1334,9 @@ prr
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The most common stressor across Virginia is `r tolower(as.character(arrange(stressorext ,desc(pct))$Parameter[1]))`. ProbMon data estimates `r tolower(as.character(arrange(stressorext ,desc(pct))$Parameter[1]))` is considered suboptimal in almost `r format(arrange(stressorext ,desc(pct))$pct[1],digits=1,nsmall=0)`% of Virginia streams.  When `r tolower(as.character(arrange(stressorext ,desc(pct))$Parameter[1]))` levels are suboptimal, relative risk analysis predicts they are `r format(filter(rr,Stressor==as.character(arrange(stressorext ,desc(pct))$Parameter[1]))$Estimate,digits=1,nsmall=1)` times more likely to have a suboptimal benthic community than streams with optimal sedimentation levels. Nearly `r format(filter(stressorext,Parameter=='Habitat Disturbance')$pct,digits=1,nsmall=0)`% of Virginia streams have suboptimal habitat disturbance scores; suboptimal habitat disturbance scores increase the relative risk of a suboptimal aquatic community by a factor of `r format(filter(rr,Stressor=='Habitat Disturbance')$Estimate,digits=1,nsmall=1)`. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The two major nutrients found in Virginia streams are nitrogen and phosphorus; their relative risks are `r format(filter(rr,Stressor=='Total Phosphorus')$Estimate,digits=1,nsmall=1)` and `r format(filter(rr,Stressor=='Total Nitrogen')$Estimate,digits=1,nsmall=1)`, respectively.  Suboptimal phosphorus conditions occur in many more streams (`r format(filter(stressorext,Parameter=='Total Phosphorus')$pct,digits=1,nsmall=1)`%) than elevated nitrogen (`r format(filter(stressorext,Parameter=='Total Nitrogen')$pct,digits=1,nsmall=1)`%), but when nitrogen levels exceed 2 mg/L the relative risk to the aquatic community is greater than the risk of total phosphorus above 0.05 mg/L. Ionic strength (as measured by total dissolved solids) has a relative risk of `r format(filter(rr,Stressor=='Ionic Strength')$Estimate,digits=1,nsmall=1)` which is one of the highest relative risks in the analyses. However, suboptimal ionic strength conditions were only found in `r format(filter(stressorext,Parameter=='Ionic Strength')$pct,digits=1,nsmall=1)`% of Virginia streams. Dissolved metal concentrations that may cause adverse biological condition were found in `r format(filter(stressorext,Parameter=='Cumulative Dissolved Metals')$pct,digits=1,nsmall=1)`% of Virginia streams; however, elevated dissolved metal concentrations increase the relative risk of having a suboptimal benthic macroinvertebrate community by `r format(filter(rr,Stressor=='Cumulative Dissolved Metals')$Estimate,digits=1,nsmall=1)`. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The two major nutrients found in Virginia streams are nitrogen and phosphorus; their relative risks are `r format(filter(rr,Stressor=='Total Phosphorus')$Estimate,digits=1,nsmall=1)` and `r format(filter(rr,Stressor=='Total Nitrogen')$Estimate,digits=1,nsmall=1)`, respectively.  Suboptimal phosphorus conditions occur in many more streams (`r format(filter(stressorext,Parameter=='Total Phosphorus')$pct,digits=1,nsmall=1)`%) than elevated nitrogen (`r format(filter(stressorext,Parameter=='Total Nitrogen')$pct,digits=1,nsmall=1)`%), but when nitrogen levels exceed 2 mg/L the relative risk to the aquatic community is greater than the risk of total phosphorus above 0.05 mg/L. Ionic strength (as measured by total dissolved solids) has a relative risk of `r format(filter(rr,Stressor=='Ionic Strength')$Estimate,digits=1,nsmall=1)`, which is one of the highest relative risks in the analyses. However, suboptimal ionic strength conditions were only found in `r format(filter(stressorext,Parameter=='Ionic Strength')$pct,digits=1,nsmall=1)`% of Virginia streams. Dissolved metal concentrations that may cause adverse biological condition were found in `r format(filter(stressorext,Parameter=='Cumulative Dissolved Metals')$pct,digits=1,nsmall=1)`% of Virginia streams; however, elevated dissolved metal concentrations increase the relative risk of having a suboptimal benthic macroinvertebrate community by `r format(filter(rr,Stressor=='Cumulative Dissolved Metals')$Estimate,digits=1,nsmall=1)`. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stressor extent presented in Figure 2.4-25 only focuses on the percent of stream miles deemed suboptimal by each of the major stressors to Virginia streams. Figure 2.4-27 encompasses the entire stream population for each stressor to relate a more complete narrative surrounding stressor extents in Virginia. Streambed sedimentation has the highest extent of stress in Virginia and nearly the same percent of stream miles in the optimal and suboptimal categories. As we have explored through previous visualization tools, streambed sedimentation, total phosphorus, and habitat disturbance are fairly widespread stressors statewide.  Total nitrogen, water column metals, and ionic strength are fairly rare in Virginia with the majority of stream miles in the optimum category of their respective parameter. However, when any of total nitrogen, water column metals, or ionic strength parameters reach a suboptimal threshold, relative risk analyses estimate them among the most likely stressors to alter the biological community. Dissolved oxygen and pH do not have statistically significant relative risk in Virginia, thus they are not reported. Missing from this chapter are other known stressors, such as, hydrologic alteration and temperature stress in the critical time period, due to a lack of data to produce statistically significant estimates of relative risk.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stressor extent presented in Figure 2.4-25 only focuses on the percent of stream miles deemed suboptimal by each of the major stressors to Virginia streams. Figure 2.4-27 encompasses the entire stream population for each stressor to relate a more complete narrative surrounding estimated stressor extents in Virginia. Streambed sedimentation has the highest extent of predicted stress in Virginia and nearly the same percent of stream miles in the optimal and suboptimal categories. As we have explored through previous visualization tools, streambed sedimentation, total phosphorus, and habitat disturbance are fairly widespread potential stressors statewide. Total nitrogen, water column metals, and ionic strength are fairly rare in Virginia with the majority of stream miles in the optimum category of their respective parameter. However, when any of total nitrogen, water column metals, or ionic strength parameters reach a suboptimal threshold, relative risk analyses estimate them among the most likely stressors to alter the biological community. Dissolved oxygen and pH do not have statistically significant relative risk in Virginia, thus they are not reported. Missing from this chapter are other known stressors, such as, hydrologic alteration and temperature stress in the critical time period, due to a lack of data to produce statistically significant estimates of relative risk[^5].
 
 
 ```{r, fig.width=7.5, fig.height=3.5}
@@ -1496,6 +1360,7 @@ ptogether <- ggplot(togetherstacked,aes(Parameter,pct,fill=Condition,label=pct))
 ```
 
 ##### Figure 2.4-27. Stressor extent for major benthic macroinvertebrate stressors in all Virginia streams (`r IRrange`) showing all condition classes (optimal, fair, and suboptimal). Optimal condition estimates are shown in green, fair condition estimates are yellow, and suboptimal conditions are shown in orange. 
+
 ```{r stressorExtentStackedBarchart,fig.width=7.5, fig.height=3.5}
 togetherstackedflip$Parameter <- factor(togetherstackedflip$Parameter,
                                   levels=c('Cumulative Dissolved Metals','Total Nitrogen',
@@ -1519,41 +1384,36 @@ ptogetherflip
 ```
 
 
-
-
-
 ### 2.4.7 Uses of Probabilistic Data
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to estimating the condition of all streams and rivers compared to established water quality criteria and identifying the major stressors to aquatic organisms, freshwater ProbMon data has many additional applications within water quality management programs. Examples of these uses are discussed below. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to estimating the condition of all streams and rivers compared to numeric water quality criteria, biological assessment thresholds or screening values, and identifying the major potential stressors to aquatic organisms, freshwater ProbMon data has many additional applications within water quality management programs. Examples of these uses are discussed below. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data is used in describing both the natural and baseline conditions of Virginia streams. In addition, ProbMon has helped identify minimally disturbed streams and understand their natural variability. This information is integral for DEQ to develop more regionally specific water quality expectations, define reference conditions, and select appropriate reference sites. Reference conditions and reference sites are used to estimate biological assemblage and water quality conditions that are expected to occur in minimally disturbed systems. These conditions provide the basis for developing appropriate biological assessment thresholds and water quality standards. ProbMon has also provided statistically defensible descriptions of stream conditions as of the beginning of this century. DEQ will find this baseline tremendously valuable for comparison in future assessments.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data is used in estimating both the natural and baseline conditions of Virginia streams. Specifically, ProbMon has helped identify minimally disturbed streams and understand their natural variability. This information is integral for DEQ to develop more regionally specific water quality expectations, define reference conditions, and select appropriate reference sites. Reference conditions and reference sites are used to estimate biological assemblage and water quality conditions that are expected to occur in minimally disturbed systems. These conditions provide the basis for developing appropriate biological assessment thresholds. ProbMon has also provided statistically defensible descriptions of stream conditions as of the beginning of this century. DEQ will find this baseline tremendously valuable for comparison in future assessments.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data are currently being used by the TMDL program for stressor identification in benthic TMDLs (DEQ 2017). Stressor analysis is the process whereby candidate causes of stress (or stressors) to benthic macroinvertebrate communities are evaluated. The report developed data collection recommendations and scientifically defensible screening values for categorizing potential stressors. ProbMon data are especially useful in describing statewide in-stream conditions for those parameters that do not currently have water quality standards. Understanding existing conditions for those parameters without water quality standards provides perspective on parameter data and a way to evaluate potential stressors. Relative Bed Stability (RBS) and metals in water column cumulative criterion unit (metal CCU) are examples of new tools that are applicable to benthic TMDL stressor analysis. RBS is currently being utilized to evaluate sedimentation as a candidate stressor. ProbMon data was used to develop stressor specific metrics to help TMDL staff identify stressor signals from impaired reaches and collect the appropriate water chemistry information. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data are currently being used by the TMDL program for stressor identification in benthic TMDLs (DEQ 2017). Stressor analysis is the process whereby candidate causes of stress (or stressors) to benthic macroinvertebrate communities are evaluated. The report develops data collection recommendations and scientifically defensible screening values for categorizing potential stressors. ProbMon data are especially useful in describing statewide in-stream conditions for those parameters that do not currently have numeric water quality criteria but can still negatively impact benthic communities based on scientifically defensible screening values. Understanding existing conditions for those parameters provides perspective on parameter data and a way to evaluate potential stressors. Relative Bed Stability (RBS) and metals in water column cumulative criterion unit (metal CCU) are examples of new tools that are applicable to benthic TMDL stressor analysis. RBS is currently being utilized to evaluate sedimentation as a candidate stressor. ProbMon data are routinely used to develop stressor specific metrics to help identify stressor signals from impaired reaches and collect the appropriate water chemistry information during benthic TMDL stressor analysis and TMDL development. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The collocation of biological, chemical, habitat, and landuse data at ProbMon sites also allows for the examination of multiple stressors such as dissolved metal CCUs.  DEQ plans to explore the effects of multiple stressors in future reports. This information should aid TMDL development and provide insight into how biological communities and stressor parameters interact.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The collocation of biological, chemical, habitat, and landuse data at ProbMon sites also allows for the examination of multiple stressors such as dissolved metal CCUs. DEQ plans to explore the effects of multiple stressors in future reports. This information should aid TMDL development and provide insight into how biological communities and stressor parameters interact.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data are used as a test platform for new monitoring approaches such as periphyton and fish community data collection. The collection methodology was designed and tested in tandem with the EPA’s National Aquatic Resource Survey (NARS). Until DEQ participated in the NARS sampling, habitat and biological data collection methodologies were not refined for large rivers. DEQ is now collecting complete ProbMon data sets for large rivers and plans to report on the condition of these valuable freshwater resources. Because ProbMon provides biological, chemical, physical habitat, and land use information at each site, the data set is indispensable for developing and improving biomonitoring tools. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data are used as a test platform for new monitoring approaches such as periphyton and fish community data collection. The collection methodology was designed and tested in tandem with the EPA’s National Aquatic Resource Survey (NARS). Until DEQ participated in the NARS sampling, habitat and biological data collection, methodologies were not refined for large rivers. DEQ is now collecting complete ProbMon data sets for large rivers and plans to report on the condition of these valuable freshwater resources. Because ProbMon provides biological, chemical, physical habitat, and land use information at each site, the data set is indispensable for developing and improving biomonitoring tools.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ProbMon dataset provided crucial data needed to fill in gaps during the development of the VSCI and the validation of both the VSCI and Coastal Plain Macroinvertebrate Index (CPMI) (Maxted 2000). Following the validation, VSCI assessment results were included in the 2008 Integrated Report. DEQ used ProbMon data to validate the CPMI. Specifically, ProbMon data were utilized to identify new reference sites in the coastal plain, check ecoregion best standard values, and select potential metrics that would help the CPMI detect benthic macroinvertebrate community stresses created by human activity. The effort resulted in a new, robust tool for evaluating benthic macroinvertebrate communities in the coastal plain regions of the Commonwealth called the Virginia Coastal Plain Macroinvertebrate Index (VCPMI, DEQ 2013).  The technical VCPMI document is online at: http://www.deq.virginia.gov/Portals/0/DEQ/Water/WaterQualityMonitoring/ProbabilisticMonitoring/vcpmi.pdf . ProbMon also aided in improving the biomonitoring program by identifying over 100 new biological references sites, doubling the number of reference sites in the Virginia reference site database. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ProbMon dataset provided crucial data needed to fill in gaps during the development of the VSCI and the validation of both the VSCI and Coastal Plain Macroinvertebrate Index (CPMI) (Maxted 2000). Following the validation, VSCI assessment results were included in the 2008 Integrated Report. DEQ used ProbMon data to validate the CPMI. Specifically, ProbMon data were utilized to identify new reference sites in the coastal plain, check ecoregion best standard values, and select potential metrics that would help the CPMI detect benthic macroinvertebrate community stresses created by human activity. The effort resulted in a new, robust tool for evaluating benthic macroinvertebrate communities in the coastal plain regions of the Commonwealth called the Virginia Coastal Plain Macroinvertebrate Index (VCPMI, DEQ 2013). The technical VCPMI document is online at:  http://www.deq.virginia.gov/Portals/0/DEQ/Water/WaterQualityMonitoring/ProbabilisticMonitoring/vcpmi.pdf . ProbMon also aided in improving the biomonitoring program by identifying over 100 new biological references sites, doubling the number of reference sites in the Virginia reference site database.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon sites are the platform for building a genus-level macroinvertebrate database which will be used in developing a genus level benthic macroinvertebrate index beginning in 2020. ProbMon data may also be used to create a biological condition gradient for Virginia stream and rivers. The biological condition gradient is a descriptive model that illustrates how increasing stress alters ecological attributes (Davies and Jackson 2006). A biological condition gradient defines expected conditions, like benthic macroinvertebrate community structure, for streams by stream order and ecoregion. The biological condition gradient may help DEQ protect high-quality streams and provide stepwise interim goals for tracking water quality improvement. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon sites are the platform for building a genus-level macroinvertebrate database which will be used in developing a genus level benthic macroinvertebrate index beginning in 2020. ProbMon data may also be used to create a biological condition gradient for Virginia stream and rivers. The biological condition gradient is a descriptive model that illustrates how increasing stress alters ecological attributes (Davies and Jackson 2006). A biological condition gradient defines expected conditions, like benthic macroinvertebrate community structure, for streams by stream order and ecoregion. The biological condition gradient may help DEQ protect high-quality streams and provide stepwise interim goals for tracking water quality improvement.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data has been used to support water quality permitting decisions. DEQ establishes defensible background conditions in dissolved metal permit model by using the statistically derived baseline metal estimates for watersheds across the Commonwealth. A workgroup has been formed to help deliver this information to the water permitting group at DEQ.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon data has been used to support water quality permitting decisions. DEQ establishes defensible background conditions in dissolved metal permit model by using the statistically derived baseline metal estimates for watersheds across the Commonwealth. A workgroup has been formed to help deliver this information more broadly internally and externally.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An important future application of ProbMon data is change analysis (Kincaid 2016). DEQ adjusted the experimental design of ProbMon by adding randomly selected sentinel sites in order to accelerate its ability to detect changes in population estimates.  By revisiting a relatively small number of these randomly located sites each year, DEQ will be able to detect statewide and regional chemical, habitat, and biological changes.  Perhaps the most important question a monitoring program addresses is: are management initiatives effective?  The ability of ProbMon to detect shifts in population estimates is critical to the goal of evaluating the effectiveness of water quality management programs.   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An important future application of ProbMon data is change analysis (Kincaid 2016). DEQ adjusted the experimental design of ProbMon by adding randomly selected sentinel sites in order to accelerate its ability to detect changes in population estimates. By revisiting a relatively small number of these randomly located sites each year, DEQ will be able to detect statewide and regional chemical, habitat, and biological changes. Perhaps the most important question a monitoring program addresses is: are management initiatives effective? The ability of ProbMon to detect broad shifts in data population estimates for chemical, biological and habitat water quality parameters is critical to the goal of statistically evaluating the effectiveness of water quality management programs at a state-wide or river basin scale.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, ProbMon is irreplaceable for monitoring and documenting the successes of large-scale watershed management programs, which are often aimed at reducing non-point source pollution and improving water quality conditions associated with parameters that lack standards. For example Virginia has gone to great effort recently to complete its Chesapeake Bay Watershed Implementation Plan (WIP) whose goal is to achieve the nutrient and sediment reductions necessary to comply with the Chesapeake Bay Total Maximum Daily Load (Bay TMDL). Intensive, large-scale, multiparameter monitoring which employs statistically valid, probabilistic site selection as is conducted in the ProbMon program, is essential for evaluating the effectiveness of programs such as the Chesapeake Bay WIP. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example Virginia has gone to great effort recently to complete its Phase III Chesapeake Bay Watershed Implementation Plan (WIP) with the goal to achieve the nutrient and sediment reductions necessary to comply with the Chesapeake Bay Total Maximum Daily Load (Bay TMDL). Intensive, large-scale, multi-parameter monitoring which employs statistically valid, probabilistic site selection as is conducted in the ProbMon program, is an essential component of  evaluating the effectiveness of programs such as the Phase III Chesapeake Bay WIP and complements more site-specific monitoring programs such as data collection at Virginia’s long-term trend stations, local TMDL and implementation monitoring stations, and the Chesapeake Bay monitoring program implemented by a number of partners throughout the Chesapeake Bay watershed.
 
 
 ### 2.4.8 Conclusion
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ analyzed 14 water quality parameters with established water quality standards and 6 parameters without water quality standards for the 2018 assessment period. Most of the parameters that have established water quality standards meet applicable criteria. The majority of water quality standard exceedances are attributed to legacy pollutants or natural conditions. The results presented in the ProbMon chapter reflect the success of DEQ’s management of water quality parameters with water quality standards. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ analyzed a number of chemical, biological and habitat water quality parameters to develop probabilistic estimates of Virginia’s water quality conditions for the 2018 assessment period. Based on the analysis, only a small percentage of total stream miles, including small first and second-order streams, exceed numeric water quality criteria. This is an important finding because Virginia’s ambient monitoring program does not have the resources to evaluate the 65% of stream miles in those categories and this analysis allows for a general assessment of expected water quality conditions. 
  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only biological monitoring results were found to be below assessment thresholds in a relatively high percentage of streams. Benthic macroinvertebrate communities were estimated to be degraded in `r format(filter(paramsummary, Parameter=='VSCI/VCPMI\n(Biomonitoring)')$pct,digits=3)`% of the wadeable streams and rivers in Virginia, a percentage that could be considered widespread. Benthic macroinvertebrate communities are indicators of water quality problems because they respond to a variety of water quality stressors including parameters that have water quality standards (e.g. dissolved oxygen levels) and parameters that do not (e.g. nutrients and sedimentation). The following six stressors increase the risk to aquatic organisms and lack water quality standards: streambed sedimentation, habitat disturbance, total phosphorus, total nitrogen, total dissolved solids, and cumulative metals in water column. These parameters are discussed in Section 2.4.5. Although these six stressors do not currently have water quality standards, most are being addressed through a variety of strategies such as nutrient management plans and best management practices.  As the ProbMon program evolves and DEQ expands on the uses of ProbMon data, enhancement of the strategies for understanding, evaluating and restoring the Commonwealth’s streams and rivers will continue. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Biological monitoring results indicate that close to half of Virginia’s streams and rivers are estimated to have a score below the established biological assessment thresholds Benthic macroinvertebrate communities are estimated to be degraded in `r format(filter(paramsummary, Parameter=='VSCI/VCPMI\n(Biomonitoring)')$pct,digits=3)`% of the wadeable streams and rivers in Virginia. Benthic macroinvertebrate communities are indicators of water quality problems because they represent the health of the aquatic life communities in Virginia waters. To further explore the relationships between the benthic macroinvertebrate communities and potential stressors across Virginia, the following six stressors would be expected to increase the risk to aquatic organisms: streambed sedimentation, habitat disturbance, total phosphorus, total nitrogen, total dissolved solids, and cumulative metals in water column. These parameters are discussed in Section 2.4.5. Although these six stressors do not currently have numeric water quality criteria, most are being addressed through a variety of strategies such as benthic TMDLs and TMDL implementation plans, nutrient management plans and best management practices. As the ProbMon program evolves and DEQ expands on the uses of ProbMon data, enhancement of the strategies for understanding, evaluating and restoring the Commonwealth’s streams and rivers will continue.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The 2018 Integrated Report offers the first comparison of non-regulated stressors among major river basins throughout the Commonwealth based on probabilistic survey data. The Holston, James, and Clinch-Powell River basins are estimated to have the least number of river miles falling into the suboptimal category for biological integrity. DEQ estimates the Big Sandy, Chowan, Rappahannock and Shenadoah River basins have the most biologically degraded river miles statewide. While the Big Sandy and Shenandoah River basins boast the highest estimates of suboptimal rivermiles statewide for a single stressor (ionic strength and total nitrogen, respectively), the Chowan and Rappahannock River basins rank highest statewide for estimates of suboptimal river miles among multiple stressors, including habitat disturbance, streambed sedimentation, total phosphorus, total nitrogen, and cumulative dissolved metals. Novel comparison analyses of non-regulated stressors among major basins in the Commonwealth highlight opportunities for increased management efforts. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to presentations, posters, reports, and handouts about ProbMon, raw data and analytical procedures used to generate this report in open source code are available for viewing and download at the following website: http://www.deq.virginia.gov/Programs/Water/WaterQualityInformationTMDLs/WaterQualityMonitoring/ProbabilisticMonitoring.aspx.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The 2020 Integrated Report offers the first comparison of  ProbMon data among major river basins throughout the Commonwealth, based on a `r as.numeric(IRyearWindowEnd) - 2001 + 1`-year data set from 2001 to 2016. Over that time period, the Holston, James, and Clinch-Powell River basins are estimated to have the least number of river miles falling into the suboptimal category for biological integrity, while the Big Sandy, Chowan, Rappahannock and Shenandoah River basins are estimated to have the most number of river miles falling into the suboptimal category for biological integrity. While the Big Sandy and Shenandoah River basins showed the highest estimates of suboptimal river miles statewide for a single stressor (ionic strength and total nitrogen, respectively), the Chowan and Rappahannock River basins have the highest statewide estimates for suboptimal river miles among multiple stressors, including habitat disturbance, streambed sedimentation, total phosphorus, total nitrogen, and cumulative dissolved metals. In addition to presentations, posters, reports, and handouts about ProbMon, raw data and analytical procedures used to generate this report in open source code are available for viewing and download at the following website: http://www.deq.virginia.gov/Programs/Water/WaterQualityInformationTMDLs/WaterQualityMonitoring/ProbabilisticMonitoring.aspx .
 
 ```{r, fig.height = 4}
 # force page break
@@ -1563,39 +1423,37 @@ put_gap()
 
 ### 2.4.9 References
 
-Clements, W.H., D.M. Carlisle, J.M. Lazorchak, and P.C. Johnson. 2000. Heavy Metals Structure Benthic Communities in Colorado Mountain Streams. Ecological Applications 10(2):626-638. 
+Clements, W.H., D.M. Carlisle, J.M. Lazorchak, and P.C. Johnson. 2000. Heavy Metals Structure Benthic Communities in Colorado Mountain Streams. Ecological Applications 10(2):626-638.
 
-Commonwealth of Virginia.  2017.  Water Quality Standards (9 VAC 25-260-00 et seq.).  Department of Environmental Quality, Richmond, VA. http://lis.virginia.gov/cgi-bin/legp604.exe?000+reg+9VAC25-260.
+Commonwealth of Virginia. 2017. Water Quality Standards (9 VAC 25-260-00 et seq.). Department of Environmental Quality, Richmond, VA. http://lis.virginia.gov/cgi-bin/legp604.exe?000+reg+9VAC25-260.
 
 Davies, S.P. and S.K. Jackson. 2006. The Biological Condition Gradient: a descriptive model for interpreting change in aquatic ecosystems. Ecological Applications 16 (4), 1251-1266.
 
-Diaz-Ramos, S., D.L. Stevens, Jr., and A.R. Olsen 1996.  EMAP Statistics Methods Manual. EPA/620/R-96/002. 	Corvallis, OR: U.S. Environmental Protection Agency, Office of Research and Development, National 	Health and Environmental Effects Research Laboratory.  [see http://www.epa.gov/nheerl/arm/ for 	downloadable file]
+Diaz-Ramos, S., D.L. Stevens, Jr., and A.R. Olsen 1996. EMAP Statistics Methods Manual. EPA/620/R-96/002. Corvallis, OR: U.S. Environmental Protection Agency, Office of Research and Development, National Health and Environmental Effects Research Laboratory. [see http://www.epa.gov/nheerl/arm/ for downloadable file]
 
-Feller, W. 1968. An Introduction to Probability Theory and Its Applications. Volume 1. 3rd  Edition. New York. Wiley. p. 229.
+Feller, W. 1968. An Introduction to Probability Theory and Its Applications. Volume 1. 3rd Edition. New York. Wiley. p. 229.
 
-Kaufmann, P. R., John M. Faustini, David P. Larsen,  and Mostafa A. Shirazia. 2008. A roughness-corrected index of relative bed stability for regional stream surveys. Geomorphology. Volume 99, Issues 1-4, 1 July 2008, Pages 150-170.
+Kaufmann, P. R., John M. Faustini, David P. Larsen, and Mostafa A. Shirazia. 2008. A roughness-corrected index of relative bed stability for regional stream surveys. Geomorphology. Volume 99, Issues 1-4, 1 July 2008, Pages 150-170.
 
 Kaufmann, P. R., P. Levine, E. G. Robinson, C. Seeliger, and D. Peck. 1999. Quantifying physical habitat in wadeable streams. EPA/620/R-99/003, USEPA, Washington, D.C.
 
 Kincaid, T. M. and Olsen, A. R. 2016. spsurvey: Spatial Survey Design and Analysis. R package version 3.3.
 
-MacDonald, D.D. and C.G. Ingersoll, T.A. Berger. 2000. Development and Evaluation of Consensus-Based 	Sediment Quality Guidelines for Freshwater Ecosystems. Arch. Envorin. Contam. Toxicology 39:20-31.
+MacDonald, D.D. and C.G. Ingersoll, T.A. Berger. 2000. Development and Evaluation of Consensus-Based Sediment Quality Guidelines for Freshwater Ecosystems. Arch. Envorin. Contam. Toxicology 39:20-31.
 
-Maxted, J. M. Barbour, J. Gerritsen, V. Poretti, N. Primrose, A. Silvia, D. Penrose, and R. 	Renfrow. 2000. Assessment framework for mid-Atlantic coastal plain streams using benthic macroinvertebrates. The North American Benthological Sociey 19(1), 128-144.
+Maxted, J. M. Barbour, J. Gerritsen, V. Poretti, N. Primrose, A. Silvia, D. Penrose, and R. Renfrow. 2000. Assessment framework for mid-Atlantic coastal plain streams using benthic macroinvertebrates. The North American Benthological Sociey 19(1), 128-144.
 
 Omernik, James. 1987. Ecoregions of the Conterminous United States. Annuals of the Association of American Geographers. Volume 77, Issue 1, March 1987, Pages 118–125.
 
-Oregon Department of Environmental Quality. 2007. Wadeable Stream Conditions in Oregon. Oregon Department of Environmental Quality, Laboratory Division, Watershed Assessment Section. DEQ07-LAB-0081-TR. 
+Oregon Department of Environmental Quality. 2007. Wadeable Stream Conditions in Oregon. Oregon Department of Environmental Quality, Laboratory Division, Watershed Assessment Section. DEQ07-LAB-0081-TR.
 
-Paul, J.F. and M.E. McDonald. 2005. Development of Empirical, Geographically Specific Water Quality Criteria:	 A Conditional Probability Analysis Approach. Journal of the American Water Resources Association (JAWRA) 41(5):1211-1223.
+Paul, J.F. and M.E. McDonald. 2005. Development of Empirical, Geographically Specific Water Quality Criteria: A Conditional Probability Analysis Approach. Journal of the American Water Resources Association (JAWRA) 41(5):1211-1223.
 
 Paul, M.J. and J.L. Meyer. 2001. Streams in the Urban Landscape. Annual Review of Ecology and Systematics. 32:333-365.
 
-Quinn C. Payton, Michael G. McManus, Marc H. Weber, Anthony R. Olsen, and Thomas M. Kincaid. 2015. micromap: A
-Package for Linked Micromaps. Journal of Statistical Software, 63(2), 1-16. URL http://www.jstatsoft.org/v63/i02/.
+Quinn C. Payton, Michael G. McManus, Marc H. Weber, Anthony R. Olsen, and Thomas M. Kincaid. 2015. micromap: A Package for Linked Micromaps. Journal of Statistical Software, 63(2), 1-16. URL http://www.jstatsoft.org/v63/i02/.
 
-R Core Team. 2017. R: A language and environment for statistical computing. R Foundation for Statistical
-Computing, Vienna, Austria. URL https://www.R-project.org/.
+R Core Team. 2017. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 
 Stevens, D.L, Jr. 1997. Variable Density Grid-Based Sampling Designs for Continuous Spatial Populations. Environmetrics 8:167-195.
 
@@ -1607,13 +1465,13 @@ USEPA. 1999. Rapid Bioassessment Protocols for Use in Wadeable Streams and River
 
 Van Sickle, John and S.G. Paulsen. 2008. Assessing the attributable risks, relative risks, and regional extents of aquatic stressor. Journal of the North American Benthological Society. 27(4):920-931.
 
-Van Sickle, John, J. Stoddard, S. Paulsen, A. Olsen. 2006. Using Relative Risk to Compare the Effects of Aquatic	Stressors at a Regional Scale. Environ Manage 38:1020-1030.
+Van Sickle, John, J. Stoddard, S. Paulsen, A. Olsen. 2006. Using Relative Risk to Compare the Effects of Aquatic Stressors at a Regional Scale. Environ Manage 38:1020-1030.
 
-Virginia Department of Environmental Quality. 2018. 2018 Water Quality Assessment Guidance Manual.  http://www.deq.virginia.gov/Portals/0/DEQ/Water/WaterQualityAssessments/2018_WQA_Guidance_DRAFT.pdf. 
+Virginia Department of Environmental Quality. 2018. 2018 Water Quality Assessment Guidance Manual. http://www.deq.virginia.gov/Portals/0/DEQ/Water/WaterQualityAssessments/2018_WQA_Guidance_DRAFT.pdf.
 
-Virginia Department of Environmental Quality. 2017. Stressor Analysis in Virginia: Data Collection and Stressor Thresholds. http://www.deq.virginia.gov/Portals/0/DEQ/Water/WaterQualityMonitoring/ProbabilisticMonitoring/Products/Stressor_Doc.zip. 
+Virginia Department of Environmental Quality. 2017. Stressor Analysis in Virginia: Data Collection and Stressor Thresholds. http://www.deq.virginia.gov/Portals/0/DEQ/Water/WaterQualityMonitoring/ProbabilisticMonitoring/Products/Stressor_Doc.zip.
 
-Virginia Department of Environmental Quality. 2013. The Virginia Coastal Plain Macroinvertebrate Index. Technical Bulletin. WQA/2013-002.Richmond, Virginia.   
+Virginia Department of Environmental Quality. 2013. The Virginia Coastal Plain Macroinvertebrate Index. Technical Bulletin. WQA/2013-002.Richmond, Virginia.
 http://www.deq.virginia.gov/Portals/0/DEQ/Water/WaterQualityMonitoring/ProbabilisticMonitoring/vcpmi.pdf.
 
 Virginia Department of Environmental Quality. 2011. 2012 Water Quality Assessment Guidance Manual. http://www.deq.state.va.us/waterguidance/pdf/112007.pdf.
@@ -1624,6 +1482,6 @@ Virginia Department of Environmental Quality. 2006b. Fecal Bacteria and General 
 
 Virginia Department of Environmental Quality. 2003. The Quality of Virginia Non-Tidal Streams: First Year Report. Richmond, Virginia. DEQ Technical Bulletin WQA/2002-001. http://www.deq.virginia.gov/probmon/pdf/report1.pdf.
 
-Virginia Water Control Board. 1990. Comprehensive Review of Selected Toxic Substances – Environmental	Samples in Virginia. Richmond, Virginia. Information Bulletin 583.
+Virginia Water Control Board. 1990. Comprehensive Review of Selected Toxic Substances – Environmental Samples in Virginia. Richmond, Virginia. Information Bulletin 583.
 
-Yang, L.,  Jin, S.,  Danielson, P., Homer, C., Gass, L., Case, A., Costello, C., Dewitz, J., Fry, J., Funk, M., Grannemann, B., Rigge, M. and G. Xian. 2018.  A New Generation of the United States National Land Cover Database: Requirements, Research Priorities, Design, and Implementation Strategies, p. 108–123.
+Yang, L., Jin, S., Danielson, P., Homer, C., Gass, L., Case, A., Costello, C., Dewitz, J., Fry, J., Funk, M., Grannemann, B., Rigge, M. and G. Xian. 2018. A New Generation of the United States National Land Cover Database: Requirements, Research Priorities, Design, and Implementation Strategies, p. 108–123.
