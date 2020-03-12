@@ -30,11 +30,22 @@ suppressPackageStartupMessages(library(extrafont))#0.17
 
 
 # Data needed for maps (needs to be in report for figure generation vs in global file)
-basinssmooth <- rgdal::readOGR('originalData','VAbasins_smoothNoChesPeeDee')# basin shapefile for micromaps
-VAoutline <- rgdal::readOGR('originalData','Va_otlne') # for basic site maps
-VAbasins <- rgdal::readOGR('originalData','basinsstatewide') # for basic site maps
-VAecoregionsL3 <- rgdal::readOGR('originalData', 'VA_level3ecoregion') # for basic site maps
-allProb <- rgdal::readOGR('processedData','allProb2018')# for basic site maps
+basinssmooth <- st_read('originalData/VAbasins_smoothNoChesPeeDee.shp')# basin shapefile for micromaps
+VAoutline <- st_read('originalData/Va_otlne.shp') # for basic site maps
+VAbasins <- st_read('originalData/basinsstatewide.shp') # for basic site maps
+VAecoregionsL3 <- st_read('originalData/VA_level3ecoregion.shp') # for basic site maps
+
+### update to 2018 when available
+
+allProb <- read_csv('originalData/Wadeable_ProbMon_2001-2016_EVJ.csv') %>% # for basic site maps
+  dplyr::select(DataSource:IR2018) %>%
+  st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
+             remove = T, # don't remove these lat/lon cols from df
+             crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
+boatableSites <- st_read('processedData/boatableSites2008_2018.shp')
+
+
+
 IRstations2018 <- rgdal::readOGR("processedData","IRstations2018") # for basic site maps
 # Bring in shapefile already made of previous IR sites by window
 IRstations <- rgdal::readOGR('originalData','MasterIRStationList')
@@ -115,31 +126,41 @@ p2.4.1
 ##### Figure 2.4-2. Virginia probabilistic monitoring locations from `r IRrange` (n = `r nrow(IRstations2018)`).
 
 ```{r fig2.4-2, fig.width=5.75, fig.height=2.75}  
-par(mar=c(0,0,0,0),oma=c(0,0,0,0))
-plot(VAoutline,border='wheat3',col='wheat1',ylim=c(37.4,38.5))
-plot(IRstations2018,col='grey21',pch=19,cex=0.5,add = T)
-legend('left',legend=c('Probabilistic Sites (Wadeable)')
-       ,title='Legend',bty='n',inset=0.05,pch=c(15,15,19),cex=0.8
-       ,col=c('wheat1','grey21'))
+ggplot() +
+  geom_sf(data = VAoutline, color = 'wheat3', fill = 'wheat1') +
+  geom_sf(data = filter(allProb, IR2018 == 2018), ####################################fix this
+          aes(color = 'Probabilistic Sites\n (Wadeable)'),
+          size = 1, show.legend = "point") +
+  coord_sf(datum = NA) + # take away grid
+  scale_colour_manual(values = c('Probabilistic Sites\n (Wadeable)' = 'black'),
+                      guide = guide_legend(override.aes = list(linetype = 'blank',
+                                                               shape = 19))) +
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  c(0.25,0.52))
 ```
 
 ##### Figure 2.4-3. Virginia probabilistic monitoring locations from `r IRrange`  with Virginia major river basins (n = `r nrow(IRstations2018)`).
 
 
-```{r fig2.4-3, fig.width=5.75, fig.height=3.75}
-#suppressMessages(suppressWarnings(trellis.par.set(axis.line=list(col=NA)) ))
-#sitesLayer <- list("sp.points", IRstations2018, col = "grey21", pch=19,cex=0.5)
-
-#spplot(VAbasins,'BASIN',
-#       col.regions = brewer.pal(n = 12,#length(unique(VAbasins@data$BASIN)), 
-#                                name = "Paired")[c(1:5,7:12)],
-#       sp.layout = sitesLayer)
-
-# Above is code to make the basin map but the legend get squished when outputting it directly from R to Word, so first build map in R, export to Image and save dimensions:
-# Figure width = 712 px height = 300 px
-
-# then bring it back in as jpeg
-knitr::include_graphics("basins_newPal.jpeg")
+```{r fig2.4-3, fig.width=7, fig.height=3.75}
+ggplot() +
+  geom_sf(data = mutate(basinssmooth, Basin = BASIN), 
+          aes(fill = Basin) , show.legend = 'polygon') +
+  geom_sf(data = filter(allProb, IR2018 == 2018), 
+          aes(color = 'Probabilistic Sites\n (Wadeable)'),
+          size = 1, show.legend = 'point') +
+  coord_sf(datum = NA) + # take away grid
+  scale_fill_manual(values= col.regions, name = NULL,
+                    guide = guide_legend(override.aes = list(linetype = 'solid',
+                                                             shape = NA))) +
+  scale_colour_manual(values = c('Probabilistic Sites\n (Wadeable)' = 'black'),
+                      guide = guide_legend(override.aes = list(linetype = 0, 
+                                                               shape = 19))) +
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  'bottom') + 
+  guides(color=guide_legend(override.aes=list(fill=NA, shape = 19))) # still cant get box to go away on dots
 ```
 
 ##### Figure 2.4-4. Virginia probabilistic monitoring locations from `r IRrange`  with US Level III Ecoregions (n = `r nrow(IRstations2018)`).
