@@ -35,7 +35,7 @@ VAoutline <- st_read('originalData/Va_otlne.shp') # for basic site maps
 VAbasins <- st_read('originalData/basinsstatewide.shp') # for basic site maps
 VAecoregionsL3 <- st_read('originalData/VA_level3ecoregion.shp') # for basic site maps
 
-### update to 2018 when available
+### update to 2020 when available
 
 allProb <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv') %>% # for basic site maps
 #allProb <- read_csv('originalData/Wadeable_ProbMon_2001-2016_EVJ.csv') %>% # for basic site maps
@@ -44,21 +44,6 @@ allProb <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv') %>% # for ba
              remove = T, # don't remove these lat/lon cols from df
              crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
 boatableSites <- st_read('processedData/boatableSites2008_2018.shp')
-
-
-
-IRstations2018 <- rgdal::readOGR("processedData","IRstations2018") # for basic site maps
-# Bring in shapefile already made of previous IR sites by window
-IRstations <- rgdal::readOGR('originalData','MasterIRStationList')
-# a little data management action
-IRstations2008 <- subset(IRstations, IRstations@data$IR2008 == '2008')
-IRstations2010 <- subset(IRstations, IRstations@data$IR2010 == '2010')
-IRstations2012 <- subset(IRstations, IRstations@data$IR2012 == '2012')
-IRstations2014 <- subset(IRstations, IRstations@data$IR2014 == '2014')
-IRstations2016 <- subset(IRstations, IRstations@data$IR2016 == '2016')
-boatableSites <- rgdal::readOGR("processedData","boatableSites2006_2016")
-boatableWshd <- rgdal::readOGR("processedData","boatableWshd2006_2016")
-allProb_wshd <- rgdal::readOGR("processedData","allProbWshd2018")
 
 
 source('global.R')
@@ -124,7 +109,7 @@ p2.4.1
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From 2001 to `r IRyearWindowEnd`, DEQ has evaluated over `r signif(nrow(designStatus),digits=3)` stations and sampled `r nrow(surveyData)` sites (Figure 2.4-5). In some cases, stations were evaluated, but not sampled for a variety of reasons including: the stream was not perennial, it was saltwater influenced, or the landowner denied access. DEQ samples 50 to 60 random stations per year throughout Virginia for a variety of chemical, biological, and habitat parameters. The number of stations sampled per year meet the minimum required to calculate an annual statewide estimate of water quality condition (Feller 1968). From January 1st, `r IRyearWindowBegin` until December 31st, `r IRyearWindowEnd` DEQ evaluated **444** sites and sampled `r nrow(filter(designStatus,IR2020 == '2020'))` stations (Figure 2.4-2). The amount of data collected in a six year Integrated Report window allows for the calculation of condition estimates across stream size and ecoregion, while combining all data from the advent of the program (2001 - `r IRyearWindowEnd`; `r nrow(surveyData)` monitoring stations) allows for more data intensive calculations of basin-scale status estimates and relative risk. Analyses conducted over this larger time window are not meant to represent current conditions, rather they are meant to indicate what water quality conditions have been over the `r as.numeric(IRyearWindowEnd) - 2001 +1` year period. Figures 2.4-3 and 2.4-4 plot the `r nrow(filter(designStatus,IR2020 == '2020'))` stations sampled from `r IRrange` with major river basins and US Level III Ecoregions, respectively. Temporal change analysis across the landscape will be possible with continued probabilistic monitoring effort.
 
-##### Figure 2.4-2. Virginia probabilistic monitoring locations from `r IRrange` (n = `r nrow(IRstations2020)`).
+##### Figure 2.4-2. Virginia probabilistic monitoring locations from `r IRrange` (n = `r nrow(filter(allProb, IR2020 == 2020))`).
 
 ```{r fig2.4-2, fig.width=5.75, fig.height=2.75}  
 ggplot() +
@@ -141,7 +126,7 @@ ggplot() +
         legend.position =  'bottom')
 ```
 
-##### Figure 2.4-3. Virginia probabilistic monitoring locations from `r IRrange`  with Virginia major river basins (n = `r nrow(IRstations2018)`).
+##### Figure 2.4-3. Virginia probabilistic monitoring locations from `r IRrange`  with Virginia major river basins (n = `r nrow(filter(allProb, IR2020 == 2020))`).
 
 
 ```{r fig2.4-3, fig.width=7, fig.height=3.75}
@@ -168,7 +153,7 @@ ggplot() +
   guides(color=guide_legend(override.aes=list(fill=NA, shape = 19))) # still cant get box to go away on dots
 ```
 
-##### Figure 2.4-4. Virginia probabilistic monitoring locations from `r IRrange`  with US Level III Ecoregions (n = `r nrow(IRstations2018)`).
+##### Figure 2.4-4. Virginia probabilistic monitoring locations from `r IRrange`  with US Level III Ecoregions (n = `r nrow(filter(allProb, IR2020 == 2020))`).
 
 
 ```{r fig2.4-4, fig.width=7, fig.height=3.75}
@@ -323,7 +308,7 @@ knitr::kable(x,align='c')
 
 #### Sediment Metals
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ collected 492 sediment metals (arsenic, cadmium, chromium, copper, lead, mercury, nickel, silver, and zinc) samples from 2001 through 2012 and reported results in the 2008, 2010, 2012, and 2014 Integrated Reports. Sediment metals concentrations were below sediment screening values called Probable Effects Concentrations (PECs) and affected a low percentage of stream miles. Due to the low prevalence of metals above PECs in Virginia’s wadeable streams and high sampling costs, DEQ has suspended sediment metals sampling. Consequently, DEQ will not report on sediment in the 2018 assessment cycle. Integrated Report chapters from previous assessment cycles contain estimates of sediment metals in sediment.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ collected 492 sediment metals (arsenic, cadmium, chromium, copper, lead, mercury, nickel, silver, and zinc) samples from 2001 through 2012 and reported results in the 2008, 2010, 2012, and 2014 Integrated Reports. Sediment metals concentrations were below sediment screening values called Probable Effects Concentrations (PECs) and affected a low percentage of stream miles. Due to the low prevalence of metals above PECs in Virginia’s wadeable streams and high sampling costs, DEQ has suspended sediment metals sampling. Consequently, DEQ will not report on sediment in the `r IRyear` assessment cycle. Integrated Report chapters from previous assessment cycles contain estimates of sediment metals in sediment.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These chapters can be accessed at: http://www.deq.virginia.gov/Programs/Water/WaterQualityInformationTMDLs/WaterQualityMonitoring/ProbabilisticMonitoring.aspx#reports .
 
@@ -414,7 +399,7 @@ p2.4.5
 
 #### Statewide Status
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Probabilistic Monitoring program has generated a robust dataset comprised of `r format(nrow(surveyData), digits=1)` sites statewide since 2001, allowing the agency to estimate biological condition across the state at various spatial scales. In addition to the statewide estimate for the 2011-2016 assessment period covered in the 2018 Integrated Report, the program now has enough data to report condition estimates at river basin-specific scales in addition to larger stream size classes and ecoregional scales. Population estimates of biological condition may be calculated on datasets with more than 30 samples (Feller 1968). Previously, not all river basins had enough samples to extrapolate estimates of biological condition. Due to the random basis of the probabilistic sampling frame, it has taken `r english(as.numeric(IRyearWindowEnd) - 2001 +1)` years to produce enough data in certain basins to meet the analytical requirements of river basin-scale analyses. Ongoing data collection will continue to reduce the variability around estimates in addition to allowing condition estimates at even finer spatial scales. The below analyses were conducted using the probabilistic monitoring dataset from 2001 to `r IRyearWindowEnd` to illustrate the status of Virginia waterways across various environmental classification scales. Comparisons among the groupings (e.g. major river basins) represent the relative water quality condition among them as it has occurred over this time frame[^3]. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Probabilistic Monitoring program has generated a robust dataset comprised of `r format(nrow(surveyData), digits=1)` sites statewide since 2001, allowing the agency to estimate biological condition across the state at various spatial scales. In addition to the statewide estimate for the `r IRrange` assessment period covered in the `r IRyear` Integrated Report, the program now has enough data to report condition estimates at river basin-specific scales in addition to larger stream size classes and ecoregional scales. Population estimates of biological condition may be calculated on datasets with more than 30 samples (Feller 1968). Previously, not all river basins had enough samples to extrapolate estimates of biological condition. Due to the random basis of the probabilistic sampling frame, it has taken `r english(as.numeric(IRyearWindowEnd) - 2001 +1)` years to produce enough data in certain basins to meet the analytical requirements of river basin-scale analyses. Ongoing data collection will continue to reduce the variability around estimates in addition to allowing condition estimates at even finer spatial scales. The below analyses were conducted using the probabilistic monitoring dataset from 2001 to `r IRyearWindowEnd` to illustrate the status of Virginia waterways across various environmental classification scales. Comparisons among the groupings (e.g. major river basins) represent the relative water quality condition among them as it has occurred over this time frame[^3]. 
 
 [^3]: It is important to note that the data represent a statistical picture of overall water quality conditions at the various spatial scales presented below, and across a `r as.numeric(IRyearWindowEnd) - 2001 +1`-year data window. The analyses do not constitute a waterbody-specific water quality assessment. Additionally, the probabilistic monitoring data sets do not identify any specific stressors for the identified long-term biological conditions. Aquatic life use assessment status and stressors for individual waterbodies are determined on a case-by-case basis during the water quality assessment and Total Maximum Daily Load development processes. 
 
@@ -1473,7 +1458,7 @@ ptogetherflip
 
 ### 2.4.8 Conclusion
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ analyzed a number of chemical, biological and habitat water quality parameters to develop probabilistic estimates of Virginia’s water quality conditions for the 2018 assessment period. Based on the analysis, only a small percentage of total stream miles, including small first and second-order streams, exceed numeric water quality criteria. This is an important finding because Virginia’s ambient monitoring program does not have the resources to evaluate the 65% of stream miles in those categories and this analysis allows for a general assessment of expected water quality conditions. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ analyzed a number of chemical, biological and habitat water quality parameters to develop probabilistic estimates of Virginia’s water quality conditions for the `r IRyear` assessment period. Based on the analysis, only a small percentage of total stream miles, including small first and second-order streams, exceed numeric water quality criteria. This is an important finding because Virginia’s ambient monitoring program does not have the resources to evaluate the 65% of stream miles in those categories and this analysis allows for a general assessment of expected water quality conditions. 
  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Biological monitoring results indicate that close to half of Virginia’s streams and rivers are estimated to have a score below the established biological assessment thresholds Benthic macroinvertebrate communities are estimated to be degraded in `r format(filter(paramsummary, Parameter=='VSCI/VCPMI\n(Biomonitoring)')$pct,digits=3)`% of the wadeable streams and rivers in Virginia. Benthic macroinvertebrate communities are indicators of water quality problems because they represent the health of the aquatic life communities in Virginia waters. To further explore the relationships between the benthic macroinvertebrate communities and potential stressors across Virginia, the following six stressors would be expected to increase the risk to aquatic organisms: streambed sedimentation, habitat disturbance, total phosphorus, total nitrogen, total dissolved solids, and cumulative metals in water column. These parameters are discussed in Section 2.4.5. Although these six stressors do not currently have numeric water quality criteria, most are being addressed through a variety of strategies such as benthic TMDLs and TMDL implementation plans, nutrient management plans and best management practices. As the ProbMon program evolves and DEQ expands on the uses of ProbMon data, enhancement of the strategies for understanding, evaluating and restoring the Commonwealth’s streams and rivers will continue.
 
