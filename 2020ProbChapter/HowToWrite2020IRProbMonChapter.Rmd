@@ -35,14 +35,54 @@ files <- c(paste0('C:/HardDriveBackup/R/GitHub/LandcoverAnalysis/Results/ProbWad
 
 landcover <- files %>%
   map(read_csv) %>%    # read in all the files individually
-  reduce(bind_rows)        # combine
+  reduce(bind_rows) %>% # combine
+  mutate(Year = YearSampled) # joining column
 
 
 ```
 
 
+#### Wadeable Bio/Chem Results
+
+First smash two more years of data to existing dataset.
+
+```{r add next two years}
+existingData <- read_csv('originalData/Wadeable_ProbMon_2001-2016_EVJ.csv') %>%
+  mutate(IR2020 = NA) %>% # add new column
+  # manual column reorganization &drop old landcover info bc we will replace with autodelineated
+  dplyr::select(DataSource , StationID , Year , StationID_Trend , LongitudeDD , LatitudeDD , stratum , designweight , weightcategory , station , state , status , comment , set , Basin , SubBasin , BayShed , BayPanel , EcoRegion , BioRegion , Panel , BioPanel , Order , BasinSize , StreamSizeCat , StreamSizeCatPhase , AREA_SQ_MILES , IR2008 , IR2010 , IR2012 , IR2014 , IR2016 , IR2018 , IR2020 , designweighttrend , designweightoriginal , filwgt_trend , filwgt_orgil , DO , pH , SpCond , TN , TP , TDS , NH4 , NO3 , TKN , `Ortho-P` , Turb , TSS , Na , K , Cl , Sf , `70331VFine` , SSCCOARSE , SSCFINE , SSCTOTAL , LRBS , Slope , FN_PCT , SA_PCT , SA_FN_PCT , LSUB_DMM , BL_CB_GR_Embed_PCT , Embed_PCT , TotHab , TotTaxa , EPTTax , VEphem , VPTHydropsychidae , VScrap , VChiro , V2Dom , HBI , VHapto , EPTInd , VSCIVCPMI , MetalCCU , ARSENICppm , BERYLLIUMppm , CADMIUMppm , CHROMIUMppm , COPPERppm , LEADppm , MANGppm , NICKELppm , SILVERppm , ZINCppm , ANTIMONYppm , ALUMINUMppm , SELENIUMppm , IRONppm , MERCURYppm , THALLIUMppm , CALCIUM , MAGNESIUM , ARSENIC , BARIUM , BERYLLIUM , CADMIUM , CHROMIUM , COPPER , IRON , LEAD , MANGANESE , THALLIUM , NICKEL , SILVER , ZINC , ANTIMONY , ALUMINUM , SELENIUM , HARDNESS , MERCURY , `Hg-C`)
+
+# watershed results this cycle
+newData <- readxl::read_excel('originalData/Wadeable_ProbMon_20017-2018.xlsx',
+                              sheet = 'All20172018Data') %>%
+  mutate(Year = as.numeric(Year)) %>%
+   dplyr::select(DataSource , StationID , Year , StationID_Trend , LongitudeDD , LatitudeDD , stratum , designweight , weightcategory , station , state , status , comment , set , Basin , SubBasin , BayShed , BayPanel , EcoRegion , BioRegion , Panel , BioPanel , Order , BasinSize , StreamSizeCat , StreamSizeCatPhase , AREA_SQ_MILES , IR2008 , IR2010 , IR2012 , IR2014 , IR2016 , IR2018 , IR2020 , designweighttrend , designweightoriginal , filwgt_trend , filwgt_orgil , DO , pH , SpCond , TN , TP , TDS , NH4 , NO3 , TKN , `Ortho-P` , Turb , TSS , Na , K , Cl , Sf , `70331VFine` , SSCCOARSE , SSCFINE , SSCTOTAL , LRBS , Slope , FN_PCT , SA_PCT , SA_FN_PCT , LSUB_DMM , BL_CB_GR_Embed_PCT , Embed_PCT , TotHab , TotTaxa , EPTTax , VEphem , VPTHydropsychidae , VScrap , VChiro , V2Dom , HBI , VHapto , EPTInd , VSCIVCPMI , MetalCCU , ARSENICppm , BERYLLIUMppm , CADMIUMppm , CHROMIUMppm , COPPERppm , LEADppm , MANGppm , NICKELppm , SILVERppm , ZINCppm , ANTIMONYppm , ALUMINUMppm , SELENIUMppm , IRONppm , MERCURYppm , THALLIUMppm , CALCIUM , MAGNESIUM , ARSENIC , BARIUM , BERYLLIUM , CADMIUM , CHROMIUM , COPPER , IRON , LEAD , MANGANESE , THALLIUM , NICKEL , SILVER , ZINC , ANTIMONY , ALUMINUM , SELENIUM , HARDNESS , MERCURY , `Hg-C`)
+
+# Since added IR2020 column to existingData have to reorganize column order before smash
+names(existingData) == names(newData) 
+#names(existingData)[31:40]
+#names(newData)[31:40]
+#names(existingData) <- names(newData)  
+
+existingData <- mutate(existingData, MERCURY = as.numeric(as.character(MERCURY)))
+
+allData <- bind_rows(existingData, newData)
+rm(existingData); rm(newData)
+```
 
 
+Need to join landcover data to 2001-2018 data
+
+
+```{r landcover smash}
+allData <- left_join(allData, landcover, by = c('StationID', 'Year')) %>%
+  # fix that only 2017-2018 have IR2020 designation
+  mutate(IR2020 = case_when(Year %in% c(2013:2018) ~ 2020, TRUE ~ 1))
+
+#Save for now
+#write.csv(allData, 'processedData/Wadeable_ProbMon_2001-2018.csv', row.names = F)
+rm(landcover); rm(files)
+```
 
 
 #### Design Status
@@ -55,7 +95,9 @@ Bring in appropriate datasets. Always start with VSCI (VSCI/VCPMI) first because
 #### Read in master field data sampled at all sites
 # Select the parameters we want to run
 # rename a few parameters to work better in R
-surveyDataALL <- readxl::read_excel('originalData/Wadeable_ProbMon_2001-2016_JRH.xlsx',sheet='ProbMonData2001-2016_EVJ')
+surveyDataALL <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv')
+
+#surveyDataALL <- readxl::read_excel('originalData/Wadeable_ProbMon_2001-2016_JRH.xlsx',sheet='ProbMonData2001-2016_EVJ')
 library(magrittr)
 metals <- names(select(surveyDataALL,MetalCCU:MERCURY))
 surveyDataALL[,metals] %<>% lapply(function(x) as.numeric(as.character(x)))
@@ -129,14 +171,16 @@ surveyDataMCCU <- select(surveyDataALL,-c(MetalCCU)) %>%
   select(DataSource,StationID,Year,StationID_Trend,LongitudeDD,LatitudeDD,stratum,designweight,
          weightcategory,station,state,status,comment,set,Basin,SubBasin,BayShed,BayPanel,
          EcoRegion,BioRegion,Panel,BioPanel,Order,BasinSize,StreamSizeCat,StreamSizeCatPhase,
-         AREA_SQ_MILES,IR2008,IR2010,IR2012,IR2014,IR2016,IR2018,designweighttrend,
-         designweightoriginal,filwgt_trend,filwgt_orgil,DO,pH,SpCond,TN,TP,TDS,NH4,NO3,TKN,`Ortho-P`,Turb,TSS,Na,K,Cl,
+         AREA_SQ_MILES,
+         IR2008,IR2010,IR2012,IR2014,IR2016,IR2018,IR2020, 
+         designweighttrend, designweightoriginal,filwgt_trend,filwgt_orgil,DO,pH,SpCond,TN,TP,TDS,NH4,
+         NO3,TKN,`Ortho-P`,Turb,TSS,Na,K,Cl,
          Sf,`70331VFine`,SSCCOARSE,SSCFINE,SSCTOTAL,LRBS,
          Slope,FN_PCT,SA_PCT,SA_FN_PCT,LSUB_DMM,BL_CB_GR_Embed_PCT,Embed_PCT,
          TotHab,TotTaxa,EPTTax,VEphem,VPTHydropsychidae,
          VScrap,VChiro,V2Dom,HBI,VHapto,EPTInd,VSCIVCPMI,MetalCCU,everything())
 
-#write.csv(surveyDataMCCU,'processedData/Wadeable_ProbMon_2001-2016_EVJ.csv', row.names = F)
+#write.csv(surveyDataMCCU,'processedData/Wadeable_ProbMon_2001-2018.csv', row.names = F)
 # then manually save to .xlsx for jason
 ``` 
 
@@ -219,10 +263,10 @@ filter(metalsAssessment, Acute_Exceed==1)
 filter(metalsAssessment, Chronic_Exceed==1)
 
 # IR window Acute Exceedances
-filter(metalsAssessment, Year >= 2011 & Year <= 2016 & Acute_Exceed==1)
+filter(metalsAssessment, Year >= 2013 & Year <= 2018 & Acute_Exceed==1)
 
 # IR Window Chronic Exceedances
-filter(metalsAssessment, Year >= 2011 & Year <= 2016 & Chronic_Exceed==1)
+filter(metalsAssessment, Year >= 2013 & Year <= 2018 & Chronic_Exceed==1)
 
 
 ```
@@ -273,7 +317,7 @@ These are the data windows we are looking at for 2018 IR:
 
 #### Functions for Weight Adjustments and run all CDF data by subpopulations
 
-The following functions run the CDF analyses for all parameters chosen from the surveyData dataframe (you can modify the selection to increase/decrease parameters run). The subpopEstimate() function runs each subpopulation and nests inside the listOfResults(), which outputs a list of all subpopulation results. The allCDFresults() adjusts all weights according to sample window and then calls the listOfResults() to run all the CDF, percentile, and population estimates for each subpopulation. See below for how to run each of these functions and how to view outputs.
+The following functions run the CDF analyses for all parameters chosen from the surveyData dataframe (you can modify the selection to increase/decrease parameters run). The subpopEstimate() function runs each subpopulation and nests inside the listOfResults(), which outputs a list of all subpopulation results. The allCDFresults() **adjusts all weights according to sample window** and then calls the listOfResults() to run all the CDF, percentile, and population estimates for each subpopulation. See below for how to run each of these functions and how to view outputs.
 
 ```{r allFunctions}
 ## Subpopulation estimates by parameter

@@ -37,8 +37,9 @@ VAecoregionsL3 <- st_read('originalData/VA_level3ecoregion.shp') # for basic sit
 
 ### update to 2018 when available
 
-allProb <- read_csv('originalData/Wadeable_ProbMon_2001-2016_EVJ.csv') %>% # for basic site maps
-  dplyr::select(DataSource:IR2018) %>%
+allProb <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv') %>% # for basic site maps
+#allProb <- read_csv('originalData/Wadeable_ProbMon_2001-2016_EVJ.csv') %>% # for basic site maps
+  dplyr::select(DataSource:IR2020) %>%
   st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
              remove = T, # don't remove these lat/lon cols from df
              crs = 4326) # add coordinate reference system, needs to be geographic for now bc entering lat/lng, 
@@ -121,40 +122,44 @@ p2.4.1
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In Virginia, ProbMon sites are randomly selected using EPA’s probability survey design program (Stevens 1997; USEPA 2006; Kincaid & Olsen 2016; R Core Team 2017). The stratified sampling method controls for the propensity for smaller streams to dominate the sample sites chosen at random; however, there is no geographical bias to the sample frame. Intensification of sampling effort at finer spatial scales is possible in a probabilistic survey design, but Virginia has not expanded sampling efforts in any particular region of the commonwealth. As such, accumulating enough samples in regions that are smaller across the landscape has taken a protracted period of time. Temporal variability is shared among all samples of a given survey period despite the differences in raw sample numbers among different spatial groupings. Delays in reporting at finer spatial scales are necessary to ensure all subpopulations (data collected at a given scale) have the minimum number of samples to report statistically defensible estimates (Feller 1968). The number of sampling stations selected for a given area is in proportion to the density of streams in that area and these proportions are consistent from year to year.
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From 2001 to `r IRyearWindowEnd`, DEQ has evaluated over `r signif(nrow(designStatus),digits=3)` stations and sampled `r nrow(surveyData)` sites (Figure 2.4-5). In some cases, stations were evaluated, but not sampled for a variety of reasons including: the stream was not perennial, it was saltwater influenced, or the landowner denied access. DEQ samples 50 to 60 random stations per year throughout Virginia for a variety of chemical, biological, and habitat parameters. The number of stations sampled per year meet the minimum required to calculate an annual statewide estimate of water quality condition (Feller 1968). From January 1st, `r IRyearWindowBegin` until December 31st, `r IRyearWindowEnd` DEQ evaluated **444** sites and sampled `r nrow(filter(designStatus,IR2018 == '2018'))` stations (Figure 2.4-2). The amount of data collected in a six year Integrated Report window allows for the calculation of condition estimates across stream size and ecoregion, while combining all data from the advent of the program (2001 - `r IRyearWindowEnd`; `r nrow(surveyData)` monitoring stations) allows for more data intensive calculations of basin-scale status estimates and relative risk. Analyses conducted over this larger time window are not meant to represent current conditions, rather they are meant to indicate what water quality conditions have been over the `r as.numeric(IRyearWindowEnd) - 2001 +1` year period. Figures 2.4-3 and 2.4-4 plot the `r nrow(filter(designStatus,IR2018 == '2018'))` stations sampled from `r IRrange` with major river basins and US Level III Ecoregions, respectively. Temporal change analysis across the landscape will be possible with continued probabilistic monitoring effort.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From 2001 to `r IRyearWindowEnd`, DEQ has evaluated over `r signif(nrow(designStatus),digits=3)` stations and sampled `r nrow(surveyData)` sites (Figure 2.4-5). In some cases, stations were evaluated, but not sampled for a variety of reasons including: the stream was not perennial, it was saltwater influenced, or the landowner denied access. DEQ samples 50 to 60 random stations per year throughout Virginia for a variety of chemical, biological, and habitat parameters. The number of stations sampled per year meet the minimum required to calculate an annual statewide estimate of water quality condition (Feller 1968). From January 1st, `r IRyearWindowBegin` until December 31st, `r IRyearWindowEnd` DEQ evaluated **444** sites and sampled `r nrow(filter(designStatus,IR2020 == '2020'))` stations (Figure 2.4-2). The amount of data collected in a six year Integrated Report window allows for the calculation of condition estimates across stream size and ecoregion, while combining all data from the advent of the program (2001 - `r IRyearWindowEnd`; `r nrow(surveyData)` monitoring stations) allows for more data intensive calculations of basin-scale status estimates and relative risk. Analyses conducted over this larger time window are not meant to represent current conditions, rather they are meant to indicate what water quality conditions have been over the `r as.numeric(IRyearWindowEnd) - 2001 +1` year period. Figures 2.4-3 and 2.4-4 plot the `r nrow(filter(designStatus,IR2020 == '2020'))` stations sampled from `r IRrange` with major river basins and US Level III Ecoregions, respectively. Temporal change analysis across the landscape will be possible with continued probabilistic monitoring effort.
 
-##### Figure 2.4-2. Virginia probabilistic monitoring locations from `r IRrange` (n = `r nrow(IRstations2018)`).
+##### Figure 2.4-2. Virginia probabilistic monitoring locations from `r IRrange` (n = `r nrow(IRstations2020)`).
 
 ```{r fig2.4-2, fig.width=5.75, fig.height=2.75}  
 ggplot() +
   geom_sf(data = VAoutline, color = 'wheat3', fill = 'wheat1') +
-  geom_sf(data = filter(allProb, IR2018 == 2018), ####################################fix this
-          aes(color = 'Probabilistic Sites\n (Wadeable)'),
+  geom_sf(data = filter(allProb, IR2020 == 2020), 
+          aes(color = 'IR2020 Probabilistic Sites (Wadeable)'),
           size = 1, show.legend = "point") +
   coord_sf(datum = NA) + # take away grid
-  scale_colour_manual(values = c('Probabilistic Sites\n (Wadeable)' = 'black'),
+  scale_colour_manual(values = c('IR2020 Probabilistic Sites (Wadeable)' = 'black'),
                       guide = guide_legend(override.aes = list(linetype = 'blank',
                                                                shape = 19))) +
   theme_minimal() +
   theme(legend.title=element_blank(), # no legend title
-        legend.position =  c(0.25,0.52))
+        legend.position =  'bottom')
 ```
 
 ##### Figure 2.4-3. Virginia probabilistic monitoring locations from `r IRrange`  with Virginia major river basins (n = `r nrow(IRstations2018)`).
 
 
 ```{r fig2.4-3, fig.width=7, fig.height=3.75}
+col.regions = brewer.pal(n = 12,#length(unique(VAbasins@data$BASIN)), 
+                         name = "Paired")[c(1:5,7:12)]
+
+
 ggplot() +
   geom_sf(data = mutate(basinssmooth, Basin = BASIN), 
           aes(fill = Basin) , show.legend = 'polygon') +
-  geom_sf(data = filter(allProb, IR2018 == 2018), 
-          aes(color = 'Probabilistic Sites\n (Wadeable)'),
+  geom_sf(data = filter(allProb, IR2020 == 2020), 
+          aes(color = 'IR 2020 Probabilistic\n Sites (Wadeable)'),
           size = 1, show.legend = 'point') +
   coord_sf(datum = NA) + # take away grid
   scale_fill_manual(values= col.regions, name = NULL,
                     guide = guide_legend(override.aes = list(linetype = 'solid',
                                                              shape = NA))) +
-  scale_colour_manual(values = c('Probabilistic Sites\n (Wadeable)' = 'black'),
+  scale_colour_manual(values = c('IR 2020 Probabilistic\n Sites (Wadeable)' = 'black'),
                       guide = guide_legend(override.aes = list(linetype = 0, 
                                                                shape = 19))) +
   theme_minimal() +
@@ -166,18 +171,35 @@ ggplot() +
 ##### Figure 2.4-4. Virginia probabilistic monitoring locations from `r IRrange`  with US Level III Ecoregions (n = `r nrow(IRstations2018)`).
 
 
-```{r fig2.4-4, fig.width=5.75, fig.height=4.75}
-#suppressMessages(suppressWarnings(trellis.par.set(axis.line=list(col=NA)) ))
-#spplot(VAecoregionsL3,'US_L3NAME',
-#       col.regions = brewer.pal(n = 12,#length(unique(VAecoregionsL3@data$US_L3NAME)), 
-#                                name = "Paired")[c(1,2,4,7,8,9,11)],
-#       sp.layout = sitesLayer)
+```{r fig2.4-4, fig.width=7, fig.height=3.75}
+ggplot() +
+  geom_sf(data = mutate(VAecoregionsL3, 
+                        `Ecoregion (Level III)` = case_when(US_L3NAME == 'Southeastern Plains' ~ 
+                                                              'Southeastern\n Plains',
+                                                            US_L3NAME == 'Middle Atlantic Coastal Plain' ~
+                                                              'Middle Atlantic\n Coastal Plain',
+                                                            US_L3NAME == 'Central Appalachians' ~
+                                                              'Central\n Appalachians',
+                                                            US_L3NAME == 'Northern Piedmont' ~
+                                                              'Northern\n Piedmont',
+                                                            TRUE ~ as.character(US_L3NAME))), 
+          aes(fill = `Ecoregion (Level III)`) , show.legend = 'polygon') +
+  geom_sf(data = filter(allProb, IR2020 == 2020), 
+          aes(color = 'IR 2020 Probabilistic\n Sites (Wadeable)'),
+          size = 1, show.legend = 'point') +
+  coord_sf(datum = NA) + # take away grid
+  scale_fill_manual(values= col.regions, name = NULL,
+                    guide = guide_legend(override.aes = list(linetype = 'solid',
+                                                             shape = NA))) +
+  scale_colour_manual(values = c('IR 2020 Probabilistic\n Sites (Wadeable)' = 'black'),
+                      guide = guide_legend(override.aes = list(linetype = 0, 
+                                                               shape = 19))) +
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  'bottom') + 
+  guides(color=guide_legend(override.aes=list(fill=NA, shape = 19)))# still cant get box to go away on dots
+         #fill = guide_legend(nrow=3,byrow=TRUE))  # 3rd row makes dots come back
 
-# Above is code to make the ecoregion map but the legend get squished when outputting it directly from R to Word, so first build map in R, export to Image and save dimensions:
-# Figure width = 712 px height = 300 px
-
-# then bring it back in as jpeg
-knitr::include_graphics("ecoregions_newPal.jpeg")
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estimates of percent river miles not meeting water quality criteria are reported with 95% confidence intervals using a local area variance estimator statistical technique. For example, Figure 2.4-1 illustrates the percentage of stream miles in Virginia failing to meet biomonitoring criteria expectations are `r signif(filter(paramsummary, Parameter == 'VSCI/VCPMI\n(Biomonitoring)')$pct, digits = 3)`% +/- `r signif(filter(paramsummary, Parameter == 'VSCI/VCPMI\n(Biomonitoring)')$MoE, digits = 3)`%, such that we are 95% confident that the true percentage of streams in Virginia failing the VSCI/VCPMI criteria is between `r signif(filter(paramsummary, Parameter == 'VSCI/VCPMI\n(Biomonitoring)')$pct - filter(paramsummary, Parameter == 'VSCI/VCPMI\n(Biomonitoring)')$MoE, digits = 3)`% and `r signif(filter(paramsummary, Parameter == 'VSCI/VCPMI\n(Biomonitoring)')$pct + filter(paramsummary, Parameter == 'VSCI/VCPMI\n(Biomonitoring)')$MoE, digits = 3)`%. The sampling frame provided by EPA for Virginia streams and rivers includes 49,100 miles (derived from NHD 1:100,000 scale coverage[^2]). It is important to note that the total amount of assessed river miles may vary to some extent by parameter. This number varies based on whether a monitoring tool was appropriate for the sampling location. For example, DEQ biological monitoring tools are not validated for streams without a defined channel, thus streams dominated by wetlands cannot be assessed (approximately 5,000 miles). The actual number of target stream miles (perennial, flowing freshwater) is much less because several thousands of stream miles are not perennial (e.g. the stream was dry when DEQ visited) or were found to be saltwater influenced. There is an estimated 1,200 miles of non-wadeable streams (also referred to as boatable sites), which must be sampled using large river habitat and biological sampling methods. Non-wadeable and wadeable sites, and associated watersheds, sampled since 2001 are presented in Figure 2.4-6. Large river data collection, using a non-wadeable (boatable) methodology, is underway and the condition will be included in future 303(d) / 305(b) Integrated Report chapters. The ProbMon chapter provides estimates for all perennial, non-tidal, wadeable stream and river miles, which equates to approximately 41,500 miles. 
@@ -186,37 +208,58 @@ knitr::include_graphics("ecoregions_newPal.jpeg")
 
 ##### Figure 2.4-5. Virginia probabilistic monitoring wadeable locations from 2001 - `r IRyearWindowEnd` (n = `r nrow(allProb)`).
 
-```{r fig2.4-5, fig.width=5.75, fig.height=2.5}  
-par(mar=c(0,0,0,0),oma=c(0,0,0,0))
-plot(VAbasins,border='wheat3',col='wheat1',ylim=c(37.4,38.5))
-plot(IRstations2008,col='red',pch=19,cex=0.5,add=T)
-plot(IRstations2010,col='blue',pch=19,cex=0.5,add=T)
-plot(IRstations2012,col='green',pch=19,cex=0.5,add=T)
-plot(IRstations2014,col='purple',pch=19,cex=0.5,add=T)
-plot(IRstations2016,col='orange',pch=19,cex=0.5,add=T)
-plot(IRstations2018,col='black',pch=19,cex=0.5,add=T)
-legend('topleft',legend=c('Major Basins','2008 IR wadeable sites',
-                          '2010 IR wadeable sites','2012 IR wadeable sites',
-                          '2014 IR wadeable sites','2016 IR wadeable sites',
-                          '2018 IR wadeable sites'),
-       title='Legend',bty='n',inset=0.05,pch=c(15,19,19,19,19,19,19),cex=0.8,
-       col=c('wheat1','red','blue','green','purple','orange','black'))
+```{r fig2.4-5, fig.width=7, fig.height=4.5}  
+ggplot() +
+  geom_sf(data = VAoutline, color = 'wheat3', fill = 'wheat1') +
+  geom_sf(data = filter(allProb, IR2008 == 2008), 
+          aes(color = 'IR 2008 Wadeable Sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2010 == 2010), 
+          aes(color = 'IR 2010 Wadeable Sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2012 == 2012), 
+          aes(color = 'IR 2012 Wadeable Sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2014 == 2014), 
+          aes(color = 'IR 2014 Wadeable Sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2016 == 2016), 
+          aes(color = 'IR 2016 Wadeable Sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2018 == 2018), 
+          aes(color = 'IR 2018 Wadeable Sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2020 == 2020), 
+          aes(color = 'IR 2020 Wadeable Sites'), size = 1, show.legend = "point") +
+  coord_sf(datum = NA) + # take away grid
+  scale_colour_manual(values = c('IR 2020 Wadeable Sites' = 'black',
+                                 'IR 2018 Wadeable Sites' = 'cyan',
+                                 'IR 2016 Wadeable Sites' = 'orange',
+                                 'IR 2014 Wadeable Sites' = 'purple',
+                                 'IR 2012 Wadeable Sites' = 'green',
+                                 'IR 2010 Wadeable Sites' = 'blue',
+                                 'IR 2008 Wadeable Sites' = 'red'),
+                      guide = guide_legend(override.aes = list(linetype = c('blank','blank','blank',
+                                                                            'blank','blank','blank','blank'),
+                                                               shape = c(19, 19, 19, 19, 19, 19, 19)))) +
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  'bottom') +
+  guides(color = guide_legend(nrow=3,byrow=TRUE))
 ```
 
 
-##### Figure 2.4-6. Virginia probabilistic monitoring wadeable and boatable watersheds and sample sites from 2001 - `r IRyearWindowEnd` (n = `r sum(nrow(boatableWshd), nrow(allProb))`).
+##### Figure 2.4-6. Virginia probabilistic monitoring wadeable and boatable sites from 2001 - `r IRyearWindowEnd` (n = `r sum(nrow(boatableWshd), nrow(allProb))`).
 
-```{r fig2.4-6, fig.width=5.75, fig.height=3}  
-par(mar=c(0,0,0,0),oma=c(0,0,0,0))
-plot(VAbasins,border='wheat3',col='wheat1',ylim=c(37.4,38.5))
-plot(boatableWshd,border='lightskyblue4',col='grey',add=T)
-plot(allProb_wshd,border='lightskyblue4',col='lightskyblue',add=T)
-plot(boatableSites,col='magenta',pch=19,cex=0.5,add=T)
-plot(allProb,col='grey21',pch=19,cex=0.5,add=T)
-legend('topleft',legend=c('Major Basins','Monitored Watersheds (Boatable)','Monitored Watersheds (Wadeable)'
-                       ,'Boatable Sites (2008 - 2016)','Wadeable Sites (2001 - 2016)')
-       ,title='Legend',bty='n',inset=0.05,pch=c(15,15,15,19,19),cex=0.8
-       ,col=c('wheat1','grey','lightskyblue','magenta','grey21'))
+```{r fig2.4-6, fig.width=7, fig.height=4}  
+ggplot() +
+  geom_sf(data = VAoutline, color = 'wheat3', fill = 'wheat1') +
+  geom_sf(data = allProb, aes(color = 'Probabilistic Wadeable\n Sites (2001 - 2018)'),
+          size = 1, show.legend = "point") +
+  geom_sf(data = boatableSites, aes(color = 'Probabilistic Boatable\n Sites (2008 - 2018)'),
+          size = 1, show.legend = "point") +
+  scale_colour_manual(values = c('Probabilistic Wadeable\n Sites (2001 - 2018)' = 'grey21',
+                                 'Probabilistic Boatable\n Sites (2008 - 2018)' = 'red'),
+                      guide = guide_legend(override.aes = list(linetype = c('blank','blank'),
+                                                               shape = c(19, 19)))) +
+  coord_sf(datum = NA) + # take away grid
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  'bottom')
 ```
 
 ### 2.4.3 Parameters with Water Quality Standards
@@ -229,7 +272,7 @@ legend('topleft',legend=c('Major Basins','Monitored Watersheds (Boatable)','Moni
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon results indicate that DO conditions for the majority of Virginia’s streams and rivers are above the minimum DO criteria for specific water quality class designations (Table 2.4-1). Most stations with values below the appropriate criteria are located in coastal ecoregions where the DO is naturally lower due to swamp conditions. These sites with low DO need to be reviewed as candidates for site specific DO criteria. ProbMon results suggest that the majority of mountainous zone waters, stockable trout waters, and natural trout waters are meeting DO standards. Estimates are reflective of two sampling events from all perennial wadeable systems.
 
-##### Table 2.4-1. Dissolved oxygen results (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2018'&Indicator=='DO')$NResp)`) of percentage of streams below Virginia’s Water Quality Standard ( +/- confidence limits).
+##### Table 2.4-1. Dissolved oxygen results (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2020'&Indicator=='DO')$NResp)`) of percentage of streams below Virginia’s Water Quality Standard ( +/- confidence limits).
 ```{r table2.4-1}
 knitr::kable(DOsummary,align='c')
 ```
@@ -243,7 +286,7 @@ knitr::kable(DOsummary,align='c')
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProbMon results show that `r format(filter(paramsummary,Parameter=='pH\n(Below 6)')$pct,digits=1,nsmall=1)`% of wadeable Virginia streams and rivers are estimated to have pH below 6 (Table 2.4-2). All stations with pH less than 6 occurred at sites located in the coastal ecoregion where swamp waters are common. DEQ collects additional parameters, including Acid Neutralizing Capacity (ANC) and sulfate data at ProbMon stations to estimate the percent of streams impacted by acid rain and acid mine drainage. High sulfate values in low pH streams are indicative of acid mine drainage whereas streams with low ANC values are susceptible to episodic acidification from acid rain runoff (USEPA 2000). However, based on ProbMon data collected during the `r IRyear` assessment period, DEQ estimates that no pH values are below 6 in the mountain ecoregions. Estimates are reflective of an average of two data points, where data are available.
 
-##### Table 2.4-2.  pH results (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2018'&Indicator=='pH')$NResp)`) of streams below or above Virginia’s Water Quality Standard ( +/- confidence limits).
+##### Table 2.4-2.  pH results (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2020'&Indicator=='pH')$NResp)`) of streams below or above Virginia’s Water Quality Standard ( +/- confidence limits).
 ```{r table2.4-2}
 knitr::kable(pHsummary,align='c')
 ```
@@ -257,7 +300,7 @@ knitr::kable(pHsummary,align='c')
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overall, DEQ estimates that temperature criteria exceedances will be rare in Virginia’s wadeable streams (Table 2.4-3) during the spring and fall. However, it is important to note that ProbMon temperature data is seldom collected during the most stressful hydrologic and weather conditions. Estimates are reflective of an average of two data points, where data are available. In order to properly estimate temperature conditions, temperature data must be collected continuously. Continuous temperature data collection began in 2016 at twenty probabilistic trend sites.
 
-##### Table 2.4-3. Temperature results (`r IRrange`, n= `r max(filter(dat,Subpopulation=='IR2018'&Indicator=='pH')$NResp)`) above Virginia’s Water Quality Standard ( +/- confidence limits).
+##### Table 2.4-3. Temperature results (`r IRrange`, n= `r max(filter(dat,Subpopulation=='IR2020'&Indicator=='pH')$NResp)`) above Virginia’s Water Quality Standard ( +/- confidence limits).
 ```{r table2.4-3}
 temp <- data.frame(c1='Temperature',c2='0.0% ( +/- 0.0% )')
 names(temp) <- c('Parameter','Above Standard (31/32 degrees Celsius)')
@@ -270,7 +313,7 @@ knitr::kable(temp,align='c')
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**All criteria are calculated using site-specific hardness measures. No samples were measured above their respective chronic or acute sample criteria during the `r IRyear` Integrated Report sample window (`r IRrange`). This cycle illustrates the first Integrated Report window with no dissolved metals violations. Results are shown in Table 2.4-4.**
 
-##### Table 2.4-4. Dissolved metals results (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2018'&Indicator=='ARSENIC')$NResp)`) above Virginia’s Water Quality Standards ( +/- confidence limits). ppb^1^ = parts per billion.
+##### Table 2.4-4. Dissolved metals results (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2020'&Indicator=='ARSENIC')$NResp)`) above Virginia’s Water Quality Standards ( +/- confidence limits). ppb^1^ = parts per billion.
 ```{r table2.4-4}
 x <- data.frame(c1=c('Arsenic','Cadmium','Chromium','Copper','Lead','Mercury','Nickel','Selenium','Silver','Zinc'),c2=c('340','3.9 CaCO~3~=100','570  CaCO~3~=100','13   CaCO~3~=100','120  CaCO~3~=100','1.4','180  CaCO~3~=100','20','3.4  CaCO~3~=100','120  CaCO~3~=100'),c3=c('150','1.1 CaCO~3~=100','74 CaCO~3~=100','9 CaCO~3~=100','14 CaCO~3~=100','0.77','20 CaCO~3~=100','5','NA','120 CaCO~3~=100'),c4=c(0,0,0,0,0,0,0,0,0,0), c5=c('0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)'))
 names(x) <- c('Metal','DEQ Acute Criteria (ppb^1^)','DEQ Chronic Criteria (ppb^1^)','# Above Criteria','% of Miles Above Criteria')
@@ -316,7 +359,7 @@ names(bioindicators) <- c('Response Parameters','Optimal','Suboptimal','Classifi
 knitr::kable(bioindicators,align='c')
 ```
 
-##### Table 2.4-6. VSCI/CPMI (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2018'&Indicator=='VSCIVCPMI')$NResp)`) Scores below Virginia’s Assessment Thresholds ( +/- confidence limits).
+##### Table 2.4-6. VSCI/CPMI (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2020'&Indicator=='VSCIVCPMI')$NResp)`) Scores below Virginia’s Assessment Thresholds ( +/- confidence limits).
 ```{r table2.4-6}
 VSCIsummary <- data.frame(Parameter='VSCI/VCPMI',pct=vlookup(60,VSCI,2,TRUE),
                           MoE= vlookup(60,VSCI,3,TRUE) * 1.96) %>%
@@ -330,7 +373,7 @@ knitr::kable(VSCIsummary,align='c')
 ```
 
 
-##### Figure 2.4-7. Biological stream condition index based on VSCI/VCPMI Scores (`r IRrange`, n = `r  max(filter(dat,Subpopulation=='IR2018'&Indicator=='VSCIVCPMI')$NResp)`).
+##### Figure 2.4-7. Biological stream condition index based on VSCI/VCPMI Scores (`r IRrange`, n = `r  max(filter(dat,Subpopulation=='IR2020'&Indicator=='VSCIVCPMI')$NResp)`).
 ```{r,fig.width=3.5, fig.height=2.75}
 VSCIcut <- data.frame(Stress=c('Severe Stress','Moderate Stress', 
                                'Good Condition','Excellent Condition'),
@@ -703,7 +746,7 @@ TotHabsummary <- TotHaball%>%
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Habitat is defined as the area or environment where an organism resides. It encompasses its surroundings, both living and non-living. Fish, aquatic insects, and plants require certain types of habitat to thrive, so in-stream and riparian (stream bank) habitat is evaluated when a biomonitoring sample is collected. Because different organisms have diverse habitat requirements, a variety of available habitat types in a stream or river will support a diverse aquatic community. Habitat is scored by a rapid qualitative evaluation of ten habitat parameters summed together (total scores range from 0 to 200). Habitat scores above 150 indicate habitat conditions favorable for supporting a healthy aquatic community and are considered optimal. Scores lower than 120 are considered suboptimal and scores between 120 and 150 are fair (EPA 1999). Habitat disturbance is frequently identified in benthic TMDL stressor analyses as a potential or probable stressor. As indicated in Figure 2.4-12, DEQ estimates that slightly over `r format(100-vlookup(150,hab,2,TRUE),digits=2,nsmall=0)`% of stream and river miles have available habitat that is considered optimal.
 
-##### Figure 2.4-12. Estimate of habitat condition in Virginia streams and rivers and associated 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2018'&Indicator=='TotHab')$NResp)`).
+##### Figure 2.4-12. Estimate of habitat condition in Virginia streams and rivers and associated 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2020'&Indicator=='TotHab')$NResp)`).
 ```{r fig2.4-12, fig.width=3, fig.height=2.25}
 p2.4.6 <- ggplot(totalshab,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
@@ -793,7 +836,7 @@ LRBSsummary <- LRBSall%>%
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEQ uses the relative bed stability (RBS) method for predicting the expected substrate size distribution for streams (Kaufmann 1999). RBS incorporates stream channel shape, slope, flow, and sediment supply. The method calculates a ‘stream power’ based on channel measurements to predict the expected sediment size distribution. The ratio of the observed sediment to the expected sediment is a measure of the RBS. A stream with a log RBS of less than -1 is carrying excess sediment (suboptimal), streams between -0.5 and 0.5 have a normal sediment load (optimal), and streams above 0.5 are excessively hardened (fair) (Kaufmann 1999 and USEPA 2000). Relative bed stability is frequently identified in benthic TMDL stressor analyses as a potential or probable stressor. Over `r format(vlookup(-1,LRBS,2,TRUE),digits=2,nsmall=0)`% of Virginia’s stream and river miles have suboptimal sedimentation values (Figure 2.4-14).
 
-##### Figure 2.4-14. Estimate of streambed sedimentation conditions in Virginia streams and rivers as defined by LRBS measures and 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2018'&Indicator=='LRBS')$NResp)`).
+##### Figure 2.4-14. Estimate of streambed sedimentation conditions in Virginia streams and rivers as defined by LRBS measures and 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2020'&Indicator=='LRBS')$NResp)`).
 ```{r fig2.4-14,fig.width=3, fig.height=2.25}
 p2.4.7 <- ggplot(totalsLRBS,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+

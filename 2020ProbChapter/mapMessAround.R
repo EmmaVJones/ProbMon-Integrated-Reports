@@ -98,12 +98,88 @@ nc %>% ggplot(aes(fill=AREA)) +
 
 
 
+### Plot by ecoregions
+
+
+
+ggplot() +
+  geom_sf(data = mutate(VAecoregionsL3, `Ecoregion (Level III)` = US_L3NAME), 
+          aes(fill = `Ecoregion (Level III)`) , show.legend = 'polygon') +
+  geom_sf(data = filter(allProb, IR2018 == 2018), 
+          aes(color = 'Probabilistic Sites\n (Wadeable)'),
+          size = 1, show.legend = 'point') +
+  coord_sf(datum = NA) + # take away grid
+  scale_fill_manual(values= col.regions, name = NULL,
+                    guide = guide_legend(override.aes = list(linetype = 'solid',
+                                                             shape = NA))) +
+  scale_colour_manual(values = c('Probabilistic Sites\n (Wadeable)' = 'black'),
+                      guide = guide_legend(override.aes = list(linetype = 0, 
+                                                               shape = 19))) +
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  'bottom') + 
+  guides(color=guide_legend(override.aes=list(fill=NA, shape = 19)),
+         fill = guide_legend(nrow=3,byrow=TRUE)) # still cant get box to go away on dots
+
+
+
+
+#plot wadeable sites by IR cycle
+
+
+
+ggplot() +
+  geom_sf(data = VAoutline, color = 'wheat3', fill = 'wheat1') +
+  geom_sf(data = filter(allProb, IR2008 == 2008), 
+          aes(color = '2008 IR wadeable sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2010 == 2010), 
+          aes(color = '2010 IR wadeable sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2012 == 2012), 
+          aes(color = '2012 IR wadeable sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2014 == 2014), 
+          aes(color = '2014 IR wadeable sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2016 == 2016), 
+          aes(color = '2016 IR wadeable sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2018 == 2018), 
+          aes(color = '2018 IR wadeable sites'), size = 1, show.legend = "point") +
+  geom_sf(data = filter(allProb, IR2020 == 2020), 
+          aes(color = '2020 IR wadeable sites'), size = 1, show.legend = "point") +
+  coord_sf(datum = NA) + # take away grid
+  scale_colour_manual(values = c('2020 IR wadeable sites' = 'black',
+                                 '2018 IR wadeable sites' = 'cyan',
+                                 '2016 IR wadeable sites' = 'orange',
+                                 '2014 IR wadeable sites' = 'purple',
+                                 '2012 IR wadeable sites' = 'green',
+                                 '2010 IR wadeable sites' = 'blue',
+                                 '2008 IR wadeable sites' = 'red'),
+                      guide = guide_legend(override.aes = list(linetype = c('blank','blank','blank','blank','blank','blank','blank'),
+                                                               shape = c(19, 19, 19, 19, 19, 19, 19)))) +
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  'bottom') +
+  guides(color = guide_legend(nrow=3,byrow=TRUE))
 
 
 
 
 
 
+
+### wadeable and boatable sites
+ggplot() +
+  geom_sf(data = VAoutline, color = 'wheat3', fill = 'wheat1') +
+  geom_sf(data = allProb, aes(color = 'Probabilistic Wadeable\n Sites (2001 - 2018)'),
+          size = 1, show.legend = "point") +
+  geom_sf(data = boatableSites, aes(color = 'Probabilistic Boatable\n Sites (2008 - 2018)'),
+          size = 1, show.legend = "point") +
+  scale_colour_manual(values = c('Probabilistic Wadeable\n Sites (2001 - 2018)' = 'grey21',
+                                 'Probabilistic Boatable\n Sites (2008 - 2018)' = 'magenta'),
+                      guide = guide_legend(override.aes = list(linetype = c('blank','blank'),
+                                                               shape = c(19, 19)))) +
+  coord_sf(datum = NA) + # take away grid
+  theme_minimal() +
+  theme(legend.title=element_blank(), # no legend title
+        legend.position =  'bottom')
 
 
 
