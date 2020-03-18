@@ -46,13 +46,6 @@ rr <- read.csv('processedData/relriskIR2020.csv') %>%
   mutate(MoE = StdError.log *1.96)
 
 
-# Bring in basin rank data
-#rankBasins <- read.csv('processedData/rankBasinsbyMicromap.csv') 
-##rankBasins1.4 <- read.csv('processedData/rankBasinsbyMicromap1-4.csv') 
-## reorganizing ranks into a 1-4 scheme was thought about and plotted for IR2018, but 
-##  was not approved to go ahead to LT for approval
-
-
 # VLOOKUP (Excel function hack) by Julin Maloof
 vlookup <- function(ref, #the value or values that you want to look for
                     table, #the table where you want to look for it; will look in first column
