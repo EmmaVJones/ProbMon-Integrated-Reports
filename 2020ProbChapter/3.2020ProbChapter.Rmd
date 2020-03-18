@@ -30,7 +30,8 @@ suppressPackageStartupMessages(library(extrafont))#0.17
 
 
 # Data needed for maps (needs to be in report for figure generation vs in global file)
-basinssmooth <- st_read('originalData/VAbasins_smoothNoChesPeeDee.shp')# basin shapefile for micromaps
+basinssmooth <- st_read('originalData/VAbasins_smoothNoChesPeeDee.shp')# basin shapefile ggplot maps (sf)
+basinssmooth_sp <- readOGR('originalData','VAbasins_smoothNoChesPeeDee')# basin shapefile for micromaps (sp)
 VAoutline <- st_read('originalData/Va_otlne.shp') # for basic site maps
 VAbasins <- st_read('originalData/basinsstatewide.shp') # for basic site maps
 VAecoregionsL3 <- st_read('originalData/VA_level3ecoregion.shp') # for basic site maps
@@ -38,7 +39,6 @@ VAecoregionsL3 <- st_read('originalData/VA_level3ecoregion.shp') # for basic sit
 ### update to 2020 when available
 
 allProb <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv') %>% # for basic site maps
-#allProb <- read_csv('originalData/Wadeable_ProbMon_2001-2016_EVJ.csv') %>% # for basic site maps
   dplyr::select(DataSource:IR2020) %>%
   st_as_sf(coords = c("LongitudeDD", "LatitudeDD"),  # make spatial layer using these columns
              remove = T, # don't remove these lat/lon cols from df
@@ -68,7 +68,7 @@ put_gap()
 ##### Figure 2.4-1. Percentage of stream miles with water quality parameters exceeding criteria, assessment thresholds or screening values. Orange bars indicate parameters with screening values only (no numeric water quality criteria or assessment thresholds), and green bars indicate parameters with numeric water quality criteria (pH, DO) or assessment thresholds (VSCI/VCPMI). Horizontal lines associated with each parameter illustrates 95% confidence limits. Figure represents data collected from `r IRrange`. 
 
 ```{r fig2.4-1, fig.width=8, fig.height=2.9}
-p2.4.1 <- suppressWarnings(
+suppressWarnings(
   ggplot(paramsummary,aes(Parameter,pct,fill=Standard,label=pct))+
     geom_bar(stat='identity')+
     theme(aspect.ratio=4/6)+
@@ -85,8 +85,7 @@ p2.4.1 <- suppressWarnings(
     panel.grid.major.x = element_blank(),panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black"))+ # no background grid
     theme(plot.margin=unit(c(0,1,0,0),'cm')))
-  
-p2.4.1 
+
 ```
 
 [^1]:All data and analysis scripts can be accessed at: https://www.deq.virginia.gov/Programs/Water/WaterQualityInformationTMDLs/WaterQualityMonitoring/ProbabilisticMonitoring/ProbMonDataSources.aspx .
@@ -300,7 +299,16 @@ knitr::kable(temp,align='c')
 
 ##### Table 2.4-4. Dissolved metals results (`r IRrange`, n=`r max(filter(dat,Subpopulation=='IR2020'&Indicator=='ARSENIC')$NResp)`) above Virginia’s Water Quality Standards ( +/- confidence limits). ppb^1^ = parts per billion.
 ```{r table2.4-4}
-x <- data.frame(c1=c('Arsenic','Cadmium','Chromium','Copper','Lead','Mercury','Nickel','Selenium','Silver','Zinc'),c2=c('340','3.9 CaCO~3~=100','570  CaCO~3~=100','13   CaCO~3~=100','120  CaCO~3~=100','1.4','180  CaCO~3~=100','20','3.4  CaCO~3~=100','120  CaCO~3~=100'),c3=c('150','1.1 CaCO~3~=100','74 CaCO~3~=100','9 CaCO~3~=100','14 CaCO~3~=100','0.77','20 CaCO~3~=100','5','NA','120 CaCO~3~=100'),c4=c(0,0,0,0,0,0,0,0,0,0), c5=c('0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)','0% (+/- 0%)'))
+x <- data.frame(c1=c('Arsenic','Cadmium','Chromium','Copper','Lead','Mercury','Nickel','Selenium','Silver','Zinc'),
+                c2=c('340','3.9 CaCO~3~=100','570  CaCO~3~=100','13   CaCO~3~=100',
+                     '120  CaCO~3~=100','1.4','180  CaCO~3~=100','20',
+                     '3.4  CaCO~3~=100','120  CaCO~3~=100'),
+                c3=c('150','1.1 CaCO~3~=100','74 CaCO~3~=100','9 CaCO~3~=100','14 CaCO~3~=100',
+                     '0.77','20 CaCO~3~=100','5','NA','120 CaCO~3~=100'),
+                c4=c(0,0,0,1,0,0,0,0,0,0), 
+                c5=c('0% (+/- 0%)','0% (+/- 0%)', '0% (+/- 0%)','0% (+/- 0%)',
+                     '0% (+/- 0%)','0% (+/- 0%)', '0% (+/- 0%)','0% (+/- 0%)',
+                     '0% (+/- 0%)','0% (+/- 0%)'))
 names(x) <- c('Metal','DEQ Acute Criteria (ppb^1^)','DEQ Chronic Criteria (ppb^1^)','# Above Criteria','% of Miles Above Criteria')
 knitr::kable(x,align='c')
 ```
@@ -371,13 +379,13 @@ VSCIcut <- data.frame(Stress=c('Severe Stress','Moderate Stress',
                               vlookup(51,VSCI,3,TRUE),
                               vlookup(66,VSCI,3,TRUE),
                               vlookup(72,VSCI,3,TRUE))) %>%
-  mutate(n = c(nrow(filter(surveyData,Year > 2010 & Year <2017 & VSCIVCPMI <= 42)),
-               nrow(filter(surveyData,Year > 2010 & Year <2017 & VSCIVCPMI > 42 & VSCIVCPMI <= 60)),
-               nrow(filter(surveyData,Year > 2010 & Year <2017 & VSCIVCPMI > 60 & VSCIVCPMI <= 72)), 
-               nrow(filter(surveyData,Year > 2010 & Year <2017 & VSCIVCPMI > 72))))
+  mutate(n = c(nrow(filter(surveyData,Year > 2012 & Year <2019 & VSCIVCPMI <= 42)),
+               nrow(filter(surveyData,Year > 2012 & Year <2019 & VSCIVCPMI > 42 & VSCIVCPMI <= 60)),
+               nrow(filter(surveyData,Year > 2012 & Year <2019 & VSCIVCPMI > 60 & VSCIVCPMI <= 72)), 
+               nrow(filter(surveyData,Year > 2012 & Year <2019 & VSCIVCPMI > 72))))
 VSCIcut$Stress <- factor(VSCIcut$Stress,levels = unique(VSCIcut$Stress))
 
-p2.4.5 <- ggplot(VSCIcut,aes(Stress,pct,fill=Stress))+
+ggplot(VSCIcut,aes(Stress,pct,fill=Stress))+
   geom_bar(stat='identity',width=.6)+
   labs(x="Stream Condition Category", y = "Percent of Stream Miles")+
   geom_errorbar(aes(ymin=pct-MoE, ymax=pct+MoE), width=0.2)+
@@ -393,7 +401,6 @@ p2.4.5 <- ggplot(VSCIcut,aes(Stress,pct,fill=Stress))+
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) # no background grid
 
-p2.4.5
 ```
 
 
@@ -434,7 +441,7 @@ sizetrend <- data.frame(size=c('Small','Medium','Large'),
 #levels(sizetrend$size) <- c('Small','Medium','Large')
 sizetrend$size <- factor(sizetrend$size,levels=c('Small','Medium','Large'))
 
-psize <- ggplot(sizetrend,aes(size,VSCIpct))+
+ggplot(sizetrend,aes(size,VSCIpct))+
   geom_bar(stat='identity', fill="steelblue",width=.65)+
   labs(x="Stream Size Category", y = "Percent of Stream Miles Below \nBiologic Assessment Threshold")+
   geom_text(aes(y=sizetrend$plotloc,
@@ -450,9 +457,9 @@ psize <- ggplot(sizetrend,aes(size,VSCIpct))+
     # explicitly set the horizontal lines (or they will disappear too)
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
-    axis.line = element_line(colour = "black"))#+ # no background grid
+    axis.line = element_line(colour = "black"))+ # no background grid
   #theme(axis.text.x = element_text(angle = 45, hjust = 1))# rotate x axis text
-psize+geom_errorbar(aes(ymax=VSCIpct - MoE,ymin=VSCIpct + MoE), position="dodge", width=0.15)
+  geom_errorbar(aes(ymax=VSCIpct - MoE,ymin=VSCIpct + MoE), position="dodge", width=0.15)
 ```
 
 ##### Biological Condition by US Level III Ecoregion
@@ -487,7 +494,7 @@ Ecotrend <- data.frame(Eco=c('Piedmont','Northern Piedmont','Central Appalachian
                                 vlookup(60,BRMountains,3,TRUE),vlookup(60,CApp,3,TRUE)),
                       plotloc=18)
 
-pEcotrend <- ggplot(Ecotrend,aes(Eco,VSCIpct))+geom_bar(stat='identity', fill="steelblue",width=.75)+
+ggplot(Ecotrend,aes(Eco,VSCIpct))+geom_bar(stat='identity', fill="steelblue",width=.75)+
   labs(x="Ecoregions", y ="Percent of Stream Miles Below \nBiologic Assessment Threshold")+
   geom_text(data=subset(Ecotrend,Eco!= 'Blue Ridge \nMountains'),
             aes(Eco,plotloc,label=paste(format(VSCIpct,digits=3,nsmall=1),"%",sep="")), color="black", size=3.5,family='Arial')+
@@ -505,8 +512,8 @@ pEcotrend <- ggplot(Ecotrend,aes(Eco,VSCIpct))+geom_bar(stat='identity', fill="s
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black"))+ # no background grid
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))# rotate x axis text
-pEcotrend + geom_errorbar(aes(ymax=VSCIpct + MoE,ymin=VSCIpct - MoE), position="dodge", width=0.15)
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + # rotate x axis text
+  geom_errorbar(aes(ymax=VSCIpct + MoE,ymin=VSCIpct - MoE), position="dodge", width=0.15)
 
 ```
 
@@ -537,8 +544,10 @@ holston <-  filter(dat,Subpopulation=='Holston'&Indicator=='VSCIVCPMI')%>%
 
 basintrend <- data.frame(basin=c('Chowan','Rappahannock','York','Potomac','Shenandoah','Roanoke','James',
                                       'New','Big Sandy','Clinch-Powell','Holston'),
-                          n=c(max(chowan$NResp),max(rappahannock$NResp),max(york$NResp),max(potomac$NResp),max(shenandoah$NResp),max(roanoke$NResp),
-                              max(james$NResp),max(new$NResp),max(bigsandy$NResp),max(cp$NResp),max(holston$NResp)),
+                          n=c(max(chowan$NResp),max(rappahannock$NResp),max(york$NResp),
+                              max(potomac$NResp),max(shenandoah$NResp),max(roanoke$NResp),
+                              max(james$NResp),max(new$NResp),max(bigsandy$NResp),max(cp$NResp),
+                              max(holston$NResp)),
                          VSCIpct=c(vlookup(60,chowan,2,TRUE),vlookup(60,rappahannock,2,TRUE),
                                 vlookup(60,york,2,TRUE),vlookup(60,potomac,2,TRUE),vlookup(60,shenandoah,2,TRUE),
                                 vlookup(60,roanoke,2,TRUE),vlookup(60,james,2,TRUE),
@@ -558,16 +567,20 @@ basintrend <- data.frame(basin=c('Chowan','Rappahannock','York','Potomac','Shena
 
 ##### Figure 2.4-10 VSCI status by major Virginia basins. The estimated percent of stream miles below the VSCI/VCPMI assessment threshold is listed on the y axis. The number of samples collected from 2001 - `r IRyearWindowEnd` in each basin is identified as n.
 ```{r fig2.4-10,fig.width=6,fig.height=5}
-pbasintrend <- ggplot(basintrend,aes(basin,VSCIpct))+geom_bar(stat='identity', fill="steelblue",width=.95)+
+ggplot(basintrend,aes(basin,VSCIpct))+geom_bar(stat='identity', fill="steelblue",width=.95)+
   labs(x="Major Basin", y = "Percent of Stream Miles Below \nBiologic Assessment Threshold")+
   geom_text(data=subset(basintrend,basin!= 'Holston'),
-            aes(basin,plotloc,label=paste(format(VSCIpct,digits=2,nsmall=1),"%",sep="")), vjust=5.0, color="black", size=3.5)+
+            aes(basin,plotloc,label=paste(format(VSCIpct,digits=2,nsmall=1),"%",sep="")),
+            vjust=5.0, color="black", size=3.5)+
   geom_text(data=subset(basintrend,basin == 'Holston'),
-            aes(basin,VSCIpct,label=paste(format(VSCIpct,digits=2,nsmall=1),"%",sep="")), vjust=-3.1, color="black", size=3.5)+
+            aes(basin,VSCIpct,label=paste(format(VSCIpct,digits=2,nsmall=1),"%",sep="")), 
+            vjust=-3.1, color="black", size=3.5)+
   geom_text(data=subset(basintrend,basin!= 'Holston'),
-            aes(basin,plotloc-1,label=paste('n=',n,sep="")), vjust=6.2, color="black", size=3.5,family='Arial')+
+            aes(basin,plotloc-1,label=paste('n=',n,sep="")), vjust=6.2, color="black", 
+            size=3.5,family='Arial')+
   geom_text(data=subset(basintrend,basin == 'Holston'),
-            aes(basin,VSCIpct,label=paste('n=',n,sep="")), vjust=-1.9, color="black", size=3.5,family='Arial')+
+            aes(basin,VSCIpct,label=paste('n=',n,sep="")), vjust=-1.9, color="black", 
+            size=3.5,family='Arial')+
   theme_minimal()+
   theme(legend.position="none",plot.title = element_text(hjust = 0.5))+ # no legend, center title
   theme(text=element_text(family="Arial"),
@@ -576,8 +589,8 @@ pbasintrend <- ggplot(basintrend,aes(basin,VSCIpct))+geom_bar(stat='identity', f
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black"))+ # no background grid
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))# rotate x axis text
-pbasintrend + geom_errorbar(aes(ymax=VSCIpct + MoE,ymin=VSCIpct - MoE), position="dodge", width=0.15)
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + # rotate x axis text 
+  geom_errorbar(aes(ymax=VSCIpct + MoE,ymin=VSCIpct - MoE), position="dodge", width=0.15)
 
 ```
 
@@ -592,7 +605,7 @@ pbasintrend + geom_errorbar(aes(ymax=VSCIpct + MoE,ymin=VSCIpct - MoE), position
 ##### Figure 2.4-11. VSCI/VCPMI status by basin. The vertical dashed line at 60 highlights the biologic assessment threshold. Data encompasses samples collected from 2001 - `r IRyearWindowEnd`.
 
 ```{r fig2.4-11,fig.width=9,fig.height=9}
-map.table <- create_map_table(basinssmooth,'BASIN')
+map.table <- create_map_table(basinssmooth_sp,'BASIN')
 # pull median VSCI scores and upper/lower bounds for micromap
 stats <- data.frame(Basin=c('Chowan','Rappahannock','York','Potomac','Shenandoah','Roanoke','James','New',
                             'Big Sandy','Clinch-Powell', 'Holston'),Indicator='VSCIVCPMI')
@@ -641,14 +654,10 @@ statsbasin <- rbind(
 
 stats <- cbind(stats,statsbasin)
 
-#mmplot(stat.data=stats,
-#       map.data=map.table,
-#       panel.types=c('dot_legend', 'labels', 'dot_cl', 'map'),
-#       panel.data=list(NA,'Basin',list('x50', 'x25', 'x75'),NA),
-#       ord.by='x50', grouping=4,
-#       median.row=F,
-#       map.link=c("Basin", "ID"))
-
+# For basin rank
+basin_rank <- arrange(stats, desc(x50)) %>%
+  mutate(Order = row_number(), Indicator = 'VSCI/VCPMI') %>%
+  dplyr::select(Basin, Indicator, Order)
 
 
 suppressWarnings(
@@ -726,6 +735,12 @@ TotHabsummary <- TotHaball%>%
   filter(Subpopulation!='Virginia')%>% # get rid of Virginia to make mmplot work
   arrange(desc(TotHabEstimate.P)) %>%
   mutate(Rank=1:11)
+
+# for basin rank tables
+basin_rank <- bind_rows(basin_rank, 
+                         mutate(TotHabsummary, Basin = Subpopulation, 
+                                Indicator = 'Habitat\nDisturbance', Order = Rank) %>%
+                           dplyr::select(Basin, Indicator, Order) )
 ```
 
 
@@ -733,7 +748,7 @@ TotHabsummary <- TotHaball%>%
 
 ##### Figure 2.4-12. Estimate of habitat condition in Virginia streams and rivers and associated 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2020'&Indicator=='TotHab')$NResp)`).
 ```{r fig2.4-12, fig.width=3, fig.height=2.25}
-p2.4.6 <- ggplot(totalshab,aes(Condition,pct,fill=Condition))+
+ggplot(totalshab,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
   labs(x="Stream Condition Category", y = "Percent of Stream Miles")+
   geom_errorbar(aes(ymin=pct-MoE, ymax=pct+MoE), width=0.2)+
@@ -749,7 +764,6 @@ p2.4.6 <- ggplot(totalshab,aes(Condition,pct,fill=Condition))+
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) # no background grid
-p2.4.6
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-13 is a micromap depicting the prevalence and scale of habitat disturbance across major basins statewide. The left barplot highlights the estimated percent of stream miles with suboptimal habitat scores, ordered from highest to lowest, with the corresponding statewide estimate of stream miles with suboptimal habitat scores (`r format(filter(TotHabstats,Subpopulation=='Virginia')$TotHabEstimate.P,digits=2,nsmall=1)`%) illustrated with a vertical dashed line. The right barplot shows the percent of stream miles below the biological assessment threshold for each basin, again with the Virginia estimate of stream miles below the biological impairment threshold represented by a dashed vertical line (`r format(filter(VSCIstats,Subpopulation=='Virginia')$VSCIVCPMIEstimate.P,digits=2,nsmall=1)`%). No distinct spatial clustering appears when analyzing habitat disturbance with micromaps, indicating habitat degradation is a widespread problem across Virginia and is not limited to particular river basins or areas in the state. Ranking major river basins by decreasing estimates of habitat alteration, the Rappahannock, Chowan, New, Clinch-Powell, and Roanoke River basins have suboptimal habitat condition above the statewide estimate[^5].
@@ -757,7 +771,7 @@ p2.4.6
 ##### Figure 2.4-13. Percent of stream miles with suboptimal habitat disturbance. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal habitat disturbance and biologic condition below the assessment threshold, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
 
 ```{r fig2.4-13,fig.width=9.25,fig.height=9}
-map.table <- create_map_table(basinssmooth,'BASIN')
+map.table <- create_map_table(basinssmooth_sp,'BASIN')
 suppressWarnings(
   mmplot(stat.data=TotHabsummary,
        map.data=map.table,
@@ -814,6 +828,13 @@ LRBSsummary <- LRBSall%>%
   filter(Subpopulation!='Virginia')%>% # get rid of Virginia to make mmplot work
   arrange(desc(LRBSEstimate.P))%>%
   mutate(Rank=1:11)
+
+# for basin rank tables
+basin_rank <- bind_rows(basin_rank, 
+                         mutate(LRBSsummary, Basin = Subpopulation, 
+                                Indicator = 'Streambed\nSedimentation', Order = Rank) %>%
+                           dplyr::select(Basin, Indicator, Order) )
+
 ```
 
 
@@ -823,7 +844,7 @@ LRBSsummary <- LRBSall%>%
 
 ##### Figure 2.4-14. Estimate of streambed sedimentation conditions in Virginia streams and rivers as defined by LRBS measures and 95% confidence interval. Data presented is from `r IRrange` (n = `r  max(filter(dat,Subpopulation=='IR2020'&Indicator=='LRBS')$NResp)`).
 ```{r fig2.4-14,fig.width=3, fig.height=2.25}
-p2.4.7 <- ggplot(totalsLRBS,aes(Condition,pct,fill=Condition))+
+ggplot(totalsLRBS,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
   labs(x="Stream Condition Category", y = "Percent of Stream Miles")+
   geom_errorbar(aes(ymin=pct-MoE, ymax=pct+MoE), width=0.2)+
@@ -846,7 +867,6 @@ p2.4.7 <- ggplot(totalsLRBS,aes(Condition,pct,fill=Condition))+
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) # no background grid
-p2.4.7
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 2.4-15 illustrates the extent of stream miles affected by excess sedimentation is more prevalent in each of the major basins compared to overall habitat condition. All basins are estimated to have at least 8% of stream miles with suboptimal sedimentation levels. The Chowan, Roanoke, and New River basins are estimated to have more stream miles with suboptimal sedimentation levels than the overall estimate for stream miles in the Commonwealth (`r format(filter(LRBSstats,Subpopulation=='Virginia')$LRBSEstimate.P,digits=2,nsmall=0)`%)%). The basins with the highest percent of stream miles with suboptimal sedimentation are among the basins with the highest percent of stream miles below the VSCI/VCPMI assessment threshold. The micromap identifies the Big Sandy River and Shenandoah River basins are below the statewide average for suboptimal streambed sedimentation but above the statewide average for benthic impaired stream miles. These basins are likely affected by other stressors in addition to streambed sedimentation, resulting in the percentage of stream miles with poor biological condition above the statewide estimate.
@@ -858,7 +878,7 @@ p2.4.7
 
 
 ```{r fig2.4-15,fig.width=9,fig.height=9}
-map.table <- create_map_table(basinssmooth,'BASIN')
+map.table <- create_map_table(basinssmooth_sp,'BASIN')
 suppressWarnings(
   mmplot(stat.data=LRBSsummary,
        map.data=map.table,
@@ -910,17 +930,14 @@ suppressWarnings(
 
 ##### Figure 2.4-16. Estimate of total phosphorus condition in Virginia streams and rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
 ```{r fig2.4-16, fig.width=3, fig.height=2.25}
-p2.4.9 <- ggplot(totalsTP,aes(Condition,pct,fill=Condition))+
+ggplot(totalsTP,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
   labs(x="Stream Condition Category", y = "Percent of Stream Miles")+
-  
   geom_errorbar(aes(ymin=pct-MoE, ymax=pct+MoE), width=0.2)+
   geom_text(aes(y=9,label=paste(format(pct,digits=1,nsmall=1),"%",sep="")),
             color="black", size=3.5,family='Arial')+
   geom_text(aes(y=4,label=paste("n=",n,sep="")),
             color="black", size=3.5,family='Arial')+
-  
-  
   theme_minimal()+scale_fill_manual(values=c("#D55E00","#F0E442","#009E73"))+
   theme(legend.position="none",plot.title = element_text(hjust = 0.5))+ # no legend, center title
   theme( text=element_text(family="Arial"),
@@ -929,13 +946,13 @@ p2.4.9 <- ggplot(totalsTP,aes(Condition,pct,fill=Condition))+
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) # no background grid
-p2.4.9
+
 ```
 
 
 ##### Figure 2.4-17. Estimate of total nitrogen condition in Virginia streams and rivers and associated 95% confidence intervals. Data presented is from `r IRrange`.
 ```{r fig2.4-17,fig.width=3, fig.height=2.25}
-p2.4.8 <- ggplot(totalsTN,aes(Condition,pct,fill=Condition))+
+ggplot(totalsTN,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
   labs(x="Stream Condition Category", y = "Percent of Stream Miles")+
   geom_errorbar(aes(ymin=pct-MoE, ymax=pct+MoE), width=0.2)+
@@ -951,7 +968,6 @@ p2.4.8 <- ggplot(totalsTN,aes(Condition,pct,fill=Condition))+
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) # no background grid
-p2.4.8
 ```
 
 
@@ -961,13 +977,20 @@ TPstats <- statslookup('TP',0.05,'SubOptimal',TRUE)%>%select(-c(matchingdfname))
 VSCIstats <- statslookup('VSCIVCPMI',60,'SubOptimal',FALSE)%>%select(-c(matchingdfname))
 
 
-TPall <- merge(VSCIstats,TPstats,by=c('Subpopulation','Category'))
-TPsummary <- TPall%>%
-  filter(Subpopulation!='Virginia')%>% # get rid of Virginia to make mmplot work
-  arrange(desc(TPEstimate.P)) %>%
+TPall <- merge(VSCIstats,TPstats, by=c('Subpopulation','Category'))
+TPsummary <- TPall %>%
+  filter(Subpopulation != 'Virginia')%>% # get rid of Virginia to make mmplot work
+  arrange( desc(TPEstimate.P) ) %>%
   mutate(Rank=1:11)
 # Since two at 0 then make both 10
 TPsummary[10:11,11] <- c(10,10)
+
+# for basin rank tables
+basin_rank <- bind_rows(basin_rank, 
+                         mutate(TPsummary, Basin = Subpopulation, 
+                                Indicator = 'Total\nPhosphorus', Order = Rank) %>%
+                           dplyr::select(Basin, Indicator, Order) )
+
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using micromaps to analyze nutrients by basin highlights spatial relationships in the dataset. Figure 2.4-18 ranks basins by percent of stream miles that fall into the suboptimal total phosphorus category (> 0.05 mg/L). The associated percent of stream miles below the biologic assessment threshold follows in the rightmost plot. The vertical lines on each barplot indicate the percent of stream miles throughout Virginia that fall into the suboptimal category for total phosphorus and below the biological impairment threshold, `r format(filter(TPall,Subpopulation=='Virginia')$TPEstimate.P,digits=2,nsmall=0)`% and `r format(filter(TPall,Subpopulation=='Virginia')$VSCIVCPMIEstimate.P,digits=2,nsmall=0)`%, respectively). The micromap displays the percent of stream miles deemed suboptimal due to total phosphorus, decreasing from east to west across the state. During the `r as.numeric(IRyearWindowEnd) - 2001 + 1`-year data window, basins with higher percentages of suboptimal stream miles due to phosphorus co-occur with higher percentages of stream miles below the biological assessment threshold. However, the percent of stream miles below the biological threshold cannot simply be attributed to one parameter, nor can it be assumed that the presence of potential stressors above a screening value results in an impaired aquatic life community[^5]. 
@@ -975,7 +998,7 @@ TPsummary[10:11,11] <- c(10,10)
 ##### Figure 2.4-18. Percent of stream miles with suboptimal total phosphorus. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal total phosphorus and VSCI/VCPMI below the assessment threshold, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
 
 ```{r fig2.4-18,fig.width=9,fig.height=9}
-map.table <- create_map_table(basinssmooth,'BASIN')
+map.table <- create_map_table(basinssmooth_sp,'BASIN')
 suppressWarnings(
   mmplot(stat.data=TPsummary,
        map.data=map.table,
@@ -1027,6 +1050,13 @@ TNsummary <- TNall%>%
   filter(Subpopulation!='Virginia')%>%
   arrange(desc(TNEstimate.P)) %>%
   mutate(Rank=1:11)
+
+# for basin rank tables
+basin_rank <- bind_rows(basin_rank, 
+                         mutate(TNsummary, Basin = Subpopulation, 
+                                Indicator = 'Total\nNitrogen', Order = Rank) %>%
+                           dplyr::select(Basin, Indicator, Order) )
+
 
 ```
 
@@ -1094,6 +1124,13 @@ TDSsummary <- TDSall%>%
 # lots of 0's so manually fix
 TDSsummary[7:11,11] <- c(7,7,7,7,7)
 
+# for basin rank tables
+basin_rank <- bind_rows(basin_rank, 
+                         mutate(TDSsummary, Basin = Subpopulation, 
+                                Indicator = 'Ionic\nStrength', Order = Rank) %>%
+                           dplyr::select(Basin, Indicator, Order) )
+
+
 ```
 
 
@@ -1103,7 +1140,7 @@ TDSsummary[7:11,11] <- c(7,7,7,7,7)
 
 
 ```{r, fig.width=3, fig.height=2.25}
-p2.4.10 <- ggplot(totalsTDS,aes(Condition,pct,fill=Condition))+
+ggplot(totalsTDS,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
   labs(x="Stream Condition Category", y = "Percent of Stream Miles")+
   geom_errorbar(aes(ymin=pct-MoE, ymax=pct+MoE), width=0.2)+
@@ -1126,7 +1163,7 @@ p2.4.10 <- ggplot(totalsTDS,aes(Condition,pct,fill=Condition))+
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) # no background grid
-p2.4.10
+
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A micromap offers a unique visualization tool to distinguish spatial trends in ionic strength across Virginia (Figure 2.4-21). The southwest corner of Virginia, where resource extraction has traditionally occurred, boasts the highest percentages of stream miles with suboptimal total dissolved solids. These basins include the Big Sandy, Clinch-Powell, and New. Additional basins above the Virginia estimate for stream miles with suboptimal total dissolved solids (`r format(filter(TDSall,Subpopulation=='Virginia')$TDSEstimate.P,digits=2)`%) are the Potomac and Shenandoah basins. These basins drain areas of the state with concentrated population centers where urban run-off and industrial processes could be contributing to higher instream ionic strength (Paul & Meyer 2001). Stream miles with suboptimal total dissolved solids are not widespread statewide and in the majority of basins total dissolved solids do not appear to be a major driver for the percentage of stream miles below the biological threshold[^5].
@@ -1134,7 +1171,7 @@ p2.4.10
 ##### Figure 2.4-21. Percent of stream miles with suboptimal ionic strength. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal total dissolved solids and moderately to severely stressed biological communities, respectively. Data presented is from 2001 - `r IRyearWindowEnd`.
 
 ```{r,fig.width=9,fig.height=9}
-map.table <- create_map_table(basinssmooth,'BASIN')
+map.table <- create_map_table(basinssmooth_sp,'BASIN')
 suppressWarnings(
   mmplot(stat.data=TDSsummary,
        map.data=map.table,
@@ -1192,6 +1229,13 @@ MCCUsummary <- MCCUall%>%
 # lots of 0's so manually fix
 MCCUsummary[5:11,11] <- c(5,5,5,5,5,5,5)
 
+# for basin rank tables
+basin_rank <- bind_rows(basin_rank, 
+                         mutate(MCCUsummary, Basin = Subpopulation, 
+                                Indicator = 'Cumulative\nDissolved\nMetals', Order = Rank) %>%
+                           dplyr::select(Basin, Indicator, Order) )
+
+
 ```
 
 
@@ -1201,7 +1245,7 @@ MCCUsummary[5:11,11] <- c(5,5,5,5,5,5,5)
 
 ##### Figure 2.4-22. Estimate of Cumulative Criterion Unit Metals Index in Virginia streams and rivers and associated 95% confidence intervals.  Data presented is from `r IRrange`.
 ```{r, fig.width=3, fig.height=2.25}
-p2.4.11 <- ggplot(totalsmCCU,aes(Condition,pct,fill=Condition))+
+ggplot(totalsmCCU,aes(Condition,pct,fill=Condition))+
   geom_bar(stat='identity',width=.5)+
   labs(x="Stream Condition Category", y = "Percent of Stream Miles")+
   geom_errorbar(aes(ymin=pct-MoE, ymax=pct+MoE), width=0.2)+
@@ -1227,7 +1271,6 @@ p2.4.11 <- ggplot(totalsmCCU,aes(Condition,pct,fill=Condition))+
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) # no background grid
-p2.4.11
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dissolved metals are not a widespread issue affecting many major basins across Virginia (Figure 2.4-23). The Rappahannock, Chowan, and York River basins all demonstrate estimates of stream miles with suboptimal water column metals levels above the Virginia estimate (`r format(filter(MCCUall,Subpopulation=='Virginia')$MetalCCUEstimate.P,digits=1,nsmall=1)`%). The majority of basins in Virginia do not have any stream miles that fall into the suboptimal category for water column metals[^5].
@@ -1235,7 +1278,7 @@ p2.4.11
 ##### Figure 2.4-23  Percent of stream miles with suboptimal levels of cumulative dissolved metals. From left to right, the vertical dashed lines represent the percent of stream miles across Virginia with suboptimal cumulative dissolved metals and moderately to severely stressed biological communities, respectively.  Data presented is from 2001 - `r IRyearWindowEnd`.
 
 ```{r,fig.width=9,fig.height=9}
-map.table <- create_map_table(basinssmooth,'BASIN')
+map.table <- create_map_table(basinssmooth_sp,'BASIN')
 suppressWarnings(
   mmplot(stat.data=MCCUsummary,
        map.data=map.table,
@@ -1289,29 +1332,12 @@ suppressWarnings(
 
 ```{r basinRank}
 brks <- 1:11
-#clrs <- c("#A50F15", "#CB181D", "#EF3B2C", "#FB6A4A", "#FC9272", "#FCBBA1", 
-#          "#FEE0D2" ,"#FFF5F0",'#FFF5F0' ,'#FFF5F0' ,'#FFF5F0' , '#FFF5F0')
-#pal <- colorspace::choose_palette() # sequential (single Hue), n=5, colorblindness, tritan
-#pal(7) # print colors
-clrs_2 <- c("#023FA5", "#5465AB", "#7D87B9", "#A1A6C8", "#BEC1D4", "#D6D7DD", "#E2E2E2","#F1F1F1",'#F1F1F1' ,'#F1F1F1' ,'#F1F1F1','#F1F1F1' )
-
-rankBasins2 <- as.data.frame(t(rankBasins))
-colnames(rankBasins2) <- as.character(unlist(rankBasins2[1,]))
-rankBasins2 <- rankBasins2[2:nrow(rankBasins2),] %>%
-  tibble::rownames_to_column(var='rowname') %>%
-  mutate(rowname=dplyr::recode(rowname,"Habitat"='Habitat Disturbance',
-                               "LRBS"='Streambed Sedimentation',
-                               "TP"='Total Phosphorus',
-                               "TN"='Total Nitrogen',
-                               "TDS"='Ionic Strength',
-                               "MCCU"='Cumulative Dissolved Metals',
-                               'VSCIVCPMI' = 'VSCI/VCPMI'))
-rownames(rankBasins2) <- rankBasins2[,1]
-rankBasins2 <- select(rankBasins2,`Big Sandy`,`Chowan`,`Clinch-Powell`,
-                      `Holston`,`James`,`New`,`Potomac`,`Rappahannock`,
-                      `Roanoke`,`Shenandoah`,`York`)
+clrs <- c("#023FA5", "#5465AB", "#7D87B9", "#A1A6C8", "#BEC1D4", "#D6D7DD", "#E2E2E2","#F1F1F1",'#F1F1F1' ,'#F1F1F1' ,'#F1F1F1','#F1F1F1' )
 
 
+
+rankBasins2 <- pivot_wider(basin_rank, names_from = Basin, values_from = Order) %>%
+  arrange(Indicator)
 
 DT::datatable(rankBasins2,escape=F, rownames = T, 
               options=list(
@@ -1319,11 +1345,14 @@ DT::datatable(rankBasins2,escape=F, rownames = T,
                 pageLength=11,
                 dom='Bt',#'Bfrtip',
                 `font-family` = 'Arial')) %>% 
-  #formatStyle('column', textAlign = 'center')%>%
-  DT::formatStyle(names(rankBasins2), backgroundColor = DT::styleInterval(brks, clrs_2) ,textAlign = 'center', `font-family` = 'Arial')%>%
-  DT::formatStyle(names(rankBasins2), fontWeight = DT::styleInterval(3, c('bold','normal')), textAlign = 'center', `font-family` = 'Arial')
+   #formatStyle('column', textAlign = 'center')%>%
+  DT::formatStyle(names(rankBasins2), backgroundColor = DT::styleInterval(brks, clrs) ,
+                  textAlign = 'center', `font-family` = 'Arial') %>%
+  DT::formatStyle(names(rankBasins2), fontWeight = DT::styleInterval(3, c('bold','normal')),
+                  textAlign = 'center', `font-family` = 'Arial')
 
 # The only thing added manually is the dark line above VSCI/VCPMI row. this is added in Word by drawing a line of 5.64" and weight of 1.5 pt
+
 ```
 
 
@@ -1339,7 +1368,7 @@ DT::datatable(rankBasins2,escape=F, rownames = T,
 
 ##### Figure 2.4-25. Stressor extent for major benthic macroinvertebrate stressors in Virginia streams. The horizontal lines associated with the parameters illustrate the 95% confidence intervals. Stressor extent shows the frequency of the stressor in all Virginia streams from data collected for the `r IRyear` Integrated Report (`r IRrange`). 
 ```{r, fig.width=7.5, fig.height=3.5}
-pstressorext <- ggplot(stressorext,aes(Parameter,pct,fill=Condition,label=pct))+
+ggplot(stressorext,aes(Parameter,pct,fill=Condition,label=pct))+
   geom_bar(stat='identity',width=.5)+
   theme(aspect.ratio=4/6)+
   labs(x="Parameter", y = "Percent of Stream Miles")+ coord_flip()+ylim(-1,55)+
@@ -1353,18 +1382,17 @@ pstressorext <- ggplot(stressorext,aes(Parameter,pct,fill=Condition,label=pct))+
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black")) +# no background grid
   theme(plot.margin=unit(c(0,1,0,0),'cm'))
-pstressorext
 ```
 
 ##### Figure 2.4-26. Relative Risk for major benthic macroinvertebrate stressors in all Virginia streams. The horizontal lines associated with the parameters illustrate the 95% confidence intervals. The vertical dashed line at 1 indicates significance; thus, all relative risk estimates and confidence intervals that exceed the dashed vertical are significant. Relative risk shows the number of times more likely a benthic macroinvertebrate community is to be scored in the suboptimal range if the parameter shown on the y-axis is degraded. Data encompasses samples collected from 2001 - `r IRyearWindowEnd`.  
 
 ```{r relativeRisk,fig.width=7.5, fig.height=3.5}
 # for some reason setting levels in global.R isnt translating to .Rmd
-rr$Stressor <- factor(rr$Stressor,levels=c('Total Phosphorus','Streambed Sedimentation',
-                                         'Cumulative Dissolved Metals','Total Nitrogen',
-                                         'Ionic Strength','Habitat Disturbance'))
+#rr$Stressor <- factor(rr$Stressor,levels=c('Total Phosphorus','Streambed Sedimentation',
+#                                         'Cumulative Dissolved Metals','Total Nitrogen',
+#                                         'Ionic Strength','Habitat Disturbance'))
 
-prr <- ggplot(rr,aes(Stressor,Estimate,fill=Subpopulation,label=Estimate))+
+ggplot(rr,aes(Stressor,Estimate,fill=Subpopulation,label=Estimate))+
   geom_bar(stat='identity',width=.5)+
   theme(aspect.ratio=4/6)+
   labs(x="Stressor", y = "Relative Risk")+ylim(-0.1,10)+
@@ -1378,7 +1406,6 @@ prr <- ggplot(rr,aes(Stressor,Estimate,fill=Subpopulation,label=Estimate))+
     panel.grid.major.x = element_blank(),panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black"))+ # no background grid
   theme(plot.margin=unit(c(0,1,0,0),'cm'))
-prr
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The most common stressor across Virginia is `r tolower(as.character(arrange(stressorext ,desc(pct))$Parameter[1]))`. ProbMon data estimates `r tolower(as.character(arrange(stressorext ,desc(pct))$Parameter[1]))` is considered suboptimal in almost `r format(arrange(stressorext ,desc(pct))$pct[1],digits=1,nsmall=0)`% of Virginia streams.  When `r tolower(as.character(arrange(stressorext ,desc(pct))$Parameter[1]))` levels are suboptimal, relative risk analysis predicts they are `r format(filter(rr,Stressor==as.character(arrange(stressorext ,desc(pct))$Parameter[1]))$Estimate,digits=1,nsmall=1)` times more likely to have a suboptimal benthic community than streams with optimal sedimentation levels. Nearly `r format(filter(stressorext,Parameter=='Habitat Disturbance')$pct,digits=1,nsmall=0)`% of Virginia streams have suboptimal habitat disturbance scores; suboptimal habitat disturbance scores increase the relative risk of a suboptimal aquatic community by a factor of `r format(filter(rr,Stressor=='Habitat Disturbance')$Estimate,digits=1,nsmall=1)`. 
@@ -1388,38 +1415,20 @@ prr
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stressor extent presented in Figure 2.4-25 only focuses on the percent of stream miles deemed suboptimal by each of the major stressors to Virginia streams. Figure 2.4-27 encompasses the entire stream population for each stressor to relate a more complete narrative surrounding estimated stressor extents in Virginia. Streambed sedimentation has the highest extent of predicted stress in Virginia and nearly the same percent of stream miles in the optimal and suboptimal categories. As we have explored through previous visualization tools, streambed sedimentation, total phosphorus, and habitat disturbance are fairly widespread potential stressors statewide. Total nitrogen, water column metals, and ionic strength are fairly rare in Virginia with the majority of stream miles in the optimum category of their respective parameter. However, when any of total nitrogen, water column metals, or ionic strength parameters reach a suboptimal threshold, relative risk analyses estimate them among the most likely stressors to alter the biological community. Dissolved oxygen and pH do not have statistically significant relative risk in Virginia, thus they are not reported. Missing from this chapter are other known stressors, such as, hydrologic alteration and temperature stress in the critical time period, due to a lack of data to produce statistically significant estimates of relative risk[^5].
 
 
-```{r, fig.width=7.5, fig.height=3.5}
-ptogether <- ggplot(togetherstacked,aes(Parameter,pct,fill=Condition,label=pct))+
-  geom_bar(stat='identity',width=.5)+
-  labs(x="Parameter", y = "Percent of Stream Miles")+ 
-  scale_x_discrete(breaks=unique(paramsummary$Parameter),labels=addline_format(paramsummary$Parameter))+
-  geom_text(aes(label=paste(format(pct,digits=1,nsmall=1),"%",sep="")),size=3,family='Arial',position=position_stack(vjust=0.6))+
-  theme_minimal()+scale_fill_manual(values=c("#D55E00","#F0E442","#009E73"))+
-  theme(legend.position="none")+ # no legend
-  theme(  text=element_text(family="Arial"),
-    panel.grid.major.x = element_blank(),
-    # explicitly set the horizontal lines (or they will disappear too)
-    panel.grid.major.y = element_line( size=.1, color="black" ),
-    panel.grid.minor = element_blank(),panel.background = element_blank(),
-    axis.line = element_line(colour = "black"))+# no background grid
-  theme(plot.margin=unit(c(1,0,0,0),'cm'))
-
-#ptogether
-# graphic not used this report but save the code
-```
-
 ##### Figure 2.4-27. Stressor extent for major benthic macroinvertebrate stressors in all Virginia streams (`r IRrange`) showing all condition classes (optimal, fair, and suboptimal). Optimal condition estimates are shown in green, fair condition estimates are yellow, and suboptimal conditions are shown in orange. 
 
 ```{r stressorExtentStackedBarchart,fig.width=7.5, fig.height=3.5}
-togetherstackedflip$Parameter <- factor(togetherstackedflip$Parameter,
-                                  levels=c('Cumulative Dissolved Metals','Total Nitrogen',
-                                         'Ionic Strength','Total Phosphorus',
-                                         'Streambed Sedimentation','Habitat Disturbance'))
-ptogetherflip <- ggplot(togetherstackedflip,aes(Parameter,pct,fill=Condition,label=pct))+
+#togetherstackedflip$Parameter <- factor(togetherstackedflip$Parameter,
+#                                  levels=c('Cumulative Dissolved Metals','Total Nitrogen',
+#                                         'Ionic Strength','Total Phosphorus',
+#                                         'Streambed Sedimentation','Habitat Disturbance'))
+ggplot(togetherstackedflip,aes(Parameter,pct,fill=Condition,label=pct))+
   geom_bar(stat='identity',width=.5)+
   labs(x="Parameter", y = "Percent of Stream Miles")+ coord_flip()+
-  scale_x_discrete(breaks=togetherstackedflip$Parameter,labels=addline_format(togetherstackedflip$Parameter))+
-  geom_text(aes(label=paste(format(pct,digits=1,nsmall=1),"%",sep="")),size=3,family='Arial',position=position_stack(vjust=0.5))+
+  scale_x_discrete(breaks=togetherstackedflip$Parameter,
+                   labels=addline_format(togetherstackedflip$Parameter))+
+  geom_text(aes(label=paste(format(pct,digits=1,nsmall=1),"%",sep="")),
+            size=3,family='Arial',position=position_stack(vjust=0.4))+
   theme_minimal()+scale_fill_manual(values=c("#D55E00","#F0E442","#009E73"))+
   theme(legend.position="none")+ # no legend
   theme( text=element_text(family="Arial"),
@@ -1429,7 +1438,6 @@ ptogetherflip <- ggplot(togetherstackedflip,aes(Parameter,pct,fill=Condition,lab
     panel.grid.minor = element_blank(),panel.background = element_blank(),
     axis.line = element_line(colour = "black"))+# no background grid
   theme(plot.margin=unit(c(0,1,0,0),'cm'))
-ptogetherflip
 ```
 
 

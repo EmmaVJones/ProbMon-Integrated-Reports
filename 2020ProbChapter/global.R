@@ -12,19 +12,19 @@ IRrange <- '2013 - 2018'
 
 
 dat <- read.csv('processedData/allCDF.csv')# CDF results
-surveyData <- readxl::read_excel('processedData/Wadeable_ProbMon_2001-2016_EVJ.xlsx',sheet='Wadeable_ProbMon_2001-2016_EVJ') %>%
+surveyData <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv') %>%
   select(StationID_Trend,Year,DO:MetalCCU,CALCIUM:MERCURY,wshdImpPCT) %>% 
   dplyr::rename(siteID=StationID_Trend,Ortho_P= "Ortho-P",
                 X70331VFine=`70331VFine`)
-designStatus <- readxl::read_excel('originalData/biology.xlsx',sheet='biology2018') %>%
-  mutate(#BioPanel= dplyr::recode(BioPanel,'Phase1'='BioPhase1','Phase2'='BioPhase2',
-    #                         'Phase3'='BioPhase3','Phase4'='BioPhase4'),   # recode biophase
+designStatus <- readxl::read_excel('processedData/biology20012018final.xlsx',sheet='biology2020') %>%
+  mutate(
     IR2008 = replace(IR2008, IR2008==1, NA),
     IR2010 = replace(IR2010, IR2010==1, NA),
     IR2012 = replace(IR2012, IR2012==1, NA),
     IR2014 = replace(IR2014, IR2014==1, NA),
     IR2016 = replace(IR2016, IR2016==1, NA),
     IR2018 = replace(IR2018, IR2018==1, NA),
+    IR2020 = replace(IR2020, IR2020==1, NA),
     Panel1 = ifelse(Panel == "Phase1", 1, NA),
     Panel2 = ifelse(Panel == "Phase2", 1, NA),
     BioPanel1 = ifelse(BioPanel == "Phase1", 1, NA),
@@ -35,9 +35,8 @@ designStatus <- readxl::read_excel('originalData/biology.xlsx',sheet='biology201
 
 
 
-
 # Bring in relative risk data
-rr <- read.csv('processedData/relriskIR2018.csv') %>%
+rr <- read.csv('processedData/relriskIR2020.csv') %>%
   mutate(Stressor=dplyr::recode(Stressor,"TotHabstatus"="Habitat Disturbance",
                                 "TDSstatus"='Ionic Strength',
                                 "TNstatus"='Total Nitrogen',
@@ -46,19 +45,12 @@ rr <- read.csv('processedData/relriskIR2018.csv') %>%
                                 "TPstatus"='Total Phosphorus')) %>%
   mutate(MoE = StdError.log *1.96)
 
-# %>%
-#arrange(desc(Estimate))
-# rearrange factor level order based on descending Estimate, have to list backwards to get plot to
-# show up in correct order
-#rr$Stressor <- factor(rr$Stressor,levels=c('Total Phosphorus','Streambed Sedimentation',
-#                                         'Cumulative Dissolved Metals','Total Nitrogen',
-#                                         'Ionic Strength','Habitat Disturbance'))
-#rr$Stressor = factor(rr$Stressor, levels=unique(rr$Stressor[order(rr$Estimate)]), ordered=TRUE)
-
 
 # Bring in basin rank data
-rankBasins <- read.csv('processedData/rankBasinsbyMicromap.csv') 
-rankBasins1.4 <- read.csv('processedData/rankBasinsbyMicromap1-4.csv') 
+#rankBasins <- read.csv('processedData/rankBasinsbyMicromap.csv') 
+##rankBasins1.4 <- read.csv('processedData/rankBasinsbyMicromap1-4.csv') 
+## reorganizing ranks into a 1-4 scheme was thought about and plotted for IR2018, but 
+##  was not approved to go ahead to LT for approval
 
 
 # VLOOKUP (Excel function hack) by Julin Maloof
@@ -68,6 +60,9 @@ vlookup <- function(ref, #the value or values that you want to look for
                     range=FALSE, #if there is not an exact match, return the closest?
                     larger=FALSE) #if doing a range lookup, should the smaller or larger key be used?)
 {
+  # 2020 addition, make tibbles dataframes
+  table <- as.data.frame(table)
+  
   if(!is.numeric(column) & !column %in% colnames(table)) {
     stop(paste("can't find column",column,"in table"))
   }
@@ -96,10 +91,10 @@ addline_format <- function(x,...){
 
 # Get data in correct format for micromap plots function
 
-indicator <- 'TotHab'
-measure <- 120
-category <- 'SubOptimal'
-revOrder <- FALSE
+#indicator <- 'TotHab'
+#measure <- 120
+#category <- 'SubOptimal'
+#revOrder <- FALSE
 
 statslookup <- function(indicator,measure,category,revOrder){
   chowan <-  filter(dat,Subpopulation=='Chowan'&Indicator==indicator)%>%
@@ -173,217 +168,227 @@ statslookup <- function(indicator,measure,category,revOrder){
 
 
 # DO DATA
-DO <- filter(dat,Subpopulation=='IR2018'&Indicator=='DO') %>%
-  select(Value,Estimate.P,StdError.P)
+DO <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'DO') %>%
+  select(Value, Estimate.P, StdError.P)
 totalsDO <- data.frame(Condition=c('Suboptimal'),
-                       pct=vlookup(4,DO,2,TRUE),
-                       MoE= vlookup(4, DO, 3, TRUE) * 1.96) %>%
-  mutate(Parameter='Dissolved Oxygen')%>%select(Parameter,everything())
-DOsummary <- mutate(totalsDO,BelowStd=paste(formatC(pct,digits=1),"% ( +/- ",formatC(MoE,digits=1),"% )", sep=""))%>%select(Parameter,BelowStd)
+                       pct = vlookup(4,DO,2,TRUE),
+                       MoE = vlookup(4, DO, 3, TRUE) * 1.96) %>%
+  replace_na(list(pct = 0, MoE = 0)) %>% # change NA to 0 if necessary
+  mutate(Parameter='Dissolved Oxygen') %>%
+  select(Parameter,everything())
+DOsummary <- mutate(totalsDO, BelowStd= paste(formatC(pct,digits=1),
+                                              "% ( +/- ",formatC(MoE,digits=1),"% )", sep="")) %>%
+  select(Parameter,BelowStd)
 colnames(DOsummary)<-c('Parameter','Below Standard ( 4 mg/L )')
 
 
 
 # PH DATA
-pH <- filter(dat,Subpopulation=='IR2018'&Indicator=='pH') %>%
-  select(Value,Estimate.P,StdError.P)
+pH <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'pH') %>%
+  select(Value, Estimate.P, StdError.P)
 totalspH <- data.frame(Condition=c('Suboptimal'),
-                       pct=vlookup(6,pH,2,TRUE),
-                       MoE= vlookup(6, pH, 3, TRUE) * 1.96) %>%
-  mutate(Parameter='pH (Below 6)')%>%select(Parameter,everything())
+                       pct = vlookup(6,pH,2,TRUE),
+                       MoE = vlookup(6, pH, 3, TRUE) * 1.96) %>%
+  replace_na(list(pct = 0, MoE = 0)) %>% # change NA to 0 if necessary
+  mutate(Parameter='pH\n(Below 6)') %>%
+  select(Parameter,everything())
 
-pHsummary <- data.frame(Parameter='pH',Below=vlookup(6,pH,2,TRUE),Above=100-vlookup(9,pH,2,TRUE),
-                        BelowError=vlookup(6,pH,3,TRUE)* 1.96,
-                        AboveError=vlookup(9,pH,3,TRUE)* 1.96)
-pHsummary <- mutate(pHsummary,BelowStd=paste(formatC(Below,digits=2),"% ( +/- ",formatC(BelowError,digits=2),"% )", sep=""),AboveStd=paste(formatC(Above,digits=2),"% ( +/- ",formatC(AboveError,digits=2),"% )", sep=""))%>%select(Parameter,BelowStd,AboveStd)
+pHsummary <- data.frame(Parameter='pH', Below = vlookup(6,pH,2,TRUE),
+                        Above = 100-vlookup(9,pH,2,TRUE),
+                        BelowError = vlookup(6,pH,3,TRUE)* 1.96,
+                        AboveError = vlookup(9,pH,3,TRUE)* 1.96)
+pHsummary <- mutate(pHsummary, BelowStd = paste(formatC(Below,digits=2),
+                                                "% ( +/- ",formatC(BelowError,digits=2),"% )", sep=""),
+                    AboveStd = paste(formatC(Above,digits=2),
+                                     "% ( +/- ",formatC(AboveError,digits=2),"% )", sep="")) %>%
+  select(Parameter,BelowStd,AboveStd)
 colnames(pHsummary)<-c('Parameter','Below Standard ( pH 6 )','Above Standard ( pH 9)')
 
 
 # HABITAT DATA
-hab <- filter(dat,Subpopulation=='IR2018'&Indicator=='TotHab') %>%
+hab <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'TotHab') %>%
   select(Value,Estimate.P,StdError.P, NResp)
-totalshab <- data.frame(Condition=c('Suboptimal','Fair','Optimal'),
-                        pct=c(vlookup(120,hab,2,TRUE), #suboptimal
-                              vlookup(150,hab,2,TRUE)-vlookup(120,hab,2,TRUE), # fair
-                              100-vlookup(150,hab,2,TRUE)), #optimal
+totalshab <- data.frame(Condition = c('Suboptimal','Fair','Optimal'),
+                        pct = c(vlookup(120,hab,2,TRUE), #suboptimal
+                                vlookup(150,hab,2,TRUE)-vlookup(120,hab,2,TRUE), # fair
+                                100-vlookup(150,hab,2,TRUE)), #optimal
                         # Error for middle ranges calculated by using midpoint of range error estimates
-                        MoE=c(vlookup(120,hab,3,TRUE) * 1.96,
-                              vlookup(135,hab,3,TRUE) * 1.96,
-                              vlookup(150,hab,3,TRUE) * 1.96)) %>%
+                        MoE = c(vlookup(120,hab,3,TRUE) * 1.96,
+                                vlookup(135,hab,3,TRUE) * 1.96,
+                                vlookup(150,hab,3,TRUE) * 1.96)) %>%
   mutate(Parameter='Habitat Disturbance',
-         n=c(vlookup(120,hab,4,TRUE),
+         n = c(vlookup(120,hab,4,TRUE),
              vlookup(150,hab,4,TRUE)-vlookup(120,hab,4,TRUE),
-             max(hab$NResp)-vlookup(150,hab,4,TRUE)))%>%
+             max(hab$NResp)-vlookup(150,hab,4,TRUE))) %>%
   select(Parameter,everything())
 totalshab$Condition <- factor(totalshab$Condition,levels = unique(totalshab$Condition))
 
 totalshabsuboptimal <- data.frame(Condition=c('Suboptimal'),
                                   pct=c(vlookup(120,hab,2,TRUE)),
                                   MoE = c(vlookup(120, hab, 3, TRUE) * 1.96)) %>%
-  mutate(Parameter='Habitat Disturbance')%>%select(Parameter,everything())
+  mutate(Parameter='Habitat\nDisturbance') %>%
+  select(Parameter,everything())
 
 
 # LRBS DATA
-LRBS <- filter(dat,Subpopulation=='IR2018'&Indicator=='LRBS') %>%
-  select(Value,Estimate.P,StdError.P, NResp)
+LRBS <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'LRBS') %>%
+  select(Value, Estimate.P, StdError.P, NResp)
 totalsLRBS <- data.frame(Condition=c('Suboptimal','Fair','Optimal'),
-                         pct=c(vlookup(-1,LRBS,2,TRUE), #suboptimal
-                               #have to be creative here since two fair categories
-                               sum((vlookup(-0.5,LRBS,2,TRUE)-vlookup(-1,LRBS,2,TRUE)), # fair soft
-                                   (100- vlookup(0.5,LRBS,2,TRUE))), #fair hardening
-                               vlookup(0.5,LRBS,2,TRUE)-vlookup(-0.5,LRBS,2,TRUE)),# optimal
+                         pct= c(vlookup(-1,LRBS,2,TRUE), #suboptimal
+                                #have to be creative here since two fair categories
+                                sum((vlookup(-0.5,LRBS,2,TRUE)-vlookup(-1,LRBS,2,TRUE)), # fair soft
+                                    (100- vlookup(0.5,LRBS,2,TRUE))), #fair hardening
+                                vlookup(0.5,LRBS,2,TRUE)-vlookup(-0.5,LRBS,2,TRUE)),# optimal
                          # Error for middle ranges calculated by using midpoint of range error estimates
                          MoE = c(vlookup(-1,LRBS,3,TRUE) * 1.96,
                                  vlookup(-0.75,LRBS,3,TRUE) * 1.96,
                                  vlookup(-0.5,LRBS,3,TRUE) * 1.96)) %>%
-  mutate(Parameter='Streambed Sedimentation',
-         n=c(vlookup(-1,LRBS,4,TRUE),
-             # again, had to be creative bc 2 fair ranges
-             sum((vlookup(-0.5,LRBS,4,TRUE)-vlookup(-1,LRBS,4,TRUE)), # fair soft
-                 (max(LRBS$NResp)-vlookup(0.5,LRBS,4,TRUE))), # fair hardening
-             vlookup(0.5,LRBS,4,TRUE)-vlookup(-0.5,LRBS,4,TRUE)))%>%
+  mutate(Parameter = 'Streambed\nSedimentation',
+         n = c(vlookup(-1,LRBS,4,TRUE),
+               # again, had to be creative bc 2 fair ranges
+               sum((vlookup(-0.5,LRBS,4,TRUE)-vlookup(-1,LRBS,4,TRUE)), # fair soft
+                   (max(LRBS$NResp)-vlookup(0.5,LRBS,4,TRUE))), # fair hardening
+               vlookup(0.5,LRBS,4,TRUE)-vlookup(-0.5,LRBS,4,TRUE))) %>%
   select(Parameter,everything())
 totalsLRBS$Condition <- factor(totalsLRBS$Condition,levels = unique(totalsLRBS$Condition))
 
-totalsLRBSsuboptimal <- data.frame(Condition=c('Suboptimal'),
-                                   pct=c(vlookup(-1,LRBS,2,TRUE)),
+totalsLRBSsuboptimal <- data.frame(Condition = c('Suboptimal'),
+                                   pct = c(vlookup(-1,LRBS,2,TRUE)),
                                    MoE = c(vlookup(-1,LRBS,3,TRUE)*1.96)) %>%
-  mutate(Parameter='Streambed Sedimentation')%>%select(Parameter,everything())
+  mutate(Parameter='Streambed Sedimentation') %>%
+  select(Parameter,everything())
 
 
 #TN DATA
-TN <- filter(dat,Subpopulation=='IR2018'&Indicator=='TN') %>%
-  select(Value,Estimate.P,StdError.P, NResp)
-totalsTN <- data.frame(Condition=c('Suboptimal','Fair','Optimal'),
-                       pct=c(100-vlookup(2,TN,2,TRUE),#suboptimal
-                             vlookup(2,TN,2,TRUE)-vlookup(1,TN,2,TRUE), # fair
-                             vlookup(1,TN,2,TRUE)),# optimal
+TN <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'TN') %>%
+  select(Value,Estimate.P, StdError.P, NResp)
+totalsTN <- data.frame(Condition = c('Suboptimal','Fair','Optimal'),
+                       pct = c(100-vlookup(2,TN,2,TRUE),#suboptimal
+                               vlookup(2,TN,2,TRUE)-vlookup(1,TN,2,TRUE), # fair
+                               vlookup(1,TN,2,TRUE)),# optimal
                        # Error for middle ranges calculated by using midpoint of range error estimates
                        MoE = c(vlookup(2,TN,3,TRUE) * 1.96, 
                                vlookup(1.5,TN,3,TRUE)* 1.96,
                                vlookup(1,TN,3,TRUE)* 1.96)) %>%
-  mutate(Parameter='Total Nitrogen',
+  mutate(Parameter = 'Total Nitrogen',
          n=c(max(TN$NResp)-vlookup(2,TN,4,TRUE),
              vlookup(2,TN,4,TRUE) - vlookup(1,TN,4,TRUE),
              vlookup(1,TN,4,TRUE))) %>%
   select(Parameter,everything())
 totalsTN$Condition <- factor(totalsTN$Condition,levels = unique(totalsTN$Condition))
 
-totalsTNsuboptimal <- data.frame(Condition=c('Suboptimal'),
-                                 pct=c(100-vlookup(2,TN,2,TRUE)),
+totalsTNsuboptimal <- data.frame(Condition = c('Suboptimal'),
+                                 pct = c(100-vlookup(2,TN,2,TRUE)),
                                  MoE = c(vlookup(2,TN,3,TRUE)*1.96)) %>%
   mutate(Parameter='Total Nitrogen')%>%select(Parameter,everything())
 
 #TP DATA
-TP <- filter(dat,Subpopulation=='IR2018'&Indicator=='TP') %>%
-  select(Value,Estimate.P,StdError.P, NResp)
-totalsTP <- data.frame(Condition=c('Suboptimal','Fair','Optimal'),
-                       pct=c(100-vlookup(0.05,TP,2,TRUE),#suboptimal
-                             vlookup(0.05,TP,2,TRUE)-vlookup(0.02,TP,2,TRUE), # fair
-                             vlookup(0.02,TP,2,TRUE)), #optimal
+TP <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'TP') %>%
+  select(Value, Estimate.P, StdError.P, NResp)
+totalsTP <- data.frame(Condition = c('Suboptimal','Fair','Optimal'),
+                       pct = c(100-vlookup(0.05,TP,2,TRUE),#suboptimal
+                               vlookup(0.05,TP,2,TRUE)-vlookup(0.02,TP,2,TRUE), # fair
+                               vlookup(0.02,TP,2,TRUE)), #optimal
                        # Error for middle ranges calculated by using midpoint of range error estimates
                        MoE = c(vlookup(0.05,TP,3,TRUE) * 1.96, 
                                vlookup(0.035,TP,3,TRUE)* 1.96,
                                vlookup(0.02,TP,3,TRUE)* 1.96)) %>%
-  mutate(Parameter='Total Phosphorus',
-         n=c(max(TP$NResp)-vlookup(0.05,TP,4,TRUE),
-             vlookup(0.05,TP,4,TRUE) - vlookup(0.02,TP,4,TRUE),
-             vlookup(0.02,TP,4,TRUE)))%>%
+  mutate(Parameter = 'Total\nPhosphorus',
+         n = c(max(TP$NResp)-vlookup(0.05,TP,4,TRUE),
+               vlookup(0.05,TP,4,TRUE) - vlookup(0.02,TP,4,TRUE),
+               vlookup(0.02,TP,4,TRUE))) %>%
   select(Parameter,everything())
 totalsTP$Condition <- factor(totalsTP$Condition,levels = unique(totalsTP$Condition))
 
-totalsTPsuboptimal <- data.frame(Condition=c('Suboptimal'),
-                                 pct=c(100-vlookup(0.05,TP,2,TRUE)),
+totalsTPsuboptimal <- data.frame(Condition = c('Suboptimal'),
+                                 pct = c(100-vlookup(0.05,TP,2,TRUE)),
                                  MoE = c(vlookup(0.05,TP,3,TRUE)*1.96)) %>%
   mutate(Parameter='Total Phosphorus')%>%select(Parameter,everything())
 
 # TDS DATA
-TDS <- filter(dat,Subpopulation=='IR2018'&Indicator=='TDS') %>%
-  select(Value,Estimate.P,StdError.P, NResp)
-totalsTDS <- data.frame(Condition=c('Suboptimal','Fair','Optimal'),
-                        pct=c(100-vlookup(350,TDS,2,TRUE),#suboptimal
-                              vlookup(350,TDS,2,TRUE)-vlookup(100,TDS,2,TRUE), # fair
-                              vlookup(100,TDS,2,TRUE)), #optimal
+TDS <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'TDS') %>%
+  select(Value, Estimate.P, StdError.P, NResp)
+totalsTDS <- data.frame(Condition = c('Suboptimal','Fair','Optimal'),
+                        pct = c(100-vlookup(350,TDS,2,TRUE),#suboptimal
+                                vlookup(350,TDS,2,TRUE)-vlookup(100,TDS,2,TRUE), # fair
+                                vlookup(100,TDS,2,TRUE)), #optimal
                         # Error for middle ranges calculated by using midpoint of range error estimates
                         MoE = c(vlookup(350,TDS,3,TRUE) * 1.96, 
                                 vlookup(225,TDS,3,TRUE)* 1.96,
                                 vlookup(100,TDS,3,TRUE)* 1.96)) %>%
-  mutate(Parameter='Ionic Strength',
-         n=c(max(TDS$NResp)-vlookup(350,TDS,4,TRUE),
-             vlookup(350,TDS,4,TRUE) - vlookup(100,TDS,4,TRUE),
-             vlookup(100,TDS,4,TRUE))) %>%
-  select(Parameter,everything())
+  mutate(Parameter = 'Ionic\nStrength',
+         n = c(max(TDS$NResp)-vlookup(350,TDS,4,TRUE),
+               vlookup(350,TDS,4,TRUE) - vlookup(100,TDS,4,TRUE),
+               vlookup(100,TDS,4,TRUE))) %>%
+  select(Parameter, everything())
 totalsTDS$Condition <- factor(totalsTDS$Condition,levels = unique(totalsTDS$Condition))
 
-totalsTDSsuboptimal <- data.frame(Condition=c('Suboptimal'),
-                                  pct=c(100-vlookup(350,TDS,2,TRUE)),
-                                  MoE=c(vlookup(350,TDS,3,TRUE) * 1.96)) %>%
-  mutate(Parameter='Ionic Strength')%>%select(Parameter,everything())
+totalsTDSsuboptimal <- data.frame(Condition = c('Suboptimal'),
+                                  pct = c(100-vlookup(350,TDS,2,TRUE)),
+                                  MoE = c(vlookup(350,TDS,3,TRUE) * 1.96)) %>%
+  mutate(Parameter = 'Ionic Strength') %>% 
+  select(Parameter, everything())
 
 # METALS CCU DATA
-mCCU <- filter(dat,Subpopulation=='IR2018'&Indicator=='MetalCCU') %>%
-  select(Value,Estimate.P,StdError.P, NResp)
-totalsmCCU <- data.frame(Condition=c('Suboptimal','Fair','Optimal'),
-                         pct=c(100-vlookup(2,mCCU,2,TRUE),#suboptimal
-                               vlookup(2,mCCU,2,TRUE)-vlookup(1,mCCU,2,TRUE), # fair
-                               vlookup(1,mCCU,2,TRUE)), #optimal
+mCCU <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'MetalCCU') %>%
+  select(Value, Estimate.P, StdError.P, NResp)
+totalsmCCU <- data.frame(Condition = c('Suboptimal','Fair','Optimal'),
+                         pct = c(100-vlookup(2,mCCU,2,TRUE),#suboptimal
+                                 vlookup(2,mCCU,2,TRUE)-vlookup(1,mCCU,2,TRUE), # fair
+                                 vlookup(1,mCCU,2,TRUE)), #optimal
                          # Error for middle ranges calculated by using midpoint of range error estimates
                          MoE = c(vlookup(2,mCCU,3,TRUE) * 1.96, 
                                  vlookup(1.5,mCCU,3,TRUE)* 1.96,
                                  vlookup(1,mCCU,3,TRUE)* 1.96)) %>%
-  mutate(Parameter='Cumulative Dissolved Metals',
-         n=c(max(mCCU$NResp)-vlookup(2,mCCU,4,TRUE),
-             vlookup(2,mCCU,4,TRUE) - vlookup(1,mCCU,4,TRUE),
-             vlookup(1,mCCU,4,TRUE))) %>%
+  mutate(Parameter = 'Cumulative \nDissolved Metals',
+         n = c(max(mCCU$NResp)-vlookup(2,mCCU,4,TRUE),
+               vlookup(2,mCCU,4,TRUE) - vlookup(1,mCCU,4,TRUE),
+               vlookup(1,mCCU,4,TRUE))) %>%
   select(Parameter,everything())
 totalsmCCU$Condition <- factor(totalsmCCU$Condition,levels = unique(totalsmCCU$Condition))
 
-totalsmCCUsuboptimal <- data.frame(Condition=c('Suboptimal'),
-                                   pct=c(100-vlookup(2,mCCU,2,TRUE)),
-                                   MoE=c(vlookup(2,mCCU,3,TRUE) * 1.96)) %>%
-  mutate(Parameter='Cumulative Dissolved Metals')%>%select(Parameter,everything())
+totalsmCCUsuboptimal <- data.frame(Condition = c('Suboptimal'),
+                                   pct = c(100-vlookup(2,mCCU,2,TRUE)),
+                                   MoE = c(vlookup(2,mCCU,3,TRUE) * 1.96)) %>%
+  mutate(Parameter='Cumulative Dissolved Metals') %>%
+  select(Parameter,everything())
 
 
 # VSCI DATA
-VSCI <- filter(dat,Subpopulation=='IR2018'&Indicator=='VSCIVCPMI')%>%
-  select(Value,Estimate.P,StdError.P, NResp)
-totalsVSCI <- data.frame(Condition=c('Suboptimal'),
-                         pct=vlookup(60,VSCI,2,TRUE),
+VSCI <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'VSCIVCPMI')%>%
+  select(Value, Estimate.P, StdError.P, NResp)
+totalsVSCI <- data.frame(Condition = c('Suboptimal'),
+                         pct = vlookup(60,VSCI,2,TRUE),
                          MoE = vlookup(60,VSCI,3,TRUE) *1.96) %>%
-  mutate(Parameter='VSCI/VCPMI (Biomonitoring)')%>%select(Parameter,everything())
+  mutate(Parameter='VSCI/VCPMI\n(Biomonitoring)') %>%
+  select(Parameter,everything())
 #VSCIsummary <- mutate(totalsVSCI,BelowStd=paste(formatC(pct,digits=2),"% ( +/- ",formatC(ErrorLCB95,digits=2),"% )", sep=""))%>%select(Parameter,BelowStd)
 #colnames(VSCIsummary)<-c('Parameter','Below Standard ( 4 mg/L )')
 
 
 # DNickel DATA
-Nickel <- filter(dat,Subpopulation=='IR2018'&Indicator=='NICKEL')%>%
-  select(Value,Estimate.P,StdError.P, NResp)
-totalsNickel <- data.frame(Condition=c('Suboptimal'),
-                           pct=vlookup(0.03,Nickel,2,TRUE),
-                           MoE = vlookup(0.03,Nickel,3,TRUE)*1.96)%>%
-  mutate(Parameter='Dissolved Nickel')%>%select(Parameter,everything())
+Nickel <- filter(dat, Subpopulation == 'IR2020' & Indicator == 'NICKEL') %>%
+  select(Value, Estimate.P, StdError.P, NResp)
+totalsNickel <- data.frame(Condition = c('Suboptimal'),
+                           pct = vlookup(0.03,Nickel,2,TRUE),
+                           MoE = vlookup(0.03,Nickel,3,TRUE)*1.96) %>%
+  mutate(Parameter='Dissolved Nickel') %>%
+  select(Parameter,everything())
 
 
-# initial Graph, may need to change the order of factor levels each IR window based on %
+# initial Graph
 paramsummary <- rbind(totalsDO,totalshabsuboptimal,totalsLRBSsuboptimal,totalsTNsuboptimal,totalspH,totalsTPsuboptimal,
                       totalsTDSsuboptimal,totalsmCCUsuboptimal,totalsVSCI)%>%
-  mutate(Standard=c('yes','no','no','no','yes','no','no','no','yes'))
-paramsummary$Parameter <- c('Dissolved Oxygen','Habitat\nDisturbance','Streambed\nSedimentation','Total Nitrogen',
-                            'pH\n(Below 6)','Total\nPhosphorus','Ionic\nStrength','Cumulative \nDissolved Metals','VSCI/VCPMI\n(Biomonitoring)')
+  mutate(Standard = c('yes','no','no','no','yes','no','no','no','yes')) %>%
+  arrange(desc(pct))
 paramsummary$Parameter <- factor(paramsummary$Parameter)
-paramsummary$Parameter <- factor(paramsummary$Parameter,
-                                 levels=c('Dissolved Oxygen','Cumulative \nDissolved Metals',
-                                          'Total Nitrogen','pH\n(Below 6)','Ionic\nStrength','Habitat\nDisturbance',
-                                          'Total\nPhosphorus','Streambed\nSedimentation','VSCI/VCPMI\n(Biomonitoring)'))
+paramsummary$Parameter <- reorder(paramsummary$Parameter, paramsummary$pct) # reorder for ggplot based on pct results
 
 # Stressor extent
 stressorext <- rbind(totalsLRBSsuboptimal,totalsTNsuboptimal,totalsTPsuboptimal,totalsTDSsuboptimal,totalsmCCUsuboptimal,totalshabsuboptimal) %>%
   arrange(desc(pct))
-# rearrange factor level order based on descending pct, have to list backwards to get plot to
-# show up in correct order
-stressorext$Parameter <- factor(stressorext$Parameter,
-                                levels=c('Cumulative Dissolved Metals','Total Nitrogen','Ionic Strength',
-                                         'Habitat Disturbance','Total Phosphorus','Streambed Sedimentation'))
+stressorext$Parameter <- factor(stressorext$Parameter) %>% # rearrange factor level order based on descending pct
+  reorder(stressorext$pct)
 
 
 ## Play with stacked bar charts
@@ -397,13 +402,23 @@ togetherstacked$Parameter <- factor(togetherstacked$Parameter,
 
 togetherstackedflip <- together
 togetherstackedflip$Parameter <- factor(togetherstackedflip$Parameter,
-                                        levels=c('Ionic Strength','Cumulative Dissolved Metals',
-                                                 'Total Nitrogen','Habitat Disturbance',
-                                                 'Total Phosphorus','Streambed Sedimentation'))
+                                        levels=c('Cumulative \nDissolved Metals','Total Nitrogen',
+                                                 'Ionic\nStrength','Total\nPhosphorus',
+                                                 'Streambed\nSedimentation','Habitat Disturbance'))
 
 
 # RELATIVE RISK PLOT
-rr$Stressor <- as.factor(c('Habitat Disturbance', 'Total Nitrogen','Total Phosphorus','Ionic Strength','Cumulative Dissolved Metals','Streambed Sedimentation'))
-rr$Stressor <-  factor(rr$Stressor,
-                       levels=c('Total Phosphorus','Cumulative Dissolved Metals','Total Nitrogen','Streambed Sedimentation','Ionic Strength','Habitat Disturbance'))
+rr <- read.csv('processedData/relriskIR2020.csv') %>%
+  mutate(Stressor=dplyr::recode(Stressor,"TotHabstatus"="Habitat Disturbance",
+                                "TDSstatus"='Ionic Strength',
+                                "TNstatus"='Total Nitrogen',
+                                "MetalCCUstatus"='Cumulative Dissolved Metals',
+                                "LRBSstatus"='Streambed Sedimentation',
+                                "TPstatus"='Total Phosphorus')) %>%
+  mutate(MoE = StdError.log *1.96)
+
+
+
+rr$Stressor <- factor(rr$Stressor)
+rr$Stressor <- reorder(rr$Stressor, rr$Estimate)
 

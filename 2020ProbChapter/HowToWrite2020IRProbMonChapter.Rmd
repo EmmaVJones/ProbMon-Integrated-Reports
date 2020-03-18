@@ -46,7 +46,9 @@ landcover <- files %>%
 
 First smash two more years of data to existing dataset.
 
-```{r add next two years}
+(add next two years was my initial smash, then more QA back and forth with Jason led to the following chunk named final data smash)
+
+```{r add next two years, eval= F}
 existingData <- read_csv('originalData/Wadeable_ProbMon_2001-2016_EVJ.csv') %>%
   mutate(IR2020 = NA) %>% # add new column
   # manual column reorganization &drop old landcover info bc we will replace with autodelineated
@@ -71,6 +73,14 @@ rm(existingData); rm(newData)
 ```
 
 
+This is Jason's QAed version of what I did in the previous step.
+
+```{r final data smash}
+allData <- readxl::read_excel('processedData/Wadeable_ProbMon_2001-2018_Final_Final.xlsx') %>%
+  dplyr::select(-c(YearSampled:STXRD))# drop old landcover
+```
+
+
 Need to join landcover data to 2001-2018 data
 
 
@@ -80,8 +90,8 @@ allData <- left_join(allData, landcover, by = c('StationID', 'Year')) %>%
   mutate(IR2020 = case_when(Year %in% c(2013:2018) ~ 2020, TRUE ~ 1))
 
 #Save for now
-#write.csv(allData, 'processedData/Wadeable_ProbMon_2001-2018.csv', row.names = F)
-rm(landcover); rm(files)
+#write.csv(allData, 'processedData/Wadeable_ProbMon_2001-2018_Final_Final.csv', row.names = F)
+rm(landcover); rm(files); rm(allData)
 ```
 
 
@@ -95,12 +105,11 @@ Bring in appropriate datasets. Always start with VSCI (VSCI/VCPMI) first because
 #### Read in master field data sampled at all sites
 # Select the parameters we want to run
 # rename a few parameters to work better in R
-surveyDataALL <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv')
+allData <- read_csv('processedData/Wadeable_ProbMon_2001-2018_Final_Final.csv')
 
-#surveyDataALL <- readxl::read_excel('originalData/Wadeable_ProbMon_2001-2016_JRH.xlsx',sheet='ProbMonData2001-2016_EVJ')
 library(magrittr)
-metals <- names(select(surveyDataALL,MetalCCU:MERCURY))
-surveyDataALL[,metals] %<>% lapply(function(x) as.numeric(as.character(x)))
+metals <- names(select(allData,MetalCCU:MERCURY))
+allData[,metals] %<>% lapply(function(x) as.numeric(as.character(x)))
 
 ```
 
@@ -161,26 +170,33 @@ metalsCCUcalcDF <- function(df){
 ```
 
 ```{r metalsCCUcalculation}
-metalsCCUresults <- select(surveyDataALL,StationID_Trend, Year, HARDNESS, ALUMINUM, ARSENIC, CADMIUM, 
+metalsCCUresults <- select(allData,StationID_Trend, Year, HARDNESS, ALUMINUM, ARSENIC, CADMIUM, 
                            CHROMIUM, COPPER, LEAD, NICKEL, SELENIUM, ZINC)
 names(metalsCCUresults)[3:length(metalsCCUresults)] <- capwords(tolower(names(metalsCCUresults)[3:length(metalsCCUresults)]))
 metalsCCUresults <- metalsCCUcalcDF(metalsCCUresults)
 metalsCCUresults$Year <- as.numeric(as.character(metalsCCUresults$Year))
-surveyDataMCCU <- select(surveyDataALL,-c(MetalCCU)) %>%
+
+# quick double check to make sure all the same as previous 
+View(left_join(dplyr::select(allData, StationID_Trend, Year, MetalCCU),
+               metalsCCUresults, by = 'StationID_Trend') %>%
+       mutate(diff = as.numeric(MetalCCU.y) - MetalCCU.x) %>%
+       arrange(diff))
+
+allDataMCCU <- select(allData,-c(MetalCCU)) %>%
   left_join(metalsCCUresults,by=c('StationID_Trend','Year'))%>%
   select(DataSource,StationID,Year,StationID_Trend,LongitudeDD,LatitudeDD,stratum,designweight,
          weightcategory,station,state,status,comment,set,Basin,SubBasin,BayShed,BayPanel,
          EcoRegion,BioRegion,Panel,BioPanel,Order,BasinSize,StreamSizeCat,StreamSizeCatPhase,
          AREA_SQ_MILES,
          IR2008,IR2010,IR2012,IR2014,IR2016,IR2018,IR2020, 
-         designweighttrend, designweightoriginal,filwgt_trend,filwgt_orgil,DO,pH,SpCond,TN,TP,TDS,NH4,
+         DO,pH,SpCond,TN,TP,TDS,NH4,
          NO3,TKN,`Ortho-P`,Turb,TSS,Na,K,Cl,
          Sf,`70331VFine`,SSCCOARSE,SSCFINE,SSCTOTAL,LRBS,
          Slope,FN_PCT,SA_PCT,SA_FN_PCT,LSUB_DMM,BL_CB_GR_Embed_PCT,Embed_PCT,
          TotHab,TotTaxa,EPTTax,VEphem,VPTHydropsychidae,
          VScrap,VChiro,V2Dom,HBI,VHapto,EPTInd,VSCIVCPMI,MetalCCU,everything())
 
-#write.csv(surveyDataMCCU,'processedData/Wadeable_ProbMon_2001-2018.csv', row.names = F)
+#write.csv(allDataMCCU,'processedData/Wadeable_ProbMon_2001-2018.csv', row.names = F) # overwrite previous
 # then manually save to .xlsx for jason
 ``` 
 
@@ -188,7 +204,8 @@ surveyDataMCCU <- select(surveyDataALL,-c(MetalCCU)) %>%
 Run only parameters we want at present and get ready for CDF
 
 ```{r}
-surveyData <- select(surveyDataMCCU, StationID_Trend,Year,DO:MetalCCU,CALCIUM:MERCURY,wshdImpPCT) %>% 
+allData <- read_csv('processedData/Wadeable_ProbMon_2001-2018.csv')
+surveyData <- select(allData, StationID_Trend,Year,DO:MetalCCU,CALCIUM:MERCURY,wshdImpPCT) %>% 
   dplyr::rename(siteID=StationID_Trend,Ortho_P= "Ortho-P",
                 X70331VFine=`70331VFine`)
 
@@ -277,9 +294,8 @@ filter(metalsAssessment, Year >= 2013 & Year <= 2018 & Chronic_Exceed==1)
 
 And now bring in design status data (for VSCI/VCPMI). It is best to use this as the default design status dataset (and adjust TS to OT if not sampled) because it is the most complete version of the data.
 ```{r bringInDesignStatusData}
-designStatus <- readxl::read_excel('originalData/biology.xlsx',sheet='biology2018') %>%
-  mutate(#BioPanel= dplyr::recode(BioPanel,'Phase1'='BioPhase1','Phase2'='BioPhase2',
-    #                         'Phase3'='BioPhase3','Phase4'='BioPhase4'),   # recode biophase
+designStatus <- readxl::read_excel('processedData/biology20012018final.xlsx',sheet='biology2020') %>%
+  mutate(
     IR2008 = replace(IR2008, IR2008==1, NA),
     IR2010 = replace(IR2010, IR2010==1, NA),
     IR2012 = replace(IR2012, IR2012==1, NA),
@@ -303,7 +319,7 @@ designStatus <- readxl::read_excel('originalData/biology.xlsx',sheet='biology201
 These are the data windows we are looking at for 2018 IR:
 
 * Full sample window (2001-2018)
-* 2018 IR (2013-2018)
+* 2020 IR (2013-2018)
 * 2018 IR (2011-2016)
 * 2016 IR (2009-2014)
 * 2014 IR (2007-2012)
@@ -311,7 +327,7 @@ These are the data windows we are looking at for 2018 IR:
 * 2010 IR (2003-2008)
 * 2008 IR (2001-2007)
 * Phases (Phase 1= 2001-2008; Phase 2= 2009-2018) Kept Phase 1 same as 2018IR to balance n samples in window
-* BioPhases (Phase 1 = 2001-2004; Phase 2 = 2005-2008; Phase 3 = 2009-2012; Phase 4 = 2013-2016;)
+* BioPhases (Phase 1 = 2001-2004; Phase 2 = 2005-2008; Phase 3 = 2009-2013; Phase 4 = 2014-2018;)
 
 
 
@@ -429,21 +445,23 @@ listOfResults <- function(popstatus.est, finalData, parameterName){
     estimate2014 = subpopEstimate(finalData,parameterName, 'Year', '2014','Year 2014', specialWeight='finalweight_Year') ,
     estimate2015 = subpopEstimate(finalData,parameterName, 'Year', '2015','Year 2015', specialWeight='finalweight_Year') ,
     estimate2016 = subpopEstimate(finalData,parameterName, 'Year', '2016','Year 2016', specialWeight='finalweight_Year') ,
+    estimate2017 = subpopEstimate(finalData,parameterName, 'Year', '2017','Year 2017', specialWeight='finalweight_Year') ,
+    estimate2018 = subpopEstimate(finalData,parameterName, 'Year', '2018','Year 2018', specialWeight='finalweight_Year') ,
     # By Phase
-    estimatePhase1 = subpopEstimate(finalData,parameterName, 'Panel', 'Phase1','Phase One 2001-2009', specialWeight='finalweight_Panel1') ,
-    estimatePhase2 = subpopEstimate(finalData,parameterName, 'Panel', 'Phase2','Phase Two 2009-2016', specialWeight='finalweight_Panel2') ,
+    estimatePhase1 = subpopEstimate(finalData,parameterName, 'Panel', 'Phase1','Phase One 2001-2008', specialWeight='finalweight_Panel1') ,
+    estimatePhase2 = subpopEstimate(finalData,parameterName, 'Panel', 'Phase2','Phase Two 2009-2018', specialWeight='finalweight_Panel2') ,
     # Bay/ NonBay
-    estimateBay = subpopEstimate(finalData,parameterName, 'BayShed', 'Bay','Bay Watersheds 2001-2016', specialWeight=FALSE),
-    estimateNonBay = subpopEstimate(finalData,parameterName, 'BayShed', 'NonBay','Non-Bay Watersheds 2001-2016', specialWeight=FALSE),
-    estimateBayPhase1 = subpopEstimate(finalData,parameterName, 'BayPanel', 'BayPhase1','Bay Watersheds 2001-2009', specialWeight='finalweight_Panel1'),
-    estimateBayPhase2 = subpopEstimate(finalData,parameterName, 'BayPanel', 'BayPhase2','Bay Watersheds 2009-2016', specialWeight='finalweight_Panel2'),
-    estimateNonBayPhase1 = subpopEstimate(finalData,parameterName, 'BayPanel', 'NonBayPhase1','Non-Bay Watersheds 2001-2009', specialWeight='finalweight_Panel1'),
-    estimateNonBayPhase2 = subpopEstimate(finalData,parameterName, 'BayPanel', 'NonBayPhase2','Non-Bay Watersheds 2009-2016', specialWeight='finalweight_Panel2'),
+    estimateBay = subpopEstimate(finalData,parameterName, 'BayShed', 'Bay','Bay Watersheds 2001-2018', specialWeight=FALSE),
+    estimateNonBay = subpopEstimate(finalData,parameterName, 'BayShed', 'NonBay','Non-Bay Watersheds 2001-2018', specialWeight=FALSE),
+    estimateBayPhase1 = subpopEstimate(finalData,parameterName, 'BayPanel', 'BayPhase1','Bay Watersheds 2001-2008', specialWeight='finalweight_Panel1'),
+    estimateBayPhase2 = subpopEstimate(finalData,parameterName, 'BayPanel', 'BayPhase2','Bay Watersheds 2009-2018', specialWeight='finalweight_Panel2'),
+    estimateNonBayPhase1 = subpopEstimate(finalData,parameterName, 'BayPanel', 'NonBayPhase1','Non-Bay Watersheds 2001-2008', specialWeight='finalweight_Panel1'),
+    estimateNonBayPhase2 = subpopEstimate(finalData,parameterName, 'BayPanel', 'NonBayPhase2','Non-Bay Watersheds 2009-2018', specialWeight='finalweight_Panel2'),
     # Sampling Phase
     estimateBioPanelPhase1 = subpopEstimate(finalData,parameterName, 'BioPanel', 'Phase1','VSCI Scores 2001-2004', specialWeight='finalweight_BioPanel1'),
     estimateBioPanelPhase2 = subpopEstimate(finalData,parameterName, 'BioPanel', 'Phase2','VSCI Scores 2005-2008', specialWeight='finalweight_BioPanel2'),
-    estimateBioPanelPhase3 = subpopEstimate(finalData,parameterName, 'BioPanel', 'Phase3','VSCI Scores 2009-2012', specialWeight='finalweight_BioPanel3'),
-    estimateBioPanelPhase4 = subpopEstimate(finalData,parameterName, 'BioPanel', 'Phase4','VSCI Scores 2013-2016', specialWeight='finalweight_BioPanel4'),
+    estimateBioPanelPhase3 = subpopEstimate(finalData,parameterName, 'BioPanel', 'Phase3','VSCI Scores 2009-2013', specialWeight='finalweight_BioPanel3'),
+    estimateBioPanelPhase4 = subpopEstimate(finalData,parameterName, 'BioPanel', 'Phase4','VSCI Scores 2014-2018', specialWeight='finalweight_BioPanel4'),
     # IR window
     estimateIR2008 = subpopEstimate(finalData,parameterName, 'IR2008', '2008','IR2008', specialWeight='finalweight_IR2008'),
     estimateIR2010 = subpopEstimate(finalData,parameterName, 'IR2010', '2010','IR2010', specialWeight='finalweight_IR2010'),
@@ -451,7 +469,8 @@ listOfResults <- function(popstatus.est, finalData, parameterName){
     estimateIR2014 = subpopEstimate(finalData,parameterName, 'IR2014', '2014','IR2014', specialWeight='finalweight_IR2014'),
     estimateIR2016 = subpopEstimate(finalData,parameterName, 'IR2016', '2016','IR2016', specialWeight='finalweight_IR2016'),
     estimateIR2018 = subpopEstimate(finalData,parameterName, 'IR2018', '2018','IR2018', specialWeight='finalweight_IR2018'),
-    
+    estimateIR2020 = subpopEstimate(finalData,parameterName, 'IR2020', '2020','IR2020', specialWeight='finalweight_IR2020'),
+
     # Stream size
     estimateSmall = subpopEstimate(finalData,parameterName, 'StreamSizeCat','Small',NA, specialWeight=FALSE),
     estimateMedium = subpopEstimate(finalData,parameterName, 'StreamSizeCat','Medium',NA, specialWeight=FALSE),
@@ -473,7 +492,7 @@ allCDFresults <- function(designStatus, surveyData, parameter){
   parameterData[,2] <- as.numeric(as.character(parameterData[,2])) # change to numeric in case it was saved as anything else
   
   
-  # Change status if it wasnt sampled
+  # Change status if particular parameter wasnt sampled
   initialWeightData <- left_join(designStatus,parameterData,by='siteID') %>%
     mutate(parameter_status=ifelse(status == "TS" & is.na(!!as.name(parameter)),"OT", # if TS but not sampled, change to OT
                                    ifelse(status == "OT" & is.na(!!as.name(parameter)),"OT", # if OT but not sampled, keep OT
@@ -498,6 +517,12 @@ allCDFresults <- function(designStatus, surveyData, parameter){
     group_by(siteIDoriginal) %>% 
     mutate(nYearsSampled = ifelse(is.na(siteIDoriginal),NA,n())) %>%
     ungroup()%>%
+    
+    # 2020 IR
+    group_by(siteIDoriginal, IR2020) %>%
+    mutate(nYearsSampled_IR2020 = ifelse(is.na(IR2020),NA,n())) %>%
+    ungroup() %>%
+    
     # 2018 IR
     group_by(siteIDoriginal, IR2018) %>%
     mutate(nYearsSampled_IR2018 = ifelse(is.na(IR2018),NA,n())) %>%
@@ -544,6 +569,7 @@ allCDFresults <- function(designStatus, surveyData, parameter){
     # Divide out weight by years sampled in each window
     # if the site wasnt sampled in a window, give it the original weight but it will be adjusted according to an OT status later
     mutate(designweight_all= designweightoriginal/nYearsSampled,
+           designweight_IR2020= ifelse(is.na(nYearsSampled_IR2020),designweightoriginal,designweightoriginal/nYearsSampled_IR2020),
            designweight_IR2018= ifelse(is.na(nYearsSampled_IR2018),designweightoriginal,designweightoriginal/nYearsSampled_IR2018),
            designweight_IR2016= ifelse(is.na(nYearsSampled_IR2016),designweightoriginal,designweightoriginal/nYearsSampled_IR2016),
            designweight_IR2014= ifelse(is.na(nYearsSampled_IR2014),designweightoriginal,designweightoriginal/nYearsSampled_IR2014),
@@ -569,12 +595,17 @@ allCDFresults <- function(designStatus, surveyData, parameter){
   trendWeightAdjustments$`strahler order` <- as.factor(trendWeightAdjustments$`strahler order`)
   levels(trendWeightAdjustments$`strahler order`) <- c('1st','2nd','3rd','4th','5th','6th','7th')
   
-  finalWeights <- select(trendWeightAdjustments,siteID:IR2018,siteIDoriginal,designweightoriginal,designweight_all:designweight_BioPanel4,
+  finalWeights <- select(trendWeightAdjustments,siteID:IR2020,siteIDoriginal,designweightoriginal,
+                         designweight_all:designweight_BioPanel4,
                          parameter_status,!!as.name(parameter))
   finalWeights$finalweight_Year <- adjwgt(rep(TRUE,length(finalWeights$designweightoriginal)),finalWeights$designweightoriginal,
                                           finalWeights$`strahler order`, sframe)
   finalWeights$finalweight_all <- adjwgt(rep(TRUE,length(finalWeights$designweight_all)),finalWeights$designweight_all,
                                          finalWeights$`strahler order`, sframe)
+  
+  finalWeights$finalweight_IR2020 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2020)),finalWeights$designweight_IR2020,
+                                            finalWeights$`strahler order`, sframe)
+  
   finalWeights$finalweight_IR2018 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2018)),finalWeights$designweight_IR2018,
                                             finalWeights$`strahler order`, sframe)
   finalWeights$finalweight_IR2016 <- adjwgt(rep(TRUE,length(finalWeights$designweight_IR2016)),finalWeights$designweight_IR2016,
@@ -637,8 +668,8 @@ Below is how one would run a single parameter and unpack the CDF and PCT data in
 
 ```{r runIndividualParameter}
 LRBS <- allCDFresults(designStatus, surveyData,'LRBS')
-LRBS_CDFdf <- suppressWarnings(LRBS[3:78] %>% map_df(1))
-LRBS_PCTdf <-  suppressWarnings(LRBS[3:78] %>% map_df(2))
+LRBS_CDFdf <- suppressWarnings(LRBS[3:length(LRBS)] %>% map_df(1))
+LRBS_PCTdf <-  suppressWarnings(LRBS[3:length(LRBS)] %>% map_df(2))
 
 
 ```
@@ -653,6 +684,9 @@ vlookupEVJ <- function(table, #the table where you want to look for it; will loo
                        range=FALSE, #if there is not an exact match, return the closest?
                        larger=FALSE) #if doing a range lookup, should the smaller or larger key be used?)
 {
+  # 2020 addition, make tibbles dataframes
+  table <- as.data.frame(table)
+  
   if(!is.numeric(column) & !column %in% colnames(table)) {
     stop(paste("can't find column",column,"in table"))
   }
@@ -712,8 +746,12 @@ allPCT <- data.frame(Type=NA,Subpopulation=NA,Indicator=NA,Statistic=NA,NResp=NA
 
 # okay, one last one, I promise
 for(i in 3:length(surveyData)){
-  assign(paste(names(surveyData)[i],"CDFdf",sep="_"),suppressWarnings(get(names(surveyData)[i])[3:78] %>% map_df(1)))
-  assign(paste(names(surveyData)[i],"PCTdf",sep="_"),suppressWarnings(get(names(surveyData)[i])[3:78] %>% map_df(2)))
+  assign(paste(names(surveyData)[i],"CDFdf",sep="_"),
+         suppressWarnings(get(names(surveyData)[i])[3:length(get(names(surveyData)[i]))] %>% 
+                            map_df(1)))
+  assign(paste(names(surveyData)[i],"PCTdf",sep="_"),
+         suppressWarnings(get(names(surveyData)[i])[3:length(get(names(surveyData)[i]))] %>%
+                            map_df(2)))
   allCDF <- rbind(allCDF,get(paste(names(surveyData)[i],"CDFdf",sep="_")))
   allPCT <- rbind(allPCT,get(paste(names(surveyData)[i],"PCTdf",sep="_")))
   
@@ -831,7 +869,7 @@ relrisk.estimates<-relrisk.analysis(sites=sites.va.rr,subpop=subpop.va.rr,
                                     stressor.levels=rep(list(c("Poor","Good")),length(stres.vars)))
 
 
-write.csv(relrisk.estimates, file = "processedData/relriskIR2018.csv", row.names = FALSE)
+write.csv(relrisk.estimates, file = "processedData/relriskIR2020.csv", row.names = FALSE)
 write.csv(rrisk, file = "processedData/rrisk.csv", row.names = FALSE)
 
 ```
@@ -954,6 +992,9 @@ vlookup <- function(ref, #the value or values that you want to look for
                     range=FALSE, #if there is not an exact match, return the closest?
                     larger=FALSE) #if doing a range lookup, should the smaller or larger key be used?)
 {
+  # 2020 addition, make tibbles dataframes
+  table <- as.data.frame(table)
+  
   if(!is.numeric(column) & !column %in% colnames(table)) {
     stop(paste("can't find column",column,"in table"))
   }
@@ -1031,21 +1072,34 @@ statslookup <- function(indicator,measure,category,revOrder){
 ```
 
 ```{r VSCIstatusMicromap} 
-basinssmooth <- readOGR('C:/GIS/EmmaGIS/micromap','VAbasins_smoothNoChesPeeDee')
+basinssmooth <- readOGR('originalData','VAbasins_smoothNoChesPeeDee') # have to use sp for micromaps
 map.table <- create_map_table(basinssmooth,'BASIN')
 
+dat <- read_csv('processedData/allCDF.csv')
+
 # for other VSCI graphic
-chowan <-  filter(dat,Subpopulation=='Chowan'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-rappahannock <-  filter(dat,Subpopulation=='Rappahannock'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-york <-  filter(dat,Subpopulation=='York'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-potomac <-  filter(dat,Subpopulation=='Potomac'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-shenandoah <-  filter(dat,Subpopulation=='Shenandoah'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-roanoke <-  filter(dat,Subpopulation=='Roanoke Basin'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-james <-  filter(dat,Subpopulation=='James Basin'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-new <-  filter(dat,Subpopulation=='New'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-bigsandy <-  filter(dat,Subpopulation=='Big Sandy'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-cp <-  filter(dat,Subpopulation=='Clinch-Powell'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
-holston <-  filter(dat,Subpopulation=='Holston'&Indicator=='VSCIVCPMI')%>%select(Value:UCB95Pct.P,everything())
+chowan <-  filter(dat, Subpopulation == 'Chowan' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+rappahannock <-  filter(dat, Subpopulation == 'Rappahannock' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+york <-  filter(dat, Subpopulation == 'York' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+potomac <-  filter(dat, Subpopulation == 'Potomac' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+shenandoah <-  filter(dat, Subpopulation == 'Shenandoah' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+roanoke <-  filter(dat, Subpopulation == 'Roanoke Basin' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+james <-  filter(dat, Subpopulation == 'James Basin' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+new <-  filter(dat, Subpopulation == 'New' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+bigsandy <-  filter(dat, Subpopulation == 'Big Sandy' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+cp <-  filter(dat, Subpopulation == 'Clinch-Powell' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
+holston <-  filter(dat, Subpopulation == 'Holston' & Indicator == 'VSCIVCPMI') %>%
+  select(Value:UCB95Pct.P,everything())
 
 # pull median VSCI scores and upper/lower bounds for micromap
 stats <- data.frame(Basin=c('Chowan','Rappahannock','York','Potomac','Shenandoah','Roanoke','James','New',
