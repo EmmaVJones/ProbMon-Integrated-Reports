@@ -24,3 +24,5 @@ Though R 4.1.1 is the latest supported version of R on CRAN, this report is prod
 
 ### Data Acquisition
 
+New for 2022, the 1.dataAcquisition.Rmd script walks users through the necessary steps to query data from the ODS environment, clean it, summarize it, and manipulate it into a format used by later reporting modules. 
+

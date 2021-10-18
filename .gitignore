@@ -35,7 +35,7 @@ vignettes/*.pdf
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
 
-
+*.yml
 *.docx
 *.zip
 *.mxd
@@ -47,10 +47,11 @@ rsconnect/
 2018/processedData/
 2018/ReportVersions/
 
-2022ProbChapter/startingPointDocument/
-2022ProbChapter/originalData/
-2022ProbChapter/processedData/
-
 2020ProbChapter/startingPointDocument/
 2020ProbChapter/originalData/
 2020ProbChapter/processedData/
+
+2022ProbChapter/startingPointDocument/
+2022ProbChapter/originalData/
+2022ProbChapter/processedData/
+2022ProbChapter/config.yml

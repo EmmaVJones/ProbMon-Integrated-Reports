@@ -1,0 +1,47 @@
+---
+title: "Data Acquisition"
+author: "Emma Jones"
+date: "10/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(config)
+library(sf)
+library(lubridate)
+library(pool)
+library(pins)
+library(sqldf)
+library(dbplyr)
+
+```
+
+## Background
+
+This script connects to the ODS environment, pulls data for assessment window, and summarizes results. Historically, field and analyte information has been reduced to one record per sample year, even if the station was sampled more than once (e.g. spring and fall). The summary statistic used is the median for this report.
+
+## Connect to ODS
+
+Make sure pulling from production environment and not test since those are not exact copies.
+
+```{r connect to ODS}
+
+# Server connection things
+conn <- config::get("connectionSettings") # get configuration settings
+
+
+board_register_rsconnect(key = conn$CONNECT_API_KEY,  #Sys.getenv("CONNECT_API_KEY"),
+                         server = conn$CONNECT_SERVER)#Sys.getenv("CONNECT_SERVER"))
+
+## Connect to ODS production
+pool <- dbPool(
+ drv = odbc::odbc(),
+ Driver = "ODBC Driver 11 for SQL Server",#"SQL Server Native Client 11.0",
+ Server= "DEQ-SQLODS-PROD,50000",
+ dbname = "ODS",
+ trusted_connection = "yes"
+)
+```
+
