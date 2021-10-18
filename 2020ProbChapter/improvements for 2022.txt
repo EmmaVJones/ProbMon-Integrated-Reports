@@ -1,3 +1,5 @@
 improvements for 2022
 
 snap sites to WQS to get more accurate DO/pH/temp exceedances
+
+save CDF data as .RDS as well to improve BSA tool updating process
