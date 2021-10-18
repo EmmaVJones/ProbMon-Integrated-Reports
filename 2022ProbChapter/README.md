@@ -10,4 +10,4 @@ A ProjectOverview.Rmd is provided to walk users through the entire project, sour
 
 ## R Version
 
-The 2022 IR analyses and chapter is produced using R3.6.1 to maintain seamless interoperability with the R Connect server. The spsurvey updates will be incorporated in the IR 2024 chapter.
+The 2022 IR analyses and chapter are produced using R 3.6.1 to maintain seamless interoperability with the R Connect server. The spsurvey updates will be incorporated in the IR 2024 chapter.

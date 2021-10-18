@@ -1,0 +1,26 @@
+---
+title: "Project Overview"
+author: "Emma Jones"
+date: "10/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Background
+
+This document walks you through the steps required to produce the IR 2022 Freshwater Probabilistic Monitoring chapter. Separate "modules" detail data acquisition and cleaning, watershed delineation, data smashing, calculating design weights, running analyses, and writing the Integrated Report chapter due to EPA every two years. The report covers data collected by the program from 2015-2020. 
+
+## Major Updates
+
+This cycle represents the first time R is used for the entire process of data querying through report publication. All data acquisition steps are codified for more reproducible reporting thanks to direct access to the ODS environment from R.
+
+## R Version
+
+Though R 4.1.1 is the latest supported version of R on CRAN, this report is produced using R 3.6.2. All package versions used in the production of this report are listed in each relevant script to ensure reproducibility.
+
+
+### Data Acquisition
+
